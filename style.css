@@ -1,0 +1,52 @@
+/*PALETA DE COLORES:
+Celeste oscuro: #2E424D
+Celeste:        #5B8291
+Celeste claro:  #98DAD9
+Blanco:         #EAEBED
+Negro:          #252525
+*/
+:root { /*Variables*/
+    --primary-background-color: #EAEBED;
+    --secondary-background-color: #2E424D;
+    --primary-text-color: #252525;
+    --important-color: #98DAD9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    color: var(--primary-text-color);
+    min-width: 325px;
+}
+
+header {
+    background-color: var(--secondary-background-color);
+}
+
+main {
+    background-color: var(--primary-background-color);
+}
+
+footer {
+    background-color: var(--secondary-background-color);
+}
+
+/*Dispositivos moviles*/
+@media screen and (max-width: 640px) { 
+
+}
+
+/*Tablets*/
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+
+}
+
+/*Escritorio*/
+@media screen and (min-width: 1024px) {
+
+}
