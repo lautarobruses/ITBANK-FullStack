@@ -1,0 +1,47 @@
+/*PALETA DE COLORES:
+Celeste oscuro: #2E424D
+Celeste:        #5B8291
+Celeste claro:  #98DAD9
+Blanco:         #EAEBED
+Negro:          #252525
+*/
+:root { /*Variables*/
+    --primary-background-color: #EAEBED;
+    --secondary-background-color: #2E424D;
+    --primary-text-color: #252525;
+    --important-color: #98DAD9;
+}
+
+/* Header */
+header{
+    background-color: var(--primary-background-color);
+}   
+header .logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px
+}
+header .logo-container img{
+    height: 5em;
+    width: 5em;
+}
+header .logo-container h1{
+    font-size: 28px;
+    padding-top: 20px;
+}
+/* Main */
+
+main .image-container{
+    height: 50px;
+    width: 50px;
+}
+main .button-eye{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+main .icon{
+    height: 10px;
+    width: 10px;
+}

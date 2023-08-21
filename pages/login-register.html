@@ -4,45 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="/resources/img/bank_1018197.png">
+    <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
     <title>Inicia sesión o registrate - NexusBank</title>
      
 </head>
 <body>
-    <!-- Login -->
-    <div class="logo-container">
-        <img src="/resources/img/bank_1018197.png" alt="Logo de NexusBank">
-        <h1>NexusBank</h1>
-    </div>
-    <div class="image-container">
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="/resources/img/bank_1018197.png" alt="Logo de NexusBank">
+            <h1>NexusBank</h1>
+        </div>
+    </header>
+    <main>
         <hr/>
-        <img src="/resources/img/login-image.jpg" alt="">
-    </div>
-    <!-- Login form -->
-    <div class="form-container">
+
+        <div class="image-container">
+            <img src="/resources/img/login-image.jpg" alt="Planta rodeada de monedas">
+        </div>
         
-        <h2>Inicia Sesión</h2>
-
-        <form action="/procesar-form" method="GET"></form>
-
-        <label>Correo electronico o Usuario:</label> <br/> 
-        <input type="text" id="CorreoUsuario" name="Nombre" required> <br/> <br/> 
-
-        <label>Contraseña:</label> <br/>
-        <input type="text" id="CorreoUsuario" name="Nombre" required>
-        <button type="button" value="Ver/Ocultar"> <img src="/resources/img/icons/ojo.svg" alt="ojo"> </button> <br/> <br/> 
-
-        <input type="checkbox">
-        <label> Recuerdame</label> <br/>
-       
-        <button type="submit" value="Crear cuenta">Crear cuenta</button>
-        <button type="submit" value="Iniciar sesión">Iniciar Sesión</button>
+        <!-- Login form -->
+        <div class="form-container">
             
-        <hr/>
-    </div>
-    <div class="legal-information-container">
-        <a href="">Terminos</a>
-        <a href="">Privacidad</a>
-    </div>
+            <h2>Inicia sesión</h2>
     
+            <form action="/procesar-form" method="GET">
+                <label>Correo electronico o usuario:</label> <br/> 
+                <input type="text" id="CorreoUsuario" name="CorreoUsuario" required> <br/> <br/> 
+    
+                <label>Contraseña:</label> <br/>
+                <input type="password" id="Contraseña" name="Contraseña" required>
+                <button class="button-eye" type="button" value="Ver/Ocultar"> <img class="icon" src="/resources/img/icons/ojo.svg" alt="ojo"> </button> <br/> <br/> 
+    
+                <input type="checkbox">
+                <label> Recuerdame</label> <br/>
+            
+                <button type="submit" value="Crear cuenta">Crear cuenta</button>
+                <button type="submit" value="Iniciar sesión">Iniciar sesión</button>
+            </form>
+        </div>
+    
+        <!-- Register form -->
+        <div class="register-container">
+             
+            <h2>Crea una cuenta en NexusBank</h2>
+    
+            <form action="/procesar-form" method="GET">
+    
+                <label>Nombre:</label> <br/> 
+                <input type="text" id="Nombre" name="Nombre" required> <br/> <br/>
+    
+                <label>Apellido:</label> <br/> 
+                <input type="text" id="Apellido" name="Apellido" required> <br/> <br/> 
+                
+                <label>Localidad:</label> <br>
+                <select>
+                    <option value=""> Seleccione un pais </option>
+                    <option value="0"> Argentina </option>
+                    <option value="1"> Estados Unidos </option>
+                </select> <br> <br>
+    
+                <label>DNI:</label> <br/> 
+                <input type="number" id="DNI" name="DNI" required> <br/> <br/> 
+    
+                <label>Nro. de telefono:</label> <br/> 
+                <input type="number" id="Telefono" name="Telefono" required> <br/> <br/> 
+    
+                <label>Email:</label> <br/> 
+                <input type="email" id="Email" name="Email" required> <br/> <br/> 
+    
+                <label>Contraseña:</label> <br/>
+                <input type="password" id="Contraseña" name="Contraseña" required>
+                <button class="button-eye" type="button" value="Ver/Ocultar"> <img class="icon" src="/resources/img/icons/ojo.svg" alt="ojo"> </button> <br/> <br/> 
+                
+                <label>Repetir contraseña:</label> <br/>
+                <input type="password" id="Contraseña" name="Contraseña" required>
+                <button class="button-eye" type="button" value="Ver/Ocultar"> <img class="icon" src="/resources/img/icons/ojo.svg" alt="ojo"> </button> <br/> <br/> 
+                
+                <input type="checkbox">
+                <p>He leido y acepto los <a href="">Terminos y condiciones</a></p>
+                <img class="icon" src="/resources/img/icons/flecha-arriba-a-la-derecha-desde-el-cuadrado.svg" alt="Icono de una flecha que apunta arriba a la derecha"> <br>
+    
+                <button type="submit" value="Volver">Volver</button>
+                <button type="submit" value="Crear cuenta">Crear cuenta</button>
+            </form>   
+        </div>
+
+        <hr/>
+    </main>
+    
+    <!-- Footer -->
+    
+    <footer>
+        <div class="legal-information-container">
+            <a href="">Terminos</a>
+            <a href="">Privacidad</a>
+        </div>
+    </footer>
+
 </body>
 </html>
