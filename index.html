@@ -4,58 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css"> <!--CSS-->
-    <link rel="shortcut icon" href="resources\img\bank_1018197.png"> <!--Icono ventana-->
+    <link rel="icon" type = "image/png" href="resources\img\android-chrome-512x512.png" sizes="512x512"> <!--favicon-->
     <title>Nexus Bank</title>
 </head>
 <body>
     <header class="header">
         <div class="logo">
-            <img src="bank_1018197.png" alt="logo">
+            <img src="resources\img\logos\nexusbanklogo2-removebg.png" alt="logo">
         </div>
-        <div class="nombre">
-            NexusBank
-        </div>
+        
     </header>
 
-    <nav></nav>
     <main></main>
     
 
     <div class="sidebar">
         <ul class="menu">
-            <li class="item"><a href="#inicio"><img src="inicio.png" width="28" height="28"> Inicio</img></a></li>
-            <li class="item"><a href="#pagos"><img src="pagos.png" width="30" height="25"> Pagos</a></li>
-            <li class="item"><a href="#transferencias"><img src="transfer.png" width="40" height="40"> Transferencias</a></li>
-            <li class="item"><a href="#cuentas"><img src="cuentas.png" width="35" height="35"> Cuentas</a></li>
+            <li class="item"><img src="resources\img\inicio.png" width="28" height="28"> Inicio</a></li>
+            <li class="item"><img src="resources\img\pagos.png" width="30" height="25"> Pagos</a></li>
+            <li class="item"><img src="resources\img\transfer.png" width="40" height="40"> Transferencias</a></li>
+            <li class="item"><img src="resources\img\cuentas.png" width="35" height="35"> Cuentas</a></li>
         </ul>
         </div>
     </div>
-
+    <div class = "inicio">
+        <section class = "saldos" >
+            <h1></h1>
+        </section>
+    </div>
     <footer>
-        <div class="redes">
-            <p>Redes sociales:</p>
-            <ul>
-                <li><a href="https://www.facebook.com" target="_blank"><img src="facebook.png" width="20" height="20" alt="logo"> Facebook</img></a></li>
-                <li><a href="https://twitter.com" target="_blank"><img src="twitter.png" width="20" height="20" alt="logo"> Twitter</img></a></li>
-                <li><a href="https://www.instagram.com" target="_blank"><img src="insta.png" width="20" height="20" alt="logo"> Instagram</img></a></li>
-            </ul>
+        <div class="share">
+            <div class="toggle">
+              <ion-icon name="share-social"></ion-icon>
+              </div>
+            
+                <li style="--i:0;--clr:#1877f2">
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                </li>
+                <li style="--i:1;--clr:#25d366">
+                    <a href="#"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                </li>
+                <li style="--i:2;--clr:#1da1f2">
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                </li>
+                <li style="--i:3;--clr:#FF5733">
+                    <a href="#"><ion-icon name="logo-reddit"></ion-icon></a>
+                </li>
+                <li style="--i:4;--clr:#0a66c2">
+                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                </li>
+                <li style="--i:5;--clr:#c32aa3">
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                </li>
+                <li style="--i:6;--clr:#1b1e21">
+                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                </li>
+                <li style="--i:7;--clr:#ff0000">
+                    <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+                </li>
         </div>
 
-        <div class="contacto">
-            <p>Contacto:</p>
-            <ul>
-                <li>Atención al Cliente: +54 9 11 1234-5678</li>
-                <li>Correo Electrónico: <a href="mailto:soporte@nexusbank.com">soporte@nexusbank.com</a></li>
-            </ul>
-        </div>
         
-        <div class="terminos">
-            <p>© 2023 NexusBank. Todos los derechos reservados.</p>
-            <p>Consulta nuestros <a href="enlace">términos y condiciones</a>.</p>
-            <p>Consulta nuestra <a href="enlace">política de privacidad</a>.</p>
-        </div>
         
     </footer>
-    
 </body>
+<script src="./script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
