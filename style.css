@@ -23,7 +23,7 @@ Negro:          #252525
 html {
     font-family: 'Lato', sans-serif;
     color: var(--primary-text-color);
-    min-width: 325px;
+    min-width: 375px;
 }
 
 /* GRID AREAS */
@@ -40,11 +40,11 @@ html {
     grid-template-rows: repeat(6, auto); /*especifico la cantidad de filas*/
 
     grid-template-areas: "header header header header"
-                         " main main main sidebar"
-                         " main main main sidebar"
-                         " main main main sidebar"
-                         " main main main sidebar"
-                         "footer footer footer footer";
+                        "sidebar main main main"
+                        "sidebar main main main"
+                        "sidebar main main main"
+                        "sidebar main main main"
+                        "footer footer footer footer";
 }
 
 .contenedor > div,
@@ -68,17 +68,10 @@ html {
     display: flex;
     align-items: center;
 }
-.logo{
-    width: 62%;
-    height: auto;
-}
 
-.contenedor header #logo {
-    /* width: 3rem;
-    height: auto; */
-    width: 49%;
+.contenedor header img {
+    width: 8em;
     height: auto;
-    margin: 1rem;
 }
 
 .contenedor #nombre {
@@ -88,13 +81,15 @@ html {
 
 /* SIDEBAR */
 .contenedor aside {
+    float: left;
     background-color: var(--sidebar-background-color);
 
     grid-area: sidebar;
 }
 
 .contenedor .menu li {
-    padding: 10px 10px;
+    padding: 10px;
+    display: float;
 }
 
 .contenedor .menu li a {
@@ -112,7 +107,7 @@ html {
 
 .contenedor .menu .underline-btn {
     display: inline-block;
-    padding: 1em 0;
+    padding: 0.5rem 0;
     border-radius: 0;
     /* margin-top:2rem; */
     font-weight: bold;
@@ -163,9 +158,7 @@ html {
 }
 
 /*Información de INICIO*/
-.container .saldos{
-    height: 150px;
-    width: 70%;
+.contenedor main .saldos{
     border: 2px solid rgba(46, 66, 77, .4);
     margin: 0 250px;
 }
@@ -176,12 +169,12 @@ html {
     color: var(--primary-background-color);
     font-size: 1rem;
     font-weight:bold;
-    
     padding: 20px;
 
     grid-area: footer;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     float: right;
@@ -274,109 +267,71 @@ html {
     box-shadow:0 0 0 2px var(--clr),
       0 0 0 6px #fff;
 } */
+  
+/* Estilos para dispositivos medianos */
+@media screen and (max-width: 1023px) {
+    .contenedor {
+        grid-template-areas: "header header header header"
+                            "sidebar sidebar sidebar sidebar"
+                            "main main main main"
+                            "main main main main"
+                            "main main main main"
+                            "footer footer footer footer";
+    }
 
-/* Estilos para dispositivos grandes */
-@media screen and (min-width: 1024px) {
+    /* ASIDE */
+    .contenedor aside li img {
+        display: none;
+    }
     
-    .header {
-      height: 100px;
-      padding: 20px;
+    .contenedor .menu li {
+        padding: 10px;
+        display: inline;
     }
-  
-    .logo img {
-      width: 100%;
-      height: auto;
+
+    /* FOOTER */
+    .contenedor footer {
+        flex-direction: column;
     }
-  
+
+    /* Redes */
+    .contenedor footer #redes {
+        padding-bottom: 20px;
+    }
+
+    .contenedor footer #redes p{
+        padding-bottom: 10px;
+        text-align: center;
+        
+    }
+
+    .contenedor footer #redes ul {
+        display: flex;
+    }
+
+    .contenedor footer #redes a {
+        padding: 10px;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     
-    .sidebar {
-      width: 16%;
-      padding-top: 20px;
+    /* Contacto */
+    .contenedor footer #contacto {
+        padding-bottom: 20px;
+        text-align: center;
     }
+
+    /* Terminos */
+    .contenedor footer #terminos {
+        text-align: center;
+    }
+}
   
-    
-    .saldos {
-      margin: 0 auto;
-      width: 70%;
-      max-width: 800px;
+/* Estilos para dispositivos pequeños (móviles) */
+@media screen and (max-width: 640px) {
+   /* FOOTER */
+    .contenedor footer #redes a img{
+        display: none;
     }
-  
-    
-    footer {
-      width: 84%;
-      height: 150px;
-      padding: 20px;
-    }
-  }
-  
-  /* Estilos para dispositivos medianos */
-  @media screen and (max-width: 1023px) {
-    
-    .header {
-      padding: 10px;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .logo img {
-      width: 60%;
-      height: auto;
-    }
-  
-    
-    .sidebar {
-      width: 30%;
-      padding-top: 10px;
-    }
-  
-    .menu a {
-      font-size: 18px;
-    }
-  
-    
-    .saldos {
-      margin: 20px auto;
-      width: 80%;
-    }
-  
-    
-    footer {
-      padding: 10px;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  
-  /* Estilos para dispositivos pequeños (móviles) */
-  @media screen and (max-width: 640px) {
-   
-    .sidebar {
-      width: 100%;
-      padding-top: 10px;
-    }
-  
-    
-    .menu {
-      display: flex;
-      justify-content: center;
-    }
-  
-    .item {
-      padding: 10px;
-    }
-  
-   
-    .saldos {
-      width: 90%;
-    }
-  
-    
-    footer {
-      padding: 10px;
-    }
-  }
+}
