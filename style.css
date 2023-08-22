@@ -81,6 +81,7 @@ html {
 
 /* SIDEBAR */
 .contenedor aside {
+    float: left;
     background-color: var(--sidebar-background-color);
 
     grid-area: sidebar;

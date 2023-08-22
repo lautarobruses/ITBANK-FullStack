@@ -4,7 +4,7 @@
   --primary-text-color: #252525;
   --important-color: #98DAD9;
 }
-.superior {
+/*.superior {
     background-color:var(--primary-background-color);
     height: 80px;
     display: flex;
@@ -76,7 +76,7 @@
     background-color: rgb(119, 119, 135);
     font-style: italic;
     color: black;
-  }*/
+  }
   
   .menu ul {
     list-style: none;
@@ -95,10 +95,9 @@
   .menu a:hover {
     color:var(--primary-text-color);
   }
-
+*/
   .Cuadro {
     width: 100%;
-    height: 100vh;
     background-color: var(--primary-background-color);
     display: flex;
     flex-direction: column;
