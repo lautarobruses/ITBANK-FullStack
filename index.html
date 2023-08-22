@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css"> <!--CSS-->
-    <link rel="shortcut icon" href="resources\img\bank_1018197.png"> <!--Icono ventana-->
+    <link rel="icon" type = "image/png" href="resources\img\android-chrome-512x512.png" sizes="512x512"> <!--favicon-->
     <title>Nexus Bank</title>
 </head>
 <body>
     <div class="contenedor">
         <header>
-            <img id="logo" src="resources\img\bank_1018197.png" alt="logo">
+            <img src="resources\img\logos\nexusbanklogo2-removebg.png" alt="logo">
             <h1 id="nombre">NexusBank</h1>
         </header>
     
-        <nav></nav>
-        <main></main>
+        <main>
+            <section class = "saldos" >
+                <h1></h1>
+            </section>
+        </main>
         
         <aside>
             <ul class="menu", style="list-style: none;">
@@ -68,9 +71,41 @@
                             Instagram
                         </a>
                     </li>
+                    
                 </ul>
             </div>
-    
+
+            <div class="share">
+                <div class="toggle">
+                  <ion-icon name="share-social"></ion-icon>
+                  </div>
+                    <li style="--i:0;--clr:#1877f2">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                    </li>
+                    <li style="--i:1;--clr:#25d366">
+                        <a href="#"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                    </li>
+                    <li style="--i:2;--clr:#1da1f2">
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    </li>
+                    <li style="--i:3;--clr:#FF5733">
+                        <a href="#"><ion-icon name="logo-reddit"></ion-icon></a>
+                    </li>
+                    <li style="--i:4;--clr:#0a66c2">
+                        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    </li>
+                    <li style="--i:5;--clr:#c32aa3">
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    </li>
+                    <li style="--i:6;--clr:#1b1e21">
+                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                    </li>
+                    <li style="--i:7;--clr:#ff0000">
+                        <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+                    </li>
+                </div>
+            </div>
+
             <div id="contacto">
                 <p>Contacto:</p>
                 <ul style="list-style: none;">
@@ -96,4 +131,7 @@
         </footer>
     </div>
 </body>
+<script src="./script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
