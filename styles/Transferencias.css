@@ -1,9 +1,11 @@
 :root { /*Variables*/
-  --primary-background-color: #EAEBED;
-  --secondary-background-color: #2E424D;
-  --primary-text-color: #252525;
-  --important-color: #98DAD9;
+    --primary-background-color: #EAEBED;
+    --secondary-background-color: #5B8291;
+    --sidebar-background-color: #2E424D;
+    --primary-text-color: #252525;
+    --important-color: #98DAD9;
 }
+
 /*.superior {
     background-color:var(--primary-background-color);
     height: 80px;
@@ -96,6 +98,7 @@
     color:var(--primary-text-color);
   }
 */
+
   .Cuadro {
     width: 100%;
     background-color: var(--primary-background-color);
