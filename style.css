@@ -8,7 +8,8 @@ Negro:          #252525
 
 :root { /*Variables*/
     --primary-background-color: #EAEBED;
-    --secondary-background-color: #2E424D;
+    --secondary-background-color: #5B8291;
+    --sidebar-background-color: #2E424D;
     --primary-text-color: #252525;
     --important-color: #98DAD9;
 }
@@ -25,77 +26,174 @@ html {
     min-width: 325px;
 }
 
-/*Encabezado*/
-.header {
-    background-color: var(--primary-background-color);
-    color: var(--primary-text-color);
+/* GRID AREAS */
+.contenedor {
+    width: 95%;
+    max-width: 2160px; /*Resolucion 4K*/
+    margin: 20px auto;
+
+    /* CSS GRID */
+
+    display: grid; /*convierte al elemento en un contenedor grid*/
+    grid-gap: 10px; /*espaciados entre cada elemento, pero no en la parte externa*/
+    grid-template-columns: repeat(4, 1fr); /*especifico la cantidad de columnas*/
+    grid-template-rows: repeat(6, auto); /*especifico la cantidad de filas*/
+
+    grid-template-areas: "header header header header"
+                         " main main main sidebar"
+                         " main main main sidebar"
+                         " main main main sidebar"
+                         " main main main sidebar"
+                         "footer footer footer footer";
+}
+
+.contenedor > div,
+.contenedor header,
+.contenedor main,
+.contenedor aside,
+.contenedor footer {
+    background: var(--primary-background-color);
     padding: 20px;
+    border-radius: 5px;
+}
+
+/* HEADER */
+.contenedor header {
+    background-color: var(--secondary-background-color);
+    color: var(--primary-background-color);
+    padding: 20px;
+
+    grid-area: header;
+
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100px;
 }
 
-.logo img {
-    width: 45px;
+.contenedor header #logo {
+    width: 3rem;
     height: auto;
-    margin-right: 5px;
+    margin: 1rem;
 }
 
-.nombre {
-    font-size: 40px;
+.contenedor #nombre {
+    font-size: 3rem;
     font-weight: bold;
 }
 
+/* SIDEBAR */
+.contenedor aside {
+    background-color: var(--sidebar-background-color);
 
-main {
-    background-color: var(--primary-background-color);
+    grid-area: sidebar;
 }
 
-/*Menu lateral*/
-.sidebar {
-    width: 16%;
-    height: 100%;
-    background-color: var(--secondary-background-color);
-    position: fixed;
-    padding-top: 20px;
+.contenedor .menu li {
+    padding: 10px 10px;
 }
 
-.item {
-    padding: 20px 20px;
-}
-
-.item:hover {
-    background-color: var(--primary-background-color)
-}
-
-.item a {
-    color: var(--primary-text-color);
+.contenedor .menu li a {
+    color: var(--primary-background-color);
     text-decoration: none;
-    font-size: 22px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
-/*Pie de pagina*/
-footer {
+.contenedor aside li img {
+    width: 1.5rem;
+    height: auto;
+}
+
+.contenedor .menu .underline-btn {
+    display: inline-block;
+    padding: 1em 0;
+    border-radius: 0;
+    /* margin-top:2rem; */
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 0;
+
+    }
+    &:before {
+        transition: width 0s ease,background .4s ease;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+    }
+    &:after {
+        right: 2.2%;
+        bottom: 8px;
+        background: var(--primary-background-color);
+        transition: width .4s ease;
+    }
+    &:hover {
+        &:before {
+            width: 97.8%;
+            background: var(--primary-background-color);
+            transition: width .4s ease;
+        }
+        &:after {
+            width: 97.8%;
+            background: 0 0;
+            transition: all 0s ease;
+        }
+    }
+}
+
+/* MAIN */
+.contenedor main {
+    background-color: var(--primary-background-color);
+
+    grid-area: main;
+}
+
+/* FOOTER */
+.contenedor footer {
     background-color: var(--secondary-background-color);
-    color: var(--primary-text-color);
+    color: var(--primary-background-color);
+    font-size: 1rem;
+    font-weight:bold;
+    
     padding: 20px;
+
+    grid-area: footer;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 84%;
-    height: 150px;
     float: right;
 }
 
-.terminos {
+.contenedor footer a {
+    color: var(--sidebar-background-color);
+    text-decoration: none;
+}
+
+.contenedor footer a:hover {
+    color: var(--primary-text-color);
+}
+
+.contenedor footer #redes p {
+    text-align: left;
+}
+
+.contenedor footer #contacto {
+    text-align: left;
+}
+
+.contenedor footer #terminos {
+    color: var(--secondary-text-color);
     text-align: right;
 }
 
-.redes {
-    text-align: left;
-}
 
 
 /*Dispositivos moviles*/
