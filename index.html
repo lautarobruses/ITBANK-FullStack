@@ -5,23 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css"> 
     <link rel="icon" type = "image/png" href="resources\img\android-chrome-512x512.png" sizes="512x512"> <!--favicon-->
-    <script src="./script.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Nexus Bank</title>
 </head>
 <body>
     <div class="contenedor">
         <header>
-            <img src="resources\img\logos\nexusbanklogo-removebg.png" alt="logo">
-            <h1 id="nombre">Nexus Bank</h1>
+            <div id="logo">
+                <img src="resources\img\logos\nexusbanklogo-removebg.png" alt="logo">
+                <h1 id="nombre">Nexus Bank</h1>
+            </div>
+            <button id="button-menu" class="button-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </header>
-    
-        <main>
-            <section class = "saldos" >
-                <h1></h1>
-            </section>
-        </main>
+
+        <nav id="nav" class="main-nav">
+            <div class="nav-links" >
+                <a class="underline-btn" href="#inicio">
+                    <img src="resources\img\inicio.png"/>
+                    Inicio
+                </a>
+                <a class="underline-btn" href="#pagos">
+                    <img src="resources\img\pagos.png">
+                    Pagos
+                </a>
+                <a class="underline-btn" href="/pages/transfer.html">
+                    <img src="resources\img\transferencias.png">
+                    Transferencias
+                </a>
+                <a class="underline-btn" href="#cuentas">
+                    <img src="resources\img\cuentas.png">
+                    Cuentas
+                </a>
+            </div>
+        </nav>
         
         <aside>
             <ul class="menu", style="list-style: none;">
@@ -49,11 +68,15 @@
                         Cuentas
                     </a>
                 </li>
-                <li>
-                    <button class="slide-btn">Cerrar Sesion</button>
-                </li>
             </ul>
+            <button class="slide-btn">Cerrar Sesion</button>
         </aside>
+
+        <main>
+            <section class = "saldos" >
+                <h1></h1>
+            </section>
+        </main>
 
         <footer>
             <div id="redes">
@@ -103,5 +126,6 @@
                 </p>
             </div>
         </footer>
+        <script src="script.js"></script> <!--Es necesario que este aca-->
 </body>
 </html>

@@ -67,11 +67,18 @@ html {
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.contenedor header #logo {
+    display: flex;
+    align-items: center;
 }
 
 .contenedor header img {
-    width: 8em;
+    width: 8rem;
     height: auto;
+    padding: 1rem;
 }
 
 .contenedor #nombre {
@@ -79,7 +86,62 @@ html {
     font-weight: bold;
 }
 
-/* SIDEBAR */
+.contenedor .button-menu {
+    visibility: hidden;
+}
+  
+/* NAV */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    margin-left: -100%;
+    transition: all .2s linear;
+    background-color: rgba(0,0,0,.7);
+    z-index: 100;
+}
+  
+.main-nav.show {
+    margin-left: 0;
+}
+  
+.nav-links {
+    background-color: var(--sidebar-background-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    align-items: left;
+    justify-content: flex-start;
+}
+  
+.link-item {
+    margin-top: 5rem;
+    color: var(--primary-background-color);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+  
+.link-item::after {
+    position: absolute;
+    content: "";
+    background-color: black;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    transition: 0.3s ease all;
+}
+  
+.link-item:hover::after {
+    width: 100%;
+}
+
+/* SIDEBAR (& NAV)*/
 .contenedor aside {
     float: left;
     background-color: var(--sidebar-background-color);
@@ -92,6 +154,7 @@ html {
     display: float;
 }
 
+.main-nav a,
 .contenedor .menu li a {
     color: var(--primary-background-color);
 
@@ -100,16 +163,18 @@ html {
     font-weight: bold;
 }
 
+.nav-links img,
 .contenedor aside li img {
     width: 1.5rem;
     height: auto;
 }
 
+.main-nav a,
 .contenedor .menu .underline-btn {
     display: inline-block;
     padding: 0.5rem 0;
     border-radius: 0;
-    /* margin-top:2rem; */
+    /* margin-top: 2rem; */
     font-weight: bold;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -150,7 +215,7 @@ html {
     }
 }
 
-.contenedor .menu .slide-btn {
+.contenedor .slide-btn {
     background: none;
     font-size: 1rem;
     font-weight: bold;
@@ -286,6 +351,76 @@ html {
   
 /* Estilos para dispositivos pequeños (móviles) */
 @media screen and (max-width: 640px) {
+    .contenedor {
+        grid-template-areas: "header header header header"
+                            "main main main main"
+                            "main main main main"
+                            "main main main main"
+                            "main main main main"
+                            "footer footer footer footer";
+    }
+
+    /* HEADER */
+    .contenedor header img {
+        width: 6rem;
+        height: auto;
+        padding: 0.5rem;
+    }
+
+    .contenedor #nombre {
+        font-size: 2rem;
+    }
+
+    .contenedor .button-menu{
+        visibility: visible;
+        z-index: 200;
+        width: 5rem;
+        height: 5rem;
+        border: none;
+        display: flex;
+        background: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    
+    .button-menu span{
+        width: 37px;
+        height: 4px;
+        margin-bottom: 6px;
+        position: relative;
+        background: var(--primary-text-color);
+        border-radius: 3px;
+        transform-origin: 4px 0px;
+        transition: all .2s linear;
+    }
+    
+    .button-menu.close span {
+        opacity: 1;
+        transform: rotate(45deg) translate(0px, 0px);
+        background: var(--primary-background-color);
+    }
+    
+    .button-menu.close span:nth-child(2){
+        transform: rotate(-45deg) translate(-8px, 5px);
+    }
+    
+    .button-menu.close span:nth-child(3){
+        display: none;
+    }
+
+    /* NAV */
+    .main-nav a {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+    }
+    
+    /* ASIDE */
+    .contenedor aside {
+        display: none;
+    }
+
    /* FOOTER */
     .contenedor footer #redes a img{
         display: none;
