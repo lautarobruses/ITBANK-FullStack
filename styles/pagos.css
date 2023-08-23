@@ -241,6 +241,12 @@ html {
     color: var(--secondary-text-color);
     text-align: right;
 }
+#comprobantes {
+    display: none;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid rgb(37,37,37);
+}
 /*SHARE LOGO 360*/
 .share{
     position:relative;
