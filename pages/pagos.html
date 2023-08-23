@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="Stylesheet" href="../styles/pagos.css">
-    <title>Home Banking - inicio </title>
+    <title>Home Banking - Pagos </title>
 </head>
 <body>
     <div class="contenedor">
@@ -32,7 +32,7 @@
         <aside>
             <ul class="menu", style="list-style: none;">
                 <li>
-                    <a class="underline-btn" href="#inicio">
+                    <a class="underline-btn" href="../index.html">
                         <img src="..\resources\img\inicio.png"/>
                         Inicio
                     </a>
@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="underline-btn" href="/pages/transfer.html">
+                    <a class="underline-btn" href="../pages/transfer.html">
                         <img src="..\resources\img\transferencias.png">
                         Transferencias
                     </a>
@@ -62,29 +62,36 @@
         </aside>
 
         <footer>
-            <div id="redes">
-                <p>Redes sociales:</p>
-                <ul style="list-style: none;">
-                    <li>
-                        <a href="https://www.facebook.com" target="_blank">
-                            <img src="..\resources\img\facebook.png" width="20" height="20" alt="logo"/>
-                            Facebook
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com" target="_blank">
-                            <img src="..\resources\img\twitter.png" width="20" height="20" alt="logo"/>
-                            Twitter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com" target="_blank">
-                            <img src="..\resources\img\insta.png" width="20" height="20" alt="logo"/>
-                            Instagram
-                        </a>
-                    </li>
-                    
-                </ul>
+            <div class="share">
+                <div class="toggle">
+                  <ion-icon name="share-social"></ion-icon>
+                </div>
+                
+                <li style="--i:0;--clr:#1877f2">
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                </li>
+                <li style="--i:1;--clr:#25d366">
+                    <a href="#"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                </li>
+                <li style="--i:2;--clr:#1da1f2">
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                </li>
+                <li style="--i:3;--clr:#FF5733">
+                    <a href="#"><ion-icon name="logo-reddit"></ion-icon></a>
+                </li>
+                <li style="--i:4;--clr:#0a66c2">
+                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                </li>
+                <li style="--i:5;--clr:#c32aa3">
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                </li>
+                <li style="--i:6;--clr:#1b1e21">
+                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                </li>
+                <li style="--i:7;--clr:#ff0000">
+                    <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+                </li>
+                
             </div>
 
             <div id="contacto">
@@ -111,4 +118,7 @@
         </footer>
     
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../script.js"></script>
 </html> 
