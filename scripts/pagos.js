@@ -11,15 +11,17 @@ const comprobanteDiv = document.getElementById("comprobantes");
 
 const estadoGuardado = localStorage.getItem("comprobanteVisible");
 if (estadoGuardado === "true") {
-    comprobanteDiv.style.display = "block";
+    comprobanteDiv.style.maxHeight = "500px"; 
+} else {
+    comprobanteDiv.style.maxHeight = "0"; 
 }
 
 botonServicio.addEventListener("click", function() {
-    if (comprobanteDiv.style.display === "block") {
-        comprobanteDiv.style.display = "none";
-        localStorage.setItem("comprobanteVisible", "false");
-    } else {
-        comprobanteDiv.style.display = "block";
+    if (comprobanteDiv.style.maxHeight === "0px") {
+        comprobanteDiv.style.maxHeight = "500px"; 
         localStorage.setItem("comprobanteVisible", "true");
+    } else {
+        comprobanteDiv.style.maxHeight = "0"; 
+        localStorage.setItem("comprobanteVisible", "false");
     }
 });
