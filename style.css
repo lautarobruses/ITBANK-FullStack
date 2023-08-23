@@ -91,7 +91,7 @@ html {
 }
   
 /* NAV */
-.main-nav {
+.contenedor nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -101,32 +101,50 @@ html {
     transition: all .2s linear;
     background-color: rgba(0,0,0,.7);
     z-index: 100;
-}
-  
-.main-nav.show {
-    margin-left: 0;
-}
-  
-.nav-links {
-    background-color: var(--sidebar-background-color);
-    padding: 20px;
+
     display: flex;
     flex-direction: column;
-    width: 70%;
-    height: 100%;
     align-items: left;
     justify-content: flex-start;
 }
   
-.link-item {
-    margin-top: 5rem;
+.contenedor nav.show {
+    margin-left: 0;
+}
+.contenedor nav .nav-links {
+    background-color: var(--sidebar-background-color);
+    padding: 20px;
+    width: 70%;
+    height: 100%;
+    /* min-width: 325px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+}
+
+.contenedor nav .nav-btn {
+    background-color: var(--sidebar-background-color);
+    padding: 20px;
+    width: 70%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+}
+  
+.contenedor nav .underline-btn {
+    margin-top: 3rem;
     color: var(--primary-background-color);
     text-decoration: none;
     font-weight: bold;
     position: relative;
 }
   
-.link-item::after {
+.contenedor nav .underline-btn::after {
     position: absolute;
     content: "";
     background-color: black;
@@ -137,8 +155,12 @@ html {
     transition: 0.3s ease all;
 }
   
-.link-item:hover::after {
+.contenedor nav .underline-btn:hover::after {
     width: 100%;
+}
+
+.contenedor nav .nav-btn {
+    align-items: end;
 }
 
 /* SIDEBAR (& NAV)*/
@@ -158,7 +180,7 @@ html {
     display: float;
 }
 
-.main-nav a,
+.contenedor nav a,
 .contenedor .menu li a {
     color: var(--primary-background-color);
 
@@ -173,7 +195,7 @@ html {
     height: auto;
 }
 
-.main-nav a,
+.contenedor nav a,
 .contenedor .menu .underline-btn {
     display: inline-block;
     padding: 0.5rem 0;
