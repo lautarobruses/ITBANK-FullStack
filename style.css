@@ -268,14 +268,281 @@ html {
     background-color: var(--primary-background-color);
 
     grid-area: main;
+    display: flex;
 }
 
 /*Información de INICIO*/
-.contenedor main .saldos{
-    border: 2px solid rgba(46, 66, 77, .4);
-    margin: 0 250px;
+.contenedor main .saldos {
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna */
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    gap: 10px; /* Espacio entre los elementos */
 }
 
+.contenedor main .saldos h1 {
+    margin: 0; /* Eliminar el margen */
+}
+.contenedor main .saldos {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Primera columna ocupa espacio restante, segunda columna se ajusta al contenido */
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.contenedor main .saldos h1 {
+    margin: 0; /* Eliminar el margen */
+}
+
+.contenedor main .saldos img {
+    width: 50px;
+    height: auto;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+.contenedor main .saldos button {
+    font-size: medium;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.contenedor main .saldos button:hover {
+    background-color: var(--primary-text-color);
+    color: white;
+}
+
+.contenedor main .datos-cuenta {
+    text-align: right;
+    /* Estilos para Datoscuenta */
+}
+
+.contenedor main .promotions-container {
+    align-self: flex-end; /* Alinear el contenedor al final del espacio disponible */
+}
+
+.contenedor main .opciones-saldo {
+    /* Estilos para opciones-saldo */
+}.contenedor main .saldos {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Primera columna ocupa espacio restante, segunda columna se ajusta al contenido */
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.contenedor main .saldos h1 {
+    margin: 0; /* Eliminar el margen */
+}
+
+.contenedor main .saldos img {
+    width: 50px;
+    height: auto;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+.contenedor main .saldos button {
+    font-size: medium;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.contenedor main .saldos button:hover {
+    background-color: var(--primary-text-color);
+    color: white;
+}
+
+.contenedor main .datos-cuenta {
+    text-align: right;
+    /* Estilos para Datoscuenta */
+}
+
+.contenedor main .promotions-container {
+    align-self: flex-end; /* Alinear el contenedor al final del espacio disponible */
+}
+
+.contenedor main .opciones-saldo {
+    /* Estilos para opciones-saldo */
+}.contenedor main .saldos {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Primera columna ocupa espacio restante, segunda columna se ajusta al contenido */
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.contenedor main .saldos h1 {
+    margin: 0; /* Eliminar el margen */
+}
+
+.contenedor main .saldos img {
+    width: 50px;
+    height: auto;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+.contenedor main .saldos button {
+    font-size: medium;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.contenedor main .saldos button:hover {
+    background-color: var(--primary-text-color);
+    color: white;
+}
+
+.contenedor main .datos-cuenta {
+    text-align: right;
+    /* Estilos para Datoscuenta */
+}
+
+.contenedor main .promotions-container {
+    align-self: flex-end; /* Alinear el contenedor al final del espacio disponible */
+}
+
+.contenedor main .opciones-saldo {
+    /* Estilos para opciones-saldo */
+}
+.contenedor main .saldos img {
+    width: 50px;
+    height: auto;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+.contenedor main .saldos button {
+    font-size: medium;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.contenedor main .saldos button:hover {
+    background-color: var(--primary-text-color);
+    color: white;
+}
+
+
+.contenedor main .saldos .opciones-saldo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas con igual ancho */
+    gap: 10px; /* Espacio entre las opciones */
+    align-items: center; /* Centrar verticalmente */
+}
+
+.contenedor main .saldos .opcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor main .saldos .opcion .saldo-button {
+    border: none;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-size: 60%; /* Tamaño del icono de fondo */
+    background-repeat: no-repeat;
+    background-position: center; /* Centrar el icono */
+}
+
+.contenedor main .saldos .opcion .opcion-contenido {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.contenedor main .saldos .opcion:hover .opcion-contenido {
+    display: block;
+}
+
+#ingresarDineroButton {
+    background-image: url('/resources/img/IngresarDinero.png'); /* Ruta de la imagen de fondo */
+}
+
+#extraerDineroButton {
+    background-image: url('/resources/img/RetirarDinero.png'); /* Ruta de la imagen de fondo */
+}
+
+#invertirButton {
+    background-image: url('/resources/img/invertir.png'); /* Ruta de la imagen de fondo */
+}
+.contenedor main  .cuentas{
+    margin-top: 20px;
+    margin-left: 40px;
+    display: grid;
+    gap: 20px;
+    width: 600px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.contenedor main .cuenta{
+    border-bottom: black;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
 /* FOOTER */
 .contenedor footer {
     background-color: var(--secondary-background-color);
