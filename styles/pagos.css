@@ -38,6 +38,23 @@ html {
                         "sidebar main main main"
                         "footer footer footer footer";
 }
+#comprobantes {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    background-color: #f0f0f0;
+    border: 1px solid rgb(37, 37, 37);
+    transition: all 3s ease; 
+}
+.mostrado {
+    max-height: 500px; 
+    padding: 20px;
+}
+.columna {
+    width:33%;
+    float:left;
+    text-align: center;
+}
 .subtitle{
     opacity: .4;
 }
@@ -47,6 +64,9 @@ html {
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
+}
+.service:hover{
+    color:rgb(71, 63, 136);
 }
 .service:visited{
     text-decoration: none;
@@ -241,12 +261,17 @@ html {
     color: var(--secondary-text-color);
     text-align: right;
 }
-#comprobantes {
-    display: none;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid rgb(37,37,37);
-}
+
+  
+  @media (max-width: 500px) {
+    
+    .columna {
+      width:auto;
+      float:none;
+    }
+    
+  }
+
 /*SHARE LOGO 360*/
 .share{
     position:relative;
