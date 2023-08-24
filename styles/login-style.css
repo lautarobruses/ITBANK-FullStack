@@ -57,6 +57,13 @@ main{
     grid-template-rows: 100%;
 }
 
+main .form-container, .register-left-container, .register-right-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 main .image-container img{
     object-fit: contain;
     border-left: solid var(--primary-background-color) 3px;
@@ -64,14 +71,8 @@ main .image-container img{
     height: 100%;
     width: 100%;
 }
-main .form-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-main .form-container h2{
+main h2{
     padding: 20px;
 }
 
