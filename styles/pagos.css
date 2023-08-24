@@ -65,6 +65,9 @@ html {
     text-decoration: none;
     cursor: pointer;
 }
+.service:hover{
+    color:rgb(71, 63, 136);
+}
 .service:visited{
     text-decoration: none;
     outline: 0;
