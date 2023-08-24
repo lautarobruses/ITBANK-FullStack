@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="/resources/img/logos/nexusbanklogo-removebg.png">
+    <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
+    <title>Inicia sesión o registrate - NexusBank</title>
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <img src="../resources/img/logos/nexusbanklogo3-removebg.png" alt="Logo de NexusBank">
+
+            </div>
+        </header>
+
+        <main>
+
+            <div class="register-left-container">
+                <h2>Crea una cuenta en NexusBank</h2>
+
+                <form action="/procesar-form" method="GET">
+
+                    <label>Nombre:</label> <br />
+                    <input type="text" id="Nombre" name="Nombre" required> <br /> <br />
+
+                    <label>Apellido:</label> <br />
+                    <input type="text" id="Apellido" name="Apellido" required> <br /> <br />
+
+                    <label>Localidad:</label> <br>
+                    <select>
+                        <option value=""> Seleccione un pais </option>
+                        <option value="0"> Argentina </option>
+                        <option value="1"> Estados Unidos </option>
+                    </select> <br> <br>
+
+                    <label>DNI:</label> <br />
+                    <input type="number" id="DNI" name="DNI" required> <br /> <br />
+
+                    <label>Nro. de telefono:</label> <br />
+                    <input type="number" id="Telefono" name="Telefono" required>
+            </div>
+            <div class="register-right-container">
+                    <br/><br/>
+                    <label>Email:</label> <br />
+                    <input type="email" id="Email" name="Email" required> <br/> <br/>
+
+                    <label>Contraseña:</label> <br />
+                    <input type="password" id="Contraseña" name="Contraseña" required>
+                    <button class="button-eye" type="button" value="Ver/Ocultar"> <img class="icon-eye"
+                            src="/resources/img/icons/ojo.svg" alt="ojo"> </button> <br/> <br />
+
+                    <label>Repetir contraseña:</label> <br />
+                    <input type="password" id="Contraseña" name="Contraseña" required>
+                    <button class="button-eye" type="button" value="Ver/Ocultar"> <img class="icon-eye"
+                            src="/resources/img/icons/ojo.svg" alt="ojo"> </button> <br/> <br/><br/>
+
+                    <div class="terms-conditions">
+                        <input type="checkbox">
+                        <p>He leido y acepto los <a href="coming-soon.html">Terminos y condiciones</a></p>
+                        <a href="coming-soon.html"><img class="icon-terms"
+                                src="/resources/img/icons/flecha-arriba-a-la-derecha-desde-el-cuadrado.svg"
+                                alt="Icono de una flecha que apunta arriba a la derecha"></a><br>
+                    </div>
+
+                    <a href="login.html"><button class="interactive-button" type="button"
+                            value="Volver">Volver</button></a>
+                    <button class="interactive-button" type="submit" value="Crear cuenta">Crear cuenta</button>
+                </form>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+
+        <footer>
+            <div class="legal-information-container">
+                <a href="coming-soon.html">Terminos</a>
+                <a href="coming-soon.html">Privacidad</a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

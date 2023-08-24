@@ -18,26 +18,59 @@ Negro:          #252525
     box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
 }
 
-/* Header */
+html {
+    font-family: 'Lato', sans-serif;
+    color: var(--primary-text-color);
+}
+/* Grid */
+.grid-container {
+    background-image: radial-gradient(circle, #98dad9, #addee7, #c5e1ee, #dae5ef, #eaebed);
+    display: grid;
+    grid-template-columns: auto ;
+    grid-template-rows: 18% 70% auto;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    height: 100vh;
+  }
+
+/* Header */  
 header{
-    background-color: var(--primary-background-color);
-}   
-header .logo-container{
     display: flex;
     justify-content: center;
     align-items: center;
     padding:10px;
 }
+
 header .logo-container img{
-    height: 10%;
-    width: 10%;
+    height: 12vh;
+    width: auto;
 }
+
 /* Main */
+main{
+    background-color: rgba(246, 246, 246, 0.766);
+    border-bottom: solid var(--primary-background-color) 3px;
+    border-top: solid var(--primary-background-color) 3px;
+    object-fit: contain;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%; 
+}
 
 main .image-container img{
-    height: 30%;
-    width: 30%;
+    object-fit: contain;
+    border-left: solid var(--primary-background-color) 3px;
+    border-right: solid var(--primary-background-color) 3px;
+    height: 100%;
+    width: 100%;
 }
+main .form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 main .button-eye{
     /* background-color: transparent; */
     border: none;
@@ -52,4 +85,36 @@ main .icon-terms{
 main .icon-eye{
     height: 65%;
     width: 65%;
+}
+
+main .interactive-button{
+    background-color: white; 
+    border: solid var(--secondary-background-color) 1px;
+    padding: 1em 3em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 10px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+main .interactive-button:hover {
+    background-color: var(--primary-text-color);
+    color: white;
+}
+
+/* Footer */
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+/* Register */
+
+.terms-conditions{
+    display: flex;
 }
