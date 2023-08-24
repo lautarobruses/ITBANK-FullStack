@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="/resources/img/logos/nexusbanklogo-removebg.png">
+    <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
+    <title>Inicia sesión o registrate - NexusBank</title>
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <img src="../resources/img/logos/nexusbanklogo3-removebg.png" alt="logo">
+            </div>
+        </header>
+        <main>
+            
+            
+            <div class="image-container">
+                <img src="/resources/img/login-image-prueba.jpg" alt="Planta rodeada de monedas">
+            </div>
+
+            <!-- Login form -->
+            <div class="form-container">
+
+                <h2>Inicia sesión</h2>
+
+                <form action="/procesar-form" method="GET">
+                    <label>Correo electronico o usuario:</label><br />
+                    <input type="text" id="CorreoUsuario" name="CorreoUsuario" required><br /><br />
+
+                    <label>Contraseña:</label> <br />
+                    <input type="password" id="Contraseña" name="Contraseña" required>
+                    <button class="button-eye" type="button" value="Ver/Ocultar"> <img class="icon-eye"
+                            src="/resources/img/icons/ojo.svg" alt="ojo"> </button><br /><br />
+
+                    <input type="checkbox">
+                    <label> Recuerdame</label><br />
+
+                    <a href="register.html"><button class= "interactive-button" type="button" value="Crear cuenta">Crear cuenta</button></a>
+                    <a href="../index.html"><button class= "interactive-button" type="submit" value="Iniciar sesión">Iniciar sesión</button></a>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+
+        <footer>
+            <div class="legal-information-container">
+                <a href="coming-soon.html">Terminos</a>
+                <a href="coming-soon.html">Privacidad</a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
