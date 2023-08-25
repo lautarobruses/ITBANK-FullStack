@@ -54,7 +54,7 @@
     border-radius:50%;
     font-size:1.75rem;
     color:var(--clr);
-     box-shadow:0 3px 4px rgba(0,0,0,0.15);
+    box-shadow:0 3px 4px rgba(0,0,0,0.15);
     transition:0.5s;
 }
 .share li:hover a{
