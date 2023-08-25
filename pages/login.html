@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
     <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
     <script src="../script.js"></script>
-    <title>Inicia sesión o registrate - NexusBank</title>
+    <title>Inicia sesión - NexusBank</title>
 
 </head>
 
@@ -21,8 +21,6 @@
             </div>
         </header>
         <main>
-
-
             <div class="image-container">
                 <img src="/resources/img/login-image-prueba.jpg" alt="Planta rodeada de monedas">
             </div>
@@ -33,26 +31,29 @@
                 <h1>Inicia sesión</h1>
 
                 <form action="/procesar-form" method="GET">
-                    <label>Correo electronico o usuario:</label><br />
+                    <label class="label-input">Correo electronico o usuario:</label><br />
                     <input class="textbox" type="text" id="CorreoUsuario" name="CorreoUsuario" required><br /><br />
 
-                    <label>Contraseña:</label> <br />
+                    <label class="label-input"> Contraseña:</label> <br />
 
                     <div class="password-input-container">
-                        <input class="textbox" type="password" id="password" name="Contraseña" required>
-                        <button class="button-eye" onclick="showPassword('password','icon-eye')" type="button" value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye"
+                        <input class="textbox" type="password" id="password" name="password" required>
+                        <button class="button-eye" onclick="showPassword('password','icon-eye')" type="button"
+                            value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye"
                                 src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button><br /><br />
                     </div>
 
-                    <div class="remember-me">
-                        <input type="checkbox">
+                    <div class="remember-me checkbox-container">
+                        <input class="checkbox" type="checkbox" id="checkbox" name="checkbox" checked="checked">
                         <label>Recuerdame</label><br />
                     </div>
-                   
-                    <a href="register.html"><button class="interactive-button" type="button" value="Crear cuenta">Crear
+
+                    <div id="interactive-buttom-container">
+                        <a href="register.html"><button class="interactive-button" type="button" value="Crear cuenta">Crear
                             cuenta</button></a>
-                    <a href="../index.html"><button class="interactive-button" type="submit"
+                        <a href="../index.html"><button class="interactive-button" type="submit"
                             value="Iniciar sesión">Iniciar sesión</button></a>
+                    </div>
                 </form>
             </div>
         </main>
@@ -62,6 +63,7 @@
         <footer>
             <div class="legal-information-container">
                 <a href="coming-soon.html">Terminos</a>
+                <span>|</span>
                 <a href="coming-soon.html">Privacidad</a>
             </div>
         </footer>
