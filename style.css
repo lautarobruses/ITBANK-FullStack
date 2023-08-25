@@ -73,6 +73,7 @@ html {
 .contenedor header #logo {
     display: flex;
     align-items: center;
+    text-decoration-line: none;
 }
 
 .contenedor header img {
@@ -84,6 +85,7 @@ html {
 .contenedor #nombre {
     font-size: 3rem;
     font-weight: bold;
+    color: var(--primary-background-color);
 }
 
 .contenedor .button-menu {

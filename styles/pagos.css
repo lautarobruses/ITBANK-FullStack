@@ -38,6 +38,25 @@ html {
                         "sidebar main main main"
                         "footer footer footer footer";
 }
+
+.contenedor header #logo {
+    display: flex;
+    align-items: center;
+    text-decoration-line: none;
+}
+
+.contenedor header img {
+    width: 8rem;
+    height: auto;
+    padding: 1rem;
+}
+
+.contenedor #nombre {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-background-color);
+}
+
 #comprobantes {
     padding: 0 20px;
     display: none;
