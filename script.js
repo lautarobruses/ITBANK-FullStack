@@ -16,3 +16,18 @@ navWrapper.addEventListener('click',e => {
     toggleButton.classList.remove('close')
   }
 })
+
+//Funciones utilizadas en login.html y register.html
+
+function showPassword(inputID, iconID){
+  let password = document.getElementById(inputID);
+  let icon = document.getElementById(iconID);
+
+  if(password.type === 'password'){
+    password.type = 'text';
+    icon.src = "/resources/img/icons/ojo.svg";
+  } else{
+    password.type = 'password';
+    icon.src = "/resources/img/icons/ojo-tachado.svg";
+  }
+}

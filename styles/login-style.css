@@ -57,7 +57,7 @@ main{
     grid-template-rows: 100%;
 }
 
-main .form-container, .register-left-container, .register-right-container{
+main .form-container, .main-left-container, .main-right-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,15 +72,31 @@ main .image-container img{
     width: 100%;
 }
 
-main h2{
-    padding: 20px;
+main h1{
+    color: var(--secondary-background-color);
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding-bottom: 30px;
+}
+main #register-title{
+    padding-left: 90px;
+}
+main p{
+    padding-right: 7px;
+    padding-left: 7px;
 }
 
+main .password-input-container{
+    position: relative;
+}
 main .button-eye{
-    /* background-color: transparent; */
+    background-color: transparent;
+    position: absolute;
+    margin: 2px;
+    padding: 7px;
     border: none;
     cursor: pointer;
-    
+    right:1px;
 }
 
 main .icon-terms{
@@ -88,8 +104,12 @@ main .icon-terms{
     width: 13px;
 }
 main .icon-eye{
-    height: 65%;
-    width: 65%;
+    filter: contrast(20%);
+    height: 1.2em;
+    width: auto;
+}
+main .icon-eye:hover{
+    filter: contrast(100%);
 }
 
 main .interactive-button{
@@ -111,20 +131,35 @@ main .interactive-button:hover {
     color: white;
 }
 
-main .textbox{
+main .textbox, .selectbox{
 	border: solid 1px var(--primary-text-color);
     border-radius: 3px; 
 	outline: 0;
-	height: 30px;
-	width: 300px;
-    padding: 10px;
+	height: 35px;
+	width: 335px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 7px;
 }
-main .textbox:hover {
+main .textbox:hover , .selectbox:hover{
 	border-color: #2f9e9c;
 	border-style: solid;
-	border-width: 2px;
+	border-width: 2px
+    
 }
-
+main .selectbox{
+    cursor: pointer;
+    &:required:invalid{
+      color: #5A667F
+    }
+}
+main option{
+    color: var(--primary-text-color);
+    background-color: rgb(246, 246, 246);
+    &[value=""]{
+        display: none
+    }
+}
 /* Footer */
 
 footer{
@@ -142,6 +177,10 @@ footer a{
 
 /* Register */
 
-.terms-conditions{
+.terms-conditions, .remember-me{
+    font-size: 14px;
     display: flex;
+}
+.remember-me label{
+    padding-left: 5px;
 }
