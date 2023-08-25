@@ -4,8 +4,8 @@ const toggle=document.querySelector(".toggle");
 toggle.addEventListener("click",()=>{
   share.classList.toggle("active");
 })
-/*DESPLEGAR*/
 
+/*DESPLEGAR*/
 const botonServicio = document.getElementById("servicio");
 const comprobanteDiv = document.getElementById("comprobantes");
 

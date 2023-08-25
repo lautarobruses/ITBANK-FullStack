@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/cuenta.css">
+    <link rel="stylesheet" href="../styles/pagos.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type = "image/png" href="resources\img\android-chrome-512x512.png" sizes="512x512"> <!--favicon-->
+    <title>Cuenta | Nexus Bank</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <div id="logo">
+                <img src="resources\img\logos\nexusbanklogo-removebg.png" alt="logo">
+                <h1 id="nombre">Nexus Bank</h1>
+            </div>
+            <button id="button-menu" class="button-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <nav id="nav">
+            <div class="nav-links" >
+                <a class="underline-btn" href="#inicio">
+                    <img src="resources\img\inicio.png"/>
+                    Inicio
+                </a>
+                <a class="underline-btn" href="#pagos">
+                    <img src="resources\img\pagos.png">
+                    Pagos
+                </a>
+                <a class="underline-btn" href="/pages/transfer.html">
+                    <img src="resources\img\transferencias.png">
+                    Transferencias
+                </a>
+                <a class="underline-btn" href="#cuentas">
+                    <img src="resources\img\cuentas.png">
+                    Cuentas
+                </a>
+            </div>
+            <div class="nav-btn">
+                <button class="slide-btn">Cerrar Sesion</button>
+            </div>
+        </nav>
+        
+        <aside>
+            <ul class="menu", style="list-style: none;">
+                <li>
+                    <img src="resources\img\inicio.png"/>
+                    <a class="underline-btn" href="#inicio">Inicio</a>
+                </li>
+                <li>
+                    <img src="resources\img\pagos.png">
+                    <a class="underline-btn" href="pagos.html">Pagos</a>
+                </li>
+                <li>
+                    <img src="resources\img\transferencias.png">
+                    <a class="underline-btn" href="/pages/transfer.html">Transferencias</a>
+                </li>
+                <li>
+                    <img src="resources\img\cuentas.png">
+                    <a class="underline-btn" href="#cuentas"> Cuentas</a>
+                </li>
+            </ul>
+            <button class="slide-btn">Cerrar Sesion</button>
+        </aside>
+
+        <main>  
+        </main>
+
+        <footer>
+            <div class="share">
+                <div class="toggle">
+                  <ion-icon name="share-social"></ion-icon>
+                </div>
+                
+                <li style="--i:0;--clr:#1877f2">
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                </li>
+                <li style="--i:1;--clr:#25d366">
+                    <a href="#"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                </li>
+                <li style="--i:2;--clr:#1da1f2">
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                </li>
+                <li style="--i:3;--clr:#FF5733">
+                    <a href="#"><ion-icon name="logo-reddit"></ion-icon></a>
+                </li>
+                <li style="--i:4;--clr:#0a66c2">
+                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                </li>
+                <li style="--i:5;--clr:#c32aa3">
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                </li>
+                <li style="--i:6;--clr:#1b1e21">
+                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                </li>
+                <li style="--i:7;--clr:#ff0000">
+                    <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+                </li>
+                
+            </div>
+
+            <div id="contacto">
+                <p>Contacto:</p>
+                <ul style="list-style: none;">
+                    <li>Atención al Cliente: +54 9 11 1234-5678</li>
+                    <li>Correo Electrónico: 
+                        <a href="mailto:soporte@nexusbank.com">soporte@nexusbank.com</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div id="terminos">
+                <p>© 2023 NexusBank. Todos los derechos reservados.</p>
+                <p>
+                    Consulta nuestros 
+                    <a href="enlace">términos y condiciones</a>
+                </p>
+                <p>
+                    Consulta nuestra 
+                    <a href="enlace">política de privacidad</a>
+                </p>
+            </div>
+        </footer>
+<script src="/script.js"></script> 
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../scripts/pagos.js"></script>
+</html>
