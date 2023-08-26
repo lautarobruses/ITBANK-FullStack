@@ -69,10 +69,30 @@
         </aside>
 
         <main>
-            <section class = "saldos" >
+            <section class="saldos" >
+                <h5>Dinero disponible:</h5> <br>
+                
                 <div>
-                    <h1>$20.000 <img src="/resources/img/ojo.png" alt="ocultar Saldo"></h1>
+                    <hr>
+
+                    <div id="show-balance-container">
+                        <h1>
+                            <span id="int-balance" class="int-balance">$ 20.</span><span id="decimal-balance" class="decimal-balance">00</span>
+                        </h1>
+                    </div>
+
+                    <div id="hidden-balance-container">
+                        <h1 id="hidden-balance">
+                            <span class="int-balance">$ **.</span><span class="decimal-balance">**</span>
+                        </h1>
+                    </div>
+
+                    <div>
+                    <img src="/resources/img/ojo.png" onclick="ocultarSaldo()" alt="ocultar Saldo">
+
+                    <hr>
                 </div>
+                
                 <button>Tarjetas</button>
                 <div class="opciones-saldo">
                     <div class="opcion">

@@ -273,6 +273,24 @@ html {
     display: flex;
 }
 
+.contenedor main #show-balance-container{
+    color: var(--secondary-background-color);
+
+}
+.contenedor main #show-balance-container .int-balance{
+    font-size: 1em;
+}
+.contenedor main #show-balance-container .decimal-balance{
+    font-size: 0.8em;
+}
+
+.contenedor main #hidden-balance-container{
+    display: none;
+}
+.contenedor main #hidden-balance{
+    letter-spacing: 3.03px;
+}
+
 /*Información de INICIO*/
 .contenedor main .saldos {
     display: grid;

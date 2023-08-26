@@ -13,6 +13,16 @@ navWrapper.addEventListener('click',e => {
   }
 })
 
+//Funciones utilizadas en index.html
+
+function ocultarSaldo(){
+  let showBalance = document.getElementById('show-balance-container');
+  let hiddenBalance = document.getElementById('hidden-balance-container');
+  
+  showBalance.id = 'hidden-balance-container';
+  hiddenBalance.id = 'show-balance-container';
+}
+
 //Funciones utilizadas en login.html y register.html
 
 function showPassword(inputID, iconID){
