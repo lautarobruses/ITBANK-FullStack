@@ -1,3 +1,12 @@
+.tarjetas{
+    display: flex;
+}
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    flex: 1; 
+}
 .share{
     position:relative;
     width:280px;
