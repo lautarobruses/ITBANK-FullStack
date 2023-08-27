@@ -344,9 +344,6 @@ html {
     align-self: flex-end; /* Alinear el contenedor al final del espacio disponible */
 }
 
-.contenedor main .opciones-saldo {
-    /* Estilos para opciones-saldo */
-}
 
 .contenedor main .saldos .opciones-saldo {
     display: grid;
