@@ -70,11 +70,12 @@
 
         <main>
             <section class="saldos" >
-                <h5>Dinero disponible:</h5> <br>
-                
-                <div>
-                    <hr>
-
+                <div class="main-block-header">
+                    <h3>Dinero disponible:</h3>
+                </div>
+                <hr>
+                <div class="main-block-balance">
+                    
                     <div id="show-balance-container">
                         <h1>
                             <span id="int-balance" class="int-balance">$ 20.</span><span id="decimal-balance" class="decimal-balance">00</span>
@@ -87,14 +88,10 @@
                         </h1>
                     </div>
 
-                    <div>
-                    <img src="/resources/img/ojo.png" onclick="ocultarSaldo()" alt="ocultar Saldo">
-
-                    <hr>
+                    <img id="eye-buttom" class="show-eye-buttom" src="/resources/img/ojo.png" onclick="ocultarSaldo()" alt="ocultar Saldo">
                 </div>
-                
-                <button>Tarjetas</button>
-                <div class="opciones-saldo">
+                <hr>
+                <div class="main-block-options">
                     <div class="opcion">
                         <button class="saldo-button" id="ingresarDineroButton"></button>
                     </div>
@@ -107,7 +104,11 @@
                 </div>
             </section>
             <section class="cuentas">
+                <div class="main-block-header">
+                    <h3>Tus cuentas:</h3>
+                </div>
                 <div class="cuenta">
+                    <hr>
                     <h3>Caja De Ahorro</h3>
                     <h4>Saldo: $20.000</h4>
                 </div>
@@ -118,6 +119,8 @@
                 <div class="cuenta">
                     <h3>Cuenta Externa</h3>
                     <h4>Saldo: $45.000</h4>
+                    <hr>
+                </div>
             </section>
         </main>
 

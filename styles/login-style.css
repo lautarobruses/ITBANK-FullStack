@@ -159,7 +159,7 @@ main #interactive-buttom-container .interactive-button{
     transition-duration: 0.4s;
     cursor: pointer;
 }
-main #interactive-buttom-container .interactive-button:hover {
+main #interactive-buttom-container .interactive-button {
     background-color: var(--sidebar-background-color);
     color: white;
 }

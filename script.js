@@ -18,9 +18,16 @@ navWrapper.addEventListener('click',e => {
 function ocultarSaldo(){
   let showBalance = document.getElementById('show-balance-container');
   let hiddenBalance = document.getElementById('hidden-balance-container');
-  
+  let icon = document.getElementById('eye-buttom');
+
   showBalance.id = 'hidden-balance-container';
   hiddenBalance.id = 'show-balance-container';
+
+  if(icon.className === 'show-eye-buttom'){
+    icon.className = "hidden-eye-buttom";
+  } else{
+    icon.className = "show-eye-buttom";
+  }
 }
 
 //Funciones utilizadas en login.html y register.html
