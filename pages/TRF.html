@@ -6,7 +6,6 @@
     <link rel="icon" type = "image/png" href="/resources/img/android-chrome-512x512.png" sizes="512x512"> <!--favicon-->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/styles/TRF.CSS">
-    <script src="/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -22,83 +21,117 @@
             </a>
         </header>
     <main>
-        <div class="transfer-section">
-            <h2>Hacer Transferencia</h2>
-            
-            <div class="busqueda-cuenta">
-                <input type="text" id="buscarCuenta" placeholder="Buscar cuenta">
-                <button id="botonBuscar">Buscar</button>
-            </div>
-            
-            <div class="cuentas-asociadas">
-                <h3>Cuentas Asociadas</h3>
-                <ul id="listaCuentasAsociadas", style="list-style: none;">
-                    <!-- Lista de cuentas asociadas -->
-                    <li> cuenta 1</li>
-                    <li> cuenta 2</li>
-                    <li> cuenta 3</li>
-                </ul>
-            </div>
+          <div class="transfer-section">
+    <h2>Hacer Transferencia</h2>
+    
+    <div class="busqueda-cuenta">
+        <input type="text" id="buscarCuenta" placeholder="Buscar cuenta">
+        <button id="botonBuscar">Buscar</button>
+    </div>
+    
+    <div class="cuentas-asociadas">
+        <h3>Cuentas Asociadas</h3>
+        <ul id="listaCuentasAsociadas" style="list-style: none;">
+            <!-- Lista de cuentas asociadas -->
+            <li> cuenta 1</li>
+            <li> cuenta 2</li>
+            <li> cuenta 3</li>
+        </ul>
+    </div>
 
-<!-- Ventana emergente (modal) -->
-            <div class="modal" id="modal">
-                <div class="modal-content">
-                    <h2>Transferir a <span id="cuentaDestino"></span></h2>
-                    <p>Ingrese el monto a transferir:</p>
-                    <input type="number" id="montoTransferencia">
-                    <button id="botonTransferir">Transferir</button>
-                </div>
-            </div>
-            
-            <div class="cuentas-recientes">
-                <h3>Cuentas Recientes</h3>
-                <ul id="listaCuentasRecientes", style="list-style: none;">
-                    <!-- Lista de cuentas recientes o habituales -->
-                    <li>Emilia Sánchez</li>
-                    <li>Facundo Gonzales</li>
-                    <li>Juan Garcias</li>
-                    <li>Luis Perez</li>
-                    <li>Maria Martinez</li>
-                    <li>Manuel Rodriguez</li>
-                    <li>Pedro Hernandez</li>
-                    <li>Carlos Diaz</li>
-                    <li>Jose Gonzalez</li>
-                    <li>Andrea Lopez</li>
-                </ul>
-            </div>
+    <!-- Ventana emergente (modal) -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>Transferir a <span id="cuentaDestino"></span></h2>
+            <p>Ingrese el monto a transferir:</p>
+            <input type="number" id="montoTransferencia">
+            <button id="botonTransferir">Transferir</button>
         </div>
+    </div>
+    
+    <div class="cuentas-recientes">
+        <h3>Cuentas Recientes</h3>
+        <ul id="listaCuentasRecientes" style="list-style: none;">
+    <!-- Lista de cuentas recientes o habituales -->
+            <li>Emilia Sánchez</li>
+            <li>Facundo Gonzales</li>
+            <li>Juan Garcias</li>
+            <li>Luis Perez</li>
+            <li>Maria Martinez</li>
+            <li>Manuel Rodriguez</li>
+            <li>Pedro Hernandez</li>
+            <li>Carlos Diaz</li>
+            <li>Jose Gonzalez</li>
+            <li>Andrea Lopez</li>
+        </ul>
+    </div>
+        </div>
+
 <!-- Conversor de Moneda -->
-        <div class="conversor">
-            <h2>Convertidor de Monedas</h2>
-            <div class="conversor-inputs">
-                <div class="input-container">
-                    <label for="monto">Monto ($)</label>
-                    <input type="number" id="monto" placeholder="Monto">
-                </div>
-                <div class="input-container">
-                    <label for="monedaOrigen">De:</label>
-                    <select id="monedaOrigen">
-                        <!-- Opciones de moneda de origen -->
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="ARS">ARS</option>
-                    </select>
-                </div>
-                <div class="input-container">
-                    <label for="monedaDestino">A:</label>
-                    <select id="monedaDestino">
-                        <!-- Opciones de moneda de destino -->
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="ARS">ARS</option>
-                    </select>
-                </div>
-            </div>
+<div class="conversor">
+    <h2>Convertidor de Monedas</h2>
+    <div class="conversor-inputs">
+        <div class="input-container">
+            <label for="monto">Monto (ARS)</label>
+            <input type="number" id="monto" placeholder="Monto" step="any">
+        </div>
+        <div class="input-container">
+            <label for="monedaDestino">A:</label>
+            <select id="monedaDestino">
+                <!-- Opciones de moneda de destino -->
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+            <div>=</div>
             <div class="conversor-resultado">
-                <p>Resultado:</p>
-                <p id="resultado">$ 0.00</p>
+                <p class="resultado" id="resultado">0</p>
+                <p class="moneda-resultado" id="monedaResultado">USD</p>
             </div>
         </div>
+    </div>
+</div>
+<!--script-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const entradaMonto = document.getElementById('monto');
+        const selectMonedaDestino = document.getElementById('monedaDestino');
+        const elementoResultado = document.getElementById('resultado');
+        const elementoMonedaResultado = document.getElementById('monedaResultado');
+
+        function formatNumber(number) {
+            return new Intl.NumberFormat('es-AR').format(number);
+        }
+
+        function actualizarResultado() {
+            const monto = parseFloat(entradaMonto.value);
+            const monedaDestino = selectMonedaDestino.value;
+
+            if (!isNaN(monto)) {
+                let resultado = 0;
+                if (monedaDestino === 'USD') {
+                    resultado = monto / tasasDeCambio.USD;
+                } else if (monedaDestino === 'EUR') {
+                    resultado = monto / tasasDeCambio.EUR;
+                }
+                elementoResultado.textContent = formatNumber(resultado.toFixed(2));
+                elementoMonedaResultado.textContent = monedaDestino;
+            } else {
+                elementoResultado.textContent = '0';
+                elementoMonedaResultado.textContent = monedaDestino;
+            }
+        }
+
+        entradaMonto.addEventListener('input', actualizarResultado);
+        selectMonedaDestino.addEventListener('change', actualizarResultado);
+
+        const tasasDeCambio = {
+            USD: 365,
+            EUR: 378,
+            ARS: 1.0
+        };
+    });
+</script>
+
         
   
     </main>
