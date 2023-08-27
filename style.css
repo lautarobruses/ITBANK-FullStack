@@ -7,11 +7,12 @@ Negro:          #252525
 */
 
 :root { /*Variables*/
-    --primary-background-color: #EAEBED;
-    --secondary-background-color: #5B8291;
-    --sidebar-background-color: #2E424D;
-    --primary-text-color: #252525;
-    --important-color: #98DAD9;
+    --grey: #EAEBED;
+    --sky-blue: #5B8291;
+    --dark-sky-blue: #2E424D;
+    --dark: #252525;
+    --light-sky-blue: #98DAD9;
+    --white: #FFFFFF;
 }
 
 * {
@@ -24,6 +25,23 @@ html {
     font-family: 'Lato', sans-serif;
     color: var(--primary-text-color);
     min-width: 375px;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/resources/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* GRID AREAS */
@@ -58,7 +76,7 @@ html {
 }
 
 /* HEADER */
-.contenedor header {
+/*.contenedor header {
     background-color: var(--secondary-background-color);
     color: var(--primary-background-color);
     padding: 20px;
@@ -90,9 +108,9 @@ html {
 
 .contenedor .button-menu {
     visibility: hidden;
-}
+} */
   
-/* NAV */
+/* NAV
 .contenedor nav {
     position: fixed;
     top: 0;
@@ -118,7 +136,7 @@ html {
     padding: 20px;
     width: 70%;
     height: 100%;
-    /* min-width: 325px; */
+    min-width: 325px;
 
     display: flex;
     flex-direction: column;
@@ -163,10 +181,10 @@ html {
 
 .contenedor nav .nav-btn {
     align-items: end;
-}
+} */
 
 /* SIDEBAR (& NAV)*/
-.contenedor aside {
+/* .contenedor aside {
     background-color: var(--sidebar-background-color);
 
     grid-area: sidebar;
@@ -202,7 +220,7 @@ html {
     display: inline-block;
     padding: 0.5rem 0;
     border-radius: 0;
-    /* margin-top: 2rem; */
+    margin-top: 2rem; 
     font-weight: bold;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -263,7 +281,7 @@ html {
         border-color: var(--important-color);
         color: var(--primary-background-color);
     }
-}
+} */
 
 /* MAIN */
 .contenedor main {
@@ -425,6 +443,7 @@ html {
     border-bottom: black;
     font-size: 18px;
 }
+
 /* FOOTER */
 .contenedor footer {
     background-color: var(--secondary-background-color);

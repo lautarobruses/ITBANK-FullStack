@@ -1,0 +1,93 @@
+/*PALETA DE COLORES:
+Celeste oscuro: #2E424D
+Celeste:        #5B8291
+Celeste claro:  #98DAD9
+Blanco:         #EAEBED
+Negro:          #252525
+*/
+
+:root { /*Variables*/
+    --grey: #EAEBED;
+    --sky-blue: #5B8291;
+    --dark-sky-blue: #2E424D;
+    --dark: #252525;
+    --light-sky-blue: #98DAD9;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    min-width: 375px;
+}
+
+.contenedor nav {
+    background-color: var(--grey);
+    width: 384px;
+    height: 60vh;
+    padding: 32px 24px;
+
+    display: flex;
+    align-items: top;
+    flex-direction: column;
+    justify-content:space-between ;
+}
+
+.contenedor nav .nav-links {
+    display: flex;
+    align-items: top;
+    flex-direction: column;
+    justify-content:space-between ;
+}
+
+.contenedor nav a {
+    background-color: var(--white);
+    color: var(--dark-sky-blue);
+    width: 320px;
+    height: 48px;
+    border-radius: 16px;
+    padding: 12px 24px;
+    margin-bottom: 24px ;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.contenedor nav a:first-child {
+    background-color: var(--dark-sky-blue);
+    color: var(--white);
+}
+
+.contenedor nav a:hover {
+    background-color: var(--sky-blue);
+    color: var(--white);
+    opacity: 0.8;
+}
+
+.contenedor nav a:active {
+    background-color: var(--dark-sky-blue);
+    color: var(--white);
+}
+
+.contenedor nav a svg {
+    margin-right: 16px;
+}
+
+/* Estilos para dispositivos medianos */
+@media screen and (max-width: 1023px) {
+
+}
+
+/* Estilos para dispositivos pequeños (móviles) */
+@media screen and (max-width: 640px) {
+
+}
