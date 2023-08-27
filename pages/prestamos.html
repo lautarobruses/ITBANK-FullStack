@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type = "image/png" href="/resources/img/android-chrome-512x512.png" sizes="512x512">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/prestamos.css">
+    <script src="prestamos.js"></script>
+
+    <title>Préstamos</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <a id="logo" href="/index.html">
+                <img src="/resources/img/logos/nexusbanklogo-removebg.png" alt="logo">
+                <h1 id="nombre">Nexus Bank</h1>
+            </a>
+        </header>
+    <main>
+        <div class="calculadora">
+            <h1>Calculadora de Préstamos</h1>
+            <label for="monto">Monto del Préstamo:</label>
+            <input type="number" id="monto" placeholder="Monto del Préstamo" min="0">
+            <label for="tasa">Tasa de Interés (%):</label>
+            <input type="number" id="tasa" placeholder="Tasa de Interés" min="0">
+            <label for="plazo">Plazo del Préstamo (meses):</label>
+            <input type="number" id="plazo" placeholder="Plazo del Préstamo" min="0">
+            <button id="calcular">Calcular</button>
+            <div id="resultado"></div>
+        </div>
+        
+        
+    </main>
+
+    <aside>
+        <ul class="menu", style="list-style: none;">
+            <li>
+                <a class="underline-btn" href="/index.html">
+                    <img src="/resources/img/inicio.png" width="28" height="28"/>
+                    Inicio
+                </a>
+            </li>
+            <li>
+                <a class="underline-btn" href="/pages/pagos.html">
+                    <img src="/resources/img/pagos.png" width="30" height="25">
+                    Pagos
+                </a>
+            </li>
+            <li>
+                <a class="underline-btn" href="/pages/TRF.html">
+                    <img src="/resources/img/transferencias.png" width="40" height="40">
+                    Transferencias
+                </a>
+            </li>
+            <li>
+                <a class="underline-btn" href="/pages/prestamos.html">
+                    <img src="/resources/img/prestamos.png" width="40" height="40">
+                    Préstamos
+                </a>
+            </li>
+            <li>
+                <a class="underline-btn" href="/pages/cuenta.html">
+                    <img src="/resources/img/cuentas.png" width="35" height="35">
+                    Cuentas
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <footer>
+        <div id="redes">
+            <p>Redes sociales:</p>
+            <ul style="list-style: none;">
+                <li>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="/resources/img/facebook.png" width="20" height="20" alt="logo"/>
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="/resources/img/twitter.png" width="20" height="20" alt="logo"/>
+                        Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="/resources/img/insta.png" width="20" height="20" alt="logo"/>
+                        Instagram
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="contacto">
+            <p>Contacto:</p>
+            <ul style="list-style: none;">
+                <li>Atención al Cliente: +54 9 11 1234-5678</li>
+                <li>Correo Electrónico: 
+                    <a href="mailto:soporte@nexusbank.com">soporte@nexusbank.com</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div id="terminos">
+            <p>© 2023 NexusBank. Todos los derechos reservados.</p>
+            <p>
+                Consulta nuestros 
+                <a href="enlace">términos y condiciones</a>
+            </p>
+            <p>
+                Consulta nuestra 
+                <a href="enlace">política de privacidad</a>
+            </p>
+        </div>
+    </footer>
+    </div>
+</body>
+</html>
