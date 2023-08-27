@@ -411,10 +411,10 @@ html {
     background-image: url('/resources/img/invertir.png'); /* Ruta de la imagen de fondo */
 }
 .contenedor main  .cuentas{
-    margin-top: 20px;
     margin-left: 40px;
     display: grid;
-    gap: 20px;
+    grid-template-rows: 0.8fr 0.1fr 1fr 1fr 1fr ;
+    align-items: center;
     width: 600px;
     background-color: white;
     border-radius: 10px;
@@ -423,9 +423,7 @@ html {
 }
 .contenedor main .cuenta{
     border-bottom: black;
-    font-size: 20px;
-    text-align: left;
-    margin-bottom: 20px;
+    font-size: 18px;
 }
 /* FOOTER */
 .contenedor footer {

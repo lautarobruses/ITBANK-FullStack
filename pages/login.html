@@ -5,71 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="/resources/img/logos/nexusbanklogo-removebg.png">
-    <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
-    <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
-    <script src="../script.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/login.css">
     <title>Inicia sesión - NexusBank</title>
-
 </head>
 
 <body>
-    <div class="grid-container">
-        <!-- Header -->
+    <div class="background-container">
         <header>
-            <div class="logo-container">
-                <a href="login.html">
-                    <img src="../resources/img/logos/nexusbanklogo3-removebg.png" alt="logo">
-                </a>
-            </div>
+            <img src="../resources/img/logos/nexusbanklogo3-removebg.png" alt="logo">
         </header>
-        <main>
-            <div class="image-container">
-                <img src="/resources/img/login-image-prueba.jpg" alt="Planta rodeada de monedas">
-            </div>
-
-            <!-- Login form -->
+        <section>
             <div class="form-container">
-
-                <h1>Inicia sesión</h1>
-
+                <!-- <h1>Inicia sesión</h1> -->
                 <form action="/procesar-form" method="GET">
-                    <label class="label-input">Correo electronico o usuario:</label><br />
-                    <input class="textbox" type="text" id="CorreoUsuario" name="CorreoUsuario" required><br /><br />
+                    <label class="label-input">Correo electronico:</label>
+                    <input class="textbox" type="text" id="CorreoUsuario" name="CorreoUsuario" required>
 
-                    <label class="label-input"> Contraseña:</label> <br />
+                    <label class="label-input"> Contraseña:</label>
 
                     <div class="password-input-container">
                         <input class="textbox" type="password" id="password" name="password" required>
-                        <button class="button-eye" onclick="showPassword('password','icon-eye')" type="button"
-                            value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye"
-                                src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button><br /><br /><br />
+                        <button id="toggle-password" class="button-eye" type="button" value="Ver/Ocultar"> 
+                            <svg class="show-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path></svg>
+                            <svg class="hide-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"></path><path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"></path><path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"></path></svg>
+                        </button>
+                        <a href="coming-soon.html">Olvide mi contraseña</a><br>
                     </div>
 
-                    <div class="remember-me checkbox-container">
+                    <!-- <div class="remember-me checkbox-container">
                         <input class="checkbox" type="checkbox" id="checkbox" name="checkbox">
                         <label>Recuerdame</label><br />
-                    </div>
+                    </div> -->
 
-                    <div id="interactive-buttom-container">
-                        <a href="register.html"><button class="interactive-button" type="button" value="Crear cuenta">Crear
-                            cuenta</button></a>
-                        <a href="../index.html"><button class="interactive-button" type="submit"
-                            value="Iniciar sesión">Iniciar sesión</button></a>
+                    <div class="interactive-buttom-container">
+                        <a href="index.html">
+                            <button class="interactive-button" type="submit" value="Iniciar sesión">Iniciar sesión</button>
+                        </a>
                     </div>
                 </form>
             </div>
-        </main>
+        </section>
 
-        <!-- Footer -->
+        <div class="register-container">
+            <p style="display: inline;">¿No tienes una cuenta? </p><a href="coming-soon.html">Registrate!</a>
+        </div>
 
-        <footer>
-            <div class="legal-information-container">
-                <a href="coming-soon.html">Terminos</a>
-                <span>|</span>
-                <a href="coming-soon.html">Privacidad</a>
-            </div>
-        </footer>
+        <div class="legal-information-container">
+            <a href="coming-soon.html">Terminos</a>
+            <span>|</span>
+            <a href="coming-soon.html">Privacidad</a>
+        </div>
     </div>
+    <script src="/scripts/login.js"></script>
 </body>
-
 </html>
