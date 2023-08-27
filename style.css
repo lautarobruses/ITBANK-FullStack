@@ -360,10 +360,6 @@ html {
     align-self: flex-end; /* Alinear el contenedor al final del espacio disponible */
 }
 
-.contenedor main .main-block-options {
-    /* Estilos para opciones-saldo */
-}
-
 .contenedor main .saldos .main-block-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Tres columnas con igual ancho */
