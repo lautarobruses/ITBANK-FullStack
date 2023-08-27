@@ -29,16 +29,61 @@ main {
 }
 
 /* Estilos de la sección de transferencias y conversor */
-.transfer-section, .conversor {
+.transfer-section {
     margin-top: 20px;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px; /* Ajusta el ancho máximo según tus preferencias */
+    max-width: 600px; 
 }
 
+.conversor {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.conversor-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select,
+input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.conversor-resultado {
+    margin-top: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.resultado {
+    margin-left: 10px;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
 /* Estilos para los títulos */
 .titulo {
     margin-bottom: 20px;
