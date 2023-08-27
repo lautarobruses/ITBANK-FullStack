@@ -5,6 +5,7 @@ Celeste claro:  #98DAD9
 Blanco:         #EAEBED
 Negro:          #252525
 */
+
 :root { /*Variables*/
     --primary-background-color: #EAEBED;
     --secondary-background-color: #5B8291;
@@ -23,16 +24,12 @@ html {
     font-family: 'Lato', sans-serif;
     color: var(--primary-text-color);
 }
+
 /* Grid */
-.grid-container {
-    background-image: radial-gradient(circle, #98dad9, #addee7, #c5e1ee, #dae5ef, #eaebed);
-    display: grid;
-    grid-template-columns: auto ;
-    grid-template-rows: 18% 70% auto;
-    gap: 0px 0px;
-    grid-auto-flow: row;
+.contenedor {
+    background-image: url("resources/img/background.jpg");
     height: 100vh;
-  }
+}
 
 /* Header */  
 header{
