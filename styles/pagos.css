@@ -1,9 +1,10 @@
 :root { /*Variables*/
-    --primary-background-color: #EAEBED;
-    --secondary-background-color: #5B8291;
-    --sidebar-background-color: #2E424D;
-    --primary-text-color: #252525;
-    --important-color: #98DAD9;
+    --grey: #EAEBED;
+    --sky-blue: #5B8291;
+    --dark-sky-blue: #2E424D;
+    --dark: #252525;
+    --light-sky-blue: #98DAD9;
+    --white: #FFFFFF;
 }
 
 * {
@@ -17,6 +18,11 @@ html {
     min-width: 375px;
 }
 
+.pagos {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+}
 
 #comprobantes {
     padding: 0 20px;
