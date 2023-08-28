@@ -29,7 +29,7 @@ html {
 .contenedor nav {
     background-color: var(--grey);
     width: 384px;
-    height: 80vh;
+    height: 75vh;
     padding: 32px 24px;
 }
 
