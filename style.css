@@ -131,6 +131,7 @@ html {
 .contenedor nav.show {
     margin-left: 0;
 }
+
 .contenedor nav .nav-links {
     background-color: var(--sidebar-background-color);
     padding: 20px;
