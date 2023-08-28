@@ -7,21 +7,26 @@
     --white: #FFFFFF;
 }
 
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    min-width: 375px;
 }
 
 main {
-    padding: 20px;
-    background-color: var(--primary-background-color);
+    position: relative;
+    height: 100%;
+    padding: 32px;
+    line-height: 1.2; /* Espaciado entre líneas */
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--primary-text-color); /* Color de texto principal */
-    font-family: 'Roboto', sans-serif; /* Tipo de letra */
-    line-height: 1.6; /* Espaciado entre líneas */
 }
 
 /* Estilos de la sección de transferencias y conversor */
