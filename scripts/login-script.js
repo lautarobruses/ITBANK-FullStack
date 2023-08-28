@@ -37,7 +37,11 @@ function sendRegisterForm() {
         arrayUser.push(user);
 
         localStorage.setItem("arrayUser", JSON.stringify(arrayUser));
-        console.log("hola");
+        
+        alert("Te haz registrado correctamente");
+
+        let form = document.getElementById("register-form");
+        form.action = "login.html";
     }
 
 }
