@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    min-width: 375px;
+}
+
+.contenedor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/resources/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.mid-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+

@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/resources/img/logos/nexusbanklogo-removebg.png"> <!--favicon-->
-    <link rel="stylesheet" type="text/css" href="styles\index\header.css"> 
-    <link rel="stylesheet" type="text/css" href="styles\index\navbar.css"> 
-    <link rel="stylesheet" type="text/css" href="styles\index\main.css"> 
-    <link rel="stylesheet" type="text/css" href="styles\index\footer.css"> 
-    <link rel="stylesheet" type="text/css" href="style.css"> 
+    <link rel="icon" type = "image/png" href="/resources/img/android-chrome-512x512.png" sizes="512x512"> <!--favicon-->
+    <link rel="stylesheet" type="text/css" href="../styles/index/header.css"> 
+    <link rel="stylesheet" type="text/css" href="../styles/index/navbar.css"> 
+    <link rel="stylesheet" type="text/css" href="../styles/index/main.css"> 
+    <link rel="stylesheet" type="text/css" href="../styles/index/footer.css">  
+    <link rel="stylesheet" href="../styles/transferencias.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Nexus Bank</title>
 </head>
 <body>
     <div class="contenedor">
         <header>
-            <img src="resources\img\logos\nexusbanklogo3.png" alt="logo">
+            <img src="/resources/img/logos/nexusbanklogo3.png" alt="logo">
             <button id="button-menu" class="button-menu">
                 <span></span>
                 <span></span>
@@ -26,7 +29,7 @@
             <nav id="nav">
                 <div class="nav-links">
                     <div class="nav-top">
-                        <a class="underline-btn" href="index.html">
+                        <a class="underline-btn" href="/index.html">
                             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M946.5 505L534.6 93.4a31.93 31.93 0 0 0-45.2 0L77.5 505c-12 12-18.8 28.3-18.8 45.3 0 35.3 28.7 64 64 64h43.4V908c0 17.7 14.3 32 32 32H448V716h112v224h265.9c17.7 0 32-14.3 32-32V614.3h43.4c17 0 33.3-6.7 45.3-18.8 24.9-25 24.9-65.5-.1-90.5z"></path></svg>
                             Inicio
                         </a>
@@ -58,63 +61,115 @@
             </nav>
     
             <main>
-                <section>
-                    <h2>¡Hola, [nombre de usuario]!</h2>
-                </section>
-                <section class="saldos" >
-                    <div class="main-block-header">
-                        <h3>Dinero disponible:</h3>
-                    </div>
-                    <hr>
-                    <div class="main-block-balance">
-                        
-                        <div id="show-balance-container">
-                            <h1>
-                                <span id="int-balance" class="int-balance">$ 20.</span><span id="decimal-balance" class="decimal-balance">00</span>
-                            </h1>
-                        </div>
+                <div class="transfer-section">
+                <h2>Hacer Transferencia</h2>
+            
+                <div class="busqueda-cuenta">
+                    <input type="text" id="buscarCuenta" placeholder="Buscar cuenta">
+                    <button id="botonBuscar">Buscar</button>
+                </div>
+                
+                <div class="cuentas-asociadas">
+                    <h3>Cuentas Asociadas</h3>
+                    <ul id="listaCuentasAsociadas" style="list-style: none;">
+                        <!-- Lista de cuentas asociadas -->
+                        <li> cuenta 1</li>
+                        <li> cuenta 2</li>
+                        <li> cuenta 3</li>
+                    </ul>
+                </div>
     
-                        <div id="hidden-balance-container">
-                            <h1 id="hidden-balance">
-                                <span class="int-balance">$ **.</span><span class="decimal-balance">**</span>
-                            </h1>
-                        </div>
+                <!-- Ventana emergente (modal) -->
+                <div class="modal" id="modal">
+                    <div class="modal-content">
+                        <h2>Transferir a <span id="cuentaDestino"></span></h2>
+                        <p>Ingrese el monto a transferir:</p>
+                        <input type="number" id="montoTransferencia">
+                        <button id="botonTransferir">Transferir</button>
+                    </div>
+                </div>
+                
+                <div class="cuentas-recientes">
+                    <h3>Cuentas Recientes</h3>
+                    <ul id="listaCuentasRecientes" style="list-style: none;">
+                        <!-- Lista de cuentas recientes o habituales -->
+                        <li>Emilia Sánchez</li>
+                        <li>Facundo Gonzales</li>
+                        <li>Juan Garcias</li>
+                        <li>Luis Perez</li>
+                        <li>Maria Martinez</li>
+                        <li>Manuel Rodriguez</li>
+                        <li>Pedro Hernandez</li>
+                        <li>Carlos Diaz</li>
+                        <li>Jose Gonzalez</li>
+                        <li>Andrea Lopez</li>
+                    </ul>
+                </div>
     
-                        <img id="eye-buttom" class="show-eye-buttom" src="/resources/img/ojo.png" onclick="ocultarSaldo()" alt="ocultar Saldo">
-                    </div>
-                    <hr>
-                    <div class="main-block-options">
-                        <div class="opcion">
-                            <button class="saldo-button" id="ingresarDineroButton"></button>
+                <!-- Conversor de Moneda -->
+                <div class="conversor">
+                    <h2>Convertidor de Monedas</h2>
+                    <div class="conversor-inputs">
+                        <div class="input-container">
+                            <label for="monto">Monto (ARS)</label>
+                            <input type="number" id="monto" placeholder="Monto" step="any">
                         </div>
-                        <div class="opcion">
-                            <button class="saldo-button" id="extraerDineroButton"></button>
+                        <div class="input-container">
+                            <label for="monedaDestino">A:</label>
+                            <select id="monedaDestino">
+                                <!-- Opciones de moneda de destino -->
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                            <div>=</div>
+                            <div class="conversor-resultado">
+                                <p class="resultado" id="resultado">0</p>
+                                <p class="moneda-resultado" id="monedaResultado">USD</p>
+                            </div>
                         </div>
-                        <div class="opcion">
-                            <button class="saldo-button" id="invertirButton"></button>
-                        </div>
                     </div>
-                </section>
-
-                <section class="cuentas">
-                    <div class="main-block-header">
-                        <h3>Tus cuentas:</h3>
-                    </div>
-                    <hr>
-                    <div class="cuenta">
-                        <h3>Caja De Ahorro</h3>
-                        <h4>Saldo: $20.000</h4>
-                    </div>
-                    <div class="cuenta">
-                        <h3>Cuenta Corriente</h3>
-                        <h4>Saldo: $250.000</h4>
-                    </div>
-                    <div class="cuenta">
-                        <h3>Cuenta Externa</h3>
-                        <h4>Saldo: $45.000</h4>
-                    </div>
-                    <hr>
-                </section>
+                </div>
+                <!--script-->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const entradaMonto = document.getElementById('monto');
+                        const selectMonedaDestino = document.getElementById('monedaDestino');
+                        const elementoResultado = document.getElementById('resultado');
+                        const elementoMonedaResultado = document.getElementById('monedaResultado');
+    
+                        function formatNumber(number) {
+                            return new Intl.NumberFormat('es-AR').format(number);
+                        }
+    
+                        function actualizarResultado() {
+                            const monto = parseFloat(entradaMonto.value);
+                            const monedaDestino = selectMonedaDestino.value;
+    
+                            if (!isNaN(monto)) {
+                                let resultado = 0;
+                                if (monedaDestino === 'USD') {
+                                    resultado = monto / tasasDeCambio.USD;
+                                } else if (monedaDestino === 'EUR') {
+                                    resultado = monto / tasasDeCambio.EUR;
+                                }
+                                elementoResultado.textContent = formatNumber(resultado.toFixed(2));
+                                elementoMonedaResultado.textContent = monedaDestino;
+                            } else {
+                                elementoResultado.textContent = '0';
+                                elementoMonedaResultado.textContent = monedaDestino;
+                            }
+                        }
+    
+                        entradaMonto.addEventListener('input', actualizarResultado);
+                        selectMonedaDestino.addEventListener('change', actualizarResultado);
+    
+                        const tasasDeCambio = {
+                            USD: 365,
+                            EUR: 378,
+                            ARS: 1.0
+                        };
+                    });
+                </script>
             </main>
         </div>
 
@@ -152,6 +207,5 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script> <!--Es necesario que este aca-->
 </body>
 </html>

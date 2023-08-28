@@ -1,20 +1,16 @@
-/* Estilos globales y de la página */
-:root {
-    --primary-background-color: #EAEBED;
-    --secondary-background-color: #5B8291;
-    --sidebar-background-color: #2E424D;
-    --primary-text-color: #252525;
-    --important-color: #98DAD9;
+:root { /*Variables*/
+    --grey: #EAEBED;
+    --sky-blue: #5B8291;
+    --dark-sky-blue: #2E424D;
+    --dark: #252525;
+    --light-sky-blue: #98DAD9;
+    --white: #FFFFFF;
 }
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-header, footer {
-    /* Estilos del encabezado y pie de página */
 }
 
 main {
