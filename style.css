@@ -325,7 +325,7 @@ html {
 
 .contenedor main .main-block-header{
     font-size: 15px;
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .contenedor main .main-block-balance{
@@ -413,7 +413,7 @@ html {
 .contenedor main  .cuentas{
     margin-left: 40px;
     display: grid;
-    grid-template-rows: 0.8fr 0.1fr 1fr 1fr 1fr ;
+    grid-template-rows: 0.7fr 0.1fr 1fr 1fr 1fr ;
     align-items: center;
     width: 600px;
     background-color: white;

@@ -143,23 +143,20 @@ main .icon-eye:hover{
 
 main #interactive-buttom-container{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
 }
 main #interactive-buttom-container .interactive-button{
     background-color: white; 
     border: solid var(--sidebar-background-color) 1px;
+    display: inline-block;
     padding: 0.9em 2.95em;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-weight: bold;
-    font-size: 12px;
-    margin: 4px 0px 0px 10px;
-    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
 }
-main #interactive-buttom-container .interactive-button {
+main #interactive-buttom-container .interactive-button:hover {
     background-color: var(--sidebar-background-color);
     color: white;
 }
@@ -179,7 +176,7 @@ main .selectbox option{
 }
 
 main .terms-conditions, .remember-me{
-    padding: 2px;
+    padding-bottom:10px;
     font-size: small;
     display: flex;
 }

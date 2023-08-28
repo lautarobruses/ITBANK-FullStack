@@ -7,7 +7,6 @@
     <link rel="icon" type="image/jpg" href="/resources/img/logos/nexusbanklogo-removebg.png">
     <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
     <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
-    <script src="../script.js"></script>
     <title>Registrate - NexusBank</title>
 
 </head>
@@ -28,47 +27,47 @@
                 <h1 id="register-title">Crea una cuenta en NexusBank</h1>
 
                 <div class="register-left-form">
-                    <form action="/procesar-form" method="GET">
+                    <form id="register-form" action="../index.html">
 
                         <label class="label-input">Nombre:</label> <br />
-                        <input class="textbox" type="text" id="Nombre" name="Nombre" required> <br /> <br />
+                        <input class="textbox" type="text" id="name" name="name" required> <br /> <br />
     
                         <label class="label-input">Apellido:</label> <br />
-                        <input class="textbox" type="text" id="Apellido" name="Apellido" required> <br /> <br />
+                        <input class="textbox" type="text" id="last-name" name="last-name" required> <br /> <br />
     
                         <label class="label-input">Localidad:</label> <br>
-                        <select class="selectbox" required>
+                        <select class="selectbox" id="select-nationality" required>
                             <option value="" disabled selected> Seleccione un pais </option>
                             <option value="0"> Argentina </option>
                             <option value="1"> Estados Unidos </option>
                         </select> <br> <br>
     
                         <label class="label-input">DNI:</label> <br />
-                        <input class="textbox" type="number" id="DNI" name="DNI" required> <br /> <br />
+                        <input class="textbox" type="number" id="dni" name="dni" required> <br /> <br />
     
                         <label class="label-input">Nro. de telefono:</label> <br />
-                        <input class="textbox" type="number" id="Telefono" name="Telefono" required>
+                        <input class="textbox" type="number" id="phone" name="phone" required>
                 </div>
                 
             </div>
             <div class="main-right-container">
                 <div class="register-right-form">
                         <label class="label-input">Email:</label> <br />
-                        <input class="textbox" type="email" id="Email" name="Email" required> <br /> <br />
+                        <input class="textbox" type="email" id="email" name="email" required> <br /> <br />
 
                         <label class="label-input">Contraseña:</label> <br />
                         <div class="password-input-container">
-                            <input class="textbox" type="password" id="password" name="Contraseña" required>
+                            <input class="textbox" type="password" id="password" name="password" required>
                             <button class="button-eye" onclick="showPassword('password','icon-eye-1')" type="button" value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye-1"
                                 src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button> <br /> <br />
 
                         </div>
                         
-                        <label class="label-input">Repetir contraseña:</label> <br />
+                        <label class="label-input">Comfirmar contraseña:</label> <br />
                         <div class="password-input-container">
-                            <input class="textbox" type="password" id="repeat-password" name="Contraseña" required>
-                            <button class="button-eye" onclick="showPassword('repeat-password','icon-eye-2')" type="button" value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye-2"
-                                    src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button><br /><br /><br /><br /><br />
+                            <input class="textbox" type="password" id="confirm-password" name="confirm-password" required>
+                            <button class="button-eye" onclick="showPassword('confirm-password','icon-eye-2')" type="button" value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye-2"
+                                    src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button><br /><br /><br /><br />
                         </div>
                         
                         <div class="terms-conditions checkbox-container">
@@ -81,7 +80,7 @@
 
                         <div id="interactive-buttom-container">
                             <a href="login.html"><button class="interactive-button" type="button" value="Volver">Volver</button></a>
-                            <button class="interactive-button" type="submit" value="Crear cuenta">Crear cuenta</button>
+                            <button class="interactive-button" onclick="sendRegisterForm()" type="submit" value="Crear cuenta">Crear cuenta</button>
                         </div>
                     </form>
                 </div>
@@ -98,7 +97,7 @@
             </div>
         </footer>
     </div>
-
+    <script src="../scripts/login-script.js"></script>
 </body>
 
 </html>

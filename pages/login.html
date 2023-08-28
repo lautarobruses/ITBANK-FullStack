@@ -7,7 +7,7 @@
     <link rel="icon" type="image/jpg" href="/resources/img/logos/nexusbanklogo-removebg.png">
     <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
     <link rel="stylesheet" type="text/css" href="../styles/login-style.css">
-    <script src="../script.js"></script>
+    
     <title>Inicia sesión - NexusBank</title>
 
 </head>
@@ -32,9 +32,9 @@
 
                 <h1>Inicia sesión</h1>
 
-                <form action="/procesar-form" method="GET">
+                <form id="login-form" >
                     <label class="label-input">Correo electronico o usuario:</label><br />
-                    <input class="textbox" type="text" id="CorreoUsuario" name="CorreoUsuario" required><br /><br />
+                    <input class="textbox" type="text" id="user-tag" name="user-tag" required><br /><br />
 
                     <label class="label-input"> Contraseña:</label> <br />
 
@@ -53,8 +53,7 @@
                     <div id="interactive-buttom-container">
                         <a href="register.html"><button class="interactive-button" type="button" value="Crear cuenta">Crear
                             cuenta</button></a>
-                        <a href="../index.html"><button class="interactive-button" type="submit"
-                            value="Iniciar sesión">Iniciar sesión</button></a>
+                        <button id="login" class="interactive-button" onclick="checkUser()" type="submit" value="Iniciar sesión">Iniciar sesión</button>
                     </div>
                 </form>
             </div>
@@ -70,6 +69,7 @@
             </div>
         </footer>
     </div>
+    <script src="../scripts/login-script.js"></script>
 </body>
 
 </html>
