@@ -30,6 +30,7 @@ html {
 
 main {
     width: 100%;
+    padding: 64px;
     /* height: 100%; */
 
     display: flex;
