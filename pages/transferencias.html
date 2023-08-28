@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/index/navbar.css"> 
     <link rel="stylesheet" type="text/css" href="../styles/index/main.css"> 
     <link rel="stylesheet" type="text/css" href="../styles/index/footer.css">  
-    <link rel="stylesheet" href="../styles/transferencias.CSS">
+    <link rel="stylesheet" href="../styles/transferencias.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -60,119 +60,117 @@
                 </div>
             </nav>
     
-            <div class="main-background">
-                <main>
-                    <div class="transfer-section">
-                    <h2>Hacer Transferencia</h2>
+            <main>
+                <div class="transfer-section">
+                <h2>Hacer Transferencia</h2>
+            
+                <div class="busqueda-cuenta">
+                    <input type="text" id="buscarCuenta" placeholder="Buscar cuenta">
+                    <button id="botonBuscar">Buscar</button>
+                </div>
                 
-                    <div class="busqueda-cuenta">
-                        <input type="text" id="buscarCuenta" placeholder="Buscar cuenta">
-                        <button id="botonBuscar">Buscar</button>
+                <div class="cuentas-asociadas">
+                    <h3>Cuentas Asociadas</h3>
+                    <ul id="listaCuentasAsociadas" style="list-style: none;">
+                        <!-- Lista de cuentas asociadas -->
+                        <li> cuenta 1</li>
+                        <li> cuenta 2</li>
+                        <li> cuenta 3</li>
+                    </ul>
+                </div>
+    
+                <!-- Ventana emergente (modal) -->
+                <div class="modal" id="modal">
+                    <div class="modal-content">
+                        <h2>Transferir a <span id="cuentaDestino"></span></h2>
+                        <p>Ingrese el monto a transferir:</p>
+                        <input type="number" id="montoTransferencia">
+                        <button id="botonTransferir">Transferir</button>
                     </div>
-                    
-                    <div class="cuentas-asociadas">
-                        <h3>Cuentas Asociadas</h3>
-                        <ul id="listaCuentasAsociadas" style="list-style: none;">
-                            <!-- Lista de cuentas asociadas -->
-                            <li> cuenta 1</li>
-                            <li> cuenta 2</li>
-                            <li> cuenta 3</li>
-                        </ul>
-                    </div>
-        
-                    <!-- Ventana emergente (modal) -->
-                    <div class="modal" id="modal">
-                        <div class="modal-content">
-                            <h2>Transferir a <span id="cuentaDestino"></span></h2>
-                            <p>Ingrese el monto a transferir:</p>
-                            <input type="number" id="montoTransferencia">
-                            <button id="botonTransferir">Transferir</button>
+                </div>
+                
+                <div class="cuentas-recientes">
+                    <h3>Cuentas Recientes</h3>
+                    <ul id="listaCuentasRecientes" style="list-style: none;">
+                        <!-- Lista de cuentas recientes o habituales -->
+                        <li>Emilia Sánchez</li>
+                        <li>Facundo Gonzales</li>
+                        <li>Juan Garcias</li>
+                        <li>Luis Perez</li>
+                        <li>Maria Martinez</li>
+                        <li>Manuel Rodriguez</li>
+                        <li>Pedro Hernandez</li>
+                        <li>Carlos Diaz</li>
+                        <li>Jose Gonzalez</li>
+                        <li>Andrea Lopez</li>
+                    </ul>
+                </div>
+    
+                <!-- Conversor de Moneda -->
+                <div class="conversor">
+                    <h2>Convertidor de Monedas</h2>
+                    <div class="conversor-inputs">
+                        <div class="input-container">
+                            <label for="monto">Monto (ARS)</label>
+                            <input type="number" id="monto" placeholder="Monto" step="any">
                         </div>
-                    </div>
-                    
-                    <div class="cuentas-recientes">
-                        <h3>Cuentas Recientes</h3>
-                        <ul id="listaCuentasRecientes" style="list-style: none;">
-                            <!-- Lista de cuentas recientes o habituales -->
-                            <li>Emilia Sánchez</li>
-                            <li>Facundo Gonzales</li>
-                            <li>Juan Garcias</li>
-                            <li>Luis Perez</li>
-                            <li>Maria Martinez</li>
-                            <li>Manuel Rodriguez</li>
-                            <li>Pedro Hernandez</li>
-                            <li>Carlos Diaz</li>
-                            <li>Jose Gonzalez</li>
-                            <li>Andrea Lopez</li>
-                        </ul>
-                    </div>
-        
-                    <!-- Conversor de Moneda -->
-                    <div class="conversor">
-                        <h2>Convertidor de Monedas</h2>
-                        <div class="conversor-inputs">
-                            <div class="input-container">
-                                <label for="monto">Monto (ARS)</label>
-                                <input type="number" id="monto" placeholder="Monto" step="any">
-                            </div>
-                            <div class="input-container">
-                                <label for="monedaDestino">A:</label>
-                                <select id="monedaDestino">
-                                    <!-- Opciones de moneda de destino -->
-                                    <option value="USD">USD</option>
-                                    <option value="EUR">EUR</option>
-                                </select>
-                                <div>=</div>
-                                <div class="conversor-resultado">
-                                    <p class="resultado" id="resultado">0</p>
-                                    <p class="moneda-resultado" id="monedaResultado">USD</p>
-                                </div>
+                        <div class="input-container">
+                            <label for="monedaDestino">A:</label>
+                            <select id="monedaDestino">
+                                <!-- Opciones de moneda de destino -->
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                            <div>=</div>
+                            <div class="conversor-resultado">
+                                <p class="resultado" id="resultado">0</p>
+                                <p class="moneda-resultado" id="monedaResultado">USD</p>
                             </div>
                         </div>
                     </div>
-                    <!--script-->
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const entradaMonto = document.getElementById('monto');
-                            const selectMonedaDestino = document.getElementById('monedaDestino');
-                            const elementoResultado = document.getElementById('resultado');
-                            const elementoMonedaResultado = document.getElementById('monedaResultado');
-        
-                            function formatNumber(number) {
-                                return new Intl.NumberFormat('es-AR').format(number);
-                            }
-        
-                            function actualizarResultado() {
-                                const monto = parseFloat(entradaMonto.value);
-                                const monedaDestino = selectMonedaDestino.value;
-        
-                                if (!isNaN(monto)) {
-                                    let resultado = 0;
-                                    if (monedaDestino === 'USD') {
-                                        resultado = monto / tasasDeCambio.USD;
-                                    } else if (monedaDestino === 'EUR') {
-                                        resultado = monto / tasasDeCambio.EUR;
-                                    }
-                                    elementoResultado.textContent = formatNumber(resultado.toFixed(2));
-                                    elementoMonedaResultado.textContent = monedaDestino;
-                                } else {
-                                    elementoResultado.textContent = '0';
-                                    elementoMonedaResultado.textContent = monedaDestino;
+                </div>
+                <!--script-->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const entradaMonto = document.getElementById('monto');
+                        const selectMonedaDestino = document.getElementById('monedaDestino');
+                        const elementoResultado = document.getElementById('resultado');
+                        const elementoMonedaResultado = document.getElementById('monedaResultado');
+    
+                        function formatNumber(number) {
+                            return new Intl.NumberFormat('es-AR').format(number);
+                        }
+    
+                        function actualizarResultado() {
+                            const monto = parseFloat(entradaMonto.value);
+                            const monedaDestino = selectMonedaDestino.value;
+    
+                            if (!isNaN(monto)) {
+                                let resultado = 0;
+                                if (monedaDestino === 'USD') {
+                                    resultado = monto / tasasDeCambio.USD;
+                                } else if (monedaDestino === 'EUR') {
+                                    resultado = monto / tasasDeCambio.EUR;
                                 }
+                                elementoResultado.textContent = formatNumber(resultado.toFixed(2));
+                                elementoMonedaResultado.textContent = monedaDestino;
+                            } else {
+                                elementoResultado.textContent = '0';
+                                elementoMonedaResultado.textContent = monedaDestino;
                             }
-        
-                            entradaMonto.addEventListener('input', actualizarResultado);
-                            selectMonedaDestino.addEventListener('change', actualizarResultado);
-        
-                            const tasasDeCambio = {
-                                USD: 365,
-                                EUR: 378,
-                                ARS: 1.0
-                            };
-                        });
-                    </script>
-                </main>
-            </div>
+                        }
+    
+                        entradaMonto.addEventListener('input', actualizarResultado);
+                        selectMonedaDestino.addEventListener('change', actualizarResultado);
+    
+                        const tasasDeCambio = {
+                            USD: 365,
+                            EUR: 378,
+                            ARS: 1.0
+                        };
+                    });
+                </script>
+            </main>
         </div>
 
         <footer>

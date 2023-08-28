@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/index/main.css"> 
     <link rel="stylesheet" type="text/css" href="../styles/index/footer.css"> 
     <link rel="stylesheet" type="text/css" href="../styles/prestamos.css">    
-    <script src="prestamos.js"></script>
+    <script src="../scripts/prestamos.js"></script>
     <title>Nexus Bank</title>
 </head>
 <body>
@@ -58,23 +58,19 @@
                 </div>
             </nav>
     
-            <div class="main-background">
-                <main>
-                    <main>
-                        <div class="calculadora">
-                            <h1>Calculadora de Préstamos</h1>
-                            <label for="monto">Monto del Préstamo:</label>
-                            <input type="number" id="monto" placeholder="Monto del Préstamo" min="0">
-                            <label for="tasa">Tasa de Interés (%):</label>
-                            <input type="number" id="tasa" placeholder="Tasa de Interés" min="0">
-                            <label for="plazo">Plazo del Préstamo (meses):</label>
-                            <input type="number" id="plazo" placeholder="Plazo del Préstamo" min="0">
-                            <button id="calcular">Calcular</button>
-                            <div id="resultado"></div>
-                        </div>
-                    </main>
-                </main>
-            </div>
+            <main>
+                <div class="calculadora">
+                    <h1>Calculadora de Préstamos</h1>
+                    <label for="monto">Monto del Préstamo:</label>
+                    <input type="number" id="monto" placeholder="Monto del Préstamo" min="0">
+                    <label for="tasa">Tasa de Interés (%):</label>
+                    <input type="number" id="tasa" placeholder="Tasa de Interés" min="0">
+                    <label for="plazo">Plazo del Préstamo (meses):</label>
+                    <input type="number" id="plazo" placeholder="Plazo del Préstamo" min="0">
+                    <button id="calcular">Calcular</button>
+                    <div id="resultado"></div>
+                </div>
+            </main>
         </div>
 
         <footer>

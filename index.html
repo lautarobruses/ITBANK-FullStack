@@ -57,67 +57,65 @@
                 </div>
             </nav>
     
-            <div class="main-background">
-                <main>
-                    <section>
-                        <h2>¡Hola, [nombre de usuario]!</h2>
-                    </section>
-                    <section class="saldos" >
-                        <div class="main-block-header">
-                            <h3>Dinero disponible:</h3>
+            <main>
+                <section>
+                    <h2>¡Hola, [nombre de usuario]!</h2>
+                </section>
+                <section class="saldos" >
+                    <div class="main-block-header">
+                        <h3>Dinero disponible:</h3>
+                    </div>
+                    <hr>
+                    <div class="main-block-balance">
+                        
+                        <div id="show-balance-container">
+                            <h1>
+                                <span id="int-balance" class="int-balance">$ 20.</span><span id="decimal-balance" class="decimal-balance">00</span>
+                            </h1>
                         </div>
-                        <hr>
-                        <div class="main-block-balance">
-                            
-                            <div id="show-balance-container">
-                                <h1>
-                                    <span id="int-balance" class="int-balance">$ 20.</span><span id="decimal-balance" class="decimal-balance">00</span>
-                                </h1>
-                            </div>
-        
-                            <div id="hidden-balance-container">
-                                <h1 id="hidden-balance">
-                                    <span class="int-balance">$ **.</span><span class="decimal-balance">**</span>
-                                </h1>
-                            </div>
-        
-                            <img id="eye-buttom" class="show-eye-buttom" src="/resources/img/ojo.png" onclick="ocultarSaldo()" alt="ocultar Saldo">
-                        </div>
-                        <hr>
-                        <div class="main-block-options">
-                            <div class="opcion">
-                                <button class="saldo-button" id="ingresarDineroButton"></button>
-                            </div>
-                            <div class="opcion">
-                                <button class="saldo-button" id="extraerDineroButton"></button>
-                            </div>
-                            <div class="opcion">
-                                <button class="saldo-button" id="invertirButton"></button>
-                            </div>
-                        </div>
-                    </section>
     
-                    <section class="cuentas">
-                        <div class="main-block-header">
-                            <h3>Tus cuentas:</h3>
+                        <div id="hidden-balance-container">
+                            <h1 id="hidden-balance">
+                                <span class="int-balance">$ **.</span><span class="decimal-balance">**</span>
+                            </h1>
                         </div>
-                        <hr>
-                        <div class="cuenta">
-                            <h3>Caja De Ahorro</h3>
-                            <h4>Saldo: $20.000</h4>
+    
+                        <img id="eye-buttom" class="show-eye-buttom" src="/resources/img/ojo.png" onclick="ocultarSaldo()" alt="ocultar Saldo">
+                    </div>
+                    <hr>
+                    <div class="main-block-options">
+                        <div class="opcion">
+                            <button class="saldo-button" id="ingresarDineroButton"></button>
                         </div>
-                        <div class="cuenta">
-                            <h3>Cuenta Corriente</h3>
-                            <h4>Saldo: $250.000</h4>
+                        <div class="opcion">
+                            <button class="saldo-button" id="extraerDineroButton"></button>
                         </div>
-                        <div class="cuenta">
-                            <h3>Cuenta Externa</h3>
-                            <h4>Saldo: $45.000</h4>
+                        <div class="opcion">
+                            <button class="saldo-button" id="invertirButton"></button>
                         </div>
-                        <hr>
-                    </section>
-                </main>
-            </div>
+                    </div>
+                </section>
+
+                <section class="cuentas">
+                    <div class="main-block-header">
+                        <h3>Tus cuentas:</h3>
+                    </div>
+                    <hr>
+                    <div class="cuenta">
+                        <h3>Caja De Ahorro</h3>
+                        <h4>Saldo: $20.000</h4>
+                    </div>
+                    <div class="cuenta">
+                        <h3>Cuenta Corriente</h3>
+                        <h4>Saldo: $250.000</h4>
+                    </div>
+                    <div class="cuenta">
+                        <h3>Cuenta Externa</h3>
+                        <h4>Saldo: $45.000</h4>
+                    </div>
+                    <hr>
+                </section>
+            </main>
         </div>
 
         <footer>
