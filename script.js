@@ -30,6 +30,3 @@ function ocultarSaldo(){
   }
 }
 
-//Funciones utilizadas en login.html y register.html
-
-

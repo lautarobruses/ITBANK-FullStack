@@ -16,11 +16,13 @@
         </header>
         <section>
             <div class="form-container">
-                <!-- <h1>Inicia sesión</h1> -->
-                <form action="/procesar-form" method="GET">
-                    <label class="label-input">Correo electronico:</label>
-                    <input class="textbox" type="text" id="CorreoUsuario" name="CorreoUsuario" required>
 
+
+                <!-- <h1>Inicia sesión</h1> -->
+
+                <form id="login-form" >
+                    <label class="label-input">Correo electronico o usuario:</label>
+                    <input class="textbox" type="text" id="user-tag" name="user-tag" required>
                     <label class="label-input"> Contraseña:</label>
 
                     <div class="password-input-container">
@@ -37,10 +39,12 @@
                         <label>Recuerdame</label><br />
                     </div> -->
 
-                    <div class="interactive-buttom-container">
-                        <a href="index.html">
-                            <button class="interactive-button" type="submit" value="Iniciar sesión">Iniciar sesión</button>
-                        </a>
+                    <div id="interactive-buttom-container">
+                        <!-- <a href="register.html">
+                            <button class="interactive-button" type="button" value="Crear cuenta">Crear cuenta</button>
+                        </a> -->
+                        <button id="login" class="interactive-button" onclick="checkUser()" type="submit" value="Iniciar sesión">Iniciar sesión</button>
+
                     </div>
                 </form>
             </div>
@@ -56,6 +60,10 @@
             <a href="coming-soon.html">Privacidad</a>
         </div>
     </div>
+
+    <script src="../scripts/login-script.js"></script>
+
     <script src="/scripts/login.js"></script>
+
 </body>
 </html>
