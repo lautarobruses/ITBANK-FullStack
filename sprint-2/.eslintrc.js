@@ -1,9 +1,13 @@
 module.exports = {
     'env': {
         'browser': true,
+        'commonjs': true,
         'es2021': true
     },
-    'extends': 'eslint:recommended',
+    'extends': [
+        'eslint:recommended',
+        'plugin:react/recommended'
+    ],
     'overrides': [
         {
             'env': {
@@ -17,11 +21,18 @@ module.exports = {
             }
         }
     ],
+    "parser": '@babel/eslint-parser',
     'parserOptions': {
+        'requireConfigFile': false,
         'ecmaVersion': 'latest',
-        'sourceType': 'module'
+        'sourceType': 'module',
+        'babelOptions': {
+            "presets": ["@babel/preset-react"]
+        }
     },
-    "parser": "@babel/eslint-parser",
+    'plugins': [
+        'react'
+    ],
     'rules': {
         'indent': [
             'error',
@@ -47,6 +58,11 @@ module.exports = {
         'arrow-spacing': [
             'error', { 'before': true, 'after': true }
         ],
-        'no-console': 0
+        'no-console': 0,
+        // suppress errors for missing 'import React' in files
+        "react/react-in-jsx-scope": "off",
+        // allow jsx syntax in js files (for next.js project)
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }], //should add ".ts" if typescript project
+        "react/prop-types": 0
     }
 }
