@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 import ButtonMenu from './ButtonMenu'
 
-import path from '../assets/nexusbanklogo3.png'
+import path from '../../assets/nexusbanklogo3.png'
 
 const StyledHeader = styled.header`
     background-color: var(--white);
