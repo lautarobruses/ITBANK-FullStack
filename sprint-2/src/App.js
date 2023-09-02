@@ -16,8 +16,9 @@ const App = () => {
             <Header />
             <Navbar />
             <Routes>
-                <Route path="/" element={<h1>inicio</h1>} />
-                <Route path="/cuenta" element={<h1>cuenta</h1>} />
+                {/* DENTRO DE ELEMENT VA EL COMPONENTE CORRESPONDIENTE A CADA RUTA */}
+                <Route path="/" element={null} />
+                <Route path="/cuenta" element={null} />
                 <Route path="/transferencias" element={null} />
                 <Route path="/pagos" element={null} />
                 <Route path="/prestamos" element={null} />
