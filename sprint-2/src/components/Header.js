@@ -1,15 +1,41 @@
-import logo from '../assets/nexusbanklogo3.png'
+import { styled } from 'styled-components'
+
+import ButtonMenu from './ButtonMenu'
+
+import path from '../assets/nexusbanklogo3.png'
+
+const StyledHeader = styled.header`
+    background-color: var(--white);
+    width: 100%;
+    height: 100;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 640px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+`
+const StyledLogo = styled.img`
+    width: 256px;
+    height: auto;
+
+    @media screen and (max-width: 640px) {
+        width: 192px;
+        height: auto;
+    }
+`
 
 const Header = () => {
     return (
-        <header>
-            <img src={logo} alt='logo Nexus Bank' />
-            <button id='button-menu' className='button-menu'>
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </header>
+        <StyledHeader>
+            <StyledLogo src={path} alt='logo Nexus Bank' />
+            <ButtonMenu />
+        </StyledHeader>
     )
 }
 
