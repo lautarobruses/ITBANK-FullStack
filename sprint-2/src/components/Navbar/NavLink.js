@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
+
 import { styled } from 'styled-components'
 
-const StyledAnchor = styled.a`
+const StyledLink = styled(Link)`
     background-color: var(--white);
     color: var(--dark-sky-blue);
     width: 100%;
@@ -15,17 +17,16 @@ const StyledAnchor = styled.a`
     align-items: center;
     flex-direction: row;
 
-    
-
     &:hover {
         background-color: var(--sky-blue);
         color: var(--white);
         opacity: 0.8;
     }
 
-    &:active { 
+    &:active {
         background-color: var(--dark-sky-blue);
         color: var(--white);
+        opacity: 1.0;
     }
 
     svg {
@@ -33,13 +34,13 @@ const StyledAnchor = styled.a`
     }
 `
 
-const Anchor = ({ svg, text, href }) => {
+const NavLink = ({ to, svg, text }) => {
     return (
-        <StyledAnchor href={href}>
+        <StyledLink to={to}>
             {svg}
             {text}
-        </StyledAnchor>
+        </StyledLink>
     )
 }
 
-export default Anchor
+export default NavLink

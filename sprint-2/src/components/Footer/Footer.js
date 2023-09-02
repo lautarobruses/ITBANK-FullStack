@@ -5,15 +5,15 @@ import Contact from './Contact'
 import Terms from './Terms'
 
 const StyledFooter = styled.footer`
-    top: 85%;
     position: fixed;
+    top: 85%;
     background-color: var(--white);
     color: var(--dark-sky-blue);
     width: 100%;
-    height: 120px;
+    height: 15%;
     font-size: 16px;
     font-weight: bold;
-    padding: 32px;
+    padding: 24px;
 
     display: flex;
     align-items: center;

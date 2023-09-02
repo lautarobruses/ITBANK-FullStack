@@ -24,6 +24,10 @@ const StyledHeader = styled.header`
 const StyledLogo = styled.img`
     height: 150%;
     width: auto;
+
+    @media screen and (max-width: 640px) {
+
+    }
 `
 
 const Header = () => {
