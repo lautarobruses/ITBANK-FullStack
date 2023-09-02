@@ -2,9 +2,11 @@ import { styled } from 'styled-components'
 import Anchor from './Anchor'
 
 const StyledNavbar = styled.nav`
+    position: fixed;
+    top: 10%;
     background-color: var(--grey);
     width: 384px;
-    height: 75vh;
+    height: 75%;
     padding: 32px 24px;
 
     .nav-links {
@@ -34,6 +36,51 @@ const StyledNavbar = styled.nav`
     
     .nav-top a {
         margin-bottom: 24px;
+    }
+
+    @media screen and (max-width: 1023px) {
+        padding: 24px 16px;
+    }
+
+    @media screen and (max-width: 640px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin-left: -100%;
+        padding: 0px;
+        transition: all .2s linear;
+        background-color: rgba(0,0,0,.7);
+        z-index: 100;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: flex-start;
+          
+        .contenedor nav.show {
+            margin-left: 0;
+        }
+    
+        .nav-links {
+            background-color: var(--grey);
+            padding: 20px;
+            width: 75%;
+            height: 100%;
+        }
+    
+        a {
+            background-color: var(--white);
+            color: var(--dark-sky-blue);
+            width: 100%;
+            height: 48px;
+            border-radius: 8px;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
     }
 `
 

@@ -5,9 +5,10 @@ import ButtonMenu from './ButtonMenu'
 import path from '../../assets/nexusbanklogo3.png'
 
 const StyledHeader = styled.header`
+    position: fixed;
     background-color: var(--white);
     width: 100%;
-    height: 100;
+    height: 10%;
     padding: 20px;
 
     display: flex;
@@ -21,13 +22,8 @@ const StyledHeader = styled.header`
     }
 `
 const StyledLogo = styled.img`
-    width: 256px;
-    height: auto;
-
-    @media screen and (max-width: 640px) {
-        width: 192px;
-        height: auto;
-    }
+    height: 150%;
+    width: auto;
 `
 
 const Header = () => {

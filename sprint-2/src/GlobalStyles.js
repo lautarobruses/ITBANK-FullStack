@@ -19,6 +19,8 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-family: 'Lato', sans-serif;
         min-width: 375px;
+        height: 100vh;
+        overflow-y: auto;
     }
 `
 
