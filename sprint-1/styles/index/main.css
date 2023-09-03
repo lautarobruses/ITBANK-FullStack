@@ -19,16 +19,23 @@ html {
     background-size: cover;
     background-position: center;
     z-index: -1;
+    overflow: scroll
 }
 
 .mid-container {
+    position: sticky;
+    top: 10%;
+    height: 85%;
+    overflow: scroll;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: top;
 }
 
 main {
+    position: relative;
     width: 100%;
     padding: 64px;
     /* height: 100%; */

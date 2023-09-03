@@ -6,6 +6,7 @@ import path from '../../assets/nexusbanklogo3.png'
 
 const StyledHeader = styled.header`
     position: fixed;
+    top: 0px;
     background-color: var(--white);
     width: 100%;
     height: 10%;
@@ -22,7 +23,7 @@ const StyledHeader = styled.header`
     }
 `
 const StyledLogo = styled.img`
-    height: 150%;
+    height: 120%;
     width: auto;
 
     @media screen and (max-width: 640px) {
