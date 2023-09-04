@@ -12,6 +12,10 @@ const StyledDiv = styled.div`
     background-size: cover;
     background-position: center;
     z-index: -1;
+
+    @media screen and (max-width: 640px) {
+        left: 0%;
+    }
 `
 
 const Background = () => {

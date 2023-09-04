@@ -5,7 +5,7 @@ import Contact from './Contact'
 import Terms from './Terms'
 
 const StyledFooter = styled.footer`
-    position: fixed;
+    position: relative;
     top: 85%;
     background-color: var(--white);
     color: var(--dark-sky-blue);
@@ -30,6 +30,7 @@ const StyledFooter = styled.footer`
     }
 
     @media screen and (max-width: 1023px) {
+        position: relative;
         padding: 16px;
 
         flex-direction: column;
