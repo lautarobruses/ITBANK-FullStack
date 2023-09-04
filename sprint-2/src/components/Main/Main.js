@@ -8,8 +8,10 @@ const StyledMain = styled.main`
     margin-top: 100px;
     margin-left: 384px;
     min-height: 100vh;
-    overflow-y: hidden;
 
+    @media screen and (max-width: 1023px) {
+        margin-left: 284px;
+    }
 `
 
 const Main = () => {
