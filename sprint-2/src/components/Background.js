@@ -11,7 +11,10 @@ const StyledDiv = styled.div`
     background-image: url(${background});
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    overflow: none;
     z-index: -1;
+    
 
     @media screen and (max-width: 640px) {
         left: 0%;

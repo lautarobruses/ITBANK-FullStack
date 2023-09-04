@@ -6,11 +6,10 @@ import Terms from './Terms'
 
 const StyledFooter = styled.footer`
     position: relative;
-    top: 85%;
     background-color: var(--white);
     color: var(--dark-sky-blue);
     width: 100%;
-    height: 15%;
+    height: 120px;
     font-size: 16px;
     font-weight: bold;
     padding: 24px;
@@ -30,7 +29,7 @@ const StyledFooter = styled.footer`
     }
 
     @media screen and (max-width: 1023px) {
-        position: relative;
+        height: 100%;
         padding: 16px;
 
         flex-direction: column;

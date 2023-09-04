@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
     top: 0px;
     background-color: var(--white);
     width: 100%;
-    height: 10%;
+    height: 100px;
     padding: 20px;
 
     display: flex;
@@ -17,6 +17,8 @@ const StyledHeader = styled.header`
     justify-content: center;
 
     @media screen and (max-width: 640px) {
+        height: 80px;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -27,7 +29,7 @@ const StyledLogo = styled.img`
     width: auto;
 
     @media screen and (max-width: 640px) {
-
+        height: 130%;
     }
 `
 

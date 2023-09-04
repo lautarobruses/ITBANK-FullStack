@@ -1,6 +1,5 @@
 import {
     BrowserRouter as Router,
-    Routes, Route
 } from 'react-router-dom'
 
 import GlobalStyles from './components/GlobalStyles'
@@ -9,6 +8,7 @@ import Background from './components/Background'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+import Main from './components/Main/Main'
 
 const App = () => {
     return (
@@ -17,14 +17,7 @@ const App = () => {
             <Background />
             <Header />
             <Navbar />
-            <Routes>
-                {/* DENTRO DE ELEMENT VA EL COMPONENTE CORRESPONDIENTE A CADA RUTA */}
-                <Route path="/" element={null} />
-                <Route path="/cuenta" element={null} />
-                <Route path="/transferencias" element={null} />
-                <Route path="/pagos" element={null} />
-                <Route path="/prestamos" element={null} />
-            </Routes>
+            <Main />
             <Footer />
         </Router>
     )
