@@ -5,7 +5,6 @@ import {
 
 import GlobalStyles from './components/GlobalStyles'
 
-
 import Background from './components/Background'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
