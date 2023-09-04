@@ -11,92 +11,139 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <!-- Header -->
-        <header>
-            <div class="logo-container">
-                <a href="login.html">
-                    <img src="../resources/img/logos/nexusbanklogo3-removebg.png" alt="logo">
-                </a>
-            </div>
-        </header>
+    <div class="background-container">
+        <div id="register-box-container">
+            <header>
+                <div class="logo-container">
+                    <a href="login.html">
+                        <img src="../resources/img/logos/nexusbanklogo3-removebg.png" alt="logo">
+                    </a>
+                </div>
+            </header>
 
-        <main>
-            <div class="main-left-container">
-                <h1 id="register-title">Crea una cuenta en NexusBank</h1>
+            <section id="form-left-container">
 
-                <div class="register-left-form">
-                    <form id="register-form">
+                <form id="register-form">
+                    <div class="form">
+                        <div class="textbox">
+                            <label>Nombre y Apellido:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
 
-                        <label class="label-input">Nombre:</label> <br />
-                        <input class="textbox" type="text" id="name" name="name" required> <br /> <br />
-    
-                        <label class="label-input">Apellido:</label> <br />
-                        <input class="textbox" type="text" id="last-name" name="last-name" required> <br /> <br />
-    
-                        <label class="label-input">Localidad:</label> <br>
-                        <select class="selectbox" id="select-nationality" required>
-                            <option value="" disabled selected> Seleccione un pais </option>
-                            <option value="0"> Argentina </option>
-                            <option value="1"> Estados Unidos </option>
-                        </select> <br> <br>
-    
-                        <label class="label-input">DNI:</label> <br />
-                        <input class="textbox" type="number" id="dni" name="dni" required> <br /> <br />
-    
-                        <label class="label-input">Nro. de telefono:</label> <br />
-                        <input class="textbox" type="number" id="phone" name="phone" required>
+                        <div class="textbox">
+                            <label>Contraseña:</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" name="password" required>
+                                <button id="toggle-password" class="button-eye" type="button" value="Ver/Ocultar">
+                                    <svg class="show-icon" stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                        </path>
+                                        <path
+                                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                        </path>
+                                    </svg>
+                                    <svg class="hide-icon" stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z">
+                                        </path>
+                                        <path
+                                            d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z">
+                                        </path>
+                                        <path
+                                            d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="textbox">
+                            <label>DNI:</label>
+                            <input type="number" id="dni" name="dni" required>
+                        </div>
+                    </div>
+            </section>
+
+            <section id="form-right-container">
+                <div class="form">
+                    <div class="textbox">
+                        <label>Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="textbox">
+                        <label>Confirmar contraseña:</label>
+                        <div class="password-input-container">
+                            <input type="password" id="confirm-password" name="confirm-password" required>
+                            <button id="toggle-password" class="button-eye" type="button" value="Ver/Ocultar">
+                                <svg class="show-icon" stroke="currentColor" fill="currentColor" stroke-width="0"
+                                    viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                    </path>
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                    </path>
+                                </svg>
+                                <svg class="hide-icon" stroke="currentColor" fill="currentColor" stroke-width="0"
+                                    viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z">
+                                    </path>
+                                    <path
+                                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z">
+                                    </path>
+                                    <path
+                                        d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="textbox">
+                        <label>Nro. de telefono:</label>
+                        <input type="number" id="phone" name="phone" required>
+                    </div>
+                </div>
+            </section>
+            <section id="send-form-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                    <p>Acepto los <a href="coming-soon.html">Terminos y condiciones
+                    <img class="icon-terms"
+                            src="../resources/img/icons/flecha-arriba-a-la-derecha-desde-el-cuadrado.svg"
+                            alt="Icono de una flecha que apunta arriba a la derecha"></a></p>
+                </div>
+
+                <div id="interactive-button-container">
+                    <a href="login.html"><button id="interactive-button" type="button" value="Volver"><img
+                                src="../resources/img/icons/flecha-pequena-izquierda.svg"
+                                alt="Flecha pequeña que apunta a la derecha">Atrás</button></a>
+                    <button id="submit-button" onclick="sendRegisterForm()" type="submit" value="Crear cuenta">Crear
+                        cuenta</button>
                 </div>
                 
-            </div>
-            <div class="main-right-container">
-                <div class="register-right-form">
-                        <label class="label-input">Email:</label> <br />
-                        <input class="textbox" type="email" id="email" name="email" required> <br /> <br />
+                </form>
+            </section>
+        </div>
+        <!-- Header -->
 
-                        <label class="label-input">Contraseña:</label> <br />
-                        <div class="password-input-container">
-                            <input class="textbox" type="password" id="password" name="password" required>
-                            <button class="button-eye" onclick="showPassword('password','icon-eye-1')" type="button" value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye-1"
-                                src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button> <br /> <br />
-
-                        </div>
-                        
-                        <label class="label-input">Comfirmar contraseña:</label> <br />
-                        <div class="password-input-container">
-                            <input class="textbox" type="password" id="confirm-password" name="confirm-password" required>
-                            <button class="button-eye" onclick="showPassword('confirm-password','icon-eye-2')" type="button" value="Ver/Ocultar"> <img class="icon-eye" id="icon-eye-2"
-                                    src="/resources/img/icons/ojo-tachado.svg" alt="ojo"> </button><br /><br /><br /><br />
-                        </div>
-                        
-                        <div class="terms-conditions checkbox-container">
-                            <input type="checkbox" id="checkbox" name="checkbox">
-                            <p>He leido y acepto los <a href="coming-soon.html">Terminos y condiciones</a></p>
-                            <a href="coming-soon.html"><img class="icon-terms"
-                                    src="/resources/img/icons/flecha-arriba-a-la-derecha-desde-el-cuadrado.svg"
-                                    alt="Icono de una flecha que apunta arriba a la derecha"></a><br>
-                        </div>
-
-                        <div id="interactive-buttom-container">
-                            <a href="login.html"><button class="interactive-button" type="button" value="Volver">Volver</button></a>
-                            <button class="interactive-button" onclick="sendRegisterForm()" type="submit" value="Crear cuenta">Crear cuenta</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </main>
 
         <!-- Footer -->
 
-        <footer>
+        <!-- <footer>
             <div class="legal-information-container">
                 <a href="coming-soon.html">Terminos</a>
                 <span>|</span>
                 <a href="coming-soon.html">Privacidad</a>
             </div>
-        </footer>
+        </footer> -->
     </div>
-    <script src="../scripts/login-script.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 
 </html>
