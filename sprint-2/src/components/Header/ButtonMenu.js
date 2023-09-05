@@ -1,5 +1,8 @@
-import { useState } from 'react'
 import styled, { css } from 'styled-components'
+
+import { useDispatch, useSelector } from 'react-redux'
+
+import { toggleVisibility } from '../../reducers/menuReducer'
 
 const StyledButtonMenu = styled.button`
     display: none;
@@ -31,15 +34,11 @@ const StyledSpan = styled.span`
         transform-origin: 4px 0px;
         transition: all .2s linear;
 
-        ${(props) => props.isClose && css`
-            background: var(--white);  
-        
-            &:nth-child(1) {
-                opacity: 1;
-                transform: rotate(45deg) translate(0px, 0px);
-                
-                z-index: 101;
-            }
+        ${(props) => props.$isClose && css`
+            background: var(--white);
+            z-index: 101;
+            opacity: 1;
+            transform: rotate(45deg) translate(0px, 0px);
         
             &:nth-child(2) {
                 transform: rotate(-45deg) translate(-8px, 5px);
@@ -53,17 +52,18 @@ const StyledSpan = styled.span`
 `
 
 const ButtonMenu = () => {
-    const [isNavOpen, setIsNavOpen] = useState(false)
+    const dispatch = useDispatch()
+    const close = useSelector(state => state.buttonMenu)
 
-    const handleToggleClick = () => {
-        setIsNavOpen(!isNavOpen)
+    const handleToggle = () => {
+        dispatch(toggleVisibility())
     }
 
     return (
-        <StyledButtonMenu className={isNavOpen ? 'close' : ''} onClick={handleToggleClick}>
-            <StyledSpan isClose={isNavOpen} />
-            <StyledSpan isClose={isNavOpen} />
-            <StyledSpan isClose={isNavOpen} />
+        <StyledButtonMenu className={close ? 'close' : ''} onClick={handleToggle}>
+            <StyledSpan $isClose={close} />
+            <StyledSpan $isClose={close} />
+            <StyledSpan $isClose={close} />
         </StyledButtonMenu>
     )
 }
