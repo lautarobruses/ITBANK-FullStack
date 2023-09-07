@@ -1,7 +1,11 @@
+import { useEffect, useState } from 'react'
+
+import { styled } from 'styled-components'
+
+import background from '../../assets/background.jpg'
+
 import HeaderForm from './HeaderForm'
 import LoginForm from './LoginForm'
-import { styled } from 'styled-components'
-import background from '../../assets/background.jpg'
 
 const StyledLogin = styled.div`
     position: fixed;
@@ -40,6 +44,18 @@ const StyledLogin = styled.div`
 `
 
 export default function Login(){
+    const [user, setUser] = useState(null)
+
+    console.log(user) //TODO
+
+    useEffect(() => {
+        const loggedUserJSON = window.localStorage.getItem('loggedUser')
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            setUser(user)
+        }
+    }, [])
+
     return (
         <StyledLogin>
             <HeaderForm/>

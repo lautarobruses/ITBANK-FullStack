@@ -9,6 +9,8 @@ import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Main from './components/Main/Main'
+// import Login from './components/Login/Login'
+
 
 const App = () => {
     return (
@@ -21,6 +23,14 @@ const App = () => {
             <Footer />
         </Router>
     )
+
+    // return (
+    //     <Router>
+    //         <GlobalStyles /> {/*No funciona en React Native*/}
+    //         <Background />
+    //         <Login />
+    //     </Router>
+    // )
 }
 
 export default App

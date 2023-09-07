@@ -1,7 +1,9 @@
+import { useContext } from 'react'
+
+import { styled } from 'styled-components'
+
 import { TypeContext } from './contexts/TypeContext'
 import { IdContext } from './contexts/IdContext'
-import { styled } from 'styled-components'
-import { useContext } from 'react'
 
 const StyledTextBoxs = styled.div`
     display: flex;
@@ -12,9 +14,15 @@ const StyledTextBoxs = styled.div`
         font-size: 24px;
     }
 
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 1023px) {
         label {
             font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        label {
+            font-size: 16px;
         }
     }
 `
@@ -83,7 +91,8 @@ const StyledPassword = styled.div`
 function PasswordBlock() {
     const type = useContext(TypeContext)
     const id = useContext(IdContext)
-    return(
+
+    return (
         <StyledPassword>
             <StyledInput type={type} id={id} name={id} required></StyledInput>
             <button id="toggle-password" className="button-eye" type="button" value="Ver/Ocultar">
@@ -97,6 +106,7 @@ function PasswordBlock() {
 function InputBlock() {
     const type = useContext(TypeContext)
     const id = useContext(IdContext)
+
     if (type === 'text' || type === 'number' || type === 'email') {
         return <StyledInput type={type} id={id} name={id} required></StyledInput>
     } else if (type === 'password') {
@@ -110,7 +120,7 @@ function InputBlock() {
     }
 }
 
-export default function TextBox({ type = 'text', id = 'default', children }) {
+const TextBox = ({ type = 'text', id = 'default', children }) => {
     return (
         <StyledTextBoxs>
             <label>{children}</label>
@@ -122,3 +132,5 @@ export default function TextBox({ type = 'text', id = 'default', children }) {
         </StyledTextBoxs>
     )
 }
+
+export default TextBox

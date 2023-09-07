@@ -11,8 +11,9 @@ const StyledForm = styled.form`
     width: 1000px;
     height: 500px;
     margin-bottom: 32px;
-    gap: 32px;
+    
     display: flex;
+    gap: 32px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -25,8 +26,8 @@ const StyledForm = styled.form`
     @media screen and (max-width: 640px) {
         border-radius: 0 0 32px 32px;
         width: 360px;
-        height: 500px;
-        margin-bottom: 32px;
+        height: 400px;
+        margin-bottom: 16px;
     }
 `
 
@@ -55,6 +56,14 @@ const LoginForm =() => {
 
     const onSubmit = (event) => {
         event.preventDefault()
+
+        console.log(event.target.value)
+
+        const user = null
+
+        window.localStorage.setItem(
+            'loggedUser', JSON.stringify(user)
+        )
         // props.onLogin('mluukkai')
         navigate('/')
     }
