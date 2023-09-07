@@ -8,7 +8,7 @@ import TextBox from './TextBox'
 const StyledForm = styled.form`
     width: 1000px;
     height: 500px;
-    margin-bottom: 32px;
+    
     display: flex;
     gap: 32px;
     flex-direction: column;
