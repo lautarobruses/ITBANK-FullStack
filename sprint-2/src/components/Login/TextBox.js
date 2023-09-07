@@ -80,7 +80,7 @@ const StyledPassword = styled.div`
     }
 `
 
-function PasswordBlock(){
+function PasswordBlock() {
     const type = useContext(TypeContext)
     const id = useContext(IdContext)
     return(

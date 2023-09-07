@@ -1,6 +1,8 @@
-import TextBox from './TextBox'
-import SubmitButton from './SubmitButton'
+import { useNavigate } from 'react-router-dom'
+
 import { styled } from 'styled-components'
+
+import TextBox from './TextBox'
 
 const StyledForm = styled.form`
     background-color: var(--dark-sky-blue);
@@ -28,15 +30,45 @@ const StyledForm = styled.form`
     }
 `
 
-export default function LoginForm() {
+const StyledButton = styled.button`
+    background: var(--white);
+    color: var(--dark);
+    font-size: 24px;
+    padding: 16px 128px;
+    border-radius: 32px;
+
+    @media screen and (max-width: 1023px) {
+        font-size: 24px;
+        padding: 16px 96px;
+        border-radius: 16px;
+    }
+
+    @media screen and (max-width: 640px) {
+        font-size: 20px;
+        padding: 12px 48px;
+        border-radius: 16px;
+    }
+`
+
+const LoginForm =() => {
+    const navigate = useNavigate()
+
+    const onSubmit = (event) => {
+        event.preventDefault()
+        // props.onLogin('mluukkai')
+        navigate('/')
+    }
+
     return (
-        <StyledForm>
+        <StyledForm onSubmit={onSubmit}>
             <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
             <div>
                 <TextBox type='password' id='password'>Contraseña:</TextBox>
                 <a href="coming-soon.html">Olvide mi contraseña</a>
             </div>
-            <SubmitButton>Iniciar sesión</SubmitButton>
+            <StyledButton type="submit" id="login" value="login">Iniciar sesion</StyledButton>
         </StyledForm>
     )
 }
+
+export default LoginForm
