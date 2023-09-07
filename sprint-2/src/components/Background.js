@@ -1,4 +1,4 @@
-import { styled } from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import background from '../assets/background.jpg'
 
@@ -22,10 +22,25 @@ const StyledDiv = styled.div`
         top: 80px;
         left: 0%;
     }
+
+    ${(props) => props.$isLogin && css`
+        background-attachment: inherit;
+        top: 0px;
+        left: 0px;
+
+        @media screen and (max-width: 1023px) {
+            left: 0px;
+        }
+    
+        @media screen and (max-width: 640px) {
+            top: 0px;
+            left: 0px;
+        }
+    `}
 `
 
-const Background = () => {
-    return <StyledDiv />
+const Background = ({ login }) => {
+    return <StyledDiv $isLogin={login} />
 }
 
 export default Background

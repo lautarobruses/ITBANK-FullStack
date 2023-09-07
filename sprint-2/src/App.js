@@ -4,7 +4,7 @@ import {
 
 import GlobalStyles from './components/GlobalStyles'
 
-import Background from './components/Background'
+// import Background from './components/Background'
 // import Header from './components/Header/Header'
 // import Navbar from './components/Navbar/Navbar'
 // import Footer from './components/Footer/Footer'
@@ -16,7 +16,7 @@ const App = () => {
     // return (
     //     <Router>
     //         <GlobalStyles /> {/*No funciona en React Native*/}
-    //         <Background />
+    //         <Background login={false}/>
     //         <Header />
     //         <Navbar />
     //         <Main />
@@ -27,7 +27,6 @@ const App = () => {
     return (
         <Router>
             <GlobalStyles /> {/*No funciona en React Native*/}
-            <Background />
             <Login />
         </Router>
     )

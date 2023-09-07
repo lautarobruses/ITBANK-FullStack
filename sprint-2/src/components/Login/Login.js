@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react'
 
 import { styled } from 'styled-components'
 
-import background from '../../assets/background.jpg'
-
 import HeaderForm from './HeaderForm'
 import LoginForm from './LoginForm'
+import Background from '../Background'
 
 const StyledLogin = styled.div`
     position: fixed;
@@ -13,10 +12,8 @@ const StyledLogin = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${background});
-    background-size: cover;
-    background-position: center;
     z-index: -1;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,18 +54,21 @@ export default function Login(){
     }, [])
 
     return (
-        <StyledLogin>
-            <HeaderForm/>
-            <LoginForm/>
-            <div id="footer-register">
-                <p>¿No tienes una cuenta? </p>
-                <a href="#">Registrate!</a>
-            </div>
-            <div id="footer-terms">
-                <a href="#">Terminos</a>
-                <span>|</span>
-                <a href="#">Privacidad</a>
-            </div>
-        </StyledLogin>
+        <>
+            <Background login={true}/>
+            <StyledLogin>
+                <HeaderForm/>
+                <LoginForm/>
+                <div id="footer-register">
+                    <p>¿No tienes una cuenta? </p>
+                    <a href="#">Registrate!</a>
+                </div>
+                <div id="footer-terms">
+                    <a href="#">Terminos</a>
+                    <span>|</span>
+                    <a href="#">Privacidad</a>
+                </div>
+            </StyledLogin>
+        </>
     )
 }

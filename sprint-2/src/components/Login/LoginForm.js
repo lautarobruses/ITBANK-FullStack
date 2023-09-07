@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { styled } from 'styled-components'
-import StyledBackgroundForm from './styles/StyledBackgroundForm'
 
 import TextBox from './TextBox'
 
@@ -15,6 +15,14 @@ const StyledForm = styled.form`
     justify-content: center;
     align-items: center;
 
+    #password-container {
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+    }
+
     @media screen and (max-width: 1023px) {
         width: 600px;
     }
@@ -22,7 +30,6 @@ const StyledForm = styled.form`
     @media screen and (max-width: 640px) {
         width: 360px;
         height: 400px;
-        margin-bottom: 16px;
     }
 `
 
@@ -46,15 +53,38 @@ const StyledButton = styled.button`
     }
 `
 
+const StyledBackgroundForm = styled.div `
+    background-color: var(--dark-sky-blue);
+    opacity: 0.8;
+    border-radius: 0 0 64px 64px;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 1023px) {
+        border-radius: 0 0 32px 32px;
+    }
+    
+    @media screen and (max-width: 640px) {
+        border-radius: 0 0 32px 32px;
+    }
+`
+
 const LoginForm =() => {
     const navigate = useNavigate()
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    const onSubmit = (event) => {
+    console.log(username)
+    console.log(password)
+
+    const handleLogin  = (event) => {
         event.preventDefault()
 
         console.log(event.target.value)
 
-        const user = null
+        const user = { username, password }
+
+        setUsername()
+        setPassword()
 
         window.localStorage.setItem(
             'loggedUser', JSON.stringify(user)
@@ -65,9 +95,9 @@ const LoginForm =() => {
 
     return (
         <StyledBackgroundForm>
-            <StyledForm onSubmit={onSubmit}>
+            <StyledForm onSubmit={handleLogin}>
                 <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
-                <div>
+                <div id='password-container'>
                     <TextBox type='password' id='password'>Contraseña:</TextBox>
                     <a href="coming-soon.html">Olvide mi contraseña</a>
                 </div>
