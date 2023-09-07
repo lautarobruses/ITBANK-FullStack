@@ -1,14 +1,12 @@
-import Main from './Main';
-
-function Cuenta(){
+const Cuenta = () => {
     return(
-        <Main>
-            <div class = 'titulo-cuenta'>
+        <>
+            <div className = 'titulo-cuenta'>
                 <h1>TUS CUENTAS</h1>
-                <h3 class="subtitulo-cuenta">Cuentas</h3>
+                <h3 className="subtitulo-cuenta">Cuentas</h3>
             </div>
-            
-        </Main>
-    );
+        </>
+    )
 }
 
+export default Cuenta
