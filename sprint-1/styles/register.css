@@ -108,6 +108,19 @@ html {
     padding: 16px;
     padding-right: 48px;
     margin-top: 16px;
+
+    
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+}
+
+.background-container #register-box-container .textbox input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 
 .background-container #register-box-container .form .textbox .password-input-container {

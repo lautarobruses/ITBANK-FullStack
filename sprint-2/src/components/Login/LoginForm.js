@@ -1,17 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 
 import { styled } from 'styled-components'
+import StyledBackgroundForm from './styles/StyledBackgroundForm'
 
 import TextBox from './TextBox'
 
 const StyledForm = styled.form`
-    background-color: var(--dark-sky-blue);
-    opacity: 0.8;
-    border-radius: 0 0 64px 64px;
     width: 1000px;
     height: 500px;
     margin-bottom: 32px;
-    
     display: flex;
     gap: 32px;
     flex-direction: column;
@@ -19,12 +16,10 @@ const StyledForm = styled.form`
     align-items: center;
 
     @media screen and (max-width: 1023px) {
-        border-radius: 0 0 32px 32px;
         width: 600px;
     }
 
     @media screen and (max-width: 640px) {
-        border-radius: 0 0 32px 32px;
         width: 360px;
         height: 400px;
         margin-bottom: 16px;
@@ -69,14 +64,16 @@ const LoginForm =() => {
     }
 
     return (
-        <StyledForm onSubmit={onSubmit}>
-            <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
-            <div>
-                <TextBox type='password' id='password'>Contraseña:</TextBox>
-                <a href="coming-soon.html">Olvide mi contraseña</a>
-            </div>
-            <StyledButton type="submit" id="login" value="login">Iniciar sesion</StyledButton>
-        </StyledForm>
+        <StyledBackgroundForm>
+            <StyledForm onSubmit={onSubmit}>
+                <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
+                <div>
+                    <TextBox type='password' id='password'>Contraseña:</TextBox>
+                    <a href="coming-soon.html">Olvide mi contraseña</a>
+                </div>
+                <StyledButton type="submit" id="login" value="login">Iniciar sesion</StyledButton>
+            </StyledForm>
+        </StyledBackgroundForm>
     )
 }
 
