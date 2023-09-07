@@ -100,6 +100,7 @@ const Navbar = () => {
     const handleToggle = () => {
         dispatch(toggleVisibility())
     }
+
     return (
         <StyledNavbar $isOpen={open} onClick={handleToggle}>
             <div className="nav-links">

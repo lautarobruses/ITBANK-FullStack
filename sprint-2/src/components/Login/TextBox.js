@@ -41,6 +41,7 @@ const StyledInput = styled.div`
         font-size: medium;
         padding: 16px;
         padding-right: 48px;
+        margin-bottom: 8px;
     }
 
     input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
