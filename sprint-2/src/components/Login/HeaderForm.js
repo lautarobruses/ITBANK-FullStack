@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import path from '../../assets/nexusbanklogo3.png'
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
     background-color: var(--white);
     border-radius: 64px 64px 0 0;
     width: 1000px;

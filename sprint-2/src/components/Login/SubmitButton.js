@@ -20,8 +20,8 @@ const StyledButton = styled.button`
     }
 `
 
-export default function SubmitButton({ children }){
+export default function SubmitButton({ id='submit' , children }){
     return (
-        <StyledButton type="submit" id="login" value="login">{ children }</StyledButton>
+        <StyledButton type="submit" id={id} value={id}>{ children }</StyledButton>
     )
 }
