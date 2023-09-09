@@ -1,0 +1,92 @@
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff; 
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5); 
+    background-size: cover; 
+    background-position: center center; 
+    padding: 20px; 
+}
+h3 {
+    font-size: 24px; 
+    font-weight: normal; 
+    color: #fff; 
+    text-align: initial; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-top: 10px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #004d99;
+}
+.container{
+    display: table;
+    padding: 16px;
+    width: 100%;
+    height: 300px;
+    height: 30vh;
+    vertical-align: middle;
+    border-radius: 6px;
+    margin-bottom: 0;
+}
+.card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 10px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card img {
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.monto {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: #0066cc;
+}
+.tarjetas {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.numCuenta {
+    font-size: 0.9rem;
+    color: #7a7979;
+}
+.izquierda{
+    text-align: initial;
+}
+.parte1{
+    display: flex;
+}
