@@ -11,7 +11,6 @@ import Footer from './components/Footer/Footer'
 import Main from './components/Main/Main'
 // import Login from './components/Login/Login'
 
-
 const App = () => {
     return (
         <Router>

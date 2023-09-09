@@ -1,6 +1,8 @@
 import React from 'react'
+
 import UCA from '../../assets/UCA.png'
 import USD from '../../assets/USD.png'
+
 import './estilosMain/Cuenta.css'
 
 const Cuenta = () => {
@@ -41,7 +43,6 @@ const Cuenta = () => {
             </div>
         </div>
     )
-
 }
 
 export default Cuenta
