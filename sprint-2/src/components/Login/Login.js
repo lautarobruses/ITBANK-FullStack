@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 
 import HeaderForm from './HeaderForm'
-// import LoginForm from './LoginForm'
 import Background from '../Background'
 
 const StyledLogin = styled.div`
@@ -21,7 +20,6 @@ const StyledLogin = styled.div`
     align-items: center;
 
     a, p, span, label{
-        font-family: 'Lato', sans-serif;
         color: var(--white);
     }
 
