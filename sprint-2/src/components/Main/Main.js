@@ -1,9 +1,9 @@
 import {
-    Routes, Route
+    Outlet
 } from 'react-router-dom'
 
 import { styled } from 'styled-components'
-import Cuenta from './Cuenta'
+// import Cuenta from './Cuenta'
 
 const StyledMain = styled.main`
     margin-top: 100px;
@@ -24,14 +24,7 @@ const StyledMain = styled.main`
 const Main = () => {
     return (
         <StyledMain>
-            <Routes>
-                {/* DENTRO DE ELEMENT VA EL COMPONENTE CORRESPONDIENTE A CADA RUTA */}
-                <Route path="/" element={null} />
-                <Route path="/cuenta" element={<Cuenta />} />
-                <Route path="/transferencias" element={null} />
-                <Route path="/pagos" element={null} />
-                <Route path="/prestamos" element={null} />
-            </Routes>
+            <Outlet/>
         </StyledMain>
     )
 }

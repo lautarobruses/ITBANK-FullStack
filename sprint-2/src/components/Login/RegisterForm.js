@@ -1,3 +1,5 @@
+import { Link, useNavigate } from 'react-router-dom'
+
 import TextBox from './TextBox'
 import SubmitButton from './SubmitButton'
 import InteractiveButton from './InteractiveButton'
@@ -97,9 +99,40 @@ const StyledForm = styled.form `
 `
 
 export default function RegisterForm() {
+    const navigate = useNavigate()
+
+    const handleRegister  = (event) => {
+        event.preventDefault()
+
+        console.log(event)
+
+        const username = event.target[0].value
+        const password = event.target[1].value
+        const dni = event.target[3].value
+        const email = event.target[4].value
+        const confirmPassword = event.target[5].value
+        const phone = event.target[7].value
+
+        const user = { username, password }
+        const userRegister = { username, password, dni, email, confirmPassword, phone }
+
+        // setUsername()
+        // setPassword()
+
+        window.localStorage.setItem(
+            'loggedUser', JSON.stringify(user)
+        )
+
+        window.localStorage.setItem( //Aca en un futuro se debera guardar en la base de datos
+            'registedUser', JSON.stringify(userRegister)
+        )
+
+        navigate('/')
+    }
+
     return (
         <StyledBackgroundForm >
-            <StyledForm>
+            <StyledForm onSubmit={handleRegister}>
                 <section id='left-form-container'>
                     <TextBox type='text' id='name'>Nombre y Apellido:</TextBox>
                     <TextBox type='password' id='password'>Contraseña:</TextBox>
@@ -113,7 +146,12 @@ export default function RegisterForm() {
                 <section id='send-form-container'>
                     <Checkbox>Acepto los <a href='#'>Términos y Condiciones</a></Checkbox>
                     <div id='buttons-container'>
-                        <InteractiveButton><svg xmlns="http://www.w3.org/2000/svg" id="Outline" stroke="currentColor" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em"><path d="M19,11H9l3.29-3.29a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0l-4.29,4.3A2,2,0,0,0,6,12H6a2,2,0,0,0,.59,1.4l4.29,4.3a1,1,0,1,0,1.41-1.42L9,13H19a1,1,0,0,0,0-2Z"/></svg>Atrás</InteractiveButton>
+                        <InteractiveButton>
+                            <Link to="/login">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" stroke="currentColor" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em"><path d="M19,11H9l3.29-3.29a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0l-4.29,4.3A2,2,0,0,0,6,12H6a2,2,0,0,0,.59,1.4l4.29,4.3a1,1,0,1,0,1.41-1.42L9,13H19a1,1,0,0,0,0-2Z"/></svg>
+                                Atrás
+                            </Link>
+                        </InteractiveButton>
                         <SubmitButton id="register">Crear cuenta</SubmitButton>
                     </div>
                 </section>
