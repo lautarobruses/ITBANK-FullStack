@@ -15,6 +15,7 @@ const loginReducer = (state = null, action) => {
     }
     case 'LOGOUT_USER': {
         return null
+        //Meter parte Backend
     }
     default:
         return state

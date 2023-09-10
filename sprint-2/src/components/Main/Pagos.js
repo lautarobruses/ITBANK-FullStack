@@ -1,7 +1,11 @@
 import { React, useState } from 'react'
-import './estilosMain/Cuenta.css'
-import cuaderno from '../../assets/cuaderno.png'
+
 import Modal from 'react-modal'
+
+import './estilosMain/Cuenta.css'
+
+import cuaderno from '../../assets/cuaderno.png'
+
 
 const Pagos = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)

@@ -3,7 +3,6 @@ import {
 } from 'react-router-dom'
 
 import { styled } from 'styled-components'
-// import Cuenta from './Cuenta'
 
 const StyledMain = styled.main`
     margin-top: 100px;
