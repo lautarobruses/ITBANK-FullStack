@@ -1,102 +1,120 @@
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
 h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #fff; 
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     margin-bottom: 20px;
-    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5); 
-    background-size: cover; 
-    background-position: center center; 
-    padding: 20px; 
+    color: #333;
 }
 
-h3 {
-    font-size: 24px; 
-    font-weight: normal; 
-    color: #fff; 
-    text-align: initial; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    margin-top: 10px; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+.transparente {
+    opacity: 0.7;
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #004d99;
-}
-
-.container{
-    display: table;
-    padding: 16px;
-    width: 100%;
-    height: 300px;
-    height: 30vh;
-    vertical-align: middle;
-    border-radius: 6px;
-    margin-bottom: 0;
+/* Tarjetas */
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {
-    border: 1px solid #ccc;
-    padding: 20px;
+    width: calc(102% - 20px);
+    background-color: #fff;
+    margin-bottom: 40px;
     text-align: center;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    margin: 10px;
-    width: calc(50% - 20px);
-    box-sizing: border-box;
-    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.cardContent {
+    padding: 20px;
+    text-align: center;
+}
+
+.cardTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 10px;
 }
 
-.card-title {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
 .monto {
-    font-size: 1.8rem;
+    font-size: 32px;
+    font-weight: bold;
+    color: #007bff;
     margin: 10px 0;
-    color: #0066cc;
 }
 
-.tarjetas {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+.button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-size: 18px;
 }
 
-.numCuenta {
-    font-size: 0.9rem;
-    color: #7a7979;
+.button:hover {
+    background-color: #0056b3;
+}
+.parte1 {
+    width: calc(260% - 20px);
 }
 
-.izquierda {
-    text-align: initial;
-}
 
-.parte1{
-    display: flex;
+/* Estilos para dispositivos aún más pequeños */
+@media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .cardContent {
+        padding: 15px;
+    }
+
+    .monto {
+        font-size: 28px;
+    }
 }

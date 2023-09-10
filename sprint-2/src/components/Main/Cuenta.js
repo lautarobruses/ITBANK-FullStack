@@ -12,6 +12,10 @@ const Cuenta = () => {
         monto:727,
         numCuenta:55684497220905,
     })
+    const [saldoVisible, setSaldoVisible] = useState(true)
+    const toggleVisibilidadSaldo = () => {
+        setSaldoVisible(!saldoVisible)
+    }
     // const comprarDolares = () => {
     //     const valorDolar = 710
     //     const cantidadDolares = prompt('Ingrese la cantidad que desea comprar: ')
@@ -45,28 +49,34 @@ const Cuenta = () => {
                         <h6 className='izquierda'>PRINCIPAL</h6>
                         <img src={UCA} alt='Caja de Ahorro' />
                         <h4 className='cardTitle'>Caja Ahorro Pesos</h4>
-                        <h2 className="monto">$ {pesos.monto}</h2>
-                        <p>{pesos.numCuenta}</p>
+                        {saldoVisible ? (
+                            <h2 className="monto">$ {pesos.monto}</h2>
+                        ) : (
+                            <h2 className='monto'>$*****</h2>
+                        )}
+                        <button className='button' onClick={toggleVisibilidadSaldo}>
+                            {saldoVisible ? 'Ocultar Saldo' : 'Mostrar Saldo' }
+                        </button>
+                        <hr />
+                        <p>N°{pesos.numCuenta}</p>
                     </div>
                     <div className='card'>
                         <br />
                         <img src={USD} alt='Caja de Ahorro en dólares' />
                         <h4 className="cardTitle">Caja Ahorro Dólares</h4>
-                        <h2 className="monto">U$D {dolar.monto}</h2>
-                        <p>{dolar.numCuenta}</p>
+                        {saldoVisible ? (
+                            <h2 className="monto">U$D {dolar.monto}</h2>
+                        ) : (
+                            <h2 className="monto">U$D *****</h2>
+                        )
+                        }
+                        <button className='button' onClick={toggleVisibilidadSaldo}>
+                            {saldoVisible ? 'Ocultar Saldo' : 'Mostrar Saldo' }
+                        </button>
+                        <hr />
+                        <p>N°{dolar.numCuenta}</p>
                         {/* <button className="button" onClick={comprarDolares}>Comprar</button>
                         <button className="button" onClick={venderDolares}>Vender</button> */}
-                    </div>
-                </div>
-                <h3 className="subtitle">Cheques</h3>
-                <div className="tarjetas">
-                    <div className='parte1'>
-                        <div className="card">
-                            <h4>Cheques electrónicos</h4>
-                        </div>
-                        <div className="card">
-                            <h4>Cheques físicos</h4>
-                        </div>
                     </div>
                 </div>
             </div>
