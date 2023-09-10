@@ -1,7 +1,9 @@
+import { styled } from 'styled-components'
+
+import StyledBackgroundLogin from './styles/StyledBackgroundLogin'
+
 import HeaderForm from './HeaderForm'
 import RegisterForm from './RegisterForm'
-import StyledBackgroundLogin from './styles/StyledBackgroundLogin'
-import { styled } from 'styled-components'
 
 const StyledBackgroundCustom = styled.div`
 

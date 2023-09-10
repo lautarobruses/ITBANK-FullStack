@@ -4,7 +4,6 @@ const StyledCheckbox = styled.div`
     position: relative;
 
     label{
-        font-size: large;
         padding-left: 36px;
     }
 

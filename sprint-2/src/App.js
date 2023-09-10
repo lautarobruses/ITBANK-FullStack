@@ -1,7 +1,8 @@
 import {
     BrowserRouter as Router, Routes, Route, Navigate
 } from 'react-router-dom'
-import React, { useState } from 'react'
+
+import React, { useEffect, useState } from 'react'
 
 import GlobalStyles from './components/GlobalStyles'
 import Background from './components/Background'
@@ -16,6 +17,16 @@ import RegisterForm from './components/Login/RegisterForm'
 const App = () => {
     const [user, setUser] = useState(false)
 
+    console.log(user) //TODO
+
+    useEffect(() => {
+        const loggedUserJSON = window.localStorage.getItem('loggedUser')
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            setUser(user)
+        }
+    }, [])
+
     const login = (user) => {
         setUser(user)
     }
@@ -23,10 +34,9 @@ const App = () => {
     return (
         <Router>
             <GlobalStyles /> {/*No funciona en React Native*/}
-            <Background login={false}/>
+            <Background />
             <Routes>
                 <Route path='/' element={ user ? <Home /> : <Navigate replace to="/login"/> }>
-                    {/* DENTRO DE ELEMENT VA EL COMPONENTE CORRESPONDIENTE A CADA RUTA */}
                     <Route index element={null} /> {/*Pagina de inicio*/}
                     <Route path="/cuenta" element={<Cuenta />} />
                     <Route path="/transferencias" element={null} />
@@ -40,12 +50,6 @@ const App = () => {
             </Routes>
         </Router>
     )
-    // return (
-    //     <Router>
-    //         <GlobalStyles /> {/*No funciona en React Native*/}
-    //         <Login />
-    //     </Router>
-    // )
 }
 
 export default App
