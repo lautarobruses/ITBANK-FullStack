@@ -130,6 +130,7 @@ h3 {
 .button:hover {
     background-color: #0056b3;
 }
+
 .parte1 {
     width: calc(260% - 20px);
 }
