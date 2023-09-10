@@ -40,7 +40,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={ user ? <Home /> : <Navigate replace to="/login"/> }>
                     {/* DENTRO DE ELEMENT VA EL COMPONENTE CORRESPONDIENTE A CADA RUTA */}
-                    <Route index element={null} /> {/*Pagina de inicio*/}
+                    <Route index element={<Inicio />} /> {/*Pagina de inicio*/}
                     <Route path="/cuenta" element={<Cuenta />} />
                     <Route path="/transferencias" element={null} />
                     <Route path="/pagos" element={ <Pagos /> } />

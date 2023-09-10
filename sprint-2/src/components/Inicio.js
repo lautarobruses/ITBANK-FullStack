@@ -4,13 +4,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Mastercard from '../../src/assets/Mastercard.png'
 
-const StyledHeader = styled.div`
-    text-align: center;
-    background-color: #007BFF;
-    color: white;
-    padding: 20px;
-    font-size: 24px;
-`
 
 const StyledCuenta = styled.div`
     padding: 20px;
@@ -108,9 +101,6 @@ const movimientosFicticios = [
 function Inicio() {
     return (
         <div>
-            <StyledHeader>
-                <h1>Hola Devuelta!</h1>
-            </StyledHeader>
             <StyledCuenta bgColor='white' fontColor='Black'>
                 <Cuenta text1='Cuentas' text2='Saldos totales' saldo={999.99999950}  mostrarImagen={false} />
             </StyledCuenta>
