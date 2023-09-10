@@ -18,7 +18,19 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
-
+.contenedor{
+    border: 1px solid #000000;
+    background-color: rgba(255, 255, 255, .7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.iconCuaderno{
+    margin-top: 50px;
+    width: 50px; 
+    height: 50px; 
+}
 h1 {
     font-size: 36px;
     font-weight: bold;
@@ -56,7 +68,7 @@ h3 {
 
 .card {
     width: calc(102% - 20px);
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, .7);
     margin-bottom: 40px;
     text-align: center;
     border: 1px solid #e0e0e0;
@@ -104,7 +116,6 @@ h3 {
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
     font-size: 18px;
 }
 
