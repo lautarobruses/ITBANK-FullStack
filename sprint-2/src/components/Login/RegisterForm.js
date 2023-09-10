@@ -8,9 +8,6 @@ import { styled } from 'styled-components'
 import StyledBackgroundForm from './styles/StyledBackgroundForm'
 
 const StyledForm = styled.form `
-    width: 1000px;
-    height: 560px;
-
     display: grid;
     grid-template-columns: 50% 50% ;
     grid-template-rows: 74% 26%;
@@ -22,13 +19,14 @@ const StyledForm = styled.form `
         gap: 32px;
     }
 
-    #send-form-container{
-        grid-column: 1 / span2;
+    #send-form-container {
+        margin-top:12px;
+        grid-column: 1 / 3;
 
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
     }
 
     #buttons-container{
@@ -50,8 +48,6 @@ const StyledForm = styled.form `
     }
 
     @media screen and (max-width: 1023px) {
-        width: 600px;
-        height: 1000px;
 
         grid-template-columns: 1fr;
         grid-template-rows: 420px 420px 160px;
@@ -76,8 +72,6 @@ const StyledForm = styled.form `
     }
 
     @media screen and (max-width: 640px) {
-        width: 360px;
-        height: 890px;
 
         grid-template-rows: 370px 370px 160px;
 
@@ -131,7 +125,7 @@ export default function RegisterForm() {
     }
 
     return (
-        <StyledBackgroundForm >
+        <StyledBackgroundForm>
             <StyledForm onSubmit={handleRegister}>
                 <section id='left-form-container'>
                     <TextBox type='text' id='name'>Nombre y Apellido:</TextBox>
