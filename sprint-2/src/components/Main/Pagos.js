@@ -5,12 +5,15 @@ import Modal from 'react-modal'
 
 const Pagos = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
+
     const openModal = () => {
         setModalIsOpen(true)
     }
+
     const closeModal = () => {
         setModalIsOpen(false)
     }
+
     return(
         <div className='container'>
             <h1>PAGOS DE SERVICIOS</h1>
