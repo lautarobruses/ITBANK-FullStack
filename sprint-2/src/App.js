@@ -9,6 +9,7 @@ import Background from './components/Background'
 
 import Home from './components/Home'
 import Cuenta from './components/Main/Cuenta'
+import Pagos from './components/Main/Pagos'
 import Login from './components/Login/Login'
 import LoginForm from './components/Login/LoginForm'
 import FooterLogin from './components/Login/FooterLogin'
@@ -38,9 +39,9 @@ const App = () => {
             <Routes>
                 <Route path='/' element={ user ? <Home /> : <Navigate replace to="/login"/> }>
                     <Route index element={null} /> {/*Pagina de inicio*/}
-                    <Route path="/cuenta" element={<Cuenta />} />
+                    <Route path="/cuenta" element={ <Cuenta /> } />
                     <Route path="/transferencias" element={null} />
-                    <Route path="/pagos" element={null} />
+                    <Route path="/pagos" element={ <Pagos /> } />
                     <Route path="/prestamos" element={null} />
                 </Route>
                 <Route path='/login' element={ <Login/> }>
