@@ -31,6 +31,14 @@ body {
     width: 50px; 
     height: 50px; 
 }
+.link{
+    color: #0056b3;
+    cursor: pointer;
+}
+.link:hover{
+    color: #007bff;
+    text-decoration: underline;
+}
 h1 {
     font-size: 36px;
     font-weight: bold;
@@ -125,7 +133,7 @@ h3 {
 .parte1 {
     width: calc(260% - 20px);
 }
-
+/*Modal*/
 
 /* Estilos para dispositivos aún más pequeños */
 @media screen and (max-width: 480px) {
