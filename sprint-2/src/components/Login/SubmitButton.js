@@ -14,7 +14,7 @@ const StyledButton = styled.button`
     }
 
     @media screen and (max-width: 640px) {
-        font-size: 20px;
+        font-size: 16px;
         padding: 12px 48px;
         border-radius: 16px;
     }

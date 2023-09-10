@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { styled } from 'styled-components'
@@ -6,6 +5,7 @@ import { styled } from 'styled-components'
 import TextBox from './TextBox'
 
 const StyledForm = styled.form`
+    position: relative;
     width: 1000px;
     height: 500px;
     
@@ -70,11 +70,6 @@ const StyledBackgroundForm = styled.div `
 
 const LoginForm =(props) => {
     const navigate = useNavigate()
-    // const [username, setUsername] = useState('')
-    // const [password, setPassword] = useState('')
-
-    // console.log(username)
-    // console.log(password)
 
     const handleLogin  = (event) => {
         event.preventDefault()
@@ -83,9 +78,6 @@ const LoginForm =(props) => {
         const password = event.target[1].value
 
         const user = { username, password }
-
-        // setUsername()
-        // setPassword()
 
         window.localStorage.setItem(
             'loggedUser', JSON.stringify(user)

@@ -42,7 +42,7 @@ const Cuenta = () => {
     return (
         <div className='container'>
             <h1>Tus cuentas</h1>
-            <h3 className='transparente'>Cuentas</h3>
+            <h3>Cuentas</h3>
             <div className='tarjetas'>
                 <div className='parte1'>
                     <div className='card'>
@@ -52,7 +52,7 @@ const Cuenta = () => {
                         {saldoVisible ? (
                             <h2 className="monto">$ {pesos.monto}</h2>
                         ) : (
-                            <h2 className='monto'>$*****</h2>
+                            <h2 className='monto'>$ *****</h2>
                         )}
                         <button className='button' onClick={toggleVisibilidadSaldo}>
                             {saldoVisible ? 'Ocultar Saldo' : 'Mostrar Saldo' }

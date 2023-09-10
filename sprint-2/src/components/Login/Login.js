@@ -1,27 +1,24 @@
 import { Outlet } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 
 import { styled } from 'styled-components'
 
 import HeaderForm from './HeaderForm'
-// import LoginForm from './LoginForm'
 import Background from '../Background'
 
 const StyledLogin = styled.div`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     a, p, span, label{
-        font-family: 'Lato', sans-serif;
         color: var(--white);
     }
 
@@ -39,24 +36,21 @@ const StyledLogin = styled.div`
     #footer-terms a{
         text-decoration: none;
     }
+
+    @media screen and (max-width: 1023px) {
+        position: relative;
+        margin: 64px;
+    }
+
+    @media screen and (max-width: 640px) {
+        
+    }
 `
 
 const Login = () => {
-    const [user, setUser] = useState(null)
-
-    console.log(user) //TODO
-
-    useEffect(() => {
-        const loggedUserJSON = window.localStorage.getItem('loggedUser')
-        if (loggedUserJSON) {
-            const user = JSON.parse(loggedUserJSON)
-            setUser(user)
-        }
-    }, [])
-
     return (
         <>
-            <Background login={true}/>
+            <Background />
             <StyledLogin>
                 <HeaderForm/>
                 <Outlet/>

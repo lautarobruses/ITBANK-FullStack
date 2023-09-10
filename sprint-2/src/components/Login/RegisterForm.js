@@ -8,56 +8,50 @@ import { styled } from 'styled-components'
 import StyledBackgroundForm from './styles/StyledBackgroundForm'
 
 const StyledForm = styled.form `
-    width: 1000px;
-    height: 560px;
-
     display: grid;
-    grid-template-columns: 50% 50% ;
-    grid-template-rows: 74% 26%;
     align-items: center;
     justify-items: center;
 
     section {
         display: grid;
-        gap: 32px;
+        gap: 24px;
+        margin-bottom: 24px;
     }
 
-    #send-form-container{
-        grid-column: 1 / span2;
+    #send-form-container {
+        margin-top:12px;
+        grid-column: 1 / 3;
 
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 32px;
     }
 
     #buttons-container{
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 24px;
     }
 
     /*Tamaño personalizado del textbox*/
-    input{ 
+    input { 
         width: 433px;
         height: 55px
     }
 
     /*Tamaño personalizado del boton*/
 
-    #register{
+    .register {
         padding: 16px 60px;
     }
 
     @media screen and (max-width: 1023px) {
-        width: 600px;
-        height: 1000px;
-
         grid-template-columns: 1fr;
-        grid-template-rows: 420px 420px 160px;
+        // grid-template-rows: 380px 380px 160px;
 
-        #left-form-container{
-            padding-top: 25px;
+        section {
+            display: grid;
         }
 
         #left-form-container{
@@ -76,10 +70,7 @@ const StyledForm = styled.form `
     }
 
     @media screen and (max-width: 640px) {
-        width: 360px;
-        height: 890px;
-
-        grid-template-rows: 370px 370px 160px;
+        // grid-template-rows: 370px 370px 160px;
 
         #interactive-button {
             font-size: 20px;
@@ -94,6 +85,10 @@ const StyledForm = styled.form `
         input{
             width: 300px;
             height: 48px;
+        }
+
+        .register {
+            padding: 16px 60px;
         }
     }
 `
@@ -113,15 +108,7 @@ export default function RegisterForm() {
         const confirmPassword = event.target[5].value
         const phone = event.target[7].value
 
-        const user = { username, password }
         const userRegister = { username, password, dni, email, confirmPassword, phone }
-
-        // setUsername()
-        // setPassword()
-
-        window.localStorage.setItem(
-            'loggedUser', JSON.stringify(user)
-        )
 
         window.localStorage.setItem( //Aca en un futuro se debera guardar en la base de datos
             'registedUser', JSON.stringify(userRegister)
@@ -131,7 +118,7 @@ export default function RegisterForm() {
     }
 
     return (
-        <StyledBackgroundForm >
+        <StyledBackgroundForm>
             <StyledForm onSubmit={handleRegister}>
                 <section id='left-form-container'>
                     <TextBox type='text' id='name'>Nombre y Apellido:</TextBox>
@@ -152,7 +139,7 @@ export default function RegisterForm() {
                                 Atrás
                             </Link>
                         </InteractiveButton>
-                        <SubmitButton id="register">Crear cuenta</SubmitButton>
+                        <SubmitButton className="register">Crear cuenta</SubmitButton>
                     </div>
                 </section>
             </StyledForm>

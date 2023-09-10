@@ -4,7 +4,6 @@ const StyledCheckbox = styled.div`
     position: relative;
 
     label{
-        font-size: large;
         padding-left: 36px;
     }
 
@@ -20,7 +19,7 @@ const StyledCheckbox = styled.div`
     .control_indicator {
         position: absolute;
         top: 0px;
-        height: 19px;
+        height: 20px;
         width: 20px;
         background: rgba(0, 0, 0, 0.25);
         border: 1px solid var(--white);

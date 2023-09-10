@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
     align-items: center;
     
     img {
-        height: 68px;
+        height: 64px;
         width: auto;
     }
     
