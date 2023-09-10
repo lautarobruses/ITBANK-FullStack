@@ -1,9 +1,10 @@
+import { Outlet } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 import { styled } from 'styled-components'
 
 import HeaderForm from './HeaderForm'
-import LoginForm from './LoginForm'
+// import LoginForm from './LoginForm'
 import Background from '../Background'
 
 const StyledLogin = styled.div`
@@ -40,7 +41,7 @@ const StyledLogin = styled.div`
     }
 `
 
-export default function Login(){
+const Login = () => {
     const [user, setUser] = useState(null)
 
     console.log(user) //TODO
@@ -58,17 +59,10 @@ export default function Login(){
             <Background login={true}/>
             <StyledLogin>
                 <HeaderForm/>
-                <LoginForm/>
-                <div id="footer-register">
-                    <p>¿No tienes una cuenta? </p>
-                    <a href="#">Registrate!</a>
-                </div>
-                <div id="footer-terms">
-                    <a href="#">Terminos</a>
-                    <span>|</span>
-                    <a href="#">Privacidad</a>
-                </div>
+                <Outlet/>
             </StyledLogin>
         </>
     )
 }
+
+export default Login

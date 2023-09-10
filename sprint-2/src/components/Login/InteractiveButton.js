@@ -16,8 +16,6 @@ gap: 5px;
 
 export default function InteractiveButton({ children }){
     return(
-        <a href="login.html">
-            <StyledButton id="interactive-button" type="button" value="Volver">{ children }</StyledButton>
-        </a>
+        <StyledButton id="interactive-button" type="button" value="Volver">{ children }</StyledButton>
     )
 }

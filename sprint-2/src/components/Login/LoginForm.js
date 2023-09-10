@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { styled } from 'styled-components'
@@ -20,7 +20,7 @@ const StyledForm = styled.form`
         gap: 12px;
         flex-direction: column;
         justify-content: center;
-        align-items: left;
+        align-items: flex-start;
     }
 
     @media screen and (max-width: 1023px) {
@@ -68,28 +68,30 @@ const StyledBackgroundForm = styled.div `
     }
 `
 
-const LoginForm =() => {
+const LoginForm =(props) => {
     const navigate = useNavigate()
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    // const [username, setUsername] = useState('')
+    // const [password, setPassword] = useState('')
 
-    console.log(username)
-    console.log(password)
+    // console.log(username)
+    // console.log(password)
 
     const handleLogin  = (event) => {
         event.preventDefault()
 
-        console.log(event.target.value)
+        const username = event.target[0].value
+        const password = event.target[1].value
 
         const user = { username, password }
 
-        setUsername()
-        setPassword()
+        // setUsername()
+        // setPassword()
 
         window.localStorage.setItem(
             'loggedUser', JSON.stringify(user)
         )
-        // props.onLogin('mluukkai')
+
+        props.onLogin(username)
         navigate('/')
     }
 

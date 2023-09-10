@@ -72,7 +72,6 @@ const Cuenta = () => {
             </div>
         </div>
     )
-
 }
 
 export default Cuenta
