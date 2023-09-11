@@ -1,8 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import { styled } from 'styled-components'
 
 import TextBox from './TextBox'
+
+import { loginUser } from '../../reducers/loginReducer'
+
 
 const StyledForm = styled.form`
     position: relative;
@@ -68,8 +71,8 @@ const StyledBackgroundForm = styled.div `
     }
 `
 
-const LoginForm =(props) => {
-    const navigate = useNavigate()
+const LoginForm =() => {
+    const dispatch = useDispatch()
 
     const handleLogin  = (event) => {
         event.preventDefault()
@@ -83,8 +86,7 @@ const LoginForm =(props) => {
             'loggedUser', JSON.stringify(user)
         )
 
-        props.onLogin(username)
-        navigate('/')
+        dispatch(loginUser(username, password))
     }
 
     return (
