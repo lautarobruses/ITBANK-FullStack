@@ -4,8 +4,9 @@ import {
 
 import { styled } from 'styled-components'
 
-import SubmitButton from '../Login/SubmitButton'
-import path from '../../assets/cable-desconectado.png'
+import SubmitButton from './Login/SubmitButton'
+
+import path from '../assets/cable-desconectado.png'
 
 const StyledHeader = styled.main`
     background-color: var(--white);

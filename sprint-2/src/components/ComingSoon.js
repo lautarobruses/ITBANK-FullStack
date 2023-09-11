@@ -1,4 +1,4 @@
-import path from '../../assets/construccion-page.gif'
+import path from '../assets/construccion-page.gif'
 
 import { styled } from 'styled-components'
 

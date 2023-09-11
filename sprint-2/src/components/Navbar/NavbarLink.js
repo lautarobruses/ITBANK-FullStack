@@ -34,7 +34,7 @@ const StyledLink = styled(Link)`
     }
 `
 
-const NavLink = ({ to, svg, text }) => {
+const NavbarLink = ({ to, svg, text }) => {
     return (
         <StyledLink to={to}>
             {svg}
@@ -43,4 +43,4 @@ const NavLink = ({ to, svg, text }) => {
     )
 }
 
-export default NavLink
+export default NavbarLink

@@ -5,6 +5,7 @@ import {
 import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { initializeLoged } from './reducers/loginReducer'
 
 import GlobalStyles from './components/GlobalStyles'
 import Background from './components/Background'
@@ -16,10 +17,8 @@ import LoginForm from './components/Login/LoginForm'
 import FooterLogin from './components/Login/FooterLogin'
 import RegisterForm from './components/Login/RegisterForm'
 import Home from './components/Home'
-import PageNotFound from './components/PageNotFound/PageNotFound'
-
-import { initializeLoged } from './reducers/loginReducer'
-import ComingSoon from './components/ComingSoon/ComingSoon'
+import PageNotFound from './components/PageNotFound'
+import ComingSoon from './components/ComingSoon'
 
 const App = () => {
     const dispatch = useDispatch()

@@ -1,10 +1,12 @@
+import { useContext } from 'react'
+
+import { useDispatch } from 'react-redux'
+
 import styled, { css } from 'styled-components'
 
+import { NavbarContext } from '../Contexts/NavbarContext'
+
 import { logoutUser } from '../../reducers/loginReducer'
-
-import { useDispatch, useSelector } from 'react-redux'
-
-import { toggleVisibility } from '../../reducers/menuReducer'
 
 import NavbarLink from './NavbarLink'
 
@@ -96,21 +98,19 @@ const StyledNavbar = styled.nav`
 `
 
 const Navbar = () => {
+    const { isOpen, actualizarEstado } = useContext(NavbarContext)
     const dispatch = useDispatch()
-    const open = useSelector(state => state.buttonMenu)
 
     const handleToggle = () => {
-        dispatch(toggleVisibility())
+        actualizarEstado(!isOpen)
     }
 
     const handleLogout = () => {
         dispatch(logoutUser())
     }
 
-    console.log(open)
-
     return (
-        <StyledNavbar $isOpen={open} onClick={handleToggle}>
+        <StyledNavbar $isOpen={isOpen} onClick={handleToggle}>
             <div className="nav-links">
                 <NavbarLink
                     to="/"

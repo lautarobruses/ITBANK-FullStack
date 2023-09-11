@@ -1,8 +1,9 @@
+import { useContext } from 'react'
+
 import styled, { css } from 'styled-components'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { NavbarContext } from '../Contexts/NavbarContext'
 
-import { toggleVisibility } from '../../reducers/menuReducer'
 
 const StyledButtonMenu = styled.button`
     display: none;
@@ -34,7 +35,7 @@ const StyledSpan = styled.span`
         transform-origin: 4px 0px;
         transition: all .2s linear;
 
-        ${(props) => props.$isClose && css`
+        ${(props) => props.$isOpen && css`
             background: var(--white);
             z-index: 101;
             opacity: 1;
@@ -52,18 +53,17 @@ const StyledSpan = styled.span`
 `
 
 const ButtonMenu = () => {
-    const dispatch = useDispatch()
-    const close = useSelector(state => state.buttonMenu)
+    const { isOpen, actualizarEstado } = useContext(NavbarContext)
 
     const handleToggle = () => {
-        dispatch(toggleVisibility())
+        actualizarEstado(!isOpen)
     }
 
     return (
-        <StyledButtonMenu className={close ? 'close' : ''} onClick={handleToggle}>
-            <StyledSpan $isClose={close} />
-            <StyledSpan $isClose={close} />
-            <StyledSpan $isClose={close} />
+        <StyledButtonMenu onClick={handleToggle}>
+            <StyledSpan $isOpen={isOpen} />
+            <StyledSpan $isOpen={isOpen} />
+            <StyledSpan $isOpen={isOpen} />
         </StyledButtonMenu>
     )
 }
