@@ -43,7 +43,7 @@ const Pagos = () => {
                     <label>Tipo de servicio: </label>
                     <input type="text" placeholder="Escribe el tipo de servicio" />
 
-                    <label>Monto a Pagar:</label>
+                    <label>Monto a Pagar en pesos:</label>
                     <input type="number" placeholder="Ingresa el monto a pagar" />
 
                     <label>Fecha de pago:</label>
@@ -51,7 +51,7 @@ const Pagos = () => {
 
                     <button type='submit'>Guardar</button>
                 </form>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className='close-button'>Cerrar</button>
             </Modal>
         </div>
     )
