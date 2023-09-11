@@ -53,15 +53,24 @@ const Pagos = () => {
             ) : (
                 <div className='contenedor'>
                     <h3>Servicios A Pagar: </h3>
-                    <ul>
-                        {servicios.map((servicio, index) => (
-                            <li key={index}>
-                                {servicio.tipo}
-                                {servicio.monto}
-                                {servicio.fechaPago}
-                            </li>
-                        ))}
-                    </ul>
+                    <table className='servicios-table'>
+                        <thead>
+                            <tr>
+                                <th>Tipo de Servicio</th>
+                                <th>Monto a Pagar</th>
+                                <th>Fecha de Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {servicios.map((servicio, index) => (
+                                <tr key={index}>
+                                    <td>{servicio.tipo}</td>
+                                    <td>${servicio.monto}</td>
+                                    <td>{servicio.fechaPago}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                     <p className='link' onClick={openModal}>AÑADIR SERVICIOS</p>
                 </div>
             )}
