@@ -1,4 +1,4 @@
-const menuReducer = (state = true, action) => {
+const menuReducer = (state = false, action) => {
     switch(action.type) {
     case 'TOGGLE_VISIBILITY': {
         return !state

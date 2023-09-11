@@ -3,12 +3,15 @@ import {
 } from 'react-router-dom'
 
 import { styled } from 'styled-components'
-// import Cuenta from './Cuenta'
 
 const StyledMain = styled.main`
     margin-top: 100px;
     margin-left: 384px;
     min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media screen and (max-width: 1023px) {
         margin-left: 284px;
