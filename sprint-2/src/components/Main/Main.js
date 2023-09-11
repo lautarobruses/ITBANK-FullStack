@@ -20,7 +20,7 @@ const StyledMain = styled.main`
     @media screen and (max-width: 640px) {
         margin-top: 80px;;
         margin-left: 0px;
-        min-height: 0vh;
+        min-height: 90vh;
     }
 `
 

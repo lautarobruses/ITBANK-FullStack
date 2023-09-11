@@ -36,15 +36,6 @@ const StyledLogin = styled.div`
     #footer-terms a{
         text-decoration: none;
     }
-
-    @media screen and (max-width: 1023px) {
-        position: relative;
-        margin: 64px;
-    }
-
-    @media screen and (max-width: 640px) {
-        
-    }
 `
 
 const Login = () => {
