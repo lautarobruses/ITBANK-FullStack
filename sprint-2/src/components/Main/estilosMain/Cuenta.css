@@ -156,13 +156,13 @@ h3 {
 /*Modal*/
 .modal {
     position: fixed;
-    width: 40%;
+    width: 75%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 24px;
+    border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     z-index: 9999;
     text-align: center;
@@ -179,7 +179,9 @@ h3 {
 }
   
 .modal form {
+    padding: 12px;
     display: flex;
+    gap: 8px;
     flex-direction: column;
     align-items: center;
 }
@@ -202,9 +204,8 @@ h3 {
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 10px 20px;
-    margin-top: 15px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -213,7 +214,6 @@ h3 {
     background-color: #e0e0e0;
 }
   
-
 .modal .close-button {
     position: absolute;
     top: 10px;
@@ -225,7 +225,6 @@ h3 {
     background-color: #fff;
 }
   
-
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -234,6 +233,7 @@ h3 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9998;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -245,16 +245,15 @@ h3 {
     }
 
     .modal {
-        width: 80%; 
+        width: 75%; 
     }
 
     .modal h2 {
-        font-size: 13px; 
+        font-size: 16px; 
         margin-bottom: 20px;
         font-size: 28px; 
         color: #333; 
         font-weight: bold; 
-        margin-bottom: 10px; 
         text-transform: uppercase; 
     }
 
@@ -265,17 +264,10 @@ h3 {
     .modal input {
         font-size: 12px; 
     }
-
-    .modal button {
-        font-size: 14px; 
-    }
-    .modal .close-button {
-        font-size: 12px;
-    }
 }
 
 /* Estilos para dispositivos aún más pequeños */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px)  {
     .card {
         width: 350px;
     }
@@ -290,5 +282,10 @@ h3 {
 
     .monto {
         font-size: 28px;
+    }
+
+    .modal .add-servicios {
+        font-size: 16px;
+        text-align: left;
     }
 }

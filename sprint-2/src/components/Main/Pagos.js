@@ -73,7 +73,7 @@ const Pagos = () => {
                 contentLabel='Añadir Servicios'
                 className='modal'
             >
-                <h2>Añadir Servicios</h2>
+                <h2 className='add-servicios'>Añadir Servicios</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Tipo de servicio: </label>
                     <input
