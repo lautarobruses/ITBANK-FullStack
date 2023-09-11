@@ -1,22 +1,21 @@
-// import { Outlet } from 'react-router-dom'
-
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import Mastercard from '../../src/assets/Mastercard.png'
 
+import styled from 'styled-components'
+
+import Mastercard from '../../assets/Mastercard.png'
 
 const StyledCuenta = styled.div`
-    padding: 20px;
-    margin-top: 55px;
+    padding: 24px;
     display: flex;
     text-align: center;
-    float: left;
+
     h2 {
         font-size: 14px;
         padding: 8px;
     }
+
     & > div {
-        color: ${({ fontColor }) => fontColor};
+        color: ${(props) => props.$fontColor};
         padding: 10px;
         width: 300px;
         margin: 16px;
@@ -25,8 +24,9 @@ const StyledCuenta = styled.div`
         border: 1px;
         display: flex;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        background-color: ${({ bgColor }) => bgColor};
+        background-color: ${(props) => props.$bgColor || 'transparent'};
     }
+
     h3 {
         font-size: 12px;
         float: left;
@@ -44,6 +44,7 @@ const StyledCuenta = styled.div`
         font-family: inherit;
         cursor: pointer;
     }
+
     img{
         width: 60px;
         height: 40px;
@@ -54,6 +55,7 @@ const StyledCuenta = styled.div`
 function Cuenta({ text1, text2, mostrarImagen }) {
     const [mostrarMovimientos, setMostrarMovimientos] = useState(false)
     const [saldo, setSaldo] = useState(0) // Inicializa el saldo en 0
+
     function handleClick() {
         setMostrarMovimientos(!mostrarMovimientos)
         if (!mostrarMovimientos) {
@@ -65,6 +67,7 @@ function Cuenta({ text1, text2, mostrarImagen }) {
             setSaldo(nuevoSaldo)
         }
     }
+
     return (
         <div>
             <div>
@@ -92,6 +95,7 @@ function Cuenta({ text1, text2, mostrarImagen }) {
         </div>
     )
 }
+
 const movimientosFicticios = [
     { fecha: '2023-09-01', descripcion: 'Ingreso de salario', cantidad: 1500 },
     { fecha: '2023-09-05', descripcion: 'Compra en tienda', cantidad: -50 },
@@ -101,16 +105,16 @@ const movimientosFicticios = [
 function Inicio() {
     return (
         <div>
-            <StyledCuenta bgColor='white' fontColor='Black'>
+            <StyledCuenta $bgColor='white' $fontColor='Black'>
                 <Cuenta text1='Cuentas' text2='Saldos totales' saldo={999.99999950}  mostrarImagen={false} />
             </StyledCuenta>
-            <StyledCuenta bgColor='#DB3F3F' fontColor='white'>
+            <StyledCuenta $bgColor='#DB3F3F' $fontColor='white'>
                 <Cuenta text1='Terminada en 1234' text2='Cierra el 01/01/2024 Vence el 05/10/2034' saldo={9.99999950}  mostrarImagen={true} />
             </StyledCuenta>
-            <StyledCuenta bgColor='silver' fontColor='white'>
+            <StyledCuenta $bgColor='silver' $fontColor='white'>
                 <Cuenta text1='Terminada en 1234' text2='Cierra el 01/01/2024 Vence el 05/10/2034' saldo={9.99999950}  mostrarImagen={true}/>
             </StyledCuenta>
-            <StyledCuenta bgColor='#FFD700' fontColor='white'>
+            <StyledCuenta $bgColor='#FFD700' $fontColor='white'>
                 <Cuenta text1='Terminada en 1234' text2='Cierra el 01/01/2024 Vence el 05/10/2034' saldo={9.99999950}  mostrarImagen={true}/>
             </StyledCuenta>
         </div>

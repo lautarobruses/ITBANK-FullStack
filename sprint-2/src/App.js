@@ -8,8 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import GlobalStyles from './components/GlobalStyles'
 import Background from './components/Background'
-
-import Inicio from './components/Inicio'
+import Inicio from './components/Main/Inicio'
 import Cuenta from './components/Main/Cuenta'
 import Pagos from './components/Main/Pagos'
 import Login from './components/Login/Login'

@@ -9,6 +9,10 @@ const StyledMain = styled.main`
     margin-left: 384px;
     min-height: 90vh;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     @media screen and (max-width: 1023px) {
         margin-left: 284px;
     }
