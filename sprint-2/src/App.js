@@ -19,6 +19,7 @@ import Home from './components/Home'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 
 import { initializeLoged } from './reducers/loginReducer'
+import ComingSoon from './components/ComingSoon/ComingSoon'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -49,6 +50,7 @@ const App = () => {
                     } />
                     <Route path="/login/register" element={ <RegisterForm/> } />
                 </Route>
+                <Route path='/coming-soon' element={ <ComingSoon/> } />
                 <Route path='*' element={ <PageNotFound/> } />
             </Routes>
         </Router>

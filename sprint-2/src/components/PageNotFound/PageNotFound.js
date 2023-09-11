@@ -55,7 +55,7 @@ export default function PageNotFound(){
         <StyledHeader>
             <h1>404</h1>
             <h2>Pagina no encontrada</h2>
-            <img href={path} />
+            <img src={path} alt='Cable desconectado'/>
             <p>La pagina a la que intentas acceder no existe o se ha movido.</p>
             <p>Intenta volver a la pagina principal.</p>
             <Link to="/"> <SubmitButton>Ir al inicio</SubmitButton></Link>
