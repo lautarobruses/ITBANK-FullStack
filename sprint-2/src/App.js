@@ -2,7 +2,9 @@ import {
     BrowserRouter as Router, Routes, Route, Navigate
 } from 'react-router-dom'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import GlobalStyles from './components/GlobalStyles'
 import Background from './components/Background'
@@ -15,37 +17,35 @@ import LoginForm from './components/Login/LoginForm'
 import FooterLogin from './components/Login/FooterLogin'
 import RegisterForm from './components/Login/RegisterForm'
 
-const App = () => {
-    const [user, setUser] = useState(false)
+import { initializeLoged } from './reducers/loginReducer'
 
-    console.log(user) //TODO
+const App = () => {
+    const dispatch = useDispatch()
+    const loggedUser = useSelector((state) => state.loggedUser)
 
     useEffect(() => {
-        const loggedUserJSON = window.localStorage.getItem('loggedUser')
-        if (loggedUserJSON) {
-            const user = JSON.parse(loggedUserJSON)
-            setUser(user)
-        }
-    }, [])
-
-    const login = (user) => {
-        setUser(user)
-    }
+        dispatch(initializeLoged())
+    }, [dispatch])
 
     return (
         <Router>
             <GlobalStyles /> {/*No funciona en React Native*/}
             <Background />
             <Routes>
-                <Route path='/' element={ user ? <Home /> : <Navigate replace to="/login"/> }>
+                <Route path='/' element={ <Home /> }>
                     <Route index element={null} /> {/*Pagina de inicio*/}
                     <Route path="/cuenta" element={ <Cuenta /> } />
                     <Route path="/transferencias" element={null} />
                     <Route path="/pagos" element={ <Pagos /> } />
                     <Route path="/prestamos" element={null} />
                 </Route>
-                <Route path='/login' element={ <Login/> }>
-                    <Route index element={ <><LoginForm onLogin={login}/><FooterLogin/></> } />
+                <Route path='/login' element={ loggedUser ? <Navigate replace to="/"/> : <Login /> }>
+                    <Route index element={
+                        <>
+                            <LoginForm />
+                            <FooterLogin/>
+                        </>
+                    } />
                     <Route path="/login/register" element={ <RegisterForm/> } />
                 </Route>
             </Routes>

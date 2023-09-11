@@ -1,50 +1,40 @@
+import { createSlice } from '@reduxjs/toolkit'
 
-const loginReducer = (state = null, action) => {
-    switch(action.type) {
-    case 'INITIALIZE_LOGED': {
-        //PENDIENTE
-        // const usersFromStorage = await userService.getUser()
-        const usersFromStorage = null
-        return usersFromStorage
-    }
-    case 'LOGIN_USER': {
-        console.log(action)
-        const logedUser = null
-        return logedUser
-        //Meter parte Backend
-    }
-    case 'LOGOUT_USER': {
-        return null
-        //Meter parte Backend
-    }
-    default:
-        return state
-    }
-}
+const loginSlice = createSlice({
+    name: 'login',
+    initialState: null,
+    reducers: {
+        setUser(state, action) {
+            return action.payload
+        }
+    },
+})
 
 export const initializeLoged = () => {
-    return {
-        type: 'INITIALIZE_LOGED',
-        payload: {}
-    }
-}
-
-export const loginUser = (username, password ) => {
-    return {
-        type: 'LOGIN_USER',
-        payload: {
-            username: username,
-            password: password
+    return async dispatch => {
+        const usersFromStorage = window.localStorage.getItem('loggedUser')
+        if (usersFromStorage) {
+            dispatch(setUser(usersFromStorage))
         }
     }
 }
 
-export const logoutUser = () => {
-    return {
-        type: 'LOGOUT_USER',
-        payload: {}
+export const loginUser = (username, password ) => {
+    return async dispatch => {
+        const loggedUser = {
+            username: username,
+            password: password
+        }
+        dispatch(setUser(loggedUser))
     }
 }
 
-export default loginReducer
+export const logoutUser = () => {
+    return async dispatch => {
+        dispatch(setUser(null))
+        window.localStorage.clear()
+    }
+}
 
+export const { setUser } = loginSlice.actions
+export default loginSlice.reducer
