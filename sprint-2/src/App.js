@@ -16,8 +16,10 @@ import LoginForm from './components/Login/LoginForm'
 import FooterLogin from './components/Login/FooterLogin'
 import RegisterForm from './components/Login/RegisterForm'
 import Home from './components/Home'
+import PageNotFound from './components/PageNotFound/PageNotFound'
 
 import { initializeLoged } from './reducers/loginReducer'
+import ComingSoon from './components/ComingSoon/ComingSoon'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -48,6 +50,8 @@ const App = () => {
                     } />
                     <Route path="/login/register" element={ <RegisterForm/> } />
                 </Route>
+                <Route path='/coming-soon' element={ <ComingSoon/> } />
+                <Route path='*' element={ <PageNotFound/> } />
             </Routes>
         </Router>
     )

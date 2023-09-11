@@ -1,3 +1,7 @@
+import {
+    Link
+} from 'react-router-dom'
+
 import { useDispatch } from 'react-redux'
 
 import { styled } from 'styled-components'
@@ -95,7 +99,7 @@ const LoginForm =() => {
                 <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
                 <div id='password-container'>
                     <TextBox type='password' id='password'>Contraseña:</TextBox>
-                    <a href="coming-soon.html">Olvide mi contraseña</a>
+                    <Link to='/coming-soon'>Olvide mi contraseña</Link>
                 </div>
                 <StyledButton type="submit" id="login" value="login">Iniciar sesion</StyledButton>
             </StyledForm>

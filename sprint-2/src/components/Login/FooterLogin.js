@@ -26,9 +26,9 @@ const FooterLogin = () => {
                 <Link to="/login/register">¡Registrate!</Link>
             </div>
             <div id="footer-terms">
-                <a href="#">Terminos</a>
+                <Link to="/coming-soon">Terminos</Link>
                 <span>|</span>
-                <a href="#">Privacidad</a>
+                <Link to="/coming-soon">Privacidad</Link>
             </div>
         </StyledFooter>
     )
