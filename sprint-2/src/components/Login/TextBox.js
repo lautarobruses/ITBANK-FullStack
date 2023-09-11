@@ -15,6 +15,13 @@ const StyledTextBoxs = styled.div`
         font-size: 24px;
     }
 
+    .error{
+        position: absolute;
+        color: red;
+        margin-top: 2px;
+        font-weight: bold;
+    }
+
     @media screen and (max-width: 1023px) {
         label {
             font-size: 20px;
@@ -107,15 +114,18 @@ const InputBlock = () => {
     }
 }
 
-const TextBox = ({ type = 'text', id = 'default', children }) => {
+const TextBox = ({ type = 'text', id = 'default', error='' ,children }) => {
     return (
         <StyledTextBoxs>
             <label>{children}</label>
-            <IdContext.Provider value={id}>
-                <TypeContext.Provider value={type}>
-                    <InputBlock />
-                </TypeContext.Provider>
-            </IdContext.Provider>
+            <div>
+                <IdContext.Provider value={id}>
+                    <TypeContext.Provider value={type}>
+                        <InputBlock />
+                    </TypeContext.Provider>
+                </IdContext.Provider>
+                <div className="error">{error}</div>
+            </div>
         </StyledTextBoxs>
     )
 }

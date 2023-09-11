@@ -14,6 +14,7 @@ import Login from './components/Login/Login'
 import LoginForm from './components/Login/LoginForm'
 import FooterLogin from './components/Login/FooterLogin'
 import RegisterForm from './components/Login/RegisterForm'
+import PageNotFound from './components/PageNotFound/PageNotFound'
 
 const App = () => {
     const [user, setUser] = useState(false)
@@ -48,6 +49,7 @@ const App = () => {
                     <Route index element={ <><LoginForm onLogin={login}/><FooterLogin/></> } />
                     <Route path="/login/register" element={ <RegisterForm/> } />
                 </Route>
+                <Route path='*' element={ <PageNotFound/> } />
             </Routes>
         </Router>
     )
