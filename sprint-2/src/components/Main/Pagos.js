@@ -4,9 +4,6 @@ import Modal from 'react-modal'
 
 import './estilosMain/Cuenta.css'
 
-import cuaderno from '../../assets/cuaderno.png'
-
-
 const Pagos = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [servicios, setServicios] = useState([])
@@ -41,14 +38,10 @@ const Pagos = () => {
             <h3>PRÓXIMOS VENCIMIENTOS</h3>
             {servicios.length === 0 ? ( // Verifica si hay servicios en la lista
                 <div className='contenedor'>
-                    <div className='icono'>
-                        <img src={cuaderno} className='iconCuaderno' alt='Cuaderno' />
-                    </div>
-                    <div className='contain'>
-                        <p><strong>¡Genial!</strong></p>
-                        <p>NO TENÉS SERVICIOS POR VENCER</p>
-                        <p className='link' onClick={openModal}>AÑADIR SERVICIOS</p>
-                    </div>
+                    <svg className='cuaderno' stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"></path><path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"></path><path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"></path></svg>
+                    <p><strong>¡Genial!</strong></p>
+                    <p>NO TENÉS SERVICIOS POR VENCER</p>
+                    <p className='link' onClick={openModal}>AÑADIR SERVICIOS</p>
                 </div>
             ) : (
                 <div className='contenedor'>
