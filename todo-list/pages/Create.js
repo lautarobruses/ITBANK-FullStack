@@ -1,52 +1,51 @@
-import {React, useState} from "react"
+import { React, useState } from "react"
 
 const Create = () => {
+    const [user, setUser] = useState('')
+    const [id, setId] = useState('')
+    const [title, setTitle] = useState('')
 
-    const [user, setUser] = useState()
-    const [id, setId] = useState()
-    const [title, setTitle] = useState()
-    const [completed, setCompleted] = useState()
-
-    const Cargar = (e) => {
-        e.prevenDefault()
+    const Cargar = (event) => {
+        event.preventDefault()
         const listado = {
             user: user,
-            id: id, 
+            id: id,
             title: title,
-            completed: completed,
+            completed: false,
         }
+        console.log(listado)
         setUser('')
         setId('')
         setTitle('')
-        setCompleted('')
     }
 
-    return(
+    return (
         <div>
-            <form onSubmit={Cargar()}>
-                <label for='User'> Indicá tu usuario: </label>
+            <form onSubmit={Cargar}>
+                <label> Indicá tu usuario: </label>
                 <input 
                     className="User" 
                     placeholder="Usuario"
-                    onChange={setUser}
+                    onChange={({ target }) => setUser(target.value)}
                 />
 
-                <label for = 'id'>Indicá tu ID: </label>
+                <label>Indicá tu ID: </label>
                 <input 
                     className="id"
-                    onChange={setId}
+                    placeholder="Id"
+                    onChange={({ target }) => setId(target.value)}
                 />
 
-                <label for='title'>Indicá el título de la tarea: </label>
+                <label>Indicá el título de la tarea: </label>
                 <input 
                     className="title" 
-                    onChange={setTitle}
+                    placeholder="titulo"
+                    onChange={({ target }) => setTitle(target.value)}
                 />
-
                 <button type='submit'>Cargar</button>
             </form>
         </div>
     )
 }
 
-export default Create()
+export default Create

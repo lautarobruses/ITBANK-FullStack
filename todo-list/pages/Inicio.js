@@ -21,7 +21,7 @@ export default function Inicio() {
             <h1 className={`${styles.h1}`}>Tareas</h1>
             <ul className={`${styles.ul}`}>
                 {tareas.map((tarea) => (
-                    <li key="tarea.id" className={`${styles.li}`}>{tarea.title}</li>
+                    <li key={tarea.id} className={`${styles.li}`}>{tarea.title}</li>
                 ))}
             </ul>
         </div>
