@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 import { useContext } from 'react'
 
@@ -7,9 +6,17 @@ import { useDispatch } from 'react-redux'
 
 import styles from '@/styles/Navbar/NavBar.module.css'
 
+import HomeIcon from "@/public/svg/home.svg";
+import AccountIcon from "@/public/svg/account.svg";
+import TranfersIcon from "@/public/svg/transfers.svg";
+import PaymentsIcon from "@/public/svg/payment.svg";
+import LoansIcon from "@/public/svg/loans.svg";
+import LogoutIcon from "@/public/svg/logout.svg";
+
 import { NavbarContext } from '@/contexts/NavbarContext'
 
 import { logoutUser } from '../../store/reducers/loginReducer'
+
 
 const Navbar = () => {
     const { isOpen, actualizarEstado } = useContext(NavbarContext)
@@ -30,65 +37,27 @@ const Navbar = () => {
         >
             <div className={`${styles.navlinks}`}>
                 <Link href="/">
-                    <Image 
-                        src="/svg/home.svg"
-                        alt="Home icon"
-                        width={48}
-                        height={48}
-                        className='svg'
-                    />
+                    <HomeIcon />
                     Inicio
                 </Link>
                 <Link href="/cuenta">
-                    <Image 
-                        src="/svg/account.svg"
-                        alt="Account icon"
-                        width={48}
-                        height={48}
-                        className={styles.svg}
-                    />
+                    <AccountIcon />
                     Cuenta
                 </Link> 
                 <Link href="/transferencias">
-                    <Image 
-                        src="/svg/transfers.svg"
-                        alt="Home icon"
-                        width={48}
-                        height={48}
-                        className={styles.svg}
-                    />
+                    <TranfersIcon />
                     Transferencias
                 </Link>
                 <Link href="/pagos">
-                    <Image 
-                        src="/svg/payment.svg"
-                        alt="Payments icon"
-                        width={48}
-                        height={48}
-                        className={styles.svg}
-                    />
+                    <PaymentsIcon />
                     Pagos
                 </Link>
-                 {/*  */}
                  <Link href="/prestamos">
-                    <Image 
-                        src="/svg/loans.svg"
-                        alt="Loans icon"
-                        width={48}
-                        height={48}
-                        className={styles.svg}
-                    />
+                    <LoansIcon />
                     Prestamos
                 </Link>
                 <Link href="/login">
-                    <Image 
-                        src="/svg/logout.svg"
-                        alt="Logout icon"
-                        width={48}
-                        height={48}
-                        className={styles.svg}
-                        onClick={handleLogout}
-                    />
+                    <LogoutIcon />
                     Cerrar Sesion
                 </Link>
             </div>

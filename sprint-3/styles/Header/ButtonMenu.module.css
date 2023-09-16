@@ -1,9 +1,9 @@
-.button-menu {
+.buttonMenu {
     display: none;
 }
 
 @media screen and (max-width: 640px) {
-    .button-menu {
+    .buttonMenu {
         background: none;
         visibility: visible;
         z-index: 200;
@@ -18,7 +18,7 @@
         cursor: pointer;
     }
 
-    .button-menu span {
+    .buttonMenu span {
         width: 37px;
         height: 4px;
         margin-bottom: 6px;
@@ -33,7 +33,6 @@
         background: var(--white);
         opacity: 1;
         transform: rotate(45deg) translate(0px, 0px);
-        /* z-index: 101; */
     }
       
     .close span:nth-child(2){

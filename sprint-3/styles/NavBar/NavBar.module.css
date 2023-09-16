@@ -32,9 +32,8 @@
     flex-direction: row;
 }
 
-.navlinks a img {
-    background-color: var(--white);
-    color: var(--dark-sky-blue);
+.navlinks svg {
+    margin-right: 12px;
 }
 
 .navlinks a:hover {
@@ -47,10 +46,6 @@
     background-color: var(--dark-sky-blue);
     color: var(--white);
     opacity: 1.0;
-}
-
-.navbar .svg {
-    margin-right: 16px;
 }
 
 @media screen and (max-width: 1023px) {
