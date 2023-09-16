@@ -1,0 +1,14 @@
+.contact {
+    list-style: none;    
+    text-align: left;
+}
+
+.contact li {
+    padding: 4px;
+}
+
+@media screen and (max-width: 1023px) {
+    .contact {
+        text-align: center;
+    }
+}
