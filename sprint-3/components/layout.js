@@ -4,13 +4,11 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import Background from './Background';
 
-import NavbarContextProvider from '@/contexts/NavbarContext'
-
-export default function Layout({ children }) {
+export default function Layout({ children, pagina }) {
     return (
         <>
             <Head>
-                <title>ToDo List</title>
+                <title>Nexus Bank - {pagina}</title>
                 <meta
                     name='description'
                     content='App que permite administrar una lista de tareas'
@@ -19,10 +17,8 @@ export default function Layout({ children }) {
                 <link rel='icon' href='/favicon.ico' />
             </Head>
             <Background />
-            <NavbarContextProvider>
-                <Header />
-                <Navbar />
-            </NavbarContextProvider>
+            <Header />
+            <Navbar />
             <main>{children}</main>
             <Footer />
         </>

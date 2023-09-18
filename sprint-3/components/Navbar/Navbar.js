@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux'
 
 import styles from '@/styles/Navbar/NavBar.module.css'
 
-import HomeIcon from "@/public/svg/home.svg";
-import AccountIcon from "@/public/svg/account.svg";
-import TranfersIcon from "@/public/svg/transfers.svg";
-import PaymentsIcon from "@/public/svg/payment.svg";
-import LoansIcon from "@/public/svg/loans.svg";
-import LogoutIcon from "@/public/svg/logout.svg";
+import HomeIcon from "@/public/svg/home.svg"
+import AccountIcon from "@/public/svg/account.svg"
+import TranfersIcon from "@/public/svg/transfers.svg"
+import PaymentsIcon from "@/public/svg/payment.svg"
+import LoansIcon from "@/public/svg/loans.svg"
+import LogoutIcon from "@/public/svg/logout.svg"
 
 import { NavbarContext } from '@/contexts/NavbarContext'
 
@@ -56,7 +56,7 @@ const Navbar = () => {
                     <LoansIcon />
                     Prestamos
                 </Link>
-                <Link href="/login">
+                <Link href="/account/login">
                     <LogoutIcon />
                     Cerrar Sesion
                 </Link>

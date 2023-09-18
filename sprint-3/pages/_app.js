@@ -3,15 +3,15 @@ import '@/styles/globals.css'
 import { Provider } from 'react-redux'
 import store from '@/store/store'
 
-import Layout from "@/components/layout";
+import NavbarContextProvider from '@/contexts/NavbarContext'
 
 export default function App({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <Layout>
+            <NavbarContextProvider>
                 <Component {...pageProps} />
-            </Layout>
+            </NavbarContextProvider>
         </Provider>
     )
 }

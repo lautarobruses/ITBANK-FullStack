@@ -1,7 +1,5 @@
 import { styled } from 'styled-components'
 
-import StyledBackgroundLogin from './styles/StyledBackgroundLogin'
-
 import HeaderForm from './HeaderForm'
 import RegisterForm from './RegisterForm'
 
@@ -27,22 +25,23 @@ const StyledRegister = styled.div`
         height: 84px;
         width: auto;
     }
+    
     header img{
         height: 60px;
         width: auto;
     }
 `
 
-export default function Register(){
+export default function Register() {
 
     return (
         <StyledBackgroundCustom>
-            <StyledBackgroundLogin id='background-container'>
+            <div id='background-container'>
                 <StyledRegister>
                     <HeaderForm/>
                     <RegisterForm/>
                 </StyledRegister>
-            </StyledBackgroundLogin>
+            </div>
         </StyledBackgroundCustom>
     )
 }
