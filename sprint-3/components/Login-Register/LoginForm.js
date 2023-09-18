@@ -2,14 +2,17 @@ import styles from '@/styles/Login/LoginForm.module.css'
 
 import Link from 'next/link'
 
-import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 
-import TextBox from './TextBox'
+import { useDispatch } from 'react-redux'
 
 import { loginUser } from '@/store/reducers/loginReducer'
 
+import TextBox from './TextBox'
+
 const LoginForm =() => {
     const dispatch = useDispatch()
+    const router = useRouter();
 
     const handleLogin  = (event) => {
         event.preventDefault()
@@ -24,6 +27,7 @@ const LoginForm =() => {
         )
 
         dispatch(loginUser(username, password))
+        router.replace('/');
     }
 
     return (

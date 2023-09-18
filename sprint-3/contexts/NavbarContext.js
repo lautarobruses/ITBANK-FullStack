@@ -7,7 +7,6 @@ const NavbarContextProvider = ({ children }) => {
     const [isOpen, setisOpen] = useState(false)
 
     const actualizarEstado = () => {
-        console.log(isOpen)
         setisOpen(!isOpen)
     }
 

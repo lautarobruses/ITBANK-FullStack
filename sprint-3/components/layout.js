@@ -4,11 +4,11 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 import Background from './Background';
 
-export default function Layout({ children, pagina }) {
+export default function Layout({ children }) {
     return (
         <>
             <Head>
-                <title>Nexus Bank - {pagina}</title>
+                <title>Nexus Bank</title>
                 <meta
                     name='description'
                     content='App que permite administrar una lista de tareas'

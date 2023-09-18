@@ -1,12 +1,30 @@
 import styles from '@/styles/Login/Login.module.css'
 
+import { useEffect } from 'react'
+
+import { useRouter } from 'next/router'
+
 import Link from 'next/link'
 import Image from 'next/image'
+
+import { useSelector } from 'react-redux'
 
 import Background from '@/components/Background'
 import LoginForm from '@/components/Login-Register/LoginForm'
 
+
+
 const Login = () => {
+    const router = useRouter();
+    const loggedUser = useSelector((state) => state.loggedUser)
+
+    useEffect(() => {
+        if (loggedUser) {
+            console.log(loggedUser)
+            router.replace('/');
+        }
+    }, [loggedUser, router]);
+
     return (
         <>
             <Background />

@@ -56,7 +56,7 @@ const Navbar = () => {
                     <LoansIcon />
                     Prestamos
                 </Link>
-                <Link href="/account/login">
+                <Link href="/account/login" onClick={handleLogout}>
                     <LogoutIcon />
                     Cerrar Sesion
                 </Link>
