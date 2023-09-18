@@ -11,7 +11,7 @@ export default function Layout({ children }) {
                 <title>Nexus Bank</title>
                 <meta
                     name='description'
-                    content='App que permite administrar una lista de tareas'
+                    content='Home Banking'
                 />
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
                 <link rel='icon' href='/favicon.ico' />

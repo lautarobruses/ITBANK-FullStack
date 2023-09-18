@@ -14,12 +14,10 @@ export default function Home() {
     }, [dispatch])
 
     return (
-        <div>
-            <Layout>
-                <>
-                    <h1>HOLA USUARIO</h1>
-                </>
-            </Layout>
-        </div>
+        <Layout>
+            <>
+                <h1>HOLA USUARIO</h1>
+            </>
+        </Layout>
     )
 }
