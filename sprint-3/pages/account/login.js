@@ -25,7 +25,7 @@ const Login = () => {
                 <LoginForm />
                 <div className={`${styles.footerRegister}`}>
                     <p>¿No tienes una cuenta? </p>
-                    <Link href="/account/register">¡Registrate!</Link>
+                    <Link href="/account/register">Registrate!</Link>
                 </div>
                 <div className={`${styles.footerTerms}`}>
                     <Link href="/coming-soon">Terminos</Link>

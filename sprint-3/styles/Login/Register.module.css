@@ -19,6 +19,10 @@
     color: var(--white);
 }
 
+.registerContainer a {
+    text-decoration: underline;
+}
+
 .header {
     background-color: var(--white);
     border-radius: 64px 64px 0 0;

@@ -19,10 +19,14 @@
     color: var(--white);
 }
 
+.loginContainer a {
+    text-decoration: underline;
+}
+
 .header {
     background-color: var(--white);
     border-radius: 64px 64px 0 0;
-    width: 1000px;
+    width: 800px;
     height: 100px;
 
     display: flex;
@@ -40,10 +44,6 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-}
-
-.footerRegister a {
-    text-decoration: none;
 }
 
 .footerTerms {
