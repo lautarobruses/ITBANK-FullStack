@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import styles from '@/styles/Account/Index.module.css'
 
+import Head from 'next/head'
+
 import Card from '@/components/Account/Card'
 
 import mastercard from '../../public/Images/mastercard.png'
@@ -12,6 +14,9 @@ export default function Document() {
 
     return (
         <Layout>
+            <Head>
+                <title>Tus cuentas - NexusBank</title>
+            </Head>
             <div id={`${styles.div}`}>
                 <h1 id={`${styles.title}`}>Tus cuentas</h1>
 
