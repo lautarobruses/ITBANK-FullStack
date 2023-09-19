@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import TransferForm from '../components/Transferencia/TransferForm'
-import Balance from '../components/Transferencia/Balance'
-import TransactionHistory from '../components/Transferencia/TransactionHistory'
+import TransferForm from '../../components/Transferencia/TransferForm'
+import Balance from '../../components/Transferencia/Balance'
+import TransactionHistory from '../../components/Transferencia/TransactionHistory'
 import Layout from '@/components/layout'
 
 const Transferencia = () => {
