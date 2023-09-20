@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from'@/styles/Transferencia/Form.module.css'
 
 const TransferForm = () => {
     const [recipient, setRecipient] = useState ('')
@@ -36,28 +37,31 @@ const TransferForm = () => {
     }
 
     return(
-        <div>
-            <h2>TRANSFERENCIAS</h2>
+        <div className={styles.transferForm}>
             <form onSubmit={handleTransfer}>
                 <div>
-                    <label>Destinatario: </label>
+                    <label className={styles.labelForm}>Enviar pago a: </label>
                     <input 
                         type='text'
                         value={recipient}
                         onChange={(e) => setRecipient(e.target.value)}
+                        className={styles.formInput}
+                        placeholder='Nombre, @nombreusuario o email'
                         required
                     />
                 </div>
                 <div>
-                    <label>Monto: </label>
+                    <label className={styles.labelForm}>Monto de la transferencia: </label>
                     <input 
                         type='number'
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        className={styles.formInput}
+                        placeholder='Monto'
                         required
                     />
                 </div>
-                <button type='submit'>Transferir</button>
+                <button type='submit' className={styles.formButton}>Transferir</button>
             </form>
         </div>
     )
