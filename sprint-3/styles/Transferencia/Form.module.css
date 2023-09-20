@@ -39,4 +39,28 @@
   
 .formButton:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .transfer-form {
+      padding: 10px;
+      max-width: 100%;
+    }
+  
+    .transfer-form h2 {
+      font-size: 20px;
+    }
+  
+    .transfer-form label {
+      font-size: 18px;
+      padding: 6px 10px;
+    }
+  
+    .transfer-form input {
+      padding: 8px;
+    }
+  
+    .transfer-form button {
+      padding: 8px 16px;
+    }
   }
