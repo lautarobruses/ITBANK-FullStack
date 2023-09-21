@@ -1,11 +1,12 @@
 .media {
     display: flex;
+    gap: 8px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .media a {
-    padding: 0 16px;
+    padding-right: 24px;
     font-size: 32px;
 }
