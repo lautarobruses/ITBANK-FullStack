@@ -20,7 +20,7 @@ const TransferForm = () => {
           }
 
           if (parseFloat(amount) > balance) {
-            setModalMessage('Saldo insuficiente para realizar la transferencia.')
+            setModalMessage('Saldo insuficiente para realizar la transferencia. ❌')
             setModalIsOpen(true)
             return
           }
@@ -38,7 +38,7 @@ const TransferForm = () => {
           setBalance(newBalance);
         
   
-          setModalMessage('Transferencia exitosa', newTransaction)
+          setModalMessage('Transferencia exitosa. ✔️', newTransaction)
           setModalIsOpen(true)
     }
     function openModal() {
@@ -78,9 +78,10 @@ const TransferForm = () => {
             <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
+            className={styles.modal}
             >
-                <button onClick={closeModal}>Cerrar</button>
-                <h1>{modalMessage}</h1>
+                <h1 className={styles.modalH1}>{modalMessage}</h1>
+                <button onClick={closeModal} className={styles.modalButton}>Cerrar</button>
             </Modal>
         </div>
     )
