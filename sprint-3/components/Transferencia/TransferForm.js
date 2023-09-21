@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
+import Modal from 'react-modal'
 import styles from'@/styles/Transferencia/Form.module.css'
 
 const TransferForm = () => {
-    const [recipient, setRecipient] = useState ('')
+    const [addressee, setAdressee] = useState ('')
     const [amount, setAmount] = useState ('')
     const [balance, setBalance] = useState(1000)
     const [transactions, setTransactions] = useState([])
+    const [modalIsOpen, setModalIsOpen] = React.useState(false)
+    const [modalMessage, setModalMessage] = useState('')
 
     const handleTransfer = (e) => {
         e.preventDefault()
 
         if (!/^\d*\.?\d*$/.test(amount) || parseFloat(amount) <= 0) {
-            console.error('El monto de la transferencia debe ser un número positivo.');
+            setModalMessage('El monto de la transferencia debe ser un número positivo.')
+            setModalIsOpen(true)
             return
           }
 
           if (parseFloat(amount) > balance) {
-            console.error('Saldo insuficiente para realizar la transferencia.');
+            setModalMessage('Saldo insuficiente para realizar la transferencia.')
+            setModalIsOpen(true)
             return
           }
         
@@ -25,7 +30,7 @@ const TransferForm = () => {
 
           const newTransaction = {
             id: Date.now(),
-            recipient,
+            addressee,
             amount: parseFloat(amount),
           }
         
@@ -33,8 +38,15 @@ const TransferForm = () => {
           setBalance(newBalance);
         
   
-          console.log('Transferencia exitosa:', newTransaction)
+          setModalMessage('Transferencia exitosa', newTransaction)
+          setModalIsOpen(true)
     }
+    function openModal() {
+        setModalIsOpen(true)
+    }
+    function closeModal() {
+        setModalIsOpen(false)
+    } 
 
     return(
         <div className={styles.transferForm}>
@@ -43,8 +55,8 @@ const TransferForm = () => {
                     <label className={styles.labelForm}>Enviar pago a: </label>
                     <input 
                         type='text'
-                        value={recipient}
-                        onChange={(e) => setRecipient(e.target.value)}
+                        value={addressee}
+                        onChange={(e) => setAdressee(e.target.value)}
                         className={styles.formInput}
                         placeholder='Nombre, @nombreusuario o email'
                         required
@@ -63,6 +75,13 @@ const TransferForm = () => {
                 </div>
                 <button type='submit' className={styles.formButton}>Transferir</button>
             </form>
+            <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            >
+                <button onClick={closeModal}>Cerrar</button>
+                <h1>{modalMessage}</h1>
+            </Modal>
         </div>
     )
 }
