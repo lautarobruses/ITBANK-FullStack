@@ -29,6 +29,8 @@ export default function Document() {
     const [rates, setRates] = useState(null)
     const [input, setInput] = useState('')
     const [result, setResult] = useState('')
+    const [coinInput, setCoinInput] = useState('ARG')
+    const [coinResult, setCoinResult] = useState('USD')
     
     useEffect(() => {
         fetch('https://api.exchangerate.host/latest')
@@ -61,11 +63,11 @@ export default function Document() {
             setInput(account.balance.toFixed(2))
             
             if( account.coin === undefined ){
-                coinSelector.value = 'ARG'
+                setCoinInput('ARG')
             } else if (Object.keys(account.coin) == 'USD'){
-                coinSelector.value = 'USD'
+                setCoinInput('USD')
             } else{
-                coinSelector.value = 'EUR'
+                setCoinInput('EUR')
             }
 
             if( input.disabled === false ){
@@ -73,7 +75,6 @@ export default function Document() {
                 coinSelector.disabled = true
             }
 
-            currencyExchange()
         } else {
             if( input.disabled === true ){
                 input.disabled = false
@@ -82,20 +83,11 @@ export default function Document() {
         }
     }
 
-    const currencyExchange = () => {
-        var coinInput = document.getElementById('coin-amount-selector').value
-        var coinResult = document.getElementById('coin-result-selector').value
-
-        console.log(input)
-
-        console.log(coinInput)
-        console.log(rates.rates[coinInput])
-        console.log(coinResult)
-        console.log(rates.rates[coinResult])
-
-        setResult( (input/rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2) )
-        console.log(result)
-    }
+    useEffect(() => {
+        if(rates !== null && input > 0){
+            setResult( (input/rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2) )
+        }
+    }, [input, coinInput, coinResult])
 
 
     return (
@@ -128,9 +120,9 @@ export default function Document() {
                     </select>
                     
                     <label>De</label>
-                    <input type='number' id='amount' name='amount' value={input} onChange={({ target }) => {setInput(target.value), currencyExchange()} } />
+                    <input type='number' id='amount' name='amount' value={input} onChange={ ({ target }) => setInput(target.value) } />
                     
-                    <select id='coin-amount-selector' name='coin-amount-selector' onChange={currencyExchange}>
+                    <select id='coin-amount-selector' value={coinInput} onChange={ ({ target }) => setCoinInput(target.value) } >
                         {rates !== null && Object.keys(rates.rates).map(clave =>(
                             <option value={clave}>{clave}</option>
                         ))}
@@ -139,7 +131,7 @@ export default function Document() {
                     <label>a</label>
                     <input type='number' name='result' disabled value={result} />
 
-                    <select id='coin-result-selector' name='coin-result-selector' onChange={currencyExchange}>
+                    <select id='coin-result-selector' value={coinResult} onChange={ ({ target }) => setCoinResult(target.value) } >
                         {rates !== null && Object.keys(rates.rates).map(clave =>(
                             <option value={clave}>{clave}</option>
                         ))}
