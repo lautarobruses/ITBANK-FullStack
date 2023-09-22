@@ -9,6 +9,7 @@ const Footer = () => {
     return (
         <footer className={`${styles.footer}`}>
             <div className={`${styles.leftContainer}`}>
+            <h1>Contactanos!</h1>
                 <Media />
                 <Contact />
                 <Terms />

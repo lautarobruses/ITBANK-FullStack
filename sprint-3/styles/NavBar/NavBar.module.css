@@ -5,6 +5,7 @@
     width: 384px;
     height: 100%;
     padding: 32px 24px;
+    transition: all .2s cubic-bezier(0.39, 0.58, 0.57, 1);
 }
 
 .navlinks {
@@ -68,7 +69,6 @@
         width: 100%;
         margin-left: -100%;
         padding: 0px;
-        transition: all .2s cubic-bezier(0.39, 0.58, 0.57, 1);
         background-color: rgba(0,0,0,.7);
         z-index: 100;
     }
