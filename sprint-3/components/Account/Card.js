@@ -4,25 +4,18 @@ import styles from '@/styles/Account/Card.module.css'
 
 import Image from 'next/image'
 
-const movimientosFicticios = [
+const movimientosFicticios = [ //Se va a mover a cuenta/index.js como props de las Cards
     { fecha: '2023-09-01', descripcion: 'Ingreso de salario', cantidad: 1500 },
     { fecha: '2023-09-05', descripcion: 'Compra en tienda', cantidad: -50 },
     { fecha: '2023-09-10', descripcion: 'Transferencia recibida', cantidad: 200 },
 ]
 
-export default function Card({ tipe='account', title='Cuenta', coin='$', closing='', expiration='', img='', color='var(--dark)' }) {
+export default function Card({ tipe='account', title='Cuenta', coin={ARG: '$'}, balance='0', closing='', expiration='', img='', color='var(--dark)' }) {
     const [mostrarMovimientos, setMostrarMovimientos] = useState(false)
-    const [saldo, setSaldo] = useState(0) // Inicializa el saldo en 0
+    const [saldo/*, setSaldo*/] = useState(balance)
 
     function handleClick() {
         setMostrarMovimientos(!mostrarMovimientos)
-        if (!mostrarMovimientos) {
-            // Calcula el saldo actual sumando o restando los movimientos ficticios
-            const nuevoSaldo = movimientosFicticios.reduce(
-                (saldoAcumulado, movimiento) => saldoAcumulado + movimiento.cantidad, 0
-            )
-            setSaldo(nuevoSaldo)
-        }
     }
 
     return (
@@ -30,7 +23,7 @@ export default function Card({ tipe='account', title='Cuenta', coin='$', closing
             <div id={`${styles.content}`}>
                 <div id={`${styles.headerCard}`} style={{borderColor: tipe==='card'? '#d2d2d2' : 'var(--grey-font)'}}>
                     {tipe==='card' && (
-                        <Image width='40' src={img} alt="logo de mastercard" />
+                        <Image width='40' src={img.src} alt={img.alt} />
                     )}
                     <h3 id={`${styles.cardTitle}`}>{title}</h3>
                 </div>
@@ -43,7 +36,7 @@ export default function Card({ tipe='account', title='Cuenta', coin='$', closing
                     )}
                 </h4>
                 <h3 id={`${styles.saldo}`}>
-                    {coin} {saldo.toFixed(2)}
+                    {Object.values(coin)} {saldo.toFixed(2)}
                 </h3>
                 <button id={`${styles.button}`} style={{color: tipe==='card'? 'var(--white)' : 'var(--dark)'}} onClick={handleClick}>Ver movimientos</button>
             </div>
