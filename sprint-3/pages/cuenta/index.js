@@ -4,11 +4,10 @@ import styles from '@/styles/Account/Index.module.css'
 
 import Head from 'next/head'
 
-import Card from '@/components/Account/Card'
-
 import mastercard from '../../public/Images/mastercard.png'
 import visa from '../../public/Images/visa.png'
 import Layout from '@/components/layout'
+import Card from '@/components/Account/Card'
 
 const accountFake = [ //number es el identificador de cada cuenta y tarjeta
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },

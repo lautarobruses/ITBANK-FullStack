@@ -53,7 +53,7 @@ const RegisterForm = () => {
                             type="button"
                             value="Volver"
                         >
-                            <Link href="/account/login">
+                            <Link href="/cuenta/login">
                                 <ArrowIcon />
                                 Atrás
                             </Link>
