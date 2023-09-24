@@ -4,7 +4,7 @@ import styles from '@/styles/Account/Card.module.css'
 
 import Image from 'next/image'
 
-const movimientosFicticios = [ //Se va a mover a cuenta/index.js como props de las Cards
+const movimientosFicticios = [ //Se va a mover a cuenta/index.js como props de las Cards y Account. Se tiene que poner keys unicas a cada elemento
     { fecha: '2023-09-01', descripcion: 'Ingreso de salario', cantidad: 1500 },
     { fecha: '2023-09-05', descripcion: 'Compra en tienda', cantidad: -50 },
     { fecha: '2023-09-10', descripcion: 'Transferencia recibida', cantidad: 200 },

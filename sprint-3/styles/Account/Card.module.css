@@ -2,11 +2,7 @@
     font-size: 14px;
     padding: 8px;
 }
-.uwu{
-    padding-top: 30px;
-    margin: 37px;
-    margin-bottom: 20px;
-}
+
 #content {
     display: flex;
     flex-direction: column;
