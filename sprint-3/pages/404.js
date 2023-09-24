@@ -12,7 +12,6 @@ const PageNotFound = () => {
             <Head>
                 <title>Nexus Bank - Error 404</title>
                 <meta name="description" content="ERROR: La pagina no existe" />
-                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

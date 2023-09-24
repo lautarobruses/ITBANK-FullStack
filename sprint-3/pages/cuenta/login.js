@@ -1,17 +1,18 @@
 import styles from '@/styles/Login/Login.module.css'
 
-import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
-
 import { useEffect } from 'react'
 
 import { useRouter } from 'next/router'
+
+import Head from 'next/head'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import { useSelector } from 'react-redux'
 
 import Background from '@/components/Background'
 import LoginForm from '@/components/Login-Register/LoginForm'
+
 
 const Login = () => {
     const router = useRouter();
