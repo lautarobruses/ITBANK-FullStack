@@ -4,8 +4,6 @@ import styles from '@/styles/Account/Index.module.css'
 
 import Head from 'next/head'
 
-import mastercard from '../../public/Images/mastercard.png'
-import visa from '../../public/Images/visa.png'
 import Layout from '@/components/layout'
 import Card from '@/components/Account/Card'
 
