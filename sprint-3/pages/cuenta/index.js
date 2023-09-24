@@ -5,7 +5,7 @@ import styles from '@/styles/Account/Index.module.css'
 import Head from 'next/head'
 
 import Layout from '@/components/layout'
-import Card from '@/components/Account/Card'
+import Card from '@/components/Cuenta/Card'
 
 import mastercard from '@/public/Images/mastercard.png'
 import visa from '@/public/Images/visa.png'
@@ -53,7 +53,7 @@ export default function Document() {
         if (rates !== null && input > 0) {
             setResult((input / rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2))
         }
-    }, [input, coinInput, coinResult])
+    }, [input, coinInput, coinResult, rates])
 
     const selectAccount = async (event) => {
         event.preventDefault()
@@ -93,21 +93,48 @@ export default function Document() {
     }
 
     return (
-        <Layout>
+        <>
             <Head>
-                <title>Tus cuentas - NexusBank</title>
+                <title>Nexus Bank - Cuenta</title>
+                <meta name="description" content="Contiene las diferentes cuentas del usuario" />
+
+                {/* Etiqueta meta para especificar el juego de caracteres */}
+                <meta charSet="UTF-8" /> 
+
+                {/* Etiqueta meta para controlar la vista móvil */}
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+                
+                {/* Etiqueta meta para el autor */}
+                <meta name="author" content="Grupo 3" />
+                
+                {/* Etiqueta meta para palabras clave (keywords) */}
+                <meta name="keywords" content="Nexus Bank, Homebanking, Banca en línea, Préstamos personales, Pagos en línea, Transferencias seguras, Tarjetas de crédito" />
+                
+                {/* Etiqueta meta para el idioma de la página */}
+                <meta http-equiv="Content-Language" content="es" />
+                
+                {/* Etiqueta meta para el robot de rastreo (crawlers) */}
+                <meta name="robots" content="index, follow" /> {/*index | follow | noindex | nofollow*/}
+
+                {/* Etiqueta meta para la traduccion de google*/}
+                <meta name="google" content="notranslate" key="notranslate" />
             </Head>
+            <Layout>
             <div id={`${styles.div}`}>
                 <h1 id={`${styles.title}`}>Tus cuentas</h1>
 
                 <h2 className={`${styles.subtitle}`}>Cuentas</h2>
                 <section className={`${styles.section}`}>
-                    {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} />))}
+                    {accountFake.map((account) => (
+                        <Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} />
+                    ))}
                 </section>
 
                 <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
                 <section className={`${styles.section}`}>
-                    {cardFake.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance}></Card>))}
+                    {cardFake.map((card) => (
+                        <Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance}></Card>
+                    ))}
                 </section>
 
                 <div id={`${styles.converter}`}>
@@ -117,8 +144,12 @@ export default function Document() {
                         <label id={`${styles.labelSelect}`}>Selecciona tu cuenta:</label>
                         <select id={`${styles.selectboxAccount}`} className={`${styles.selectbox}`} name='your-account' onChange={(event) => { selectAccount(event) }}>
                             <option value="" style={{ display: 'none' }}>Selecciona una cuenta</option>
-                            {accountFake.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true}>{account.title}</option>))}
-                            {cardFake.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true}>{card.title}</option>))}
+                            {accountFake.map((account) => (
+                                <option value={account.number} disabled={account.balance > 0 ? false : true}>{account.title}</option>
+                            ))}
+                            {cardFake.map((card) => (
+                                <option value={card.number} disabled={card.balance > 0 ? false : true}>{card.title}</option>
+                            ))}
                             <option value="otro">Otro...</option>
                         </select>
 
@@ -150,5 +181,7 @@ export default function Document() {
                 </div>
             </div>
         </Layout>
+        </>
+        
     )
 }

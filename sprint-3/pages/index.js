@@ -20,7 +20,7 @@ export default function Home() {
         <>
             <Head>
                 <title>Nexus Bank - Inicio</title>
-                <meta name="description" content="Pagina principal del sitio" />
+                <meta name="description" content="Pagina principal del home banking" />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

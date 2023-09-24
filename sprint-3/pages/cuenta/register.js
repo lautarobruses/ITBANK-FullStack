@@ -11,8 +11,8 @@ const Register = () => {
     return (
         <>
             <Head>
-                <title>Nexus Bank - Inicio</title>
-                <meta name="description" content="Pagina principal del sitio" />
+                <title>Nexus Bank - Reistrarse</title>
+                <meta name="description" content="Permite a los usuarios registrarse en el home banking" />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 
@@ -31,9 +31,6 @@ const Register = () => {
                 
                 {/* Etiqueta meta para el robot de rastreo (crawlers) */}
                 <meta name="robots" content="index, follow" /> {/*index | follow | noindex | nofollow*/}
-                
-                {/* Etiqueta meta para la URL canónica */}
-                <link rel="canonical" href="https://www.tusitio.com/tu-pagina" />
 
                 {/* Etiqueta meta para la traduccion de google*/}
                 <meta name="google" content="notranslate" key="notranslate" />
