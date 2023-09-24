@@ -39,6 +39,7 @@ const Pagos = () => {
             <Head>
                 <title>Nexus Bank - Pagos</title>
                 <meta name="description" content="Permite pagar diferentes servicios" />
+                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

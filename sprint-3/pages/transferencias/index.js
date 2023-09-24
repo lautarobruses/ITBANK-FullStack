@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Layout from '@/components/layout'
 
 import TransferForm from '@/components/Transferencia/TransferForm'
-import Balance from '@./components/Transferencia/Balance'
+import Balance from '@/components/Transferencia/Balance'
 import TransactionHistory from '@/components/Transferencia/TransactionHistory'
 
 const Transferencia = () => {
@@ -21,6 +21,7 @@ const Transferencia = () => {
             <Head>
                 <title>Nexus Bank - Transferencias</title>
                 <meta name="description" content="Permite realizar tranferencias hacia otras cuentas" />
+                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

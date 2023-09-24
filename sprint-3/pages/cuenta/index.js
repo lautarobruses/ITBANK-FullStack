@@ -97,6 +97,7 @@ export default function Document() {
             <Head>
                 <title>Nexus Bank - Cuenta</title>
                 <meta name="description" content="Contiene las diferentes cuentas del usuario" />
+                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

@@ -13,6 +13,7 @@ const Register = () => {
             <Head>
                 <title>Nexus Bank - Reistrarse</title>
                 <meta name="description" content="Permite a los usuarios registrarse en el home banking" />
+                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

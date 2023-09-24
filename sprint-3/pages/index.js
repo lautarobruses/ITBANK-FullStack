@@ -21,6 +21,7 @@ export default function Home() {
             <Head>
                 <title>Nexus Bank - Inicio</title>
                 <meta name="description" content="Pagina principal del home banking" />
+                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 
