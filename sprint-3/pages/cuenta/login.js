@@ -29,6 +29,7 @@ const Login = () => {
             <Head>
                 <title>Nexus Bank - Login</title>
                 <meta name="description" content="Permite a los usuarios ingresar al home banking" />
+                <link rel='icon' href='/favicon.ico' />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 
