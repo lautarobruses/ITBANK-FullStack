@@ -39,9 +39,6 @@ export default function Home() {
                 
                 {/* Etiqueta meta para el robot de rastreo (crawlers) */}
                 <meta name="robots" content="index, follow" /> {/*index | follow | noindex | nofollow*/}
-                
-                {/* Etiqueta meta para la URL canónica */}
-                {/* <link rel="canonical" href="https://www.tusitio.com/tu-pagina" /> */}
 
                 {/* Etiqueta meta para la traduccion de google*/}
                 <meta name="google" content="notranslate" key="notranslate" />

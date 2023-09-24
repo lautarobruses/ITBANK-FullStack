@@ -5,7 +5,7 @@ import styles from '@/styles/Account/Index.module.css'
 import Head from 'next/head'
 
 import Layout from '@/components/layout'
-import Card from '@/components/Account/Card'
+import Card from '@/components/Cuenta/Card'
 
 import mastercard from '@/public/Images/mastercard.png'
 import visa from '@/public/Images/visa.png'
