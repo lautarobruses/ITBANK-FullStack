@@ -1,3 +1,5 @@
+@import 'react-toastify/dist/ReactToastify.css';
+
 :root { /*Variables*/
     --grey: #EAEBED;
     --grey-font: #727070;

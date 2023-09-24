@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import TransferForm from '../../components/Transferencia/TransferForm'
-import Balance from '../../components/Transferencia/Balance'
-import TransactionHistory from '../../components/Transferencia/TransactionHistory'
+import TransactionHistory from './Historial'
 import Layout from '@/components/layout'
+import Link from 'next/link'
 
-const Transferencia = () => {
-    const [transactions, setTransactions] = useState([])
-    const [balance, setBalance] = useState(1000)
+const Transferencia = ({transferencias, setTransferencias}) => {
 
     const handleTransfer = (e) => {
       e.preventDefault()
@@ -16,12 +14,10 @@ const Transferencia = () => {
             <div className="container">
                 <div className="titulo">
                     <h1>TRANSFERENCIAS</h1>
-                    <h3>TODOS LOS CONTACTOS</h3>
                 </div>
                 <div>
-                    <Balance balance={balance} />
-                    <TransferForm onTransfer={handleTransfer} />
-                    <TransactionHistory transactions={transactions}/>
+                    <TransferForm onTransfer={handleTransfer} transferencia={transferencias} setTransferencias={setTransferencias}/>
+                    <Link href='transferencias/Historial'>Ver Historial</Link>
                 </div>
             </div>
         </Layout>
