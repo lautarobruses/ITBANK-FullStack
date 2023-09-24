@@ -1,4 +1,4 @@
-import styles from '@/styles/prestamos/pres.module.css'
+import styles from '@/styles/prestamos/Prestamos.module.css'
 
 import React, {useState} from 'react'
 
