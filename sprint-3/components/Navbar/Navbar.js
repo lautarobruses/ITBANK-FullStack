@@ -17,6 +17,7 @@ import { NavbarContext } from '@/contexts/NavbarContext'
 
 import { logoutUser } from '../../store/reducers/loginReducer'
 
+
 const Navbar = () => {
     const { isOpen, actualizarEstado } = useContext(NavbarContext)
     const dispatch = useDispatch()
