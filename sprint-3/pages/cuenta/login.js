@@ -12,8 +12,6 @@ import { useSelector } from 'react-redux'
 import Background from '@/components/Background'
 import LoginForm from '@/components/Login-Register/LoginForm'
 
-
-
 const Login = () => {
     const router = useRouter();
     const loggedUser = useSelector((state) => state.loggedUser)

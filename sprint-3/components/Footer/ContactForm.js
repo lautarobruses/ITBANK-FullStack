@@ -35,16 +35,6 @@ const ContactForm = () => {
                     onChange={({ target }) => setNombre(target.value)}
                     required
                 />
-                
-                <label for="apellido">Apellido:</label>
-                <input
-                    type="text"
-                    id="apellido"
-                    name="apellido"
-                    value={apellido}
-                    onChange={({ target }) => setApellido(target.value)}
-                    required
-                />
 
                 <label for="email">Correo Electrónico:</label>
                 <input

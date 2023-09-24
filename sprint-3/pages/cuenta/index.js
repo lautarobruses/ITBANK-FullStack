@@ -19,7 +19,6 @@ const accountFake = [ //number es el identificador de cada cuenta y tarjeta
 const image_1 = { src: mastercard, alt: 'logo de mastercard' }
 const image_2 = { src: visa, alt: 'logo de visa' }
 
-
 const cardFake = [
     { number: '49725637101234', title: 'Terminada en 1234', coin: { EUR: '€' }, tipe: 'card', closing: '00/00/00', expiration: '00/00/00', img: image_1, balance: 1500 },
     { number: '94852039834321', title: 'Terminada en 4321', tipe: 'card', closing: '00/00/00', expiration: '00/00/00', img: image_2, color: '#dc2328', balance: 0 },
@@ -49,6 +48,12 @@ export default function Document() {
                 console.error('Error: ', error)
             })
     }, [])
+
+    useEffect(() => {
+        if (rates !== null && input > 0) {
+            setResult((input / rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2))
+        }
+    }, [input, coinInput, coinResult])
 
     const selectAccount = async (event) => {
         event.preventDefault()
@@ -86,13 +91,6 @@ export default function Document() {
             }
         }
     }
-
-    useEffect(() => {
-        if (rates !== null && input > 0) {
-            setResult((input / rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2))
-        }
-    }, [input, coinInput, coinResult])
-
 
     return (
         <Layout>
@@ -149,7 +147,6 @@ export default function Document() {
                             </select>
                         </div>
                     </div>
-
                 </div>
             </div>
         </Layout>

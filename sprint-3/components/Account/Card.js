@@ -30,7 +30,7 @@ export default function Card({ tipe='account', title='Cuenta', coin={ARG: '$'}, 
 
                 <h4 id={`${styles.cardSubtitle}`} style={{color: tipe==='card'? '#f0f0f0' : 'var(--grey-font)'}}>
                     {tipe==='card' ? (
-                        'Cierra el ' + closing + ' - Vence el' + expiration
+                        'Cierra el ' + closing + ' - Vence el ' + expiration
                     ) : (
                         'Saldo total'
                     )}
