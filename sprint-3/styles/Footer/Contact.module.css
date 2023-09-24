@@ -1,9 +1,12 @@
-.contact {
-    list-style: none;    
+.contact { 
     text-align: left;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.contact li {
+.contact p,
+.contact a {
     padding: 4px;
 }
 
