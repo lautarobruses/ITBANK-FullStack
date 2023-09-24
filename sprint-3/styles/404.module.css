@@ -1,5 +1,6 @@
 .container {
     background-color: var(--white);
+    color: var(--dark-sky-blue);
     border-radius: 64px;
     padding: 64px;
     width: 800px;
