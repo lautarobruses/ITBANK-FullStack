@@ -37,6 +37,7 @@ const ComingSoon = () => {
                 width={300} 
                 height={300} 
                 quality={80}
+                loading="lazy"
             />
         </div>
         </> 
