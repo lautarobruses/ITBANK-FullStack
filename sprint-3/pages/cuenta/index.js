@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react'
 import styles from '@/styles/Account/Index.module.css'
 
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 
 import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
 
-import mastercard from '@/public/Images/mastercard.png'
-import visa from '@/public/Images/visa.png'
+import mastercard from '@/public/Images/mastercard.webp'
+import visa from '@/public/Images/visa.webp'
 import Arrows from '@/public/Svg/circularArrows.svg'
+
+// const Card = dynamic(() => import('@/components/Account/Card'))
 
 const accountFake = [ //number es el identificador de cada cuenta y tarjeta
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },
@@ -96,18 +99,19 @@ export default function Document() {
         <Layout>
             <Head>
                 <title>Tus cuentas - NexusBank</title>
+                <meta name="description" content="Accede y administra tus cuentas y tarjetas bancarias en un solo lugar. Controla tus finanzas de manera sencilla y segura." />
             </Head>
             <div id={`${styles.div}`}>
                 <h1 id={`${styles.title}`}>Tus cuentas</h1>
 
                 <h2 className={`${styles.subtitle}`}>Cuentas</h2>
                 <section className={`${styles.section}`}>
-                    {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} />))}
+                    {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} key={account.number}/>))}
                 </section>
 
                 <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
                 <section className={`${styles.section}`}>
-                    {cardFake.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance}></Card>))}
+                    {cardFake.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance} key={card.number}></Card>))}
                 </section>
 
                 <div id={`${styles.converter}`}>
@@ -117,8 +121,8 @@ export default function Document() {
                         <label id={`${styles.labelSelect}`}>Selecciona tu cuenta:</label>
                         <select id={`${styles.selectboxAccount}`} className={`${styles.selectbox}`} name='your-account' onChange={(event) => { selectAccount(event) }}>
                             <option value="" style={{ display: 'none' }}>Selecciona una cuenta</option>
-                            {accountFake.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true}>{account.title}</option>))}
-                            {cardFake.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true}>{card.title}</option>))}
+                            {accountFake.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true} key={account.number}>{account.title}</option>))}
+                            {cardFake.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true} key={card.number}>{card.title}</option>))}
                             <option value="otro">Otro...</option>
                         </select>
 
@@ -141,8 +145,8 @@ export default function Document() {
                             <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' name='result' disabled value={result} />
 
                             <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-result-selector' value={coinResult} onChange={({ target }) => setCoinResult(target.value)} >
-                                {rates !== null && Object.keys(rates.rates).map(clave => (
-                                    <option value={clave}>{clave}</option>
+                                {rates !== null && Object.keys(rates.rates).map(key => (
+                                    <option value={key} key={key}>{key}</option>
                                 ))}
                             </select>
                         </div>

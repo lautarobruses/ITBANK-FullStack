@@ -57,7 +57,7 @@ const Login = () => {
             <div className={`${styles.loginContainer}`}>
                 <header className={`${styles.header}`}>
                     <Image 
-                        src='/images/nexusbanklogo3.png'
+                        src='/images/nexusbanklogo3.webp'
                         alt='Logo Nexus Bank'
                         width={100}
                         height={100}

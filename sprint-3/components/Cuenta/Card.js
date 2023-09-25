@@ -23,11 +23,12 @@ export default function Card({ tipe='account', title='Cuenta', coin={ARG: '$'}, 
             <div id={`${styles.content}`}>
                 <div id={`${styles.headerCard}`} style={{borderColor: tipe==='card'? '#d2d2d2' : 'var(--grey-font)'}}>
                     {tipe==='card' && (
-                        <Image
-                            width={40}
-                            src={img.src}
+                        <Image 
+                            width={40} 
+                            src={img.src} 
                             alt={img.alt}
-                            priority={80}
+                            quality={60}
+                            loading="lazy"
                         />
                     )}
                     <h3 id={`${styles.cardTitle}`}>{title}</h3>
