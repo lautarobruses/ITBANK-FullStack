@@ -6,7 +6,6 @@ import Image from 'next/image'
 import RegisterForm from '@/components/Login-Register/RegisterForm'
 import Background from '@/components/Background'
 
-
 const Register = () => {
     return (
         <>

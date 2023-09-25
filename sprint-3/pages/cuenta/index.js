@@ -56,7 +56,7 @@ export default function Document() {
         if (rates !== null && input > 0) {
             setResult((input / rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2))
         }
-    }, [input, coinInput, coinResult])
+    }, [input, coinInput, coinResult, rates])
 
     const selectAccount = async (event) => {
         event.preventDefault()
@@ -96,63 +96,86 @@ export default function Document() {
     }
 
     return (
-        <Layout>
+        <>
             <Head>
-                <title>Tus cuentas - NexusBank</title>
+                <title>Nexus Bank - Login</title>
                 <meta name="description" content="Accede y administra tus cuentas y tarjetas bancarias en un solo lugar. Controla tus finanzas de manera sencilla y segura." />
+                <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
+
+                {/* Etiqueta meta para especificar el juego de caracteres */}
+                <meta charSet="UTF-8" /> 
+
+                {/* Etiqueta meta para controlar la vista móvil */}
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+                
+                {/* Etiqueta meta para el autor */}
+                <meta name="author" content="Grupo 3" />
+                
+                {/* Etiqueta meta para palabras clave (keywords) */}
+                <meta name="keywords" content="Nexus Bank, Homebanking, Banca en línea, Préstamos personales, Pagos en línea, Transferencias seguras, Tarjetas de crédito" />
+                
+                {/* Etiqueta meta para el idioma de la página */}
+                <meta http-equiv="Content-Language" content="es" />
+                
+                {/* Etiqueta meta para el robot de rastreo (crawlers) */}
+                <meta name="robots" content="index, follow" /> {/*index | follow | noindex | nofollow*/}
+
+                {/* Etiqueta meta para la traduccion de google*/}
+                <meta name="google" content="notranslate" key="notranslate" />
             </Head>
-            <div id={`${styles.div}`}>
-                <h1 id={`${styles.title}`}>Tus cuentas</h1>
+            <Layout>
+                <div id={`${styles.div}`}>
+                    <h1 id={`${styles.title}`}>Tus cuentas</h1>
 
-                <h2 className={`${styles.subtitle}`}>Cuentas</h2>
-                <section className={`${styles.section}`}>
-                    {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} key={account.number}/>))}
-                </section>
+                    <h2 className={`${styles.subtitle}`}>Cuentas</h2>
+                    <section className={`${styles.section}`}>
+                        {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} key={account.number}/>))}
+                    </section>
 
-                <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
-                <section className={`${styles.section}`}>
-                    {cardFake.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance} key={card.number}></Card>))}
-                </section>
+                    <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
+                    <section className={`${styles.section}`}>
+                        {cardFake.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance} key={card.number}></Card>))}
+                    </section>
 
-                <div id={`${styles.converter}`}>
-                    <h2 className={`${styles.subtitle}`} style={{ color: 'var(--black)' }} >Transforma tu dinero:</h2>
+                    <div id={`${styles.converter}`}>
+                        <h2 className={`${styles.subtitle}`} style={{ color: 'var(--black)' }} >Transforma tu dinero:</h2>
 
-                    <div id={`${styles.converterOptions}`}>
-                        <label id={`${styles.labelSelect}`}>Selecciona tu cuenta:</label>
-                        <select id={`${styles.selectboxAccount}`} className={`${styles.selectbox}`} name='your-account' onChange={(event) => { selectAccount(event) }}>
-                            <option value="" style={{ display: 'none' }}>Selecciona una cuenta</option>
-                            {accountFake.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true} key={account.number}>{account.title}</option>))}
-                            {cardFake.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true} key={card.number}>{card.title}</option>))}
-                            <option value="otro">Otro...</option>
-                        </select>
-
-                        <label className={`${styles.label}`}>De</label>
-                        <div>
-                            <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' id='amount' name='amount' value={input} onChange={({ target }) => setInput(target.value)} />
-
-                            <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-amount-selector' value={coinInput} onChange={({ target }) => setCoinInput(target.value)} >
-                                {rates !== null && Object.keys(rates.rates).map(clave => (
-                                    <option value={clave}>{clave}</option>
-                                ))}
+                        <div id={`${styles.converterOptions}`}>
+                            <label id={`${styles.labelSelect}`}>Selecciona tu cuenta:</label>
+                            <select id={`${styles.selectboxAccount}`} className={`${styles.selectbox}`} name='your-account' onChange={(event) => { selectAccount(event) }}>
+                                <option value="" style={{ display: 'none' }}>Selecciona una cuenta</option>
+                                {accountFake.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true} key={account.number}>{account.title}</option>))}
+                                {cardFake.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true} key={card.number}>{card.title}</option>))}
+                                <option value="otro">Otro...</option>
                             </select>
-                        </div>
-                        
-                        <div/>
-                        <Arrows id={`${styles.iconArrows}`}/>
 
-                        <label className={`${styles.label}`}>a</label>
-                        <div>
-                            <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' name='result' disabled value={result} />
+                            <label className={`${styles.label}`}>De</label>
+                            <div>
+                                <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' id='amount' name='amount' value={input} onChange={({ target }) => setInput(target.value)} />
 
-                            <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-result-selector' value={coinResult} onChange={({ target }) => setCoinResult(target.value)} >
-                                {rates !== null && Object.keys(rates.rates).map(key => (
-                                    <option value={key} key={key}>{key}</option>
-                                ))}
-                            </select>
+                                <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-amount-selector' value={coinInput} onChange={({ target }) => setCoinInput(target.value)} >
+                                    {rates !== null && Object.keys(rates.rates).map(key => (
+                                        <option value={key} key={key}>{key}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            
+                            <Arrows id={`${styles.iconArrows}`}/>
+
+                            <label className={`${styles.label}`}>a</label>
+                            <div>
+                                <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' name='result' disabled value={result} />
+
+                                <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-result-selector' value={coinResult} onChange={({ target }) => setCoinResult(target.value)} >
+                                    {rates !== null && Object.keys(rates.rates).map(key => (
+                                        <option value={key} key={key}>{key}</option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </Layout>
+            </Layout>
+        </>
     )
 }
