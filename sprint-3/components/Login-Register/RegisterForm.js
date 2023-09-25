@@ -46,7 +46,7 @@ const RegisterForm = () => {
                     <TextBox type='number' id='phone'>Telefono:</TextBox>
                 </section>
                 <section className={`${styles.sendFormContainer}`}>
-                    <Checkbox>Acepto los <a href='#'>Términos y Condiciones</a></Checkbox>
+                    <Checkbox>Acepto los <Link href="/coming-soon">Términos y Condiciones</Link></Checkbox>
                     <div className={`${styles.buttonsContainer}`}>
                         <button
                             className={`${styles.interactiveButton}`}

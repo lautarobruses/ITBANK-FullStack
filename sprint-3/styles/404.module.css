@@ -42,6 +42,7 @@
     padding: 16px 96px;
     border: 0px;
     border-radius: 32px;
+    cursor: pointer;
     transition: all .2s cubic-bezier(0.39, 0.58, 0.57, 1);
 }
 
