@@ -11,8 +11,6 @@ const Background = () => {
                 src="/images/background.webp"
                 alt="Fondo principal del sitio"
                 layout="fill"
-                objectFit="cover"
-                objectPosition="center top"
                 quality={80}
             />
         </div>

@@ -45,7 +45,7 @@ const PageNotFound = () => {
                     loading="lazy"
                 />
                 <p>La pagina a la que intentas acceder no existe</p>
-                <Link href="/">
+                <Link href="/cuenta/login">
                     <button>Volver al inicio</button>
                 </Link>
             </div>
