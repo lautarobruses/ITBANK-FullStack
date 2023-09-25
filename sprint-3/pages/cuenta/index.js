@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import styles from '@/styles/Account/Index.module.css'
 
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
 
 import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
@@ -11,8 +10,6 @@ import Card from '@/components/Cuenta/Card'
 import mastercard from '@/public/Images/mastercard.webp'
 import visa from '@/public/Images/visa.webp'
 import Arrows from '@/public/Svg/circularArrows.svg'
-
-// const Card = dynamic(() => import('@/components/Account/Card'))
 
 const accountFake = [ //number es el identificador de cada cuenta y tarjeta
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },
