@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 
 import { initializeLoged } from '@/store/reducers/loginReducer'
 
+import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
 
 
@@ -45,9 +46,10 @@ export default function Home() {
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
             <Layout>
-                <>
+                <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                     <h1>HOLA USUARIO</h1>
-                </>
+                    <SummaryAccount/>
+                </div>
             </Layout>
         </>
     )

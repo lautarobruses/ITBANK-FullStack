@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import styles from '@/styles/Account/Index.module.css'
 
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
 
 import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
@@ -11,8 +10,6 @@ import Card from '@/components/Cuenta/Card'
 import mastercard from '@/public/Images/mastercard.webp'
 import visa from '@/public/Images/visa.webp'
 import Arrows from '@/public/Svg/circularArrows.svg'
-
-// const Card = dynamic(() => import('@/components/Account/Card'))
 
 const accountFake = [ //number es el identificador de cada cuenta y tarjeta
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },
@@ -103,20 +100,20 @@ export default function Document() {
                 <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
-                <meta charSet="UTF-8" /> 
+                <meta charSet="UTF-8" />
 
                 {/* Etiqueta meta para controlar la vista móvil */}
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-                
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
                 {/* Etiqueta meta para el autor */}
                 <meta name="author" content="Grupo 3" />
-                
+
                 {/* Etiqueta meta para palabras clave (keywords) */}
                 <meta name="keywords" content="Nexus Bank, Homebanking, Banca en línea, Préstamos personales, Pagos en línea, Transferencias seguras, Tarjetas de crédito" />
-                
+
                 {/* Etiqueta meta para el idioma de la página */}
                 <meta http-equiv="Content-Language" content="es" />
-                
+
                 {/* Etiqueta meta para el robot de rastreo (crawlers) */}
                 <meta name="robots" content="index, follow" /> {/*index | follow | noindex | nofollow*/}
 
@@ -129,7 +126,7 @@ export default function Document() {
 
                     <h2 className={`${styles.subtitle}`}>Cuentas</h2>
                     <section className={`${styles.section}`}>
-                        {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} key={account.number}/>))}
+                        {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} key={account.number} />))}
                     </section>
 
                     <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
@@ -151,7 +148,7 @@ export default function Document() {
 
                             <label className={`${styles.label}`}>De</label>
                             <div>
-                                <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' id='amount' name='amount' value={input} onChange={({ target }) => setInput(target.value)} />
+                                <input className={`${styles.selectbox}`} style={{ width: '71.7%' }} type='number' id='amount' name='amount' value={input} onChange={({ target }) => setInput(target.value)} />
 
                                 <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-amount-selector' value={coinInput} onChange={({ target }) => setCoinInput(target.value)} >
                                     {rates !== null && Object.keys(rates.rates).map(key => (
@@ -159,12 +156,13 @@ export default function Document() {
                                     ))}
                                 </select>
                             </div>
-                            
-                            <Arrows id={`${styles.iconArrows}`}/>
+
+                            <div></div>
+                            <Arrows id={`${styles.iconArrows}`} />
 
                             <label className={`${styles.label}`}>a</label>
                             <div>
-                                <input className={`${styles.selectbox}`} style={{width:'71.7%'}} type='number' name='result' disabled value={result} />
+                                <input className={`${styles.selectbox}`} style={{ width: '71.7%' }} type='number' name='result' disabled value={result} />
 
                                 <select className={`${styles.selectbox} ${styles.selectCoin}`} id='coin-result-selector' value={coinResult} onChange={({ target }) => setCoinResult(target.value)} >
                                     {rates !== null && Object.keys(rates.rates).map(key => (
