@@ -31,23 +31,22 @@ const PageNotFound = () => {
                 {/* Etiqueta meta para la traduccion de google*/}
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
-            <main className={`${styles.container}`}>
+            <div className={`${styles.container}`}>
                 <Background />
                 <h1>404</h1>
                 <h2>Pagina no encontrada</h2>
                 <Image 
                     src='/images/cableDesconectado.webp'
                     alt='Cable desconectado'
-                    width={600}
-                    height={100}
+                    width={710}
+                    height={94}
                     quality={80}
-                    priority
                 />
                 <p>La pagina a la que intentas acceder no existe</p>
                 <Link href="/">
                     <button>Volver al inicio</button>
                 </Link>
-            </main>
+            </div>
         </>
     )
 }

@@ -1,33 +1,33 @@
-/* Agrega estos estilos a tu archivo CSS */
 .formContainer {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: var(--grey);
+    width: 600px;
+    height: auto;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    max-width: 600px;
-  }
+}
   
-  .formText {
+.formText {
     text-align: center;
     margin-bottom: 20px;
-  }
+}
   
-  .calculatorContainer {
+.calculatorContainer {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
+}
 
 .formContainer  form {
     display: flex;
     flex-direction: column;
-  }
+}
   
 .formContainer label {
     margin-bottom: 5px;
-  }
+}
   
 .formContainer  input {
     padding: 10px;
@@ -35,26 +35,25 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 16px;
-  }
+}
   
 .formContainer h2 {
     margin-top: 20px;
     font-size: 24px;
-  }
+}
   
 .formContainer p {
     font-size: 16px;
-  }
+}
   
-  .imagesContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    flex-direction: column;
-  }
-  
-.imagesContainer img {
-    width: 30%;
-    border-radius: 5px;
-  }
-  
+@media screen and (max-width: 1023px) {
+    .formContainer {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .formContainer {
+        width: auto;
+    }
+}

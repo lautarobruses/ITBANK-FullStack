@@ -6,7 +6,7 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 import Layout from '@/components/layout'
-import Card from '@/components/Account/Card'
+import Card from '@/components/Cuenta/Card'
 
 import mastercard from '@/public/Images/mastercard.webp'
 import visa from '@/public/Images/visa.webp'

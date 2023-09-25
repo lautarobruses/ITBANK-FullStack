@@ -11,7 +11,7 @@ const Register = () => {
     return (
         <>
             <Head>
-                <title>Nexus Bank - Inicio</title>
+                <title>Nexus Bank - Registrarse</title>
                 <meta name="description" content="Pagina principal del sitio" />
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
