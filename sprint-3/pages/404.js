@@ -36,11 +36,11 @@ const PageNotFound = () => {
                 <h1>404</h1>
                 <h2>Pagina no encontrada</h2>
                 <Image 
-                    src='/images/cableDesconectado.png'
+                    src='/images/cableDesconectado.webp'
                     alt='Cable desconectado'
                     width={600}
                     height={100}
-                    quality={100}
+                    quality={80}
                     priority
                 />
                 <p>La pagina a la que intentas acceder no existe</p>

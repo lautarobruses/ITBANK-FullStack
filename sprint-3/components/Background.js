@@ -8,7 +8,7 @@ const Background = () => {
     return (
         <div className={styles.background}>
             <Image
-                src="/images/background.jpg"
+                src="/images/background.webp"
                 alt="Fondo principal del sitio"
                 layout="fill"
                 objectFit="cover"
