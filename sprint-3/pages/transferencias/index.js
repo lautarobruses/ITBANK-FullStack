@@ -14,12 +14,13 @@ const Transferencia = () => {
     const handleTransfer = (e) => {
       e.preventDefault()
     }
-    
+
     return (
         <>
             <Head>
                 <title>Nexus Bank - Transferencias</title>
                 <meta name="description" content="Permite realizar tranferencias hacia otras cuentas" />
+                <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

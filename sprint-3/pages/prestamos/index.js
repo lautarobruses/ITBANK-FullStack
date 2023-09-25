@@ -5,7 +5,6 @@ import React, {useState} from 'react'
 import Calculadora from '@/components/Prestamos/Calculadora'
 import Layout from '@/components/layout'
 
-import pres1 from '@/public/Images/pres1.jpg'
 import Head from 'next/head'
 
 export default function Formulario() {
@@ -18,6 +17,7 @@ export default function Formulario() {
             <Head>
                 <title>Nexus Bank - Prestamos</title>
                 <meta name="description" content="Permite calcular prestamos" />
+                <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 

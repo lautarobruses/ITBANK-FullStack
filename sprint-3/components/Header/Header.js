@@ -11,7 +11,7 @@ const Header = () => {
                 src='/images/nexusbanklogo3.png'
                 alt='Logo Nexus Bank'
                 width={220}
-                height={80}
+                height={72}
                 quality={100}
                 priority
             />
