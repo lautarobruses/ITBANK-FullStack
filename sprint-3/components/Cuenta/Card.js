@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-
 import styles from '@/styles/Account/Card.module.css'
+
+import React, { useState } from 'react'
 
 import Image from 'next/image'
 
@@ -12,7 +12,7 @@ const movimientosFicticios = [ //Se va a mover a cuenta/index.js como props de l
 
 export default function Card({ tipe='account', title='Cuenta', coin={ARG: '$'}, balance='0', closing='', expiration='', img='', color='var(--dark)' }) {
     const [mostrarMovimientos, setMostrarMovimientos] = useState(false)
-    const [saldo/*, setSaldo*/] = useState(balance)
+    const [saldo, setSaldo] = useState(balance)
 
     function handleClick() {
         setMostrarMovimientos(!mostrarMovimientos)
@@ -23,7 +23,13 @@ export default function Card({ tipe='account', title='Cuenta', coin={ARG: '$'}, 
             <div id={`${styles.content}`}>
                 <div id={`${styles.headerCard}`} style={{borderColor: tipe==='card'? '#d2d2d2' : 'var(--grey-font)'}}>
                     {tipe==='card' && (
-                        <Image width='40' src={img.src} alt={img.alt} />
+                        <Image 
+                            width={40} 
+                            src={img.src} 
+                            alt={img.alt}
+                            quality={60}
+                            loading="lazy"
+                        />
                     )}
                     <h3 id={`${styles.cardTitle}`}>{title}</h3>
                 </div>

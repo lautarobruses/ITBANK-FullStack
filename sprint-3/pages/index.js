@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 
 import { initializeLoged } from '@/store/reducers/loginReducer'
 
+import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
 
 
@@ -21,6 +22,7 @@ export default function Home() {
             <Head>
                 <title>Nexus Bank - Inicio</title>
                 <meta name="description" content="Pagina principal del sitio" />
+                <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" /> 
@@ -39,17 +41,15 @@ export default function Home() {
                 
                 {/* Etiqueta meta para el robot de rastreo (crawlers) */}
                 <meta name="robots" content="index, follow" /> {/*index | follow | noindex | nofollow*/}
-                
-                {/* Etiqueta meta para la URL canónica */}
-                {/* <link rel="canonical" href="https://www.tusitio.com/tu-pagina" /> */}
 
                 {/* Etiqueta meta para la traduccion de google*/}
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
             <Layout>
-                <>
+                <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                     <h1>HOLA USUARIO</h1>
-                </>
+                    <SummaryAccount/>
+                </div>
             </Layout>
         </>
     )

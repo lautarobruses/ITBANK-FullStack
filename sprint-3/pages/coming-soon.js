@@ -1,17 +1,14 @@
-import styles from '@/styles/404.module.css'
+import styles from '@/styles/ComingSoon.module.css'
 
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 
-import Background from '@/components/Background'
-
-const PageNotFound = () => {
+const ComingSoon = () => {
     return (
         <>
             <Head>
-                <title>Nexus Bank - Error 404</title>
-                <meta name="description" content="ERROR: La pagina no existe" />
+                <title>Nexus Bank - Coming Soon</title>
+                <meta name="description" content="Proximamente" />
                 <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
@@ -33,24 +30,18 @@ const PageNotFound = () => {
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
             <div className={`${styles.container}`}>
-                <Background />
-                <h1>404</h1>
-                <h2>Pagina no encontrada</h2>
-                <Image 
-                    src='/images/cableDesconectado.webp'
-                    alt='Cable desconectado'
-                    width={710}
-                    height={94}
-                    quality={80}
-                    loading="lazy"
-                />
-                <p>La pagina a la que intentas acceder no existe</p>
-                <Link href="/cuenta/login">
-                    <button>Volver al inicio</button>
-                </Link>
-            </div>
-        </>
+            <h1>¡Página en construcción!</h1>
+            <Image
+                src="/construccion-page.gif"
+                alt="Hombre construyendo una pagina web"
+                width={300} 
+                height={300} 
+                quality={80}
+                loading="lazy"
+            />
+        </div>
+        </> 
     )
 }
 
-export default PageNotFound
+export default ComingSoon
