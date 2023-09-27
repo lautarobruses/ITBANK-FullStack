@@ -68,8 +68,23 @@ correctamente y se formateen adecuadamente al exportar a CSV
 
 print("Hello world")
 
-
 import sys
+
+# La lista sys.argv contiene los argumentos de línea de comandos.
+# El primer elemento (sys.argv[0]) es el nombre del script en sí.
+# Los argumentos proporcionados por el usuario comienzan desde sys.argv[1].
+# Por ejemplo, si ejecutas "python mi_script.py arg1 arg2", sys.argv contendrá ['mi_script.py', 'arg1', 'arg2'].
+
+# Acceder a los argumentos ingresados en la línea de comandos.
+if len(sys.argv) > 1:
+    # Argumento 1
+    arg1 = sys.argv[1]
+    print(f"El primer argumento es: {arg1}")
+
+if len(sys.argv) > 2:
+    # Argumento 2
+    arg2 = sys.argv[2]
+    print(f"El segundo argumento es: {arg2}")
 
 #Funciones:
 
