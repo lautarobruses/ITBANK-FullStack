@@ -4,6 +4,8 @@ import Tabla from '../../components/Transferencia/Tabla'
 import Layout from '@/components/layout'
 
 const TransactionHistory =  ({ transferencias}) => {
+    
+
     return(
         <Layout>
             <div>

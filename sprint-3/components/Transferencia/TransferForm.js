@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
 import styles from'@/styles/Transferencia/Form.module.css'
+
+import React, { useContext, useState } from 'react'
+
+import { FormContext } from '@/contexts/TransferContext'
+
 import { ToastContainer, toast } from 'react-toastify'
 import { generarId, formatearFecha } from '@/helpers'
 
 function TransferForm() {
-    const [addressee, setAdressee] = useState ('')
-    const [motivo, setMotivo] = useState ('')
-    const [amount, setAmount] = useState ([])
-    const [transferencias, setTransferencias] = useState([])
+    const [formulario, setFormulario] = useContext(FormContext)
 
     function exito(){
         toast.success('¡Transferencia Realizada con éxito!', {
             position: toast.POSITION.TOP_RIGHT
         })
     }
+
     function error(){
         toast.error("Ojo, campos vacíos o monto igual a $0", {
             position: toast.POSITION.TOP_RIGHT
         })
     }
+
     function handleSubmit(e){
         e.preventDefault();
 
@@ -67,7 +70,7 @@ function TransferForm() {
                         <label className={styles.labelForm}>Motivo: </label>
                         <input 
                             type='text'
-                            value={motivo}
+                            value={formulario.motivo}
                             onChange={(e) => setMotivo(e.target.value)}
                             className={styles.formInput}
                             placeholder='Motivo de la transacción'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createContext } from 'react'
 
-const FormContext= createContext()
+export const FormContext= createContext()
 
 const FormProvider = ({ children }) => {
     const [formulario, setFormulario] = useState({
@@ -10,7 +10,6 @@ const FormProvider = ({ children }) => {
         amount: 0,
     })
 
-
     return (
         <FormContext.Provider value={{formulario, setFormulario}}>
             {children}
@@ -18,4 +17,4 @@ const FormProvider = ({ children }) => {
     )
 }
 
-export default {FormProvider, FormContext} 
+export default FormProvider
