@@ -66,25 +66,8 @@ Manejo de Fechas y Formato CSV: Asegurarse de que las fechas se manejen
 correctamente y se formateen adecuadamente al exportar a CSV
 '''
 
-print("Hello world")
-
 import sys
-
-# La lista sys.argv contiene los argumentos de línea de comandos.
-# El primer elemento (sys.argv[0]) es el nombre del script en sí.
-# Los argumentos proporcionados por el usuario comienzan desde sys.argv[1].
-# Por ejemplo, si ejecutas "python mi_script.py arg1 arg2", sys.argv contendrá ['mi_script.py', 'arg1', 'arg2'].
-
-# Acceder a los argumentos ingresados en la línea de comandos.
-if len(sys.argv) > 1:
-    # Argumento 1
-    arg1 = sys.argv[1]
-    print(f"El primer argumento es: {arg1}")
-
-if len(sys.argv) > 2:
-    # Argumento 2
-    arg2 = sys.argv[2]
-    print(f"El segundo argumento es: {arg2}")
+import pandas as pd
 
 #Funciones:
 
@@ -172,15 +155,26 @@ def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos 
             #valores correspondientes a la consulta.
     '''descripcion'''
 
-def func(): #Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
+def save_in_csv(table:pd): #Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
             #con el nombre en el formato "<DNI><TIMESTAMP_ACTUAL>.csv". El archivo
             #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
             #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
             #FechaOrigen, FechaPago, DNI, Estado.
-    '''descripcion'''
+    '''Guarda el csv dado en un archivo salida.csv'''
+    sep= ","
+    strignTable = sep.join(map(str,table.columns.tolist()))
+
+    for i in range(len(table)):
+        strignTable = strignTable + '\n' + sep.join(map(str,table.iloc[i].tolist()))
+
+    with open('data/salida.cvs', 'w') as file:
+        file.write(strignTable)
+        file.close()
 
 def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
             #como parámetro, se deben imprimir los cheques sin filtrar por estado.
     '''descripcion'''
 
 #Codigo Principal:
+
+table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
