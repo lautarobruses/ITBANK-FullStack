@@ -120,33 +120,59 @@ las funciones de arriba y false si no lo es, junto con la muestra por consola de
 correspondiente'''
     '''descripcion'''
 
-#Validacion de CSV
+#Validacion de CSV (falta validacion de errores)
 
-def func(): #NroCheque: Número de cheque, este debe ser único por cuenta.
-    '''descripcion'''
+def  haveRepeat (list): #NroCheque: Número de cheque, este debe ser único por cuenta.
+    '''Si la lista dada tiene repetidos devuelve True, si no False.'''
+    for j in range(len(list)):
+        for i in range(j + 1, len(list)):
+            if( list[j] == list[i] ):
+                return True
+    
+    return False
 
-def func(): #CodigoBanco: Código numérico del banco, entre 1 y 100.
-    '''descripcion'''
+def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco, entre 1 y 100.
+                                    #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
+                                    #DNI: String con DNI del cliente donde se permite identificarlo
+    '''Retorna true si todos los numeros de la lista dada estan en el rango entre [min, max], si no
+    devuelve False junto con el indice del primer numero fuera de rango'''
 
-def func(): #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
-    '''descripcion'''
+    # if( not( isinstance(min, (int, float)) and isinstance(max, (int, float)) ) ):
+    #     raise ValueError("El rango dado debe estar compuesto por numeros.")
+    
+    # if( min == max == None ):
+    #     raise ValueError("El rango no esta dado.")          
+    # elif( not( min==None or max==None ) ):
+    #     if(min >= max ):
+    #         raise ValueError(f"El rango ({min},{max}) no es valido.")
 
-def func(): #NumeroCuentaOrigen: Cuenta de origen del cheque.
-    '''descripcion'''
-
-def func(): #NumeroCuentaDestino: Cuenta donde se cobra el cheque.
-    '''descripcion'''
+    for i in range(len(list)):
+        if( not( isinstance(list[i], (int, float)) ) ):
+            raise ValueError("La lista dada debe estar compuesto por numeros.")
+        if (min is not None and list[i] < min) or (max is not None and list[i] > max):
+            return False, i
+    
+    return True
 
 def func(): #FechaOrigen: Fecha de emisión: (En timestamp)
     '''descripcion'''
 
-def func(): #DNI: String con DNI del cliente donde se permite identificarlo
-    '''descripcion'''
+def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
+    '''Comprueba que la lista dada solo contenga los args dados'''
+    tam = i = len(args) - 1
 
-def func(): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
-    '''descripcion'''
+    for item in list:
+        i = tam
 
-def func(): #Validar CSV con las funciones de arriba
+        while( 0 <= i and item != args[i]):
+            i -= 1
+        
+        if( i < 0 ):
+            return False
+    
+    return True
+
+def saveCsv(): #Validar CSV con las funciones de arriba
     '''descripcion'''
             #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
             #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
@@ -169,6 +195,7 @@ def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se propo
 #Codigo Principal:
 
 table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
+
 #SALIDA
 
 def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos los
@@ -176,4 +203,5 @@ def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos 
     '''descripcion'''
 
 def save_in_csv(table:pd): #Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
-            #con el nombre en el f
+    #con el nombre en el f
+    '''descripcion'''
