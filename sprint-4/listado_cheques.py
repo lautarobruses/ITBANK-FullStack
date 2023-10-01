@@ -148,7 +148,6 @@ def func(): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
 
 def func(): #Validar CSV con las funciones de arriba
     '''descripcion'''
-ormato "<DNI><TIMESTAMP_ACTUAL>.csv". El archivo
             #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
             #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
             #FechaOrigen, FechaPago, DNI, Estado.
