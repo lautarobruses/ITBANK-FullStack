@@ -148,15 +148,7 @@ def func(): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
 
 def func(): #Validar CSV con las funciones de arriba
     '''descripcion'''
-
-#SALIDA
-
-def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos los
-            #valores correspondientes a la consulta.
-    '''descripcion'''
-
-def save_in_csv(table:pd): #Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
-            #con el nombre en el formato "<DNI><TIMESTAMP_ACTUAL>.csv". El archivo
+ormato "<DNI><TIMESTAMP_ACTUAL>.csv". El archivo
             #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
             #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
             #FechaOrigen, FechaPago, DNI, Estado.
@@ -178,3 +170,11 @@ def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se propo
 #Codigo Principal:
 
 table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
+#SALIDA
+
+def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos los
+            #valores correspondientes a la consulta.
+    '''descripcion'''
+
+def save_in_csv(table:pd): #Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
+            #con el nombre en el f
