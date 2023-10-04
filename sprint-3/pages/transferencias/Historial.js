@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import EncTabla from '../../components/Transferencia/EncTabla'
 import Tabla from '../../components/Transferencia/Tabla'
 import Layout from '@/components/layout'
+
+import { FormContext } from '@/contexts/TransferContext'
 
 const TransactionHistory =  ({ transferencias}) => {
     const [formulario, setFormulario] = useContext(FormContext)

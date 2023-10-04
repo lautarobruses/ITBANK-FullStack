@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import TransferForm from '../../components/Transferencia/TransferForm'
-import TransactionHistory from './Historial'
 import Head from 'next/head'
-import Balance from '@/components/Transferencia/Balance'
 import Layout from '@/components/layout'
 import Link from 'next/link'
 
@@ -11,6 +9,7 @@ const Transferencia = ({transferencias, setTransferencias}) => {
     const handleTransfer = (e) => {
       e.preventDefault()
     }
+    
     return (
         <>
             <Head>
