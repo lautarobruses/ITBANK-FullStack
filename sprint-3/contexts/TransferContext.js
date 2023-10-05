@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createContext } from 'react'
 
-export const FormContext= createContext()
+export const FormContext = createContext()
 
 const FormProvider = ({ children }) => {
     const [formulario, setFormulario] = useState({
