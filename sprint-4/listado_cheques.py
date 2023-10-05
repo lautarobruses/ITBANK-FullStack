@@ -7,50 +7,64 @@ from datetime import datetime
 
 #Validacion de datos de entrada:
 
-def func(): #Nombre del Archivo: El script de Python se debe llamar listado_cheques.py.
-    '''esta funcion debe devolver true si el parametro ingresado es "listado_cheques.py" 
-y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+def validaDNI(dni): 
+    '''
+    Esta funcion verifica si el formato de un DNI es valido.
+    El DNI debe tener digitos numericos, ser mayor que 0 y no tener una longitud mayor a 8 caracteres.
 
-def func(): #Nombre del archivo CSV: Se debe proporcionar el nombre del archivo CSV
-            #que contiene los registros de los cheques.
-    '''esta funcion debe devolver true si se encuentra el archivo CSV dado por parametro
-y false si no se encuentra, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+    :param dni: DNI ingresado por el usuario.
+    :type dni: string
+    :return: Si el DNI es correcto.
+    :rtype: bool
+    '''
+    es_digito = dni.isdigit()
+    mayor_a_cero = int(dni) > 0
+    longitud_menor_a_ocho = len(dni) <= 8
 
-def func(): #DNI del Cliente: Se debe proporcionar el DNI del cliente para el cual se
-            #realizará la consulta.
-    '''esta funcion debe devolver true si el parametro de la funcion es un numero entero mayor 
-a cero y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+    return es_digito and mayor_a_cero and longitud_menor_a_ocho
 
-def func(): #Salida (PANTALLA o CSV): El usuario puede elegir si desea ver los resultados
-            #en la pantalla o exportarlos a un archivo CSV.
-    '''esta funcion debe devolver true si el parametro ingresado es "PANTALLA" o "CSV"
-y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+def validaSalida(salida):
+    '''
+    Esta funcion verifica si el formato del parametro SALIDA es valido.
+    El parametro ingresado debe ser igual a "PANTALLA" o "CSV".
 
-def func(): #Tipo de Cheque (EMITIDO o DEPOSITADO): El usuario debe especificar si
-            #desea consultar cheques emitidos o depositados.
-    '''esta funcion debe devolver true si el parametro ingresado es "EMITIDO" o "DEPOSITADO"
-y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+    :param dni: tipo de salida deseada por el usuario.
+    :type dni: string
+    :return: Si el parametro ingresado es correcto.
+    :rtype: bool
+    '''
 
-def func(): #Estado del Cheque (Opcional): El usuario puede proporcionar un estado de
-            #cheque (PENDIENTE, APROBADO, RECHAZADO) como criterio de filtrado.
-    '''esta funcion debe devolver true si el parametro ingresado es "PENDIENTE" o "APROBADO"
-O "DEPOSITADO" y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+    return salida.upper() == "PANTALLA" or salida.upper() == "CSV"
 
-def func(): #Rango de Fechas (Opcional): El usuario puede especificar un rango de
+def validaTipoCheque(tipo_cheque): 
+    '''
+    Esta funcion verifica si el formato del parametro TIPO CHEQUE es valido.
+    El parametro ingresado debe ser igual a "EMITIDO" o "DEPOSITADO".
+
+    :param dni: tipo de cheque deseado por el usuario.
+    :type dni: string
+    :return: Si el parametro ingresado es correcto.
+    :rtype: bool
+    '''
+
+    return tipo_cheque.upper() == "EMITIDO" or tipo_cheque.upper() == "DEPOSITADO"
+
+def validaEstadoCheque(estado_cheque):
+    '''
+    Esta funcion verifica si el formato del parametro ESTADO CHEQUE es valido.
+    El parametro ingresado debe ser igual a "PENDIENTE" o "APROBADO" o "RECHAZADO".
+
+    :param dni: estado de cheque deseado por el usuario.
+    :type dni: string
+    :return: Si el parametro ingresado es correcto.
+    :rtype: bool
+    '''
+
+    return estado_cheque.upper() == "PENDIENTE" or estado_cheque.upper() == "APROBADO" or estado_cheque.upper() == "RECHAZADO"
+
+def validaRangoFechas(): #Rango de Fechas (Opcional): El usuario puede especificar un rango de
             #fechas para filtrar los cheques.  --fecha 2021-09-12:2
     '''PREGUNTAR AL PROFE COMO ES EL TEMA DEL RANGO'''
-    '''descripcion'''
-
-def func(): #Validar que la entrada es correcta con las funciones de arriba.
-    '''esta funcion debe devolver true si la entrada dada por el usuario es correcta segun
-las funciones de arriba y false si no lo es, junto con la muestra por consola del error
-correspondiente'''
     '''descripcion'''
 
 #FILTRO 1
@@ -64,6 +78,12 @@ def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por c
                 return True
 
     return False
+
+def muestraMensajeError():
+    print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
+    print("El formato esperado es el siguiente:")   
+    print("\n> python listado_cheques.py (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
+    print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
 
 #FILTRO 2
 
@@ -148,39 +168,52 @@ def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobad
     
     return True
 
-#Codigo principal
+#CODIGO PRINCIPAL
 
-#Parseo del comando en argumentos
+if len(sys.argv) < 4:
+    muestraMensajeError()
+else:
+    table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
 
-if len(sys.argv) > 1:
-    # Argumento 1
+    head = table.columns.tolist()
+
+    # Obtener los valores del DataFrame como un arreglo de NumPy
+
+    # Concatenar la cabecera como una fila al inicio del arreglo de datos
+    data = table.to_numpy()
+
     dni = sys.argv[1]
-    print(f"El primer argumento es: {dni}")
-
-if len(sys.argv) > 2:
-    # Argumento 2
     salida = sys.argv[2]
     tipo_cheque = sys.argv[3]
-    estado_cheque = sys.argv[4]
-    rango_fechas = sys.argv[5]
-    print(f"El segundo argumento es: {salida}")
-    print(f"El segundo argumento es: {tipo_cheque}")
-    print(f"El segundo argumento es: {estado_cheque}")
-    print(f"El segundo argumento es: {salida}")
 
+    if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
+        print("APLICO 1ER FILTRO")
+        print("APLICO MANEJO DE ERRORES")
+        print("APLICO 2DO FILTRO")
 
-table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
+        if len(sys.argv) == 5:
+            if validaEstadoCheque(sys.argv[4]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
+                print("APLICO 3ER FILTRO")
+            elif validaRangoFechas(sys.argv[4]): #El ultimo parametro ingresado es el RANGO DE FECHAS
+                print("APLICO 4TO FILTRO")
+            else:
+                muestraMensajeError()
+            
+        elif len(sys.argv) == 6:
+            estado_cheque = sys.argv[4]
+            rango_fechas = sys.argv[5]
 
-head = table.columns.tolist()
+            if validaEstadoCheque(estado_cheque) and validaRangoFechas(rango_fechas):
+                print("APLICO 3ER FILTRO")
+                print("APLICO 4TO FILTRO")
+            else:
+                muestraMensajeError()
+    else:
+        muestraMensajeError()
 
-# Obtener los valores del DataFrame como un arreglo de NumPy
+    leakedData = filterTime(data, rango_fechas)
 
-# Concatenar la cabecera como una fila al inicio del arreglo de datos
-data = table.to_numpy()
-
-leakedData= filterTime(data, rango_fechas)
-
-if ( salida == 'PANTALLA' ):
-    printNumpy(leakedData, head)
-else:
-    saveCsv(leakedData, head)
+    if ( salida == 'PANTALLA' ):
+        printNumpy(leakedData, head)
+    else:
+        saveCsv(leakedData, head)   
