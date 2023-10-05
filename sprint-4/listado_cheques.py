@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-def muestraMensajeError():
+def muestraMensajeError(): #agregar causa del error
     print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
     print("El formato esperado es el siguiente:")   
     print("\n> python listado_cheques.py cheques.csv (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
@@ -67,16 +67,14 @@ def validaEstadoCheque(estado_cheque):
 
     return estado_cheque.upper() == "PENDIENTE" or estado_cheque.upper() == "APROBADO" or estado_cheque.upper() == "RECHAZADO"
 
-def validaRangoFechas(): #Rango de Fechas (Opcional): El usuario puede especificar un rango de
-            #fechas para filtrar los cheques.  --fecha 2021-09-12:2
+def validaRangoFechas(): 
     '''PREGUNTAR AL PROFE COMO ES EL TEMA DEL RANGO'''
-    '''descripcion'''
 
 #FILTRO 1
 
 #MANEJO DE ERRORES (NRO CHEQUES REPETIDOS)
 
-def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por cuenta.
+# def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por cuenta.
     '''Si la lista dada tiene repetidos devuelve True, si no False.'''
     for j in range(len(list)):
         for i in range(j + 1, len(list)):
@@ -88,9 +86,6 @@ def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por c
 #FILTRO 2
 
 #FILTRO 3
-def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
-            #como parámetro, se deben imprimir los cheques sin filtrar por estado.
-    '''descripcion'''
 
 #FILTRO 4
 def filterTime(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
@@ -105,8 +100,8 @@ def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
 def printNumpy(table:np, head:list|None):
     '''Muestra por pantalla el numpy dado.'''
     sep = "|"
-    table[:, 6] = [timeToStr(x) for x in table[:, 6]]
-    table[:, 7] = [timeToStr(x) for x in table[:, 7]]
+    table[:, 6] = [timeToStr(x) for x in table[:, 6]] #Numero magicos
+    table[:, 7] = [timeToStr(x) for x in table[:, 7]] #Numero magicos
 
     if ( head != None ):
         print( sep.join([ x.center(11) for x in map( str, head ) ]) )
@@ -122,34 +117,34 @@ def saveCsv(table:np, head:list|None):
     for list in table:
         strignTable = strignTable + '\n' + sep.join(map( str, list ))
 
-    with open('data/salida.csv', 'w') as file:
+    with open('data/salida.csv', 'w') as file: #nombre archivo = <DNI><TIMESTAMP_ACTUAL>.csv
         file.write(strignTable)
         file.close()
 
-def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco, entre 1 y 100.
-                                       #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
-                                       #DNI: String con DNI del cliente donde se permite identificarlo
-    '''Retorna true si todos los numeros de la lista dada estan en el rango entre [min, max], si no
-    devuelve False junto con el indice del primer numero fuera de rango'''
+# def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco, entre 1 y 100.
+#                                        #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
+#                                        #DNI: String con DNI del cliente donde se permite identificarlo
+#     '''Retorna true si todos los numeros de la lista dada estan en el rango entre [min, max], si no
+#     devuelve False junto con el indice del primer numero fuera de rango'''
 
-    # if( not( isinstance(min, (int, float)) and isinstance(max, (int, float)) ) ):
-    #     raise ValueError("El rango dado debe estar compuesto por numeros.")
+#     # if( not( isinstance(min, (int, float)) and isinstance(max, (int, float)) ) ):
+#     #     raise ValueError("El rango dado debe estar compuesto por numeros.")
     
-    # if( min == max == None ):
-    #     raise ValueError("El rango no esta dado.")          
-    # elif( not( min==None or max==None ) ):
-    #     if(min >= max ):
-    #         raise ValueError(f"El rango ({min},{max}) no es valido.")
+#     # if( min == max == None ):
+#     #     raise ValueError("El rango no esta dado.")          
+#     # elif( not( min==None or max==None ) ):
+#     #     if(min >= max ):
+#     #         raise ValueError(f"El rango ({min},{max}) no es valido.")
 
-    for i in range(len(list)):
-        if ( not( isinstance(list[i], (int, float)) ) ):
-            raise ValueError("La lista dada debe estar compuesto por numeros.")
-        if (min is not None and list[i] < min) or (max is not None and list[i] > max):
-            return False, i
+#     for i in range(len(list)):
+#         if ( not( isinstance(list[i], (int, float)) ) ):
+#             raise ValueError("La lista dada debe estar compuesto por numeros.")
+#         if (min is not None and list[i] < min) or (max is not None and list[i] > max):
+#             return False, i
     
-    return True
+#     return True
 
-def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
+# def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
     '''Comprueba que la lista dada solo contenga los args dados'''
     tam = i = len(args) - 1
 
@@ -165,12 +160,12 @@ def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobad
     return True
 
 #CODIGO PRINCIPAL
-
 def main():
     if len(sys.argv) < 5:
         muestraMensajeError()
     else:
-        nombre_archivo = sys.argv[1]
+        NOMBRE_ARCHIVO = 1
+        nombre_archivo = sys.argv[NOMBRE_ARCHIVO]
         print(nombre_archivo)
 
         #VERIFICAR QUE EL ARCHIVO EXISTA Y ABRIRLO --> sino devolver error
@@ -195,8 +190,7 @@ def main():
                     print("APLICO 4TO FILTRO")
                 else:
                     muestraMensajeError()
-                
-            elif len(sys.argv) == 7:
+            elif len(sys.argv) == 7: #documentar el orden de los argumentos
                 estado_cheque = sys.argv[5]
                 rango_fechas = sys.argv[6]
 
@@ -205,14 +199,14 @@ def main():
                     print("APLICO 4TO FILTRO")
                 else:
                     muestraMensajeError()
+
+            leakedData = filterTime(data, rango_fechas)
+
+            if ( salida == 'PANTALLA' ):
+                printNumpy(leakedData, head)
+            else:
+                saveCsv(leakedData, head)  
         else:
             muestraMensajeError()
-
-        leakedData = filterTime(data, rango_fechas)
-
-        if ( salida == 'PANTALLA' ):
-            printNumpy(leakedData, head)
-        else:
-            saveCsv(leakedData, head)  
 
 main() 
