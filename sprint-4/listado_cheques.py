@@ -88,9 +88,22 @@ def validaRangoFechas():
 #FILTRO 3
 
 #FILTRO 4
-def filterTime(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
-            #como parámetro, se deben imprimir los cheques sin filtrar por estado.
-    '''descripcion'''
+
+def filterTime(table:np, range:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
+            #como parámetro, se deben imprimir los cheques sin filtrar por estado. --fecha 2021-09-12:2021-09-16
+    '''Filtra la fila 7 del numpy segun el rango de fechas dado.'''
+    min_time_str, max_time_str = range.split(':')
+ 
+    min_time = datetime.fromisoformat(min_time_str).replace(hour=0, minute=0, second=0)
+    max_time = datetime.fromisoformat(max_time_str).replace(hour=23, minute=59, second=59)
+
+    table[:, 7] = [datetime.utcfromtimestamp(x) for x in table[:, 7]]
+    
+    table = table[ (min_time <= table[:, 7]) & (table[:, 7] <= max_time)]
+
+    table[:, 7] = [int(x.timestamp()) for x in table[:, 7]]
+
+    return  table
 
 #SALIDA DE DATOS
 def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
@@ -144,7 +157,7 @@ def saveCsv(table:np, head:list|None):
     
 #     return True
 
-# def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
+def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
     '''Comprueba que la lista dada solo contenga los args dados'''
     tam = i = len(args) - 1
 
@@ -192,9 +205,10 @@ def main():
                     muestraMensajeError()
             elif len(sys.argv) == 7: #documentar el orden de los argumentos
                 estado_cheque = sys.argv[5]
-                rango_fechas = sys.argv[6]
+                tipo_fecha = sys.argv[6]
+                rango_fechas = sys.argv[7]
 
-                if validaEstadoCheque(estado_cheque) and validaRangoFechas(rango_fechas):
+                if validaEstadoCheque(estado_cheque) and validaRangoFechas(tipo_fecha):
                     print("APLICO 3ER FILTRO")
                     print("APLICO 4TO FILTRO")
                 else:
