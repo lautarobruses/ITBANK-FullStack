@@ -5,53 +5,12 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-#Parseo del comando en argumentos
-
-if len(sys.argv) < 4:
-    print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
-    print("El formato esperado es el siguiente:")   
-    print("\n> python listado_cheques.py (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
-    print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
-else:
-        dni = sys.argv[1]
-
-        validaDNI(dni)
-
-        salida = sys.argv[2]
-        tipo_cheque = sys.argv[3]
-
-        print(f"El primer argumento es: {dni}")
-
-        if len(sys.argv) == 5:
-            estado_cheque = sys.argv[4]
-            salida = sys.argv[5]
-        elif len(sys.argv) == 6:
-            estado_cheque = sys.argv[4]
-        salida = sys.argv[5]
-
-
-def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
-    '''Comprueba que la lista dada solo contenga los args dados'''
-    tam = i = len(args) - 1
-
-    for item in list:
-        i = tam
-
-        while( 0 <= i and item != args[i]):
-            i -= 1
-        
-        if( i < 0 ):
-            return False
-    
-    return True
-
-table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
-data = table.to_numpy()
-print(table)
-print(type(table))
-print(type(data))
-
 #Validacion de datos de entrada:
+
+def func(): #Nombre del Archivo: El script de Python se debe llamar listado_cheques.py.
+    '''esta funcion debe devolver true si el parametro ingresado es "listado_cheques.py" 
+y false si no lo es, junto con la muestra por consola del error correspondiente'''
+    '''descripcion'''
 
 def func(): #Nombre del archivo CSV: Se debe proporcionar el nombre del archivo CSV
             #que contiene los registros de los cheques.
@@ -59,16 +18,11 @@ def func(): #Nombre del archivo CSV: Se debe proporcionar el nombre del archivo 
 y false si no se encuentra, junto con la muestra por consola del error correspondiente'''
     '''descripcion'''
 
-def validaDNI(dni): 
-    '''
-    Esta funcion verifica si el formato de un DNI es valido.
-
-    :param dni: DNI ingresado por el usuario.
-    :type dni: string
-    :return: Si el DNI es correcto.
-    :rtype: bool
-    '''
-    return dni.isdigit() and int(dni) > 0 and len(dni) >=8
+def func(): #DNI del Cliente: Se debe proporcionar el DNI del cliente para el cual se
+            #realizará la consulta.
+    '''esta funcion debe devolver true si el parametro de la funcion es un numero entero mayor 
+a cero y false si no lo es, junto con la muestra por consola del error correspondiente'''
+    '''descripcion'''
 
 def func(): #Salida (PANTALLA o CSV): El usuario puede elegir si desea ver los resultados
             #en la pantalla o exportarlos a un archivo CSV.
@@ -121,21 +75,37 @@ def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se propo
 
 #FILTRO 4
 
-#SALIDA DE DATOS
-
-def saveCsv(tabla): #Validar CSV con las funciones de arriba
+def filterTime(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
+            #como parámetro, se deben imprimir los cheques sin filtrar por estado.
     '''descripcion'''
-            #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
-            #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
-            #FechaOrigen, FechaPago, DNI, Estado.
-    '''Guarda el csv dado en un archivo salida.csv'''
+
+#SALIDA DE DATOS
+def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
+    '''Retorna un string de la fecha dada por el timestamp dado.'''
+    return datetime.utcfromtimestamp(number).strftime('%Y/%m/%d %H:%M:%S')
+
+def printNumpy(table:np, head:list|None):
+    '''Muestra por pantalla el numpy dado.'''
+    sep = "|"
+    table[:, 6] = [timeToStr(x) for x in table[:, 6]]
+    table[:, 7] = [timeToStr(x) for x in table[:, 7]]
+
+    if ( head != None ):
+        print( sep.join([ x.center(11) for x in map( str, head ) ]) )
+
+    for list in table:
+        print( sep.join([ x.center(11) for x in map( str, list ) ]) )
+
+
+def saveCsv(table:np, head:list|None):
+    '''Guarda el numpy dado en un archivo salida.csv.'''
     sep= ","
-    strignTable = sep.join(map(str,table.columns.tolist()))
+    strignTable = sep.join(map( str, head ))
 
-    for i in range(len(table)):
-        strignTable = strignTable + '\n' + sep.join(map(str,table.iloc[i].tolist()))
+    for list in table:
+        strignTable = strignTable + '\n' + sep.join(map( str, list ))
 
-    with open('data/salida.cvs', 'w') as file:
+    with open('data/salida.csv', 'w') as file:
         file.write(strignTable)
         file.close()
 
@@ -155,23 +125,62 @@ def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco
     #         raise ValueError(f"El rango ({min},{max}) no es valido.")
 
     for i in range(len(list)):
-        if( not( isinstance(list[i], (int, float)) ) ):
+        if ( not( isinstance(list[i], (int, float)) ) ):
             raise ValueError("La lista dada debe estar compuesto por numeros.")
         if (min is not None and list[i] < min) or (max is not None and list[i] > max):
             return False, i
     
     return True
 
-def func(): #FechaOrigen: Fecha de emisión: (En timestamp)
-    '''descripcion'''
-    fecha = datetime.utcfromtimestamp(1631066400)
-    print(fecha)
+
+def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
+    '''Comprueba que la lista dada solo contenga los args dados'''
+    tam = i = len(args) - 1
+
+    for item in list:
+        i = tam
+
+        while( 0 <= i and item != args[i]):
+            i -= 1
+        
+        if( i < 0 ):
+            return False
+    
+    return True
+
+#Codigo principal
+
+#Parseo del comando en argumentos
+
+if len(sys.argv) > 1:
+    # Argumento 1
+    dni = sys.argv[1]
+    print(f"El primer argumento es: {dni}")
+
+if len(sys.argv) > 2:
+    # Argumento 2
+    salida = sys.argv[2]
+    tipo_cheque = sys.argv[3]
+    estado_cheque = sys.argv[4]
+    rango_fechas = sys.argv[5]
+    print(f"El segundo argumento es: {salida}")
+    print(f"El segundo argumento es: {tipo_cheque}")
+    print(f"El segundo argumento es: {estado_cheque}")
+    print(f"El segundo argumento es: {salida}")
 
 
-def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos los
-            #valores correspondientes a la consulta.
-    '''descripcion'''
+table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
 
-def save_in_csv(table:pd): #Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
-    #con el nombre en el f
-    '''descripcion'''
+head = table.columns.tolist()
+
+# Obtener los valores del DataFrame como un arreglo de NumPy
+
+# Concatenar la cabecera como una fila al inicio del arreglo de datos
+data = table.to_numpy()
+
+leakedData= filterTime(data, rango_fechas)
+
+if ( salida == 'PANTALLA' ):
+    printNumpy(leakedData, head)
+else:
+    saveCsv(leakedData, head)
