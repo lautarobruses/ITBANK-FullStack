@@ -18,9 +18,9 @@ def filtrar_datos_por_dni(nombre_archivo, dni):
 
     if not duplicados.empty:
         print("Error: Se encontraron números de cheque duplicados para el mismo DNI y cuenta.")
-        print(duplicados)
+        print(duplicados.to_numpy())
 
-    return df_filtrado
+    return df_filtrado.to_numpy()
 
 if __name__ == "__main__":
     if len(sys.argv) > 2:
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         dni = sys.argv[2]
 
         # Filtrar los datos por DNI
-        df_filtrado = filtrar_datos_por_dni(nombre_archivo, dni)
+        array_filtrado = filtrar_datos_por_dni(nombre_archivo, dni)
 
         # Imprimir los datos filtrados
-        print(df_filtrado)
+        print(array_filtrado)
