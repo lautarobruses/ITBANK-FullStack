@@ -7,21 +7,27 @@ from datetime import datetime
 
 #Parseo del comando en argumentos
 
-if len(sys.argv) > 1:
-    # Argumento 1
-    dni = sys.argv[1]
-    print(f"El primer argumento es: {dni}")
+if len(sys.argv) < 4:
+    print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
+    print("El formato esperado es el siguiente:")   
+    print("\n> python listado_cheques.py (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
+    print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
+else:
+        dni = sys.argv[1]
 
-if len(sys.argv) > 2:
-    # Argumento 2
-    salida = sys.argv[2]
-    tipo_cheque = sys.argv[3]
-    estado_cheque = sys.argv[4]
-    salida = sys.argv[5]
-    print(f"El segundo argumento es: {salida}")
-    print(f"El segundo argumento es: {tipo_cheque}")
-    print(f"El segundo argumento es: {estado_cheque}")
-    print(f"El segundo argumento es: {salida}")
+        validaDNI(dni)
+
+        salida = sys.argv[2]
+        tipo_cheque = sys.argv[3]
+
+        print(f"El primer argumento es: {dni}")
+
+        if len(sys.argv) == 5:
+            estado_cheque = sys.argv[4]
+            salida = sys.argv[5]
+        elif len(sys.argv) == 6:
+            estado_cheque = sys.argv[4]
+        salida = sys.argv[5]
 
 
 def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
@@ -47,22 +53,22 @@ print(type(data))
 
 #Validacion de datos de entrada:
 
-def func(): #Nombre del Archivo: El script de Python se debe llamar listado_cheques.py.
-    '''esta funcion debe devolver true si el parametro ingresado es "listado_cheques.py" 
-y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
-
 def func(): #Nombre del archivo CSV: Se debe proporcionar el nombre del archivo CSV
             #que contiene los registros de los cheques.
     '''esta funcion debe devolver true si se encuentra el archivo CSV dado por parametro
 y false si no se encuentra, junto con la muestra por consola del error correspondiente'''
     '''descripcion'''
 
-def func(): #DNI del Cliente: Se debe proporcionar el DNI del cliente para el cual se
-            #realizará la consulta.
-    '''esta funcion debe devolver true si el parametro de la funcion es un numero entero mayor 
-a cero y false si no lo es, junto con la muestra por consola del error correspondiente'''
-    '''descripcion'''
+def validaDNI(dni): 
+    '''
+    Esta funcion verifica si el formato de un DNI es valido.
+
+    :param dni: DNI ingresado por el usuario.
+    :type dni: string
+    :return: Si el DNI es correcto.
+    :rtype: bool
+    '''
+    return dni.isdigit() and int(dni) > 0 and len(dni) >=8
 
 def func(): #Salida (PANTALLA o CSV): El usuario puede elegir si desea ver los resultados
             #en la pantalla o exportarlos a un archivo CSV.
