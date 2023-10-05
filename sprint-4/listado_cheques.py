@@ -1,77 +1,50 @@
-''' CONSIGNA: 
-El objetivo de este proyecto es desarrollar un script de Python llamado
-listado_cheques.py que permita procesar y consultar información de cheques
-bancarios almacenados en un archivo CSV. El script debe permitir a los 
-usuariosfiltrar y visualizar los datos de los cheques emitidos y depositados
-por un cliente específico, considerando diferentes criterios de filtrado, 
-como el estado del chequey el rango de fechas. Además, se debe gestionar 
-la exportación de datos a unarchivo CSV si es necesario.
-
-Este tipo de archivo se sabe que contiene los siguientes campos con la
-siguiente información:
-
-NroCheque: Número de cheque, este debe ser único por cuenta.
-CodigoBanco: Código numérico del banco, entre 1 y 100.
-CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
-NumeroCuentaOrigen: Cuenta de origen del cheque.
-NumeroCuentaDestino: Cuenta donde se cobra el cheque.
-Valor: float con el valor del cheque.
-FechaOrigen: Fecha de emisión: (En timestamp)
-FechaPago: Fecha de pago o cobro del cheque (En timestamp)
-DNI: String con DNI del cliente donde se permite identificarlo
-Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
-
-Requisitos Específicos:
-
-Nombre del Archivo: El script de Python se debe llamar listado_cheques.py.
-
-Argumentos de Línea de Comando:
-
-Nombre del archivo CSV: Se debe proporcionar el nombre del archivo CSV
-que contiene los registros de los cheques.
-DNI del Cliente: Se debe proporcionar el DNI del cliente para el cual se
-realizará la consulta.
-Salida (PANTALLA o CSV): El usuario puede elegir si desea ver los resultados
-en la pantalla o exportarlos a un archivo CSV.
-Tipo de Cheque (EMITIDO o DEPOSITADO): El usuario debe especificar si
-desea consultar cheques emitidos o depositados.
-Estado del Cheque (Opcional): El usuario puede proporcionar un estado de
-cheque (PENDIENTE, APROBADO, RECHAZADO) como criterio de filtrado.
-Rango de Fechas (Opcional): El usuario puede especificar un rango de
-fechas para filtrar los cheques.
-
-Manejo de Errores:
-Si se encuentra un número de cheque repetido en la misma cuenta para un DNI
-dado, mostrar un mensaje de error indicando el problema.
-
-Salida de Datos:
-Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos los
-valores correspondientes a la consulta.
-Si el parámetro "Salida" es CSV, exportar los resultados a un archivo CSV
-con el nombre en el formato "<DNI><TIMESTAMP_ACTUAL>.csv". El archivo
-CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
-CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
-FechaOrigen, FechaPago, DNI, Estado.
-Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
-como parámetro, se deben imprimir los cheques sin filtrar por estado.
-Documentación y Comentarios: Agregar comentarios descriptivos en el código
-para explicar su funcionalidad y proporcionar una documentación clara de
-cómousar el script.
-
-Validación de Parámetros: Asegurarse de que los parámetros proporcionados
-por el usuario sean válidos y manejar posibles errores de entrada.
-Optimización del Código: Considerar la optimización del código para cargar y
-procesar grandes conjuntos de datos de manera eficiente.
-Manejo de Fechas y Formato CSV: Asegurarse de que las fechas se manejen
-correctamente y se formateen adecuadamente al exportar a CSV
-'''
+# python listado_cheques.py 42874892 salida tipo_cheque estado_cheque rango_fechas
 
 import sys
 import pandas as pd
+import numpy as np
+from datetime import datetime
 
-#Funciones:
+#Parseo del comando en argumentos
 
-#MANEJO DE ERRORES
+if len(sys.argv) > 1:
+    # Argumento 1
+    dni = sys.argv[1]
+    print(f"El primer argumento es: {dni}")
+
+if len(sys.argv) > 2:
+    # Argumento 2
+    salida = sys.argv[2]
+    tipo_cheque = sys.argv[3]
+    estado_cheque = sys.argv[4]
+    salida = sys.argv[5]
+    print(f"El segundo argumento es: {salida}")
+    print(f"El segundo argumento es: {tipo_cheque}")
+    print(f"El segundo argumento es: {estado_cheque}")
+    print(f"El segundo argumento es: {salida}")
+
+
+def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
+    '''Comprueba que la lista dada solo contenga los args dados'''
+    tam = i = len(args) - 1
+
+    for item in list:
+        i = tam
+
+        while( 0 <= i and item != args[i]):
+            i -= 1
+        
+        if( i < 0 ):
+            return False
+    
+    return True
+
+table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
+data = table.to_numpy()
+print(table)
+print(type(table))
+print(type(data))
+
 #Validacion de datos de entrada:
 
 def func(): #Nombre del Archivo: El script de Python se debe llamar listado_cheques.py.
@@ -120,20 +93,49 @@ las funciones de arriba y false si no lo es, junto con la muestra por consola de
 correspondiente'''
     '''descripcion'''
 
-#Validacion de CSV (falta validacion de errores)
+#FILTRO 1
 
-def  haveRepeat (list): #NroCheque: Número de cheque, este debe ser único por cuenta.
+#MANEJO DE ERRORES (NRO CHEQUES REPETIDOS)
+def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por cuenta.
     '''Si la lista dada tiene repetidos devuelve True, si no False.'''
     for j in range(len(list)):
         for i in range(j + 1, len(list)):
             if( list[j] == list[i] ):
                 return True
-    
+
     return False
 
+#FILTRO 2
+
+#FILTRO 3
+
+def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
+            #como parámetro, se deben imprimir los cheques sin filtrar por estado.
+    '''descripcion'''
+
+#FILTRO 4
+
+#SALIDA DE DATOS
+
+def saveCsv(tabla): #Validar CSV con las funciones de arriba
+    '''descripcion'''
+            #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
+            #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
+            #FechaOrigen, FechaPago, DNI, Estado.
+    '''Guarda el csv dado en un archivo salida.csv'''
+    sep= ","
+    strignTable = sep.join(map(str,table.columns.tolist()))
+
+    for i in range(len(table)):
+        strignTable = strignTable + '\n' + sep.join(map(str,table.iloc[i].tolist()))
+
+    with open('data/salida.cvs', 'w') as file:
+        file.write(strignTable)
+        file.close()
+
 def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco, entre 1 y 100.
-                                    #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
-                                    #DNI: String con DNI del cliente donde se permite identificarlo
+                                       #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
+                                       #DNI: String con DNI del cliente donde se permite identificarlo
     '''Retorna true si todos los numeros de la lista dada estan en el rango entre [min, max], si no
     devuelve False junto con el indice del primer numero fuera de rango'''
 
@@ -156,47 +158,9 @@ def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco
 
 def func(): #FechaOrigen: Fecha de emisión: (En timestamp)
     '''descripcion'''
+    fecha = datetime.utcfromtimestamp(1631066400)
+    print(fecha)
 
-def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
-    '''Comprueba que la lista dada solo contenga los args dados'''
-    tam = i = len(args) - 1
-
-    for item in list:
-        i = tam
-
-        while( 0 <= i and item != args[i]):
-            i -= 1
-        
-        if( i < 0 ):
-            return False
-    
-    return True
-
-def saveCsv(): #Validar CSV con las funciones de arriba
-    '''descripcion'''
-            #CSV debe contener las siguientes columnas: NroCheque, CodigoBanco,
-            #CodigoSucursal, NumeroCuentaOrigen, NumeroCuentaDestino, Valor,
-            #FechaOrigen, FechaPago, DNI, Estado.
-    '''Guarda el csv dado en un archivo salida.csv'''
-    sep= ","
-    strignTable = sep.join(map(str,table.columns.tolist()))
-
-    for i in range(len(table)):
-        strignTable = strignTable + '\n' + sep.join(map(str,table.iloc[i].tolist()))
-
-    with open('data/salida.cvs', 'w') as file:
-        file.write(strignTable)
-        file.close()
-
-def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
-            #como parámetro, se deben imprimir los cheques sin filtrar por estado.
-    '''descripcion'''
-
-#Codigo Principal:
-
-table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
-
-#SALIDA
 
 def func(): #Si el parámetro "Salida" es PANTALLA, imprimir por pantalla todos los
             #valores correspondientes a la consulta.
