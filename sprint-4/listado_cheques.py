@@ -1,12 +1,17 @@
-# python listado_cheques.py 42874892 salida tipo_cheque estado_cheque rango_fechas
+# python listado_cheques.py cheques.py 42874892 salida tipo_cheque estado_cheque rango_fechas
 
 import sys
 import pandas as pd
 import numpy as np
 from datetime import datetime
 
-#Validacion de datos de entrada:
+def muestraMensajeError():
+    print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
+    print("El formato esperado es el siguiente:")   
+    print("\n> python listado_cheques.py cheques.csv (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
+    print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
 
+#Validacion de datos de entrada:
 def validaDNI(dni): 
     '''
     Esta funcion verifica si el formato de un DNI es valido.
@@ -70,6 +75,7 @@ def validaRangoFechas(): #Rango de Fechas (Opcional): El usuario puede especific
 #FILTRO 1
 
 #MANEJO DE ERRORES (NRO CHEQUES REPETIDOS)
+
 def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por cuenta.
     '''Si la lista dada tiene repetidos devuelve True, si no False.'''
     for j in range(len(list)):
@@ -79,22 +85,14 @@ def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por c
 
     return False
 
-def muestraMensajeError():
-    print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
-    print("El formato esperado es el siguiente:")   
-    print("\n> python listado_cheques.py (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
-    print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
-
 #FILTRO 2
 
 #FILTRO 3
-
 def func(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
             #como parámetro, se deben imprimir los cheques sin filtrar por estado.
     '''descripcion'''
 
 #FILTRO 4
-
 def filterTime(): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
             #como parámetro, se deben imprimir los cheques sin filtrar por estado.
     '''descripcion'''
@@ -115,7 +113,6 @@ def printNumpy(table:np, head:list|None):
 
     for list in table:
         print( sep.join([ x.center(11) for x in map( str, list ) ]) )
-
 
 def saveCsv(table:np, head:list|None):
     '''Guarda el numpy dado en un archivo salida.csv.'''
@@ -152,7 +149,6 @@ def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco
     
     return True
 
-
 def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
     '''Comprueba que la lista dada solo contenga los args dados'''
     tam = i = len(args) - 1
@@ -170,50 +166,53 @@ def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobad
 
 #CODIGO PRINCIPAL
 
-if len(sys.argv) < 4:
-    muestraMensajeError()
-else:
-    table = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
-
-    head = table.columns.tolist()
-
-    # Obtener los valores del DataFrame como un arreglo de NumPy
-
-    # Concatenar la cabecera como una fila al inicio del arreglo de datos
-    data = table.to_numpy()
-
-    dni = sys.argv[1]
-    salida = sys.argv[2]
-    tipo_cheque = sys.argv[3]
-
-    if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
-        print("APLICO 1ER FILTRO")
-        print("APLICO MANEJO DE ERRORES")
-        print("APLICO 2DO FILTRO")
-
-        if len(sys.argv) == 5:
-            if validaEstadoCheque(sys.argv[4]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
-                print("APLICO 3ER FILTRO")
-            elif validaRangoFechas(sys.argv[4]): #El ultimo parametro ingresado es el RANGO DE FECHAS
-                print("APLICO 4TO FILTRO")
-            else:
-                muestraMensajeError()
-            
-        elif len(sys.argv) == 6:
-            estado_cheque = sys.argv[4]
-            rango_fechas = sys.argv[5]
-
-            if validaEstadoCheque(estado_cheque) and validaRangoFechas(rango_fechas):
-                print("APLICO 3ER FILTRO")
-                print("APLICO 4TO FILTRO")
-            else:
-                muestraMensajeError()
-    else:
+def main():
+    if len(sys.argv) < 5:
         muestraMensajeError()
-
-    leakedData = filterTime(data, rango_fechas)
-
-    if ( salida == 'PANTALLA' ):
-        printNumpy(leakedData, head)
     else:
-        saveCsv(leakedData, head)   
+        nombre_archivo = sys.argv[1]
+        print(nombre_archivo)
+
+        #VERIFICAR QUE EL ARCHIVO EXISTA Y ABRIRLO --> sino devolver error
+
+        data = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
+        head = data.columns.tolist()
+        tabla = data.to_numpy()
+
+        dni = sys.argv[2]
+        salida = sys.argv[3]
+        tipo_cheque = sys.argv[4]
+
+        if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
+            print("APLICO 1ER FILTRO")
+            print("APLICO MANEJO DE ERRORES")
+            print("APLICO 2DO FILTRO")
+
+            if len(sys.argv) == 6:
+                if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
+                    print("APLICO 3ER FILTRO")
+                elif validaRangoFechas(sys.argv[5]): #El ultimo parametro ingresado es el RANGO DE FECHAS
+                    print("APLICO 4TO FILTRO")
+                else:
+                    muestraMensajeError()
+                
+            elif len(sys.argv) == 7:
+                estado_cheque = sys.argv[5]
+                rango_fechas = sys.argv[6]
+
+                if validaEstadoCheque(estado_cheque) and validaRangoFechas(rango_fechas):
+                    print("APLICO 3ER FILTRO")
+                    print("APLICO 4TO FILTRO")
+                else:
+                    muestraMensajeError()
+        else:
+            muestraMensajeError()
+
+        leakedData = filterTime(data, rango_fechas)
+
+        if ( salida == 'PANTALLA' ):
+            printNumpy(leakedData, head)
+        else:
+            saveCsv(leakedData, head)  
+
+main() 
