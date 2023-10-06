@@ -137,7 +137,7 @@ def printNumpy(table:np, head:list|None):
     for list in table:
         print( sep.join([ x.center(11) for x in map( str, list ) ]) )
 
-def saveCsv(table:np, head:list|None):
+def saveCsv(table:np, head:list|None, dni:int):
     '''Guarda el numpy dado en un archivo salida.csv.'''
     sep= ","
     strignTable = sep.join(map( str, head ))
@@ -145,7 +145,9 @@ def saveCsv(table:np, head:list|None):
     for list in table:
         strignTable = strignTable + '\n' + sep.join(map( str, list ))
 
-    with open('data/salida.csv', 'w') as file: #nombre archivo = <DNI><TIMESTAMP_ACTUAL>.csv
+    timestamp = int(datetime.timestamp(datetime.now()))
+  
+    with open(f'{dni}_{timestamp}.csv', 'w') as file: #nombre archivo = <DNI><TIMESTAMP_ACTUAL>.csv
         file.write(strignTable)
         file.close()
 
@@ -188,6 +190,7 @@ def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobad
     return True
 
 #CODIGO PRINCIPAL
+
 def main():
     if len(sys.argv) < 5:
         muestraMensajeError()
@@ -234,8 +237,7 @@ def main():
             if ( salida == 'PANTALLA' ):
                 printNumpy(leakedData, head)
             else:
-                saveCsv(leakedData, head)  
+                saveCsv(leakedData, head, dni)  
         else:
             muestraMensajeError()
-
 main() 
