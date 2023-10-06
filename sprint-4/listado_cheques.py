@@ -138,6 +138,22 @@ def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
         return resultado
     
 #FILTRO 3
+def filterState(tabla: np.ndarray, estado_cheque: str):
+    """
+    Filtra los datos de cheques bancarios según el estado de cheque especificado(APROBADO, PENDIENTE y REACHAZADO).
+
+    :param tabla: Un arreglo de datos que contiene la información de los cheques bancarios.
+    :type tabla: np.ndarray
+    :param estado_cheque: El estado de cheque a filtrar en mayúsculas.
+    :type estado_cheque: str
+    :return: Un nuevo arreglo con los datos de los cheques que coinciden con el estado especificado.
+    :rtype: np.ndarray
+    """
+    if estado_cheque is None:
+        return tabla #No se proporcionó un estado, devuelve datos sin filtrar
+    
+    estado_cheque = estado_cheque.upper()
+    return tabla[:, ESTADO] == estado_cheque
 
 #FILTRO 4
 def filterTime(tabla:np.ndarray, rango:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
