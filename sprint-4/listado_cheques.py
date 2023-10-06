@@ -112,7 +112,18 @@ def filterDNI(dataFrame:pd.DataFrame, dni:str):
 
 #FILTRO 2: Tipo de Cheque (EMITIDO o DEPOSITADO)
 def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
-    '''Filtra los datos de cheques bancarios según el tipo de cheque especificado''' 
+    '''
+    Filtra los datos de cheques bancarios según el tipo de cheque especificado y el número de DNI.
+
+    :param tabla: Un arreglo de datos que contiene información de cheques bancarios.
+    :type tabla: np.ndarray
+    :param dni: El número de DNI (Documento Nacional de Identidad) como cadena de caracteres.
+    :type dni: str
+    :param tipo_cheque: El tipo de cheque a filtrar, puede ser "EMITIDO" o "DEPOSITADO".
+    :type tipo_cheque: str
+    :return: Un nuevo arreglo con los datos de los cheques que coinciden con el tipo especificado.
+    :rtype: np.ndarray
+    ''' 
     resultado:np.ndarray
 
     dni = int(dni)
