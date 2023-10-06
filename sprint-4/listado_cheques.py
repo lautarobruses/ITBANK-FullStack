@@ -152,8 +152,7 @@ def filterState(tabla: np.ndarray, estado_cheque: str):
     if estado_cheque is None:
         return tabla #No se proporcionó un estado, devuelve datos sin filtrar
     
-    estado_cheque = estado_cheque.upper()
-    return tabla[:, ESTADO] == estado_cheque
+    return tabla[:, ESTADO] == estado_cheque.upper()
 
 #FILTRO 4
 def filterTime(tabla:np.ndarray, rango:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
@@ -220,7 +219,7 @@ def main():
 
                 if len(sys.argv) == 6:
                     if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
-                        print("APLICO 3ER FILTRO")
+                        tablaFiltrada = filterState(tablaFiltrada, estado_cheque)
                     elif validaRangoFechas(sys.argv[5]): #El ultimo parametro ingresado es el RANGO DE FECHAS
                         resultado = filterTime(tablaFiltrada, rango_fechas)
                     else:
@@ -231,7 +230,7 @@ def main():
                     rango_fechas = sys.argv[RANGO_FECHAS]
 
                     if validaEstadoCheque(estado_cheque) and validaRangoFechas(tipo_fecha):
-                        print("APLICO 3ER FILTRO")
+                        tablaFiltrada = filterState(tablaFiltrada, estado_cheque)
                         resultado = filterTime(tablaFiltrada, rango_fechas)
                     else:
                         muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
