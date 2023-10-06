@@ -83,8 +83,23 @@ def validaRangoFechas():
 
     return False
 
-#FILTRO 2
+#FILTRO 2: Tipo de Cheque (EMITIDO o DEPOSITADO)
+def filterByType(tabla, dni, tipo_cheque):
+    '''Filtra los datos de cheques bancarios según el tipo de cheque especificado''' 
+    emitido = (tabla[:, 3] == dni) # Comprueba el dni con NumeroCuentaOrigen
+    depositado = (tabla[:, 4] == dni) # Comprueba el dni con NumeroCuentaDestino
 
+    if (tipo_cheque.upper() == 'EMITIDO'):
+        resultado = tabla[emitido]
+        return resultado
+    elif (tipo_cheque.upper() == 'DEPOSITADO'):
+        resultado = tabla[depositado]
+        return resultado
+    else:
+        print('Tipo de cheque no válido. Debe ser "EMITIDO" o "DEPOSITADO"')
+        return
+    
+    
 #FILTRO 3
 
 #FILTRO 4
