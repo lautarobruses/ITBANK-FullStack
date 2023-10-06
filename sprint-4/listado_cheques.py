@@ -1,18 +1,23 @@
-# python listado_cheques.py cheques.py 42874892 salida tipo_cheque estado_cheque rango_fechas
+# python listado_cheques.py cheques.py 42874892 salida tipo_cheque estado_cheque --fecha rango_fechas
 
 import sys
 import pandas as pd
 import numpy as np
 from datetime import datetime
 
-def muestraMensajeError(): #agregar causa del error
-    print("ERROR: Los parametros ingresados son incorrectos. Intentelo nuevamente.")   
+#CAMPOS TABLA
+NRO_CHEQUE, COD_BANCO, COD_SUCURSAL, NRO_CUENTA_ORIGEN, NRO_CUENTA_DESTINO, VALOR, FECHA_ORIGEN, FECHA_PAGO, DNI, ESTADO = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+#ARGUMENTOS
+NOMBRE_ARCHIVO, DNI_CLIENTE, SALIDA_PANTALLA, TIPO_CHEQUE, ESTADO_CHEQUE, TIPO_FECHAS, RANGO_FECHAS = (1, 2, 3, 4, 5, 6, 7)
+
+def muestraMensajeError(causa:str): 
+    print("ERROR: {causa}")   
     print("El formato esperado es el siguiente:")   
-    print("\n> python listado_cheques.py cheques.csv (DNI) (salida) (tipo-cheque) [estado-cheque] [rango_fechas]\n")   
+    print("\n> python listado_cheques.py cheques.csv (DNI) (salida) (tipo-cheque) [estado-cheque] --fecha [aaaa-mm-dd:aaaa-mm-dd\n")   
     print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
 
 #Validacion de datos de entrada:
-def validaDNI(dni): 
+def validaDNI(dni:str): 
     '''
     Esta funcion verifica si el formato de un DNI es valido.
     El DNI debe tener digitos numericos, ser mayor que 0 y no tener una longitud mayor a 8 caracteres.
@@ -22,103 +27,121 @@ def validaDNI(dni):
     :return: Si el DNI es correcto.
     :rtype: bool
     '''
-    es_digito = dni.isdigit()
-    mayor_a_cero = int(dni) > 0
-    longitud_menor_a_ocho = len(dni) <= 8
+    return dni.isdigit() and int(dni) > 0 and len(dni) <= 8
 
-    return es_digito and mayor_a_cero and longitud_menor_a_ocho
-
-def validaSalida(salida):
+def validaSalida(salida:str):
     '''
     Esta funcion verifica si el formato del parametro SALIDA es valido.
     El parametro ingresado debe ser igual a "PANTALLA" o "CSV".
 
-    :param dni: tipo de salida deseada por el usuario.
-    :type dni: string
+    :param salida: tipo de salida deseada por el usuario.
+    :type salida: string
     :return: Si el parametro ingresado es correcto.
     :rtype: bool
     '''
-
     return salida.upper() == "PANTALLA" or salida.upper() == "CSV"
 
-def validaTipoCheque(tipo_cheque): 
+def validaTipoCheque(tipo_cheque:str): 
     '''
     Esta funcion verifica si el formato del parametro TIPO CHEQUE es valido.
     El parametro ingresado debe ser igual a "EMITIDO" o "DEPOSITADO".
 
-    :param dni: tipo de cheque deseado por el usuario.
-    :type dni: string
+    :param tipo_cheque: tipo de cheque deseado por el usuario.
+    :type tipo_cheque: string
     :return: Si el parametro ingresado es correcto.
     :rtype: bool
     '''
-
     return tipo_cheque.upper() == "EMITIDO" or tipo_cheque.upper() == "DEPOSITADO"
 
-def validaEstadoCheque(estado_cheque):
+def validaEstadoCheque(estado_cheque:str):
     '''
     Esta funcion verifica si el formato del parametro ESTADO CHEQUE es valido.
     El parametro ingresado debe ser igual a "PENDIENTE" o "APROBADO" o "RECHAZADO".
 
-    :param dni: estado de cheque deseado por el usuario.
-    :type dni: string
+    :param estado_cheque: estado de cheque deseado por el usuario.
+    :type estado_cheque: string
     :return: Si el parametro ingresado es correcto.
     :rtype: bool
     '''
-
     return estado_cheque.upper() == "PENDIENTE" or estado_cheque.upper() == "APROBADO" or estado_cheque.upper() == "RECHAZADO"
 
-def validaRangoFechas(): 
-    '''PREGUNTAR AL PROFE COMO ES EL TEMA DEL RANGO'''
+def validaRangoFechas(tipo_fecha:str, rango_fechas:str): 
+    '''
+    Esta funcion verifica si el rango de fechas ingresado es valido.
+    El parametro ingresado debe ser acorde al formato esperado y la fecha de inicio no debe ser mayor a la fecha de fin".
 
-#FILTRO 1
+    :param tipo_fecha: argumento que especifica el formato del siguiente argumento.
+    :type tipo_fecha: string
+    :param rango_fechas: rango de fechas por la cual se desea filtrar los cheques.
+    :type rango_fechas: string
+    :return: Si el parametro ingresado es correcto.
+    :rtype: bool
+    '''
+    if (tipo_fecha.upper() == "--FECHA"):
+        fechas = rango_fechas.split(":")
 
-#MANEJO DE ERRORES (NRO CHEQUES REPETIDOS)
+        if len(fechas) == 2:
+            fecha_inicio_str, fecha_fin_str = fechas[0], fechas[1]
 
-# def  haveRepeat(list): #NroCheque: Número de cheque, este debe ser único por cuenta.
-    '''Si la lista dada tiene repetidos devuelve True, si no False.'''
-    for j in range(len(list)):
-        for i in range(j + 1, len(list)):
-            if( list[j] == list[i] ):
-                return True
+            try:
+                fecha_inicio = datetime.strptime(fecha_inicio_str, "%Y-%m-%d")
+                fecha_fin = datetime.strptime(fecha_fin_str, "%Y-%m-%d")
 
+                if fecha_inicio <= fecha_fin:
+                    return True
+            except ValueError:
+                return False
+    
     return False
 
+#FILTRO 1
+def filterDNI(dataFrame:pd.DataFrame, dni:str):
+    dni = int(dni)
+
+    # Filtrar los datos por DNI
+    df_filtrado = dataFrame[dataFrame['DNI'] == dni]
+
+    # Verificar si hay números de cheque duplicados para el mismo DNI y cuenta
+    duplicados = df_filtrado[df_filtrado.duplicated(['NroCheque', 'NumeroCuentaOrigen'])]
+
+    if not duplicados.empty:
+        print("WARNING: Se encontraron números de cheque duplicados para el mismo DNI:")
+        print(duplicados.to_numpy())
+
+    return df_filtrado.to_numpy()
+
 #FILTRO 2: Tipo de Cheque (EMITIDO o DEPOSITADO)
-def filterByType(tabla, dni, tipo_cheque):
+def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
     '''Filtra los datos de cheques bancarios según el tipo de cheque especificado''' 
-    emitido = (tabla[:, 3] == dni) # Comprueba el dni con NumeroCuentaOrigen
-    depositado = (tabla[:, 4] == dni) # Comprueba el dni con NumeroCuentaDestino
+    resultado:np.ndarray
+
+    dni = int(dni)
+    emitido = (tabla[:, NRO_CUENTA_ORIGEN] == dni) # Comprueba el dni con NumeroCuentaOrigen
+    depositado = (tabla[:, NRO_CUENTA_DESTINO] == dni) # Comprueba el dni con NumeroCuentaDestino
 
     if (tipo_cheque.upper() == 'EMITIDO'):
         resultado = tabla[emitido]
         return resultado
-    elif (tipo_cheque.upper() == 'DEPOSITADO'):
+    else: #tipo_cheque = 'DEPOSITADO'
         resultado = tabla[depositado]
         return resultado
-    else:
-        print('Tipo de cheque no válido. Debe ser "EMITIDO" o "DEPOSITADO"')
-        return
-    
     
 #FILTRO 3
 
 #FILTRO 4
-
-def filterTime(table:np, range:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
+def filterTime(tabla:np.ndarray, rango:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
             #como parámetro, se deben imprimir los cheques sin filtrar por estado. --fecha 2021-09-12:2021-09-16
     '''Filtra la fila 7 del numpy segun el rango de fechas dado.'''
-    min_time_str, max_time_str = range.split(':')
+    min_time_str, max_time_str = rango.split(':')
  
     min_time = datetime.fromisoformat(min_time_str).replace(hour=0, minute=0, second=0)
     max_time = datetime.fromisoformat(max_time_str).replace(hour=23, minute=59, second=59)
 
-    table[:, 7] = [datetime.utcfromtimestamp(x) for x in table[:, 7]]
-    
-    table = table[ (min_time <= table[:, 7]) & (table[:, 7] <= max_time)]
+    tabla[:, FECHA_PAGO] = [datetime.utcfromtimestamp(x) for x in tabla[:, FECHA_PAGO]]
+    tabla = tabla[ (min_time <= tabla[:, FECHA_PAGO]) & (tabla[:, FECHA_PAGO] <= max_time)]
+    tabla[:, FECHA_PAGO] = [int(x.timestamp()) for x in tabla[:, FECHA_PAGO]]
 
-    table[:, 7] = [int(x.timestamp()) for x in table[:, 7]]
-
-    return  table
+    return tabla
 
 #SALIDA DE DATOS
 def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
@@ -128,8 +151,8 @@ def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
 def printNumpy(table:np, head:list|None):
     '''Muestra por pantalla el numpy dado.'''
     sep = "|"
-    table[:, 6] = [timeToStr(x) for x in table[:, 6]] #Numero magicos
-    table[:, 7] = [timeToStr(x) for x in table[:, 7]] #Numero magicos
+    table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]]
+    table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
 
     if ( head != None ):
         print( sep.join([ x.center(11) for x in map( str, head ) ]) )
@@ -151,93 +174,53 @@ def saveCsv(table:np, head:list|None, dni:int):
         file.write(strignTable)
         file.close()
 
-# def inRange(list, min=None, max=None): #CodigoBanco: Código numérico del banco, entre 1 y 100.
-#                                        #CodigoScurusal: Código numérico de la sucursal del banco va entre 1 y 300.
-#                                        #DNI: String con DNI del cliente donde se permite identificarlo
-#     '''Retorna true si todos los numeros de la lista dada estan en el rango entre [min, max], si no
-#     devuelve False junto con el indice del primer numero fuera de rango'''
-
-#     # if( not( isinstance(min, (int, float)) and isinstance(max, (int, float)) ) ):
-#     #     raise ValueError("El rango dado debe estar compuesto por numeros.")
-    
-#     # if( min == max == None ):
-#     #     raise ValueError("El rango no esta dado.")          
-#     # elif( not( min==None or max==None ) ):
-#     #     if(min >= max ):
-#     #         raise ValueError(f"El rango ({min},{max}) no es valido.")
-
-#     for i in range(len(list)):
-#         if ( not( isinstance(list[i], (int, float)) ) ):
-#             raise ValueError("La lista dada debe estar compuesto por numeros.")
-#         if (min is not None and list[i] < min) or (max is not None and list[i] > max):
-#             return False, i
-    
-#     return True
-
-def containsArgs(list, *args): #Estado: Puede tener 3 valores pendiente, aprobado o rechazado.
-    '''Comprueba que la lista dada solo contenga los args dados'''
-    tam = i = len(args) - 1
-
-    for item in list:
-        i = tam
-
-        while( 0 <= i and item != args[i]):
-            i -= 1
-        
-        if( i < 0 ):
-            return False
-    
-    return True
-
 #CODIGO PRINCIPAL
-
 def main():
     if len(sys.argv) < 5:
-        muestraMensajeError()
+        muestraMensajeError("Los parametros ingresados son incorrectos. Intentelo nuevamente.")
     else:
-        NOMBRE_ARCHIVO = 1
-        nombre_archivo = sys.argv[NOMBRE_ARCHIVO]
-        print(nombre_archivo)
+        try:
+            nombre_archivo = sys.argv[NOMBRE_ARCHIVO]
+            dataFrame = pd.read_csv(nombre_archivo, sep=',', decimal= ".")
 
-        #VERIFICAR QUE EL ARCHIVO EXISTA Y ABRIRLO --> sino devolver error
+            dni = sys.argv[DNI_CLIENTE]
+            salida = sys.argv[SALIDA_PANTALLA]
+            tipo_cheque = sys.argv[TIPO_CHEQUE]
 
-        data = pd.read_csv('data/ejemplo.csv', sep=',', decimal= ".")
-        head = data.columns.tolist()
-        tabla = data.to_numpy()
+            if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
+                tablaFiltrada = filterDNI(dataFrame, dni)
+                tablaFiltrada = filterType(tablaFiltrada, dni, tipo_cheque)
 
-        dni = sys.argv[2]
-        salida = sys.argv[3]
-        tipo_cheque = sys.argv[4]
+                if len(sys.argv) == 6:
+                    if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
+                        print("APLICO 3ER FILTRO")
+                    elif validaRangoFechas(sys.argv[5]): #El ultimo parametro ingresado es el RANGO DE FECHAS
+                        resultado = filterTime(tablaFiltrada, rango_fechas)
+                    else:
+                        muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
+                elif len(sys.argv) == 7:
+                    estado_cheque = sys.argv[ESTADO_CHEQUE]
+                    tipo_fecha = sys.argv[TIPO_FECHAS]
+                    rango_fechas = sys.argv[RANGO_FECHAS]
 
-        if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
-            print("APLICO 1ER FILTRO")
-            print("APLICO MANEJO DE ERRORES")
-            print("APLICO 2DO FILTRO")
+                    if validaEstadoCheque(estado_cheque) and validaRangoFechas(tipo_fecha):
+                        print("APLICO 3ER FILTRO")
+                        resultado = filterTime(tablaFiltrada, rango_fechas)
+                    else:
+                        muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
 
-            if len(sys.argv) == 6:
-                if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
-                    print("APLICO 3ER FILTRO")
-                elif validaRangoFechas(sys.argv[5]): #El ultimo parametro ingresado es el RANGO DE FECHAS
-                    print("APLICO 4TO FILTRO")
+                #SALIDA
+                head = dataFrame.columns.tolist()
+
+                if (salida == 'PANTALLA'):
+                    printNumpy(resultado, head)
                 else:
-                    muestraMensajeError()
-            elif len(sys.argv) == 7: #documentar el orden de los argumentos
-                estado_cheque = sys.argv[5]
-                tipo_fecha = sys.argv[6]
-                rango_fechas = sys.argv[7]
-
-                if validaEstadoCheque(estado_cheque) and validaRangoFechas(tipo_fecha):
-                    print("APLICO 3ER FILTRO")
-                    print("APLICO 4TO FILTRO")
-                else:
-                    muestraMensajeError()
-
-            leakedData = filterTime(data, rango_fechas)
-
-            if ( salida == 'PANTALLA' ):
-                printNumpy(leakedData, head)
+                    saveCsv(resultado, head, dni)  
             else:
-                saveCsv(leakedData, head, dni)  
-        else:
-            muestraMensajeError()
+                muestraMensajeError("Los parametros ingresados son incorrectos. Intentelo nuevamente.")
+        except pd.errors.ParserError as e:
+            muestraMensajeError("Error al leer el archivo CSV.")
+        except FileNotFoundError as e:
+            muestraMensajeError("El archivo CSV ingresado no existe.")
+
 main() 
