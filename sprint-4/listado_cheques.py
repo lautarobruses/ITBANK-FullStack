@@ -11,7 +11,7 @@ NRO_CHEQUE, COD_BANCO, COD_SUCURSAL, NRO_CUENTA_ORIGEN, NRO_CUENTA_DESTINO, VALO
 NOMBRE_ARCHIVO, DNI_CLIENTE, SALIDA_PANTALLA, TIPO_CHEQUE, ESTADO_CHEQUE, TIPO_FECHAS, RANGO_FECHAS = (1, 2, 3, 4, 5, 6, 7)
 
 def muestraMensajeError(causa:str): 
-    print("ERROR: {causa}")   
+    print(f"ERROR: {causa}")   
     print("El formato esperado es el siguiente:")   
     print("\n> python listado_cheques.py cheques.csv (DNI) (salida) (tipo-cheque) [estado-cheque] --fecha [aaaa-mm-dd:aaaa-mm-dd\n")   
     print("Los parentesis () indican que el parametro es obligatorio y los corchetes [] que es opcional.")   
@@ -177,14 +177,15 @@ def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
 def printNumpy(table:np, head:list|None):
     '''Muestra por pantalla el numpy dado.'''
     sep = "|"
-    table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]]
-    table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
+    # table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]] # El arreglo table es unidimensional
+    # table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
 
-    if ( head != None ):
+    if head is not None :
         print( sep.join([ x.center(11) for x in map( str, head ) ]) )
 
-    for list in table:
-        print( sep.join([ x.center(11) for x in map( str, list ) ]) )
+    for row in table:
+        formatted_row = [timeToStr(row[FECHA_ORIGEN]) if i == FECHA_ORIGEN else str(row[i]).center(11) for i in range(len(row))]
+        print(sep.join(formatted_row))
 
 def saveCsv(table:np, head:list|None, dni:int):
     '''Guarda el numpy dado en un archivo salida.csv.'''
@@ -216,6 +217,7 @@ def main():
             if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
                 tablaFiltrada = filterDNI(dataFrame, dni)
                 tablaFiltrada = filterType(tablaFiltrada, dni, tipo_cheque)
+                resultado = np.array([]) # Inicializo resultado como una matríz vacía
 
                 if len(sys.argv) == 6:
                     if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
