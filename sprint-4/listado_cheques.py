@@ -135,7 +135,8 @@ def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
         return resultado
     else: #tipo_cheque = 'DEPOSITADO'
         resultado = tabla[depositado]
-        return resultado
+    
+    return resultado
     
 #FILTRO 3
 def filterState(tabla: np.ndarray, estado_cheque: str):
@@ -249,6 +250,6 @@ def main():
         except pd.errors.ParserError as e:
             muestraMensajeError("Error al leer el archivo CSV.")
         except FileNotFoundError as e:
-            muestraMensajeError("El archivo CSV ingresado no existe.")
+            muestraMensajeError(f"El archivo {nombre_archivo} ingresado no existe.")
 
 main() 
