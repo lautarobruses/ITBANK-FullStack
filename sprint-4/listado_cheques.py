@@ -105,34 +105,32 @@ def filterDNI(dataFrame:pd.DataFrame, dni:str):
     duplicados = df_filtrado[df_filtrado.duplicated(['NroCheque', 'NumeroCuentaOrigen'])]
 
     if not duplicados.empty:
-        print("WARNING: Se encontraron números de cheque duplicados para el mismo DNI:")
-        print(duplicados.to_numpy())
+        print("WARNING: Se encontraron números de cheque duplicados para el mismo DNI.")
+        print("         Se descartaran los valores duplicados de los cheques con los siguientes NroCheque: ")
+        df_filtrado = df_filtrado.drop_duplicates(subset='NroCheque', keep='first')
+        print(f'NroCheque: {duplicados["NroCheque"].values}')
 
     return df_filtrado
 
 #FILTRO 2: Tipo de Cheque (EMITIDO o DEPOSITADO)
-def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
+def filterType(tabla:pd.DataFrame, dni:str, tipo_cheque:str):
     '''
     Filtra los datos de cheques bancarios según el tipo de cheque especificado y el número de DNI.
 
     :param tabla: Un arreglo de datos que contiene información de cheques bancarios.
-    :type tabla: np.ndarray
+    :type tabla: pd.DataFrame
     :param dni: El número de DNI (Documento Nacional de Identidad) como cadena de caracteres.
     :type dni: str
     :param tipo_cheque: El tipo de cheque a filtrar, puede ser "EMITIDO" o "DEPOSITADO".
     :type tipo_cheque: str
     :return: Un nuevo arreglo con los datos de los cheques que coinciden con el tipo especificado.
-    :rtype: np.ndarray
+    :rtype: pd.DataFrame
     ''' 
     dni = int(dni)
-    # emitido = (tabla[:, NRO_CUENTA_ORIGEN] == dni) # Comprueba el dni con NumeroCuentaOrigen
-    # depositado = (tabla[:, NRO_CUENTA_DESTINO] == dni) # Comprueba el dni con NumeroCuentaDestino
-
     if (tipo_cheque.upper() == 'EMITIDO'):
         resultado = tabla[tabla['NumeroCuentaOrigen'] == dni]
     else:
         resultado = tabla[tabla['NumeroCuentaDestino'] == dni]
-
     return resultado
     
 #FILTRO 3
@@ -153,8 +151,7 @@ def filterState(tabla: np.ndarray, estado_cheque: str):
     return tabla[tabla['ESTADO'] == estado_cheque()]
 
 #FILTRO 4
-def filterTime(tabla:np.ndarray, rango:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
-            #como parámetro, se deben imprimir los cheques sin filtrar por estado. --fecha 2021-09-12:2021-09-16
+def filterTime(tabla:np.ndarray, rango:str):
     '''Filtra la fila 7 del numpy segun el rango de fechas dado.'''
     min_time_str, max_time_str = rango.split(':')
  
@@ -172,17 +169,17 @@ def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
     '''Retorna un string de la fecha dada por el timestamp dado.'''
     return datetime.utcfromtimestamp(number).strftime('%Y/%m/%d %H:%M:%S')
 
-def printNumpy(table:np, head:list|None):
+def printNumpy(table:np.ndarray, head:list|None):
     '''Muestra por pantalla el numpy dado.'''
     sep = "|"
     # table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]] # El arreglo table es unidimensional
     # table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
 
     if head is not None :
-        print( sep.join([ x.center(11) for x in map( str, head ) ]) )
+        print( sep.join([ x.center(12) for x in map( str, head ) ]) )
 
     for _, row in table.iterrows():
-        formatted_row = [str(row[col]).center(15) for col in head]# [timeToStr(row[FECHA_ORIGEN]) if i == FECHA_ORIGEN else str(row[i]).center(11) for i in range(len(row))]
+        formatted_row = [str(row[col]).center(12) for col in head] # [timeToStr(row[FECHA_ORIGEN]) if i == FECHA_ORIGEN else str(row[i]).center(11) for i in range(len(row))]
         print(sep.join(formatted_row))
 
 def saveCsv(table:np, head:list|None, dni:int):
@@ -213,9 +210,15 @@ def main():
             tipo_cheque = sys.argv[TIPO_CHEQUE]
 
             if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
-                tablaFiltrada = filterDNI(dataFrame, dni)
+                tablaFiltrada = filterDNI(dataFrame, dni)         
+                print("filtro1")
+                print(tablaFiltrada)
+                print("\n") 
                 tablaFiltrada = filterType(tablaFiltrada, dni, tipo_cheque)
-                resultado = dataFrame # np.array([]) # Inicializo resultado como una matríz vacía
+                print("filtro2")
+                print(tablaFiltrada)
+                print("\n")
+                resultado = tablaFiltrada
 
                 if len(sys.argv) == 6:
                     if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
