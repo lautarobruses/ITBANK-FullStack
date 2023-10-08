@@ -108,7 +108,7 @@ def filterDNI(dataFrame:pd.DataFrame, dni:str):
         print("WARNING: Se encontraron números de cheque duplicados para el mismo DNI:")
         print(duplicados.to_numpy())
 
-    return df_filtrado.to_numpy()
+    return df_filtrado
 
 #FILTRO 2: Tipo de Cheque (EMITIDO o DEPOSITADO)
 def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
@@ -124,18 +124,15 @@ def filterType(tabla:np.ndarray, dni:str, tipo_cheque:str):
     :return: Un nuevo arreglo con los datos de los cheques que coinciden con el tipo especificado.
     :rtype: np.ndarray
     ''' 
-    resultado:np.ndarray
-
     dni = int(dni)
-    emitido = (tabla[:, NRO_CUENTA_ORIGEN] == dni) # Comprueba el dni con NumeroCuentaOrigen
-    depositado = (tabla[:, NRO_CUENTA_DESTINO] == dni) # Comprueba el dni con NumeroCuentaDestino
+    # emitido = (tabla[:, NRO_CUENTA_ORIGEN] == dni) # Comprueba el dni con NumeroCuentaOrigen
+    # depositado = (tabla[:, NRO_CUENTA_DESTINO] == dni) # Comprueba el dni con NumeroCuentaDestino
 
     if (tipo_cheque.upper() == 'EMITIDO'):
-        resultado = tabla[emitido]
-        return resultado
-    else: #tipo_cheque = 'DEPOSITADO'
-        resultado = tabla[depositado]
-    
+        resultado = tabla[tabla['NumeroCuentaOrigen'] == dni]
+    else:
+        resultado = tabla[tabla['NumeroCuentaDestino'] == dni]
+
     return resultado
     
 #FILTRO 3
@@ -153,7 +150,7 @@ def filterState(tabla: np.ndarray, estado_cheque: str):
     if estado_cheque is None:
         return tabla #No se proporcionó un estado, devuelve datos sin filtrar
     
-    return tabla[:, ESTADO] == estado_cheque.upper()
+    return tabla[tabla['ESTADO'] == estado_cheque()]
 
 #FILTRO 4
 def filterTime(tabla:np.ndarray, rango:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
@@ -184,8 +181,8 @@ def printNumpy(table:np, head:list|None):
     if head is not None :
         print( sep.join([ x.center(11) for x in map( str, head ) ]) )
 
-    for row in table:
-        formatted_row = [timeToStr(row[FECHA_ORIGEN]) if i == FECHA_ORIGEN else str(row[i]).center(11) for i in range(len(row))]
+    for _, row in table.iterrows():
+        formatted_row = [str(row[col]).center(15) for col in head]# [timeToStr(row[FECHA_ORIGEN]) if i == FECHA_ORIGEN else str(row[i]).center(11) for i in range(len(row))]
         print(sep.join(formatted_row))
 
 def saveCsv(table:np, head:list|None, dni:int):
@@ -218,12 +215,15 @@ def main():
             if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
                 tablaFiltrada = filterDNI(dataFrame, dni)
                 tablaFiltrada = filterType(tablaFiltrada, dni, tipo_cheque)
-                resultado = np.array([]) # Inicializo resultado como una matríz vacía
+                resultado = dataFrame # np.array([]) # Inicializo resultado como una matríz vacía
 
                 if len(sys.argv) == 6:
                     if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
-                        tablaFiltrada = filterState(tablaFiltrada, estado_cheque)
+                        estado_cheque = sys.argv[ESTADO_CHEQUE]
+                        resultado = filterState(tablaFiltrada, estado_cheque)
                     elif validaRangoFechas(sys.argv[5]): #El ultimo parametro ingresado es el RANGO DE FECHAS
+                        tipo_fecha = sys.argv[TIPO_FECHAS]
+                        rango_fechas = sys.argv[RANGO_FECHAS]
                         resultado = filterTime(tablaFiltrada, rango_fechas)
                     else:
                         muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
@@ -233,7 +233,7 @@ def main():
                     rango_fechas = sys.argv[RANGO_FECHAS]
 
                     if validaEstadoCheque(estado_cheque) and validaRangoFechas(tipo_fecha):
-                        tablaFiltrada = filterState(tablaFiltrada, estado_cheque)
+                        resultado = filterState(tablaFiltrada, estado_cheque)
                         resultado = filterTime(tablaFiltrada, rango_fechas)
                     else:
                         muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
@@ -244,7 +244,7 @@ def main():
                 if (salida == 'PANTALLA'):
                     printNumpy(resultado, head)
                 else:
-                    saveCsv(resultado, head, dni)  
+                    saveCsv(resultado, head, int(dni))  
             else:
                 muestraMensajeError("Los parametros ingresados son incorrectos. Intentelo nuevamente.")
         except pd.errors.ParserError as e:
@@ -252,4 +252,5 @@ def main():
         except FileNotFoundError as e:
             muestraMensajeError(f"El archivo {nombre_archivo} ingresado no existe.")
 
-main() 
+if __name__ == '__main__':
+    main() 
