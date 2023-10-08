@@ -153,40 +153,73 @@ def filterState(tabla: np.ndarray, estado_cheque: str):
     return tabla[tabla['ESTADO'] == estado_cheque()]
 
 #FILTRO 4
-def filterTime(tabla:np.ndarray, rango:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
+def filterTime(table:np.ndarray, range:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
             #como parámetro, se deben imprimir los cheques sin filtrar por estado. --fecha 2021-09-12:2021-09-16
-    '''Filtra la fila 7 del numpy segun el rango de fechas dado.'''
-    min_time_str, max_time_str = rango.split(':')
+    '''
+    Filtra la fila 7 del numpy segun el rango de fechas dado.
+    El parametro ingresado debe ser acorde al formato esperado y la fecha de inicio no debe ser mayor a la fecha de fin".
+
+    :param table: argumento que especifica el formato del siguiente argumento.
+    :type table: numpy
+    :param range: rango de fechas por la cual se desea filtrar los cheques.
+    :type rango_fechas: string
+    :return: si el parametro ingresado es correcto retorna una tabla filtrado.
+    :rtype: numpy
+    '''
+    
+    min_time_str, max_time_str = range.split(':')
  
     min_time = datetime.fromisoformat(min_time_str).replace(hour=0, minute=0, second=0)
     max_time = datetime.fromisoformat(max_time_str).replace(hour=23, minute=59, second=59)
 
-    tabla[:, FECHA_PAGO] = [datetime.utcfromtimestamp(x) for x in tabla[:, FECHA_PAGO]]
-    tabla = tabla[ (min_time <= tabla[:, FECHA_PAGO]) & (tabla[:, FECHA_PAGO] <= max_time)]
-    tabla[:, FECHA_PAGO] = [int(x.timestamp()) for x in tabla[:, FECHA_PAGO]]
+    table[:, FECHA_PAGO] = [datetime.utcfromtimestamp(x) for x in table[:, FECHA_PAGO]]
+    table = table[ (min_time <= table[:, FECHA_PAGO]) & (table[:, FECHA_PAGO] <= max_time)]
+    table[:, FECHA_PAGO] = [int(x.timestamp()) for x in table[:, FECHA_PAGO]]
 
-    return tabla
+    return table
 
 #SALIDA DE DATOS
 def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
-    '''Retorna un string de la fecha dada por el timestamp dado.'''
+    '''Retorna un string de la fecha en timestamp dada.
+    El parametro ingresado debe ser acorde al formato esperado.
+
+    :param number: argumento que especifica una fecha.
+    :type number: timestamp
+    :return: retorna la fecha en un string del tipo YYYY/mm/dd HH:MM:SS.
+    :rtype: strig
+    '''
     return datetime.utcfromtimestamp(number).strftime('%Y/%m/%d %H:%M:%S')
 
 def printNumpy(table:np, head:list|None):
-    '''Muestra por pantalla el numpy dado.'''
-    sep = "|"
-    # table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]] # El arreglo table es unidimensional
-    # table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
+    '''Muestra por pantalla la tabla dada junto con el head dado.
+    El parametro ingresado debe ser acorde al formato esperado.
 
-    if head is not None :
+    :param table: argumento que especifica una tabla.
+    :type table: numpy
+    :param head: es la cabecera de la tabla dada, su cantidad de objetos debe ser igual al de cada fila de la tabla.
+    :rtype: list
+    '''
+    sep = "|"
+    table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]]
+    table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
+
+    if ( head != None ):
         print( sep.join([ x.center(11) for x in map( str, head ) ]) )
 
-    for _, row in table.iterrows():
-        formatted_row = [str(row[col]).center(15) for col in head]# [timeToStr(row[FECHA_ORIGEN]) if i == FECHA_ORIGEN else str(row[i]).center(11) for i in range(len(row))]
-        print(sep.join(formatted_row))
+    for list in table:
+        print( sep.join([ x.center(11) for x in map( str, list ) ]) )
 
 def saveCsv(table:np, head:list|None, dni:int):
-    '''Guarda el numpy dado en un archivo salida.csv.'''
+    '''Guarda el numpy dado en un archivo <dni><timestamp_actual>.csv.
+    El parametro ingresado debe ser acorde al formato esperado.
+
+    :param table: argumento que especifica una tabla.
+    :type table: numpy
+    :param head: es la cabecera de la tabla dada, su cantidad de objetos debe ser igual al de cada fila de la tabla.
+    :rtype: list
+    :param dni: es un dni dado por el usuario.
+    :rtype: int
+    '''
     sep= ","
     strignTable = sep.join(map( str, head ))
 
