@@ -106,9 +106,8 @@ def filterDNI(dataFrame:pd.DataFrame, dni:str):
 
     if not duplicados.empty:
         print("WARNING: Se encontraron números de cheque duplicados para el mismo DNI.")
-        print("         Se descartaran los valores duplicados de los cheques con los siguientes NroCheque: ")
+        print(f'        Se descartaran los valores duplicados de los cheques con los siguientes NroCheque: {duplicados["NroCheque"].values}\n')
         df_filtrado = df_filtrado.drop_duplicates(subset='NroCheque', keep='first')
-        print(f'NroCheque: {duplicados["NroCheque"].values}')
 
     return df_filtrado
 
@@ -134,35 +133,31 @@ def filterType(tabla:pd.DataFrame, dni:str, tipo_cheque:str):
     return resultado
     
 #FILTRO 3
-def filterState(tabla: np.ndarray, estado_cheque: str):
+def filterState(tabla:pd.DataFrame, estado_cheque: str):
     """
     Filtra los datos de cheques bancarios según el estado de cheque especificado(APROBADO, PENDIENTE y REACHAZADO).
 
     :param tabla: Un arreglo de datos que contiene la información de los cheques bancarios.
-    :type tabla: np.ndarray
+    :type tabla: pd.DataFrame
     :param estado_cheque: El estado de cheque a filtrar en mayúsculas.
     :type estado_cheque: str
     :return: Un nuevo arreglo con los datos de los cheques que coinciden con el estado especificado.
     :rtype: np.ndarray
     """
-    if estado_cheque is None:
-        return tabla #No se proporcionó un estado, devuelve datos sin filtrar
-    
-    return tabla[tabla['ESTADO'] == estado_cheque()]
+    return tabla[tabla['Estado'] == estado_cheque].to_numpy()
 
 #FILTRO 4
-def filterTime(table:np.ndarray, range:str): #Filtrado por Estado (Opcional): Si el estado del cheque no se proporciona
-            #como parámetro, se deben imprimir los cheques sin filtrar por estado. --fecha 2021-09-12:2021-09-16
+def filterTime(table:np.ndarray, range:str):
     '''
-    Filtra la fila 7 del numpy segun el rango de fechas dado.
-    El parametro ingresado debe ser acorde al formato esperado y la fecha de inicio no debe ser mayor a la fecha de fin".
+    Filtra la fila 7 del ndarray segun el rango de fechas dado.
+    El parametro ingresado debe ser acorde al formato esperado y la fecha de inicio no debe ser mayor a la fecha de fin.
 
     :param table: argumento que especifica el formato del siguiente argumento.
-    :type table: numpy
+    :type table: np.ndarray
     :param range: rango de fechas por la cual se desea filtrar los cheques.
     :type rango_fechas: string
     :return: si el parametro ingresado es correcto retorna una tabla filtrado.
-    :rtype: numpy
+    :rtype: np.ndarray
     '''
     
     min_time_str, max_time_str = range.split(':')
@@ -178,7 +173,8 @@ def filterTime(table:np.ndarray, range:str): #Filtrado por Estado (Opcional): Si
 
 #SALIDA DE DATOS
 def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
-    '''Retorna un string de la fecha en timestamp dada.
+    '''
+    Retorna un string de la fecha en timestamp dada.
     El parametro ingresado debe ser acorde al formato esperado.
 
     :param number: argumento que especifica una fecha.
@@ -188,24 +184,28 @@ def timeToStr(number:int): #FechaOrigen: Fecha de emisión: (En timestamp)
     '''
     return datetime.utcfromtimestamp(number).strftime('%Y/%m/%d %H:%M:%S')
 
-def printNumpy(table:np, head:list|None):
-    '''Muestra por pantalla la tabla dada junto con el head dado.
+def printNumpy(table:np.ndarray, head:list|None):
+    '''
+    Muestra por pantalla la tabla dada junto con el head dado.
     El parametro ingresado debe ser acorde al formato esperado.
 
     :param table: argumento que especifica una tabla.
-    :type table: numpy
+    :type table: np.ndarray
     :param head: es la cabecera de la tabla dada, su cantidad de objetos debe ser igual al de cada fila de la tabla.
     :rtype: list
     '''
-    sep = "|"
-    table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]]
-    table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
+    if np.size(table) == 0:
+        print("No se ha encontrado resultados para los argumentos ingresados.")
+    else:
+        sep = "|"
+        table[:, FECHA_ORIGEN] = [timeToStr(x) for x in table[:, FECHA_ORIGEN]]
+        table[:, FECHA_PAGO] = [timeToStr(x) for x in table[:, FECHA_PAGO]]
 
-    if ( head != None ):
-        print( sep.join([ x.center(11) for x in map( str, head ) ]) )
+        if ( head != None ):
+            print( sep.join([ x.center(11) for x in map( str, head ) ]) )
 
-    for list in table:
-        print( sep.join([ x.center(11) for x in map( str, list ) ]) )
+        for list in table:
+            print( sep.join([ x.center(11) for x in map( str, list ) ]) )
 
 def saveCsv(table:np, head:list|None, dni:int):
     '''Guarda el numpy dado en un archivo <dni><timestamp_actual>.csv.
@@ -245,13 +245,7 @@ def main():
 
             if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
                 tablaFiltrada = filterDNI(dataFrame, dni)         
-                print("filtro1")
-                print(tablaFiltrada)
-                print("\n") 
                 tablaFiltrada = filterType(tablaFiltrada, dni, tipo_cheque)
-                print("filtro2")
-                print(tablaFiltrada)
-                print("\n")
                 resultado = tablaFiltrada
 
                 if len(sys.argv) == 6:
