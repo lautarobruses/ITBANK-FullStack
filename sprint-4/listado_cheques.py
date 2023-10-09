@@ -8,7 +8,7 @@ from datetime import datetime
 #CAMPOS TABLA
 NRO_CHEQUE, COD_BANCO, COD_SUCURSAL, NRO_CUENTA_ORIGEN, NRO_CUENTA_DESTINO, VALOR, FECHA_ORIGEN, FECHA_PAGO, DNI, ESTADO = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 #ARGUMENTOS
-NOMBRE_ARCHIVO, DNI_CLIENTE, SALIDA_PANTALLA, TIPO_CHEQUE, ESTADO_CHEQUE, TIPO_FECHAS, RANGO_FECHAS = (1, 2, 3, 4, 5, 6, 7)
+ANTE_ULTIMO, ULTIMO, NOMBRE_ARCHIVO, DNI_CLIENTE, SALIDA_PANTALLA, TIPO_CHEQUE, ESTADO_CHEQUE, TIPO_FECHAS, RANGO_FECHAS = (-2, -1, 1, 2, 3, 4, 5, 6, 7)
 
 def muestraMensajeError(causa:str): 
     print(f"ERROR: {causa}")   
@@ -159,7 +159,6 @@ def filterTime(table:np.ndarray, range:str):
     :return: si el parametro ingresado es correcto retorna una tabla filtrado.
     :rtype: np.ndarray
     '''
-    
     min_time_str, max_time_str = range.split(':')
  
     min_time = datetime.fromisoformat(min_time_str).replace(hour=0, minute=0, second=0)
@@ -218,21 +217,27 @@ def saveCsv(table:np, head:list|None, dni:int):
     :param dni: es un dni dado por el usuario.
     :rtype: int
     '''
-    sep= ","
-    strignTable = sep.join(map( str, head ))
+    if np.size(table) == 0:
+        print("No se ha encontrado resultados para los argumentos ingresados.")
+        print("Se descarta la creacion del CSV.")
+    else:
+        sep= ","
+        strignTable = sep.join(map( str, head ))
 
-    for list in table:
-        strignTable = strignTable + '\n' + sep.join(map( str, list ))
+        for list in table:
+            strignTable = strignTable + '\n' + sep.join(map( str, list ))
 
-    timestamp = int(datetime.timestamp(datetime.now()))
-  
-    with open(f'{dni}_{timestamp}.csv', 'w') as file: #nombre archivo = <DNI><TIMESTAMP_ACTUAL>.csv
-        file.write(strignTable)
-        file.close()
+        timestamp = int(datetime.timestamp(datetime.now()))
+    
+        with open(f'{dni}_{timestamp}.csv', 'w') as file: #nombre archivo = <DNI><TIMESTAMP_ACTUAL>.csv
+            file.write(strignTable)
+            file.close()
+
+        print(f'Se genero el archivos {dni}_{timestamp}.csv con EXITO!')
 
 #CODIGO PRINCIPAL
 def main():
-    if len(sys.argv) < 5:
+    if len(sys.argv) < 5 or len(sys.argv) > 8:
         muestraMensajeError("Los parametros ingresados son incorrectos. Intentelo nuevamente.")
     else:
         try:
@@ -246,26 +251,29 @@ def main():
             if validaDNI(dni) and validaSalida(salida) and validaTipoCheque(tipo_cheque):
                 tablaFiltrada = filterDNI(dataFrame, dni)         
                 tablaFiltrada = filterType(tablaFiltrada, dni, tipo_cheque)
-                resultado = tablaFiltrada
+                resultado = tablaFiltrada.to_numpy()
 
-                if len(sys.argv) == 6:
-                    if validaEstadoCheque(sys.argv[5]): #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
-                        estado_cheque = sys.argv[ESTADO_CHEQUE]
+                if len(sys.argv) == 6: #El ultimo parametro ingresado es el ESTADO DEL CHEQUE
+                    if validaEstadoCheque(sys.argv[ULTIMO]): 
+                        estado_cheque = sys.argv[5]
                         resultado = filterState(tablaFiltrada, estado_cheque)
-                    elif validaRangoFechas(sys.argv[5]): #El ultimo parametro ingresado es el RANGO DE FECHAS
-                        tipo_fecha = sys.argv[TIPO_FECHAS]
-                        rango_fechas = sys.argv[RANGO_FECHAS]
-                        resultado = filterTime(tablaFiltrada, rango_fechas)
                     else:
                         muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
-                elif len(sys.argv) == 7:
+                elif len(sys.argv) == 7: #El ultimo parametro ingresado es el RANGO DE FECHAS
+                    if validaRangoFechas(sys.argv[ANTE_ULTIMO], sys.argv[ULTIMO]): 
+                        tipo_fecha = sys.argv[ANTE_ULTIMO]
+                        rango_fechas = sys.argv[ULTIMO]
+                        resultado = filterTime(resultado, rango_fechas)
+                    else:
+                        muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
+                elif len(sys.argv) == 8: #El comando posee todos los argumentos posibles
                     estado_cheque = sys.argv[ESTADO_CHEQUE]
                     tipo_fecha = sys.argv[TIPO_FECHAS]
                     rango_fechas = sys.argv[RANGO_FECHAS]
-
+                    
                     if validaEstadoCheque(estado_cheque) and validaRangoFechas(tipo_fecha):
                         resultado = filterState(tablaFiltrada, estado_cheque)
-                        resultado = filterTime(tablaFiltrada, rango_fechas)
+                        resultado = filterTime(resultado, rango_fechas)
                     else:
                         muestraMensajeError("El ultimo argumento ingresado es incorrecto. Intentelo nuevamente.")
 
@@ -275,7 +283,7 @@ def main():
                 if (salida == 'PANTALLA'):
                     printNumpy(resultado, head)
                 else:
-                    saveCsv(resultado, head, int(dni))  
+                    saveCsv(resultado, head, int(dni))
             else:
                 muestraMensajeError("Los parametros ingresados son incorrectos. Intentelo nuevamente.")
         except pd.errors.ParserError as e:
