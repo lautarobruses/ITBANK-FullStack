@@ -68,7 +68,6 @@ class Cliente:
         '''descripcion'''
         pass
 
-
 class Classic(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
