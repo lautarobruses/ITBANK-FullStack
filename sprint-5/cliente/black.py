@@ -4,8 +4,10 @@ class Black(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
 
-    def retiro_efectivo_cajero_automatico():
+    def retiro_efectivo_cajero_automatico(hola):
         '''descripcion'''
+        print(hola)
+        return "hola"
     
     def retiro_efectivo_por_caja():
         '''descripcion'''

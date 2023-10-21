@@ -1,25 +1,29 @@
 from jinja2 import Template
-
-# Ejemplo de objetos de datos (puedes cambiar esto a tus datos)
-data = [
-    {"Nombre": "Juan", "Edad": 30, "Ciudad": "Madrid"},
-    {"Nombre": "María", "Edad": 28, "Ciudad": "Barcelona"},
-    {"Nombre": "Pedro", "Edad": 35, "Ciudad": "Sevilla"},
-]
+from transaccion import Transaccion
 
 # Plantilla de HTML utilizando Jinja2
 template_str = """
 <table border="1">
     <tr>
-        <th>Nombre</th>
-        <th>Edad</th>
-        <th>Ciudad</th>
+        <th>Numero</th>
+        <th>Estado</th>
+        <th>tipo</th>
+        <th>cuentaNumero</th>
+        <th>permitidoActualParaTransccion</th>
+        <th>monto</th>
+        <th>fecha</th>
+        <th>razon</th>
     </tr>
-    {% for item in data %}
+    {% for transaccion in data %}
     <tr>
-        <td>{{ item.Nombre }}</td>
-        <td>{{ item.Edad }}</td>
-        <td>{{ item.Ciudad }}</td>
+        <td>{{ transaccion.numero }}</td>
+        <td>{{ transaccion.estado }}</td>
+        <td>{{ transaccion.tipo }}</td>
+        <td>{{ transaccion.cuentaNumero }}</td>
+        <td>{{ transaccion.permitidoActualParaTransccion }}</td>
+        <td>{{ transaccion.monto }}</td>
+        <td>{{ transaccion.fecha }}</td>
+        <td>{{ transaccion.razon }}</td>
     </tr>
     {% endfor %}
 </table>
@@ -27,8 +31,9 @@ template_str = """
 
 template = Template(template_str)
 
-# Renderizar la plantilla con los datos
-html_output = template.render(data=data)
+def crearHTML(transacciones: list[Transaccion]):
+    # Renderizar la plantilla con los datos
+    html_output = template.render(data = transacciones)
 
-# Imprimir o guardar el HTML
-print(html_output)
+    print(html_output)
+

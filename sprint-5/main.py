@@ -1,11 +1,15 @@
 import json
-from jinja2 import Template
 from cliente.classic import Classic
 from cliente.gold import Gold
 from cliente.black import Black
+from transaccion import Transaccion
+from salidaHTML import crearHTML
+
+#Nombre del archivo JSON que se desea analizar
+nombreArchivo = 'ejemplo.json'
 
 # Abre el archivo JSON en modo lectura
-with open('ejemplo.json', 'r') as archivo:
+with open(nombreArchivo, 'r') as archivo:
     datos = json.load(archivo)
 
     if datos["tipo"] == "Classic":
@@ -15,14 +19,15 @@ with open('ejemplo.json', 'r') as archivo:
     else:
         cliente = Black( datos["numero"], datos["nombre"], datos["apellido"], datos["dni"], datos["transacciones"])
     
-    transacciones = cliente.transacciones
-    # print(transacciones)
+    transacciones: list[Transaccion] = []
 
-    for transaccion in transacciones:
-        print(transaccion)
+    for transaccion in cliente.transacciones:
+        if 'cuentaNumero' in transaccion:
+            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
+        else:
+            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
 
-        # Nombre del método en forma de cadena
-        nombre_metodo = "nombre_del_metodo"
+        nombre_metodo = nueva_transaccion.tipo.lower()
 
         # Verifica si el método existe en el objeto antes de llamarlo
         if hasattr(cliente, nombre_metodo):
@@ -30,9 +35,13 @@ with open('ejemplo.json', 'r') as archivo:
             metodo = getattr(cliente, nombre_metodo)
 
             # Llama al método
-            resultado = metodo()
-        
-            transaccion.razon = resultado
-            # transaccion.razon = "blablablaba"
+            razon = metodo()
 
-print(cliente)
+            print(razon)
+        
+            nueva_transaccion.razon = razon
+            
+            transacciones.append(nueva_transaccion)
+    
+    print(transacciones)
+    crearHTML(transacciones)

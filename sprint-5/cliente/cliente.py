@@ -25,15 +25,18 @@ class Cliente:
 
     def comprar_en_cuotas_tarjeta_credito_pesos():
         '''descripcion'''
+        pass
 
     def comprar_en_cuotas_tarjeta_credito_dolares():
         '''descripcion'''
 
     def comprar_tarjeta_credito_pesos():
         '''descripcion'''
+        pass
 
     def comprar_tarjeta_credito_dolares():
         '''descripcion'''
+        pass
 
     def alta_tarjeta_debito():
         '''descripcion'''
@@ -41,9 +44,11 @@ class Cliente:
 
     def alta_cuenta_cte_pesos():
         '''descripcion'''
+        pass
 
     def alta_cuenta_cte_dolares():
         '''descripcion'''
+        pass
 
     def alta_caja_ahorros_pesos():
         '''descripcion'''
@@ -51,15 +56,19 @@ class Cliente:
 
     def alta_caja_ahorros_dolares():
         '''descripcion'''
+        pass
 
     def alta_cuenta_inversion():
         '''descripcion'''
+        pass
 
     def comprar_dolar():
         '''descripcion'''
+        pass
 
     def venta_dolar():
         '''descripcion'''
+        pass
         
     def transferencia_enviada_pesos():
         '''descripcion'''
