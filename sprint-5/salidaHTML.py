@@ -1,4 +1,4 @@
-from Jinja2 import Template
+from jinja2 import Template
 
 # Ejemplo de objetos de datos (puedes cambiar esto a tus datos)
 data = [

@@ -1,7 +1,8 @@
+import json
+from jinja2 import Template
 from cliente.classic import Classic
 from cliente.gold import Gold
 from cliente.black import Black
-import json
 
 # Abre el archivo JSON en modo lectura
 with open('ejemplo.json', 'r') as archivo:
