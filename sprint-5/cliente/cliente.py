@@ -1,3 +1,12 @@
+import requests
+
+url = "https://dolarapi.com/v1/dolares/oficial"
+
+response = requests.get(url)
+data = response.json()
+precio_dolar_oficial = data['venta']
+# print('El precio del dolar es: ',precio_dolar_oficial)
+
 class Cliente:
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         self.numero = numero
