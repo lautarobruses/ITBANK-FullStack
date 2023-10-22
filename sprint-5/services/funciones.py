@@ -6,6 +6,9 @@ response = requests.get(url)
 data = response.json()
 precio_dolar_oficial = data['venta']
 
+def get_valor_dolar() -> float:
+    return precio_dolar_oficial
+
 def calcular_monto_total(self, precio_dolar, monto) -> float:
     '''Calcula el monto total que se tiene que gastar sumando el impuesto país y ganancias.'''
     precio_dolar = precio_dolar_oficial

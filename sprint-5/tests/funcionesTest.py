@@ -15,11 +15,6 @@ class calcularMontoTotalTestCase(unittest.TestCase):
         self.monto2 = 456.789
         self.montoMalo1 = -10
         self.montoMalo2 = "1000"
-    
-    def tearDown(self):
-        # Limpiar y restablecer el entorno de prueba
-        # Cerrar conexiones, liberar recursos, revertir cambios, etc.
-        return
 
     def test_calcular_monto_entero(self):
         resultado = self.precio_dolar * self.monto1
@@ -35,6 +30,12 @@ class calcularMontoTotalTestCase(unittest.TestCase):
     def test_calcular_monto_cadena(self):
         self.assertRaises(TypeError, fn.calcular_monto_total(self, self.precio_dolar, self.monto1), f"La funcion deberia devolver una excepcion de tipo Exception")
 
+    def test_calcula_impuesto_pais(self):
+        return
+
+    def test_calcula_impuesto_ganancias(self):
+        return
+    
 class descontarComisionTestCase(unittest.TestCase):
     def test_another_thing(self):
         # Otra prueba que también utiliza el entorno de prueba configurado en 
