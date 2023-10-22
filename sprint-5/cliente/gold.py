@@ -6,8 +6,6 @@ class Gold(Cliente):
         super().__init__(numero, nombre, apellido, dni, transacciones)
         self.limite_retiro_efectivo = 20.000
 
-
-
     def retiro_efectivo_cajero_automatico():
         '''descripcion'''
     

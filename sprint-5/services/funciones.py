@@ -7,6 +7,7 @@ data = response.json()
 precio_dolar_oficial = data['venta']
 
 def calcular_monto_total(self, precio_dolar, monto) -> float:
+    '''Calcula el monto total que se tiene que gastar sumando el impuesto país y ganancias.'''
     precio_dolar = precio_dolar_oficial
     monto_total = monto * precio_dolar
     return monto_total
