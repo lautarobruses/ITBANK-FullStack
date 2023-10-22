@@ -8,7 +8,20 @@ precio_dolar_oficial = data['venta']
 
 def calcular_monto_total(self, precio_dolar, monto) -> float:
     precio_dolar = precio_dolar_oficial
-    monto_total = monto * precio_dolar
+    impuesto_pais = 0.30
+    impuesto_ganancias = 0.35
+
+    # Monto sin impuestos
+    monto_sin_impuestos= monto * precio_dolar
+
+    # Monto con impuesto país
+    monto_con_impuesto_pais = monto_sin_impuestos + (monto_sin_impuestos * impuesto_pais)
+
+    # Monto con impuesto a las ganancias
+
+    monto_total = monto_con_impuesto_pais + (monto_con_impuesto_pais * impuesto_ganancias)
+
+
     return monto_total
 
 def comprar_dolar(self, monto) -> bool:
