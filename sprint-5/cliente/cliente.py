@@ -23,18 +23,26 @@ class Cliente:
         '''descripcion'''
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_pesos():
+    def comprar_en_cuotas_tarjeta_credito_visa():
         '''descripcion'''
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_dolares():
-        '''descripcion'''
-
-    def comprar_tarjeta_credito_pesos():
+    def comprar_en_cuotas_tarjeta_credito_mastercard():
         '''descripcion'''
         pass
 
-    def comprar_tarjeta_credito_dolares():
+    def comprar_en_cuotas_tarjeta_credito_american():
+        '''descripcion'''
+
+    def comprar_tarjeta_credito_visa():
+        '''descripcion'''
+        pass
+
+    def comprar_tarjeta_credito_mastercard():
+        '''descripcion'''
+        pass
+
+    def comprar_tarjeta_credito_american():
         '''descripcion'''
         pass
 
@@ -42,11 +50,15 @@ class Cliente:
         '''descripcion'''
         pass
 
-    def alta_cuenta_cte_pesos():
+    def alta_cuenta_credito_visa():
         '''descripcion'''
         pass
 
-    def alta_cuenta_cte_dolares():
+    def alta_cuenta_credito_mastercard():
+        '''descripcion'''
+        pass
+
+    def alta_cuenta_credito_american():
         '''descripcion'''
         pass
 
