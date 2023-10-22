@@ -5,7 +5,8 @@ class Gold(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
         self.limite_retiro_efectivo = 20.000
-
+        self.porcentaje_comision_envio = 0.5
+        self.porcentaje_comision_recibo = 0.1
 
 
     def retiro_efectivo_cajero_automatico():
@@ -20,20 +21,20 @@ class Gold(Cliente):
     def alta_caja_ahorros_pesos():
         '''descripcion'''
 
-    def transferencia_enviada_pesos():
-        '''descripcion'''
-        
-    def transferencia_enviada_dolares():
-        '''descripcion'''
-
-    def transferencia_recibida_pesos():
-        '''descripcion'''
-
-    def transferencia_recibida_dolares():
-        '''descripcion'''
-    
     def venta_dolar(self, monto) -> bool:
         return super().venta_dolar(monto)
     
     def comprar_dolar(self, monto) -> bool:
         return super().comprar_dolar(monto)
+    
+    def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
+        return super().transferencia_recibida_pesos(monto, es_transferencia_enviada)
+    
+    def transferencia_recibida_dolares(self, monto, es_transferencia_enviada=False):
+        return super().transferencia_recibida_dolares(monto, es_transferencia_enviada)
+    
+    def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
+        return super().transferencia_enviada_pesos(monto, cuenta_destino, es_transferencia_enviada)
+    
+    def transferencia_enviada_dolares(self, monto, cuenta_destino, es_transferencia_enviada=True):
+        return super().transferencia_enviada_dolares(monto, cuenta_destino, es_transferencia_enviada)
