@@ -29,3 +29,9 @@ class Black(Cliente):
 
     def transferencia_recibida_dolares():
         '''descripcion'''
+
+    def venta_dolar(self, monto) -> bool:
+        return super().venta_dolar(monto)
+    
+    def comprar_dolar(self, monto) -> bool:
+        return super().comprar_dolar(monto)

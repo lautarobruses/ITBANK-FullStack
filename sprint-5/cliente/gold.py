@@ -1,9 +1,12 @@
+
 from cliente.cliente import Cliente
 
 class Gold(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
         self.limite_retiro_efectivo = 20.000
+
+
 
     def retiro_efectivo_cajero_automatico():
         '''descripcion'''
@@ -28,3 +31,9 @@ class Gold(Cliente):
 
     def transferencia_recibida_dolares():
         '''descripcion'''
+    
+    def venta_dolar(self, monto) -> bool:
+        return super().venta_dolar(monto)
+    
+    def comprar_dolar(self, monto) -> bool:
+        return super().comprar_dolar(monto)

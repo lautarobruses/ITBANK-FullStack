@@ -66,21 +66,44 @@ class Cliente:
         '''descripcion'''
         pass
 
-    def alta_caja_ahorros_dolares():
+    def alta_caja_ahorros_dolares(self):
         '''descripcion'''
-        pass
+        self.caja_ahorro_dolar = True # Si es True, permite la compra y venta de dolares
 
     def alta_cuenta_inversion():
         '''descripcion'''
         pass
-
-    def comprar_dolar():
+    
+    def descontar_comision(self, monto, porcentaje_comision):
+        comision = monto * (porcentaje_comision / 100)
+        monto_descontado = monto - comision
+        return monto_descontado
+    
+    def comprar_dolar(self, monto) -> bool:
         '''descripcion'''
-        pass
+        if self.caja_ahorro_dolar == True:
+            costo_en_pesos = monto * precio_dolar_oficial
+            costo_con_comision = self.descontar_comision(costo_en_pesos)
+            
+            if costo_con_comision > monto:
+                return False  # No hay suficientes fondos en pesos para la compra de dólares
+            else:
+                return True  # Devuelve True si la compra se realiza con éxitocosto_en_pesos = monto * precio_dolar_oficial
+        else:
+            return False
 
-    def venta_dolar():
+    def venta_dolar(self, monto) -> bool:
         '''descripcion'''
-        pass
+        if self.caja_ahorro_dolar == True:
+            if precio_dolar_oficial > monto:
+                return False  
+            
+            monto_en_pesos = monto * precio_dolar_oficial
+            monto_con_comision = self.descontar_comision(monto_en_pesos)
+            
+            return monto_con_comision
+        else:
+            return False
         
     def transferencia_enviada_pesos():
         '''descripcion'''
