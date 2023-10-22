@@ -1,3 +1,7 @@
+import services.funciones as fn
+
+precio_dolar_oficial = fn.get_valor_dolar()
+
 class Cliente:
     def __init__(self, numero, nombre, apellido, dni, transacciones, saldo_disponible_en_cuenta, porcentaje_comision_envio, porcentaje_comision_recibo):
         self.numero = numero

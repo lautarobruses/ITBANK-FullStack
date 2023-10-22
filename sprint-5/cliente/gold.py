@@ -8,7 +8,6 @@ class Gold(Cliente):
         self.porcentaje_comision_envio = 0.5
         self.porcentaje_comision_recibo = 0.1
 
-
     def retiro_efectivo_cajero_automatico():
         '''descripcion'''
     
