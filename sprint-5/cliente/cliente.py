@@ -8,12 +8,13 @@ precio_dolar_oficial = data['venta']
 # print('El precio del dolar es: ',precio_dolar_oficial)
 
 class Cliente:
-    def __init__(self, numero, nombre, apellido, dni, transacciones):
+    def __init__(self, numero, nombre, apellido, dni, transacciones, saldo_disponible_en_cuenta):
         self.numero = numero
         self.nombre = nombre
         self.apellido = apellido
         self.dni = dni
         self.transacciones = transacciones
+        self.saldo_disponible_en_cuenta = saldo_disponible_en_cuenta
 
     def retiro_efectivo_cajero_automatico():
         '''descripcion'''
@@ -74,34 +75,32 @@ class Cliente:
         '''descripcion'''
         pass
     
-    def descontar_comision(self, monto, porcentaje_comision):
-        comision = monto * (porcentaje_comision / 100)
-        monto_descontado = monto - comision
-        return monto_descontado
-    
+    def calcular_monto_total(self, precio_dolar, monto):
+        precio_dolar = precio_dolar_oficial
+        monto_total = monto * precio_dolar
+        return monto_total
+
     def comprar_dolar(self, monto) -> bool:
-        '''descripcion'''
-        if self.caja_ahorro_dolar == True:
-            costo_en_pesos = monto * precio_dolar_oficial
-            costo_con_comision = self.descontar_comision(costo_en_pesos)
+        '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
+        if self.caja_ahorro_dolar:
+            costo_en_pesos = self.calcular_monto_total(precio_dolar_oficial, monto)
             
-            if costo_con_comision > monto:
+            if costo_en_pesos > self.saldo_disponible_en_cuenta:
                 return False  # No hay suficientes fondos en pesos para la compra de dólares
-            else:
-                return True  # Devuelve True si la compra se realiza con éxitocosto_en_pesos = monto * precio_dolar_oficial
+
+            return costo_en_pesos  # Devuelve el costo en pesos de la compra
         else:
             return False
 
-    def venta_dolar(self, monto) -> bool:
-        '''descripcion'''
-        if self.caja_ahorro_dolar == True:
-            if precio_dolar_oficial > monto:
-                return False  
+    def vender_dolar(self, monto) -> bool:
+        '''Vende una cantidad de dólares y devuelve el monto en pesos o False si la venta falla.'''
+        if self.caja_ahorro_dolar:
+            if monto > self.saldo_disponible_en_cuenta:
+                return False  # No hay suficientes dólares para la venta
             
-            monto_en_pesos = monto * precio_dolar_oficial
-            monto_con_comision = self.descontar_comision(monto_en_pesos)
+            monto_en_pesos = self.calcular_monto_total(precio_dolar_oficial, monto)
             
-            return monto_con_comision
+            return monto_en_pesos  # Devuelve el monto en pesos de la venta
         else:
             return False
         
