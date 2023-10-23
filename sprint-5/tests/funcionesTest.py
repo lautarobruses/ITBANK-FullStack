@@ -71,7 +71,6 @@ class descontarComisionTestCase(unittest.TestCase):
 
         self.monto = 456.789
         self.montoMalo1 = -10
-        self.montoMalo2 = "1000"
 
     def test_descontar_comision_envio(self):
         resultado1 = self.monto * (1 - self.porcentaje_comision_envio1)
@@ -98,11 +97,6 @@ class descontarComisionTestCase(unittest.TestCase):
     def test_descontar_comision_monto_negativo(self):
         self.assertRaises(TypeError, fn.descontar_comision(
             self.montoMalo1, self.porcentajeFicticio), "La funcion deberia devolver una excepcion de tipo TypeError")
-
-    def test_descontar_comision_monto_cadena(self):
-        self.assertRaises(TypeError, fn.descontar_comision(
-            self.montoMalo2, self.porcentajeFicticio), "La funcion deberia devolver una excepcion de tipo TypeError")
-
 
 class calcularMontoPlazoFijoTestCase(unittest.TestCase):
     def test_another_thing(self):

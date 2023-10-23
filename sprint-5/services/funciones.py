@@ -26,16 +26,15 @@ def calcular_monto_total(precio_dolar, monto) -> float:
     monto_sin_impuestos = monto * precio_dolar
 
     # Monto con impuestos
-    monto_total = monto_sin_impuestos * \
-        (1 + impuesto_pais + impuesto_ganancias)
+    monto_total = monto_sin_impuestos * (1 + impuesto_pais + impuesto_ganancias)
 
     return monto_total
 
 
-def descontar_comision(monto, porcentaje) -> float:
+def descontar_comision(monto:float, porcentaje) -> float:
     '''Devulve el monto descontando la comisión.'''
 
-    comision = monto * (porcentaje / 100)
+    comision = monto * porcentaje
     monto_descontado = monto - comision
 
     return monto_descontado
