@@ -68,9 +68,28 @@ class Cliente:
         '''descripcion'''
         self.caja_ahorro_dolar = True # Si es True, permite la compra y venta de dolares
 
-    def alta_cuenta_inversion():
+    def calcular_monto_plazo_fijo(self, transaccion):
+
+        monto_inicial = transaccion.monto
+
+        tasa_interes_anual = transaccion.tasa_interes_anual
+        tiempo_anios = transaccion.tiempo_anios
+        monto_final = monto_inicial * (1 + (tasa_interes_anual / 100) * tiempo_anios)
+
+        return monto_final
+
+    def alta_cuenta_inversion(self, transaccion) -> bool:
         '''descripcion'''
-        pass
+        if transaccion.tipo == 'CLASSIC':
+            return False # no tiene acceso a la cuenta de inversion 
+        else: 
+            self.cuenta_inversion = transaccion
+            monto_plazo_fijo = self.calcular_monto_plazo_fijo(transaccion)
+            transaccion.monto_plazo_fijo = monto_plazo_fijo
+            return True
+        
+
+
 
     def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
         '''descripcion'''

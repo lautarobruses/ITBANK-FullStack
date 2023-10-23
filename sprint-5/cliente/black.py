@@ -37,3 +37,6 @@ class Black(Cliente):
     
     def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
         return super().transferencia_recibida_pesos(monto, es_transferencia_enviada)
+    
+    def alta_cuenta_inversion(self, transaccion) -> bool:
+        return super().alta_cuenta_inversion(transaccion)

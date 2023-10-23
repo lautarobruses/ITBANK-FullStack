@@ -37,3 +37,6 @@ class Gold(Cliente):
     
     def transferencia_enviada_dolares(self, monto, cuenta_destino, es_transferencia_enviada=True):
         return super().transferencia_enviada_dolares(monto, cuenta_destino, es_transferencia_enviada)
+    
+    def alta_cuenta_inversion(self, transaccion) -> bool:
+        return super().alta_cuenta_inversion(transaccion)
