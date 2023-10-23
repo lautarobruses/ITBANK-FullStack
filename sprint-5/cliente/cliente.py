@@ -14,7 +14,7 @@ class Cliente:
 
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str: 
         pass
-    
+
     def retiro_efectivo_por_caja(self, transaccion) -> str:
         pass
 

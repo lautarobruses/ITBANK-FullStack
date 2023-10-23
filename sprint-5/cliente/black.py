@@ -197,7 +197,7 @@ class Black(Cliente):
                 razon = "Has alcanzado el límite de chequeras permitidas."
             return razon
 
-    def alta_caja_ahorros_pesos():
+    def alta_caja_ahorros_pesos(self, transaccion) -> str:
         '''descripcion'''
     
     def alta_cuenta_inversion(self, transaccion) -> str:
