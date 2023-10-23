@@ -61,9 +61,9 @@ class descontarComisionTestCase(unittest.TestCase):
         resultado1 = self.monto * (1 - self.porcentaje_comision_envio1)
         resultado2 = self.monto * (1 - self.porcentaje_comision_envio2)
         resultado3 = self.monto * (1 - self.porcentaje_comision_envio3)
-        self.assertAlmostEqual(resultado1, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio1), f"La funcion no devuelve el resultado esperado: {resultado1}")
-        self.assertAlmostEqual(resultado2, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio2), f"La funcion no devuelve el resultado esperado: {resultado2}")
-        self.assertAlmostEqual(resultado3, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio3), f"La funcion no devuelve el resultado esperado: {resultado3}")
+        self.assertEqual(resultado1, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio1), f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado2, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio2), f"La funcion no devuelve el resultado esperado: {resultado2}")
+        self.assertEqual(resultado3, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio3), f"La funcion no devuelve el resultado esperado: {resultado3}")
 
     def test_descontar_comision_recibo(self):
         self.porcentaje_comision_recibo1 = self.clienteClassic.get_porcentaje_comision_recibo()
@@ -77,9 +77,9 @@ class descontarComisionTestCase(unittest.TestCase):
         resultado1 = self.monto * (1 - self.porcentaje_comision_recibo1)
         resultado2 = self.monto * (1 - self.porcentaje_comision_recibo2)
         resultado3 = self.monto * (1 - self.porcentaje_comision_recibo3)
-        self.assertAlmostEqual(resultado1, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo1), f"La funcion no devuelve el resultado esperado: {resultado1}")
-        self.assertAlmostEqual(resultado2, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo2), f"La funcion no devuelve el resultado esperado: {resultado2}")
-        self.assertAlmostEqual(resultado3, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo3), f"La funcion no devuelve el resultado esperado: {resultado3}")
+        self.assertEqual(resultado1, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo1), f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado2, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo2), f"La funcion no devuelve el resultado esperado: {resultado2}")
+        self.assertEqual(resultado3, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo3), f"La funcion no devuelve el resultado esperado: {resultado3}")
 
     def test_descontar_comision_monto_negativo(self):
         self.assertRaises(TypeError, fn.descontar_comision(self, self.montoMalo1, self.porcentajeFicticio), f"La funcion deberia devolver una excepcion de tipo TypeError")
