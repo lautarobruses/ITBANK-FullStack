@@ -27,12 +27,9 @@ def calcular_monto_total(self, precio_dolar, monto) -> float:
 
     return monto_total
 
-def descontar_comision(self, monto, es_transferencia_enviada=True):
+def descontar_comision(self, monto, porcentaje):
     '''descripcion'''
-    if es_transferencia_enviada:
-        porcentaje = self.porcentaje_comision_envio
-    else:
-        porcentaje = self.porcentaje_comision_recibo
+    porcentaje = self.porcentaje
 
     comision = monto * (porcentaje / 100)
     monto_descontado = monto - comision
