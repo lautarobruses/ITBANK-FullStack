@@ -11,25 +11,25 @@ class Cliente:
         self.transacciones = transacciones
         self.saldo_disponible_en_cuenta = saldo_disponible_en_cuenta
 
-    def retiro_efectivo_cajero_automatico(self, transaccion): 
+    def retiro_efectivo_cajero_automatico(self, transaccion) -> str: 
         pass
     
-    def retiro_efectivo_por_caja(self, transaccion):
+    def retiro_efectivo_por_caja(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion):
+    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion):
+    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion):
+    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         pass
 
-    def comprar_tarjeta_credito_visa(self, transaccion):
+    def comprar_tarjeta_credito_visa(self, transaccion) -> str:
         pass
 
-    def comprar_tarjeta_credito_master(self, transaccion):
+    def comprar_tarjeta_credito_master(self, transaccion) -> str:
         pass
 
     def comprar_tarjeta_credito_amex(self, transaccion):

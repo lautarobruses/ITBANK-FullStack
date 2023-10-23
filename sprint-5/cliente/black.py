@@ -6,7 +6,7 @@ class Black(Cliente):
         self.porcentaje_comision_envio = 0
         self.porcentaje_comision_recibo = 0
 
-    def retiro_efectivo_cajero_automatico(self, transaccion):
+    def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $100,000 por cajero.'''
 
         try:
@@ -22,7 +22,7 @@ class Black(Cliente):
         except:
             return "Formato Inválido: El monto debe ser un numero."
     
-    def retiro_efectivo_por_caja(self, transaccion):
+    def retiro_efectivo_por_caja(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
@@ -36,7 +36,7 @@ class Black(Cliente):
         except:
             return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion):
+    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
@@ -51,7 +51,7 @@ class Black(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
         
 
-    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion):
+    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
@@ -66,7 +66,7 @@ class Black(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
        
 
-    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion):
+    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
@@ -80,7 +80,7 @@ class Black(Cliente):
         except:
             return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_tarjeta_credito_visa(self, transaccion):
+    def comprar_tarjeta_credito_visa(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
@@ -95,7 +95,7 @@ class Black(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
         
 
-    def comprar_tarjeta_credito_master(self, transaccion):
+    def comprar_tarjeta_credito_master(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
@@ -110,7 +110,7 @@ class Black(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
         
 
-    def comprar_tarjeta_credito_amex(self, transaccion):
+    def comprar_tarjeta_credito_amex(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
