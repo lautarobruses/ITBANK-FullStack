@@ -71,17 +71,6 @@ class Cliente:
     def alta_cuenta_inversion():
         '''descripcion'''
         pass
-        
-    def descontar_comision(self, monto, es_transferencia_enviada=True):
-        '''descripcion'''
-        if es_transferencia_enviada:
-            porcentaje = self.porcentaje_comision_envio
-        else:
-            porcentaje = self.porcentaje_comision_recibo
-
-        comision = monto * (porcentaje / 100)
-        monto_descontado = monto - comision
-        return monto_descontado
 
     def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
         '''descripcion'''

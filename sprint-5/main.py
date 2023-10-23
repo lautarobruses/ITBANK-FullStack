@@ -23,9 +23,9 @@ with open(nombreArchivo, 'r') as archivo:
 
     for transaccion in cliente.transacciones:
         if 'cuentaNumero' in transaccion:
-            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
+            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
         else:
-            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
+            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
 
         nombre_metodo = nueva_transaccion.tipo.lower()
 
