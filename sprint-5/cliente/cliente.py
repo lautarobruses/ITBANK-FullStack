@@ -19,29 +19,6 @@ class Cliente:
     def retiro_efectivo_por_caja(self, transaccion):
         pass
 
-<<<<<<< Updated upstream
-    def comprar_en_cuotas_tarjeta_credito_visa():
-        '''descripcion'''
-        pass
-
-    def comprar_en_cuotas_tarjeta_credito_mastercard():
-        '''descripcion'''
-        pass
-
-    def comprar_en_cuotas_tarjeta_credito_american():
-        '''descripcion'''
-
-    def comprar_tarjeta_credito_visa():
-        '''descripcion'''
-        pass
-
-    def comprar_tarjeta_credito_mastercard():
-        '''descripcion'''
-        pass
-
-    def comprar_tarjeta_credito_american():
-        '''descripcion'''
-=======
     def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion):
         pass
 
@@ -58,7 +35,6 @@ class Cliente:
         pass
 
     def comprar_tarjeta_credito_amex(self, transaccion):
->>>>>>> Stashed changes
         pass
 
     def alta_tarjeta_debito():
