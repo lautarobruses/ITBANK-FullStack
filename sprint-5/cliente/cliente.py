@@ -3,13 +3,12 @@ import services.funciones as fn
 precio_dolar_oficial = fn.get_valor_dolar()
 
 class Cliente:
-    def __init__(self, numero, nombre, apellido, dni, transacciones, saldo_disponible_en_cuenta):
+    def __init__(self, numero, nombre, apellido, dni, transacciones):
         self.numero = numero
         self.nombre = nombre
         self.apellido = apellido
         self.dni = dni
         self.transacciones = transacciones
-        self.saldo_disponible_en_cuenta = saldo_disponible_en_cuenta
 
     def retiro_efectivo_cajero_automatico(self, transaccion): 
         pass
