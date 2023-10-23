@@ -13,14 +13,13 @@ class Cliente:
         self.porcentaje_comision_envio = porcentaje_comision_envio
         self.porcentaje_comision_recibo = porcentaje_comision_recibo
 
-    def retiro_efectivo_cajero_automatico():
-        '''descripcion'''
+    def retiro_efectivo_cajero_automatico(self, transaccion): 
         pass
     
-    def retiro_efectivo_por_caja():
-        '''descripcion'''
+    def retiro_efectivo_por_caja(self, transaccion):
         pass
 
+<<<<<<< Updated upstream
     def comprar_en_cuotas_tarjeta_credito_visa():
         '''descripcion'''
         pass
@@ -42,6 +41,24 @@ class Cliente:
 
     def comprar_tarjeta_credito_american():
         '''descripcion'''
+=======
+    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion):
+        pass
+
+    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion):
+        pass
+
+    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion):
+        pass
+
+    def comprar_tarjeta_credito_visa(self, transaccion):
+        pass
+
+    def comprar_tarjeta_credito_master(self, transaccion):
+        pass
+
+    def comprar_tarjeta_credito_amex(self, transaccion):
+>>>>>>> Stashed changes
         pass
 
     def alta_tarjeta_debito():
