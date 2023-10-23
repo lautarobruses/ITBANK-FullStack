@@ -79,9 +79,6 @@ class Cliente:
             transaccion.monto_plazo_fijo = monto_plazo_fijo
             return True
         
-
-
-
     def comprar_dolar(self, monto) -> bool:
         '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
         if self.caja_ahorro_dolar:
