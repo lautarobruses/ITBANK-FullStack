@@ -1,4 +1,5 @@
 from cliente.cliente import Cliente
+import services.funciones as fn
 
 class Classic(Cliente):
 
@@ -90,6 +91,10 @@ class Classic(Cliente):
 
     def alta_caja_ahorros_pesos():
         '''descripcion'''
+
+    def alta_cuenta_inversion(self, transaccion) -> str:
+        '''descripcion'''
+        return "No tiene acceso a la cuenta de inversion."
 
     def venta_dolar(self, monto) -> bool:
         return super().venta_dolar(monto)

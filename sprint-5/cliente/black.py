@@ -1,4 +1,5 @@
 from cliente.cliente import Cliente
+import services.funciones as fn
 
 class Black(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
@@ -129,7 +130,13 @@ class Black(Cliente):
         
     def alta_caja_ahorros_pesos():
         '''descripcion'''
-        
+    
+    def alta_cuenta_inversion(self, transaccion) -> str:
+        self.cuenta_inversion = transaccion
+        monto_plazo_fijo = fn.calcular_monto_plazo_fijo(transaccion, self.tasa_interes_anual, self.anios)
+        transaccion.monto_plazo_fijo = monto_plazo_fijo
+        return True
+
     def venta_dolar(self, monto) -> bool:
         return super().venta_dolar(monto)
     
