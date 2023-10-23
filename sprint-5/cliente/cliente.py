@@ -125,18 +125,18 @@ class Cliente:
         '''descripcion'''
         monto_con_comision = fn.descontar_comision(transaccion.monto, self.porcentaje_comision_recibo)
         transaccion.saldoDisponibleEnCuenta += monto_con_comision
-        razon = 'Aceptada, la transferencia fue exitosa.'
+        razon = 'La transferencia fue exitosa.'
         return razon
 
     def transferencia_recibida_dolares(self, transaccion) -> str:
         '''descripcion'''
         if not self.caja_ahorro_dolar:
-            razon = 'Rechazada, No se permite la recepción de dólares. No contas con caja de ahorro.'
+            razon = 'No se permite la recepción de dólares. No contas con caja de ahorro.'
             return razon  # No se permite la recepción de dólares
 
         # Realiza la recepción de la transferencia en dólares
         monto_en_pesos = transaccion.monto * precio_dolar_oficial
         monto_con_comision = fn.descontar_comision(monto_en_pesos, self.porcentaje_comision_recibo)
         transaccion.saldoDisponibleEnCuenta += monto_con_comision
-        razon1 = 'Aceptada, contás con caja de ahorro en dólares para recibir el dinero,'
+        razon1 = 'Contás con caja de ahorro en dólares para recibir el dinero,'
         return razon1 

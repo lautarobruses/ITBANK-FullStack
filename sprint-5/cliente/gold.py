@@ -9,6 +9,12 @@ class Gold(Cliente):
         self.porcentaje_comision_recibo = 0.1
         self.cuenta_inversion = False
 
+    def get_porcentaje_comision_envio(self) -> float:
+        return self.porcentaje_comision_envio
+
+    def get_porcentaje_comision_recibo(self) -> float:
+        return self.porcentaje_comision_recibo
+
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
 

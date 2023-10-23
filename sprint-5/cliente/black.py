@@ -4,9 +4,15 @@ import services.funciones as fn
 class Black(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
-        self.porcentaje_comision_envio = 0
-        self.porcentaje_comision_recibo = 0
+        self.porcentaje_comision_envio = 0.0
+        self.porcentaje_comision_recibo = 0.0
         self.cuenta_inversion = False
+
+    def get_porcentaje_comision_envio(self) -> float:
+        return self.porcentaje_comision_envio
+
+    def get_porcentaje_comision_recibo(self) -> float:
+        return self.porcentaje_comision_recibo
 
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $100,000 por cajero.'''

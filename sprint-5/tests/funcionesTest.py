@@ -43,9 +43,9 @@ class calcularMontoTotalTestCase(unittest.TestCase):
 
 class descontarComisionTestCase(unittest.TestCase):
     def setUp(self):
-        self.clienteClassic = classic.Classic("", "", "", "", "", "")
-        self.clienteGold = gold.Gold("", "", "", "", "", "")
-        self.clienteBlack = black.Black("", "", "", "", "", "")
+        self.clienteClassic = classic.Classic("", "", "", "", "")
+        self.clienteGold = gold.Gold("", "", "", "", "")
+        self.clienteBlack = black.Black("", "", "", "", "")
 
         self.porcentajeFicticio = 0.45
 
@@ -54,9 +54,9 @@ class descontarComisionTestCase(unittest.TestCase):
         self.montoMalo2 = "1000"
 
     def test_descontar_comision_envio(self):
-        self.porcentaje_comision_envio1 = self.clienteClassic.get_porcentaje_comision_envio(self)
-        self.porcentaje_comision_envio2 = self.clienteGold.get_porcentaje_comision_envio(self)
-        self.porcentaje_comision_envio3 = self.clienteBlack.get_porcentaje_comision_envio(self)
+        self.porcentaje_comision_envio1 = self.clienteClassic.get_porcentaje_comision_envio()
+        self.porcentaje_comision_envio2 = self.clienteGold.get_porcentaje_comision_envio()
+        self.porcentaje_comision_envio3 = self.clienteBlack.get_porcentaje_comision_envio()
 
         resultado1 = self.monto * (1 - self.porcentaje_comision_envio1)
         resultado2 = self.monto * (1 - self.porcentaje_comision_envio2)
@@ -66,13 +66,17 @@ class descontarComisionTestCase(unittest.TestCase):
         self.assertAlmostEqual(resultado3, fn.descontar_comision(self, self.monto, self.porcentaje_comision_envio3), f"La funcion no devuelve el resultado esperado: {resultado3}")
 
     def test_descontar_comision_recibo(self):
-        self.porcentaje_comision_recibo1 = self.clienteClassic.get_porcentaje_comision_recibo(self)
-        self.porcentaje_comision_recibo2 = self.clienteGold.get_porcentaje_comision_recibo(self)
-        self.porcentaje_comision_recibo3 = self.clienteBlack.get_porcentaje_comision_recibo(self)
+        self.porcentaje_comision_recibo1 = self.clienteClassic.get_porcentaje_comision_recibo()
+        self.porcentaje_comision_recibo2 = self.clienteGold.get_porcentaje_comision_recibo()
+        self.porcentaje_comision_recibo3 = self.clienteBlack.get_porcentaje_comision_recibo()
 
-        resultado1 = self.monto * (1 - self.porcentaje_comision_envio1)
-        resultado2 = self.monto * (1 - self.porcentaje_comision_envio2)
-        resultado3 = self.monto * (1 - self.porcentaje_comision_envio3)
+        print(self.porcentaje_comision_recibo1)
+        print(self.porcentaje_comision_recibo2)
+        print(self.porcentaje_comision_recibo3)
+
+        resultado1 = self.monto * (1 - self.porcentaje_comision_recibo1)
+        resultado2 = self.monto * (1 - self.porcentaje_comision_recibo2)
+        resultado3 = self.monto * (1 - self.porcentaje_comision_recibo3)
         self.assertAlmostEqual(resultado1, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo1), f"La funcion no devuelve el resultado esperado: {resultado1}")
         self.assertAlmostEqual(resultado2, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo2), f"La funcion no devuelve el resultado esperado: {resultado2}")
         self.assertAlmostEqual(resultado3, fn.descontar_comision(self, self.monto, self.porcentaje_comision_recibo3), f"La funcion no devuelve el resultado esperado: {resultado3}")

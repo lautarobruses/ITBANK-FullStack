@@ -2,14 +2,19 @@ from cliente.cliente import Cliente
 import services.funciones as fn
 
 class Classic(Cliente):
-    def __init__(self, numero, nombre, apellido, dni, transacciones, caja_ahorros_pesos):
+    def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
-        self.caja_ahorros_pesos = caja_ahorros_pesos
         self.limite_retiro_efectivo = 10.000
-        self.porcentaje_comision_envio = 1
+        self.porcentaje_comision_envio = 1.0
         self.porcentaje_comision_recibo = 0.5
         self.contador_retiros = 0
         self.tarifa = 100
+
+    def get_porcentaje_comision_envio(self) -> float:
+        return self.porcentaje_comision_envio
+
+    def get_porcentaje_comision_recibo(self) -> float:
+        return self.porcentaje_comision_recibo
 
     def retiro_efectivo_por_cajero_automatico(self, transaccion) -> str: #En esta y la siguiente funcion tomo a permitidoActualParaTransaccion como el limite de retiro diario que le queda a classic, lo mismo para el gold y el black.
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
