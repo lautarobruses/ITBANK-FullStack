@@ -27,38 +27,11 @@ def calcular_monto_total(self, precio_dolar, monto) -> float:
 
     return monto_total
 
-def descontar_comision(self, monto, es_transferencia_enviada=True):
+def descontar_comision(self, monto, porcentaje):
     '''descripcion'''
-    if es_transferencia_enviada:
-        porcentaje = self.porcentaje_comision_envio
-    else:
-        porcentaje = self.porcentaje_comision_recibo
+    porcentaje = self.porcentaje
 
     comision = monto * (porcentaje / 100)
     monto_descontado = monto - comision
     
     return monto_descontado
-
-def comprar_dolar(self, monto) -> bool:
-    '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
-    if self.caja_ahorro_dolar:
-        costo_en_pesos = self.calcular_monto_total(precio_dolar_oficial, monto)
-        
-        if costo_en_pesos > self.saldo_disponible_en_cuenta:
-            return False  # No hay suficientes fondos en pesos para la compra de dólares
-
-        return costo_en_pesos  # Devuelve el costo en pesos de la compra
-    else:
-        return False
-
-def vender_dolar(self, monto) -> bool:
-    '''Vende una cantidad de dólares y devuelve el monto en pesos o False si la venta falla.'''
-    if self.caja_ahorro_dolar:
-        if monto > self.saldo_disponible_en_cuenta:
-            return False  # No hay suficientes dólares para la venta
-        
-        monto_en_pesos = self.calcular_monto_total(precio_dolar_oficial, monto)
-        
-        return monto_en_pesos  # Devuelve el monto en pesos de la venta
-    else:
-        return False

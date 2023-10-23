@@ -91,12 +91,36 @@ class Cliente:
 
 
 
+    def comprar_dolar(self, monto) -> bool:
+        '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
+        if self.caja_ahorro_dolar:
+            costo_en_pesos = self.calcular_monto_total(precio_dolar_oficial, monto)
+            
+            if costo_en_pesos > self.saldo_disponible_en_cuenta:
+                return False  # No hay suficientes fondos en pesos para la compra de dólares
+
+            return costo_en_pesos  # Devuelve el costo en pesos de la compra
+        else:
+            return False
+
+    def vender_dolar(self, monto) -> bool:
+        '''Vende una cantidad de dólares y devuelve el monto en pesos o False si la venta falla.'''
+        if self.caja_ahorro_dolar:
+            if monto > self.saldo_disponible_en_cuenta:
+                return False  # No hay suficientes dólares para la venta
+            
+            monto_en_pesos = self.calcular_monto_total(precio_dolar_oficial, monto)
+            
+            return monto_en_pesos  # Devuelve el monto en pesos de la venta
+        else:
+            return False
+
     def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
         '''descripcion'''
         if monto > self.saldo_disponible_en_cuenta:
             return False
         
-        monto_con_comision = self.descontar_comision(monto)
+        monto_con_comision = fn.descontar_comision(monto, self.porcentaje_comision_envio)
         if cuenta_destino.transferencia_recibida_pesos(monto_con_comision, self):
             self.saldo_disponible_en_cuenta -= monto_con_comision
             return True
@@ -110,7 +134,7 @@ class Cliente:
             return False # No hay suficientes dolares para la transferencia
         
         monto_en_pesos = monto * precio_dolar_oficial
-        monto_con_comision = self.descontar_comision(monto_en_pesos)
+        monto_con_comision = fn.descontar_comision(monto_en_pesos, self.porcentaje_comision_envio)
 
         if cuenta_destino.transferencia_recibida_dolares(monto_con_comision, self):
             self.saldo_disponible_en_cuenta -= monto_con_comision
@@ -118,7 +142,7 @@ class Cliente:
 
     def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
         '''descripcion'''
-        monto_con_comision = self.descontar_comision(monto)
+        monto_con_comision = fn.descontar_comision(monto, self.porcentaje_comision_recibo)
         self.saldo_disponible_en_cuenta += monto_con_comision
         return True
 
@@ -129,6 +153,6 @@ class Cliente:
 
         # Realiza la recepción de la transferencia en dólares
         monto_en_pesos = monto * precio_dolar_oficial
-        monto_con_comision = self.descontar_comision(monto_en_pesos)
+        monto_con_comision = fn.descontar_comision(monto_en_pesos, self.porcentaje_comision_recibo)
         self.saldo_disponible_en_cuenta += monto_con_comision
         return True 
