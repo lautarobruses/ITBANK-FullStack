@@ -72,9 +72,9 @@ class Cliente:
         '''descripcion'''
         pass
         
-    def descontar_comision(self, monto, es_trasnferencia_enviada=True):
+    def descontar_comision(self, monto, es_transferencia_enviada=True):
         '''descripcion'''
-        if es_trasnferencia_enviada:
+        if es_transferencia_enviada:
             porcentaje = self.porcentaje_comision_envio
         else:
             porcentaje = self.porcentaje_comision_recibo
