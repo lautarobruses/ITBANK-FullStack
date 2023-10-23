@@ -3,45 +3,35 @@ import services.funciones as fn
 precio_dolar_oficial = fn.get_valor_dolar()
 
 class Cliente:
-    def __init__(self, numero, nombre, apellido, dni, transacciones, saldo_disponible_en_cuenta, porcentaje_comision_envio, porcentaje_comision_recibo):
+    def __init__(self, numero, nombre, apellido, dni, transacciones):
         self.numero = numero
         self.nombre = nombre
         self.apellido = apellido
         self.dni = dni
         self.transacciones = transacciones
-        self.saldo_disponible_en_cuenta = saldo_disponible_en_cuenta
-        self.porcentaje_comision_envio = porcentaje_comision_envio
-        self.porcentaje_comision_recibo = porcentaje_comision_recibo
 
-    def retiro_efectivo_cajero_automatico():
-        '''descripcion'''
+    def retiro_efectivo_cajero_automatico(self, transaccion) -> str: 
         pass
     
-    def retiro_efectivo_por_caja():
-        '''descripcion'''
+    def retiro_efectivo_por_caja(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_visa():
-        '''descripcion'''
+    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_mastercard():
-        '''descripcion'''
+    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_american():
-        '''descripcion'''
-
-    def comprar_tarjeta_credito_visa():
-        '''descripcion'''
+    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         pass
 
-    def comprar_tarjeta_credito_mastercard():
-        '''descripcion'''
+    def comprar_tarjeta_credito_visa(self, transaccion) -> str:
         pass
 
-    def comprar_tarjeta_credito_american():
-        '''descripcion'''
+    def comprar_tarjeta_credito_master(self, transaccion) -> str:
+        pass
+
+    def comprar_tarjeta_credito_amex(self, transaccion):
         pass
 
     def alta_tarjeta_debito():
@@ -89,12 +79,11 @@ class Cliente:
             transaccion.monto_plazo_fijo = monto_plazo_fijo
             razon1 = 'Aceptada, tu cuenta cumple los requisitos para acceder a las inversiones'
             return razon1
-        
-        
-
-
+     
 
     def comprar_dolar(self, transaccion) -> bool:
+
+
         '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
         if self.caja_ahorro_dolar:
             costo_en_pesos = self.calcular_monto_total(precio_dolar_oficial, transaccion.monto)
