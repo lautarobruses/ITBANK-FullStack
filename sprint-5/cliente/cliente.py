@@ -93,7 +93,6 @@ class Cliente:
             self.saldo_disponible_en_cuenta -= monto_con_comision
             return True
         
-        
     def transferencia_enviada_dolares(self, monto, cuenta_destino, es_transferencia_enviada=True):
         '''descripcion'''
         if not self.caja_ahorro_dolar:
@@ -108,7 +107,6 @@ class Cliente:
         if cuenta_destino.transferencia_recibida_dolares(monto_con_comision, self):
             self.saldo_disponible_en_cuenta -= monto_con_comision
             return True
-
 
     def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
         '''descripcion'''
