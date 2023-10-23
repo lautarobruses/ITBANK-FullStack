@@ -7,6 +7,7 @@ class Gold(Cliente):
         self.limite_retiro_efectivo = 20.000
         self.porcentaje_comision_envio = 0.5
         self.porcentaje_comision_recibo = 0.1
+        self.cuenta_inversion = False
 
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
@@ -114,11 +115,10 @@ class Gold(Cliente):
         '''descripcion'''
 
     def alta_cuenta_inversion(self, transaccion) -> str:
-        self.cuenta_inversion = transaccion
-        monto_plazo_fijo = self.calcular_monto_plazo_fijo(transaccion)
-        transaccion.monto_plazo_fijo = monto_plazo_fijo
-        razon1 = 'Aceptada, tu cuenta cumple los requisitos para acceder a las inversiones'
-        return razon1
+        if self.cuenta_inversion:
+            return "El cliente ya posee una cuenta inversion."
+        else:
+            return "La creacion de la cuenta de inversion es correcta."
 
     def venta_dolar(self, monto) -> bool:
         return super().venta_dolar(monto)

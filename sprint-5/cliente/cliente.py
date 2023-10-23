@@ -103,7 +103,7 @@ class Cliente:
             razon2 = 'Aceptada, el saldo está disponible para ser enviado'
             return razon2
         
-    def transferencia_enviada_dolares(self, transaccion):
+    def transferencia_enviada_dolares(self, transaccion) -> str:
         '''descripcion'''
         if not self.caja_ahorro_dolar:
             razon = 'RECHAZADA, No contas con una caja de ahorro en dólares'
