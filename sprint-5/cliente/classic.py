@@ -2,7 +2,6 @@ from cliente.cliente import Cliente
 import services.funciones as fn
 
 class Classic(Cliente):
-
     def __init__(self, numero, nombre, apellido, dni, transacciones, caja_ahorros_pesos):
         super().__init__(numero, nombre, apellido, dni, transacciones)
         self.caja_ahorros_pesos = caja_ahorros_pesos
@@ -94,7 +93,7 @@ class Classic(Cliente):
 
     def alta_cuenta_inversion(self, transaccion) -> str:
         '''descripcion'''
-        return "No tiene acceso a la cuenta de inversion."
+        return "La cuenta Classic no tiene permitido el acceso a las inversiones"
 
     def venta_dolar(self, monto) -> bool:
         return super().venta_dolar(monto)

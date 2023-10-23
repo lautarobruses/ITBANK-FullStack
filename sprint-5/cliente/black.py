@@ -133,9 +133,10 @@ class Black(Cliente):
     
     def alta_cuenta_inversion(self, transaccion) -> str:
         self.cuenta_inversion = transaccion
-        monto_plazo_fijo = fn.calcular_monto_plazo_fijo(transaccion, self.tasa_interes_anual, self.anios)
+        monto_plazo_fijo = self.calcular_monto_plazo_fijo(transaccion)
         transaccion.monto_plazo_fijo = monto_plazo_fijo
-        return True
+        razon1 = 'Aceptada, tu cuenta cumple los requisitos para acceder a las inversiones'
+        return razon1
 
     def venta_dolar(self, monto) -> bool:
         return super().venta_dolar(monto)
