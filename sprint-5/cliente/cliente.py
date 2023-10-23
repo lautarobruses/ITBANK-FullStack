@@ -11,14 +11,13 @@ class Cliente:
         self.transacciones = transacciones
         self.saldo_disponible_en_cuenta = saldo_disponible_en_cuenta
 
-    def retiro_efectivo_cajero_automatico():
-        '''descripcion'''
+    def retiro_efectivo_cajero_automatico(self, transaccion): 
         pass
     
-    def retiro_efectivo_por_caja():
-        '''descripcion'''
+    def retiro_efectivo_por_caja(self, transaccion):
         pass
 
+<<<<<<< Updated upstream
     def comprar_en_cuotas_tarjeta_credito_visa():
         '''descripcion'''
         pass
@@ -40,6 +39,24 @@ class Cliente:
 
     def comprar_tarjeta_credito_american():
         '''descripcion'''
+=======
+    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion):
+        pass
+
+    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion):
+        pass
+
+    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion):
+        pass
+
+    def comprar_tarjeta_credito_visa(self, transaccion):
+        pass
+
+    def comprar_tarjeta_credito_master(self, transaccion):
+        pass
+
+    def comprar_tarjeta_credito_amex(self, transaccion):
+>>>>>>> Stashed changes
         pass
 
     def alta_tarjeta_debito():
@@ -66,9 +83,28 @@ class Cliente:
         '''descripcion'''
         self.caja_ahorro_dolar = True # Si es True, permite la compra y venta de dolares
 
-    def alta_cuenta_inversion():
+    def calcular_monto_plazo_fijo(self, transaccion):
+
+        monto_inicial = transaccion.monto
+
+        tasa_interes_anual = transaccion.tasa_interes_anual
+        tiempo_anios = transaccion.tiempo_anios
+        monto_final = monto_inicial * (1 + (tasa_interes_anual / 100) * tiempo_anios)
+
+        return monto_final
+
+    def alta_cuenta_inversion(self, transaccion) -> bool:
         '''descripcion'''
-        pass
+        if transaccion.tipo == 'CLASSIC':
+            return False # no tiene acceso a la cuenta de inversion 
+        else: 
+            self.cuenta_inversion = transaccion
+            monto_plazo_fijo = self.calcular_monto_plazo_fijo(transaccion)
+            transaccion.monto_plazo_fijo = monto_plazo_fijo
+            return True
+        
+
+
 
     def comprar_dolar(self, monto) -> bool:
         '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
