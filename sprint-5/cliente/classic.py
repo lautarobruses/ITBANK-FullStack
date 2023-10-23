@@ -6,22 +6,13 @@ class Classic(Cliente):
         super().__init__(numero, nombre, apellido, dni, transacciones)
         self.caja_ahorros_pesos = caja_ahorros_pesos
         self.limite_retiro_efectivo = 10.000
-<<<<<<< Updated upstream
         self.porcentaje_comision_envio = 1
         self.porcentaje_comision_recibo = 0.5
-        
-    def retiro_efectivo_cajero_automatico():
-        '''descripcion'''
-    
-    def retiro_efectivo_por_caja():
-        '''descripcion'''
-=======
         self.contador_retiros = 0
         self.tarifa = 100
 
     def retiro_efectivo_por_cajero_automatico(self, transaccion): #En esta y la siguiente funcion tomo a permitidoActualParaTransaccion como el limite de retiro diario que le queda a classic, lo mismo para el gold y el black.
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y especifica la razones por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
-        
         self.contador_retiros += 1
 
         if self.contador_retiros > 5:
@@ -92,7 +83,6 @@ class Classic(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras con tarjeta de credito american express.'''
        
         transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
->>>>>>> Stashed changes
         
     def alta_tarjeta_debito():
         '''descripcion'''
