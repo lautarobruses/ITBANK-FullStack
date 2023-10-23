@@ -27,9 +27,8 @@ def calcular_monto_total(self, precio_dolar, monto) -> float:
 
     return monto_total
 
-def descontar_comision(self, monto, porcentaje):
+def descontar_comision(self, monto, porcentaje) -> float:
     '''descripcion'''
-    porcentaje = self.porcentaje
 
     comision = monto * (porcentaje / 100)
     monto_descontado = monto - comision
