@@ -7,122 +7,122 @@ class Black(Cliente):
         self.porcentaje_comision_recibo = 0
 
     def retiro_efectivo_cajero_automatico(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $100,000 por cajero.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $100,000 por cajero.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.permitidoActualParaTransaccion < transaccion.monto:
-                    transaccion.razon += f"Supera el Limite Diario: No es posible retirar {transaccion.monto} ya que superarias tu limite de 20.000$ diario."
+                    return f"Supera el Limite Diario: No es posible retirar {transaccion.monto} ya que superarias tu limite de 20.000$ diario."
                 elif transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
     
     def retiro_efectivo_por_caja(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta visa con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta visa con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
         
 
     def comprar_en_cuotas_tarjeta_credito_master(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta mastercard con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta mastercard con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
        
 
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_amex' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta american express con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta american express con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_tarjeta_credito_visa(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible comprar con tu tarjeta visa con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible comprar con tu tarjeta visa con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
         
 
     def comprar_tarjeta_credito_master(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible comprar con tu tarjeta mastercard con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible comprar con tu tarjeta mastercard con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
         
 
     def comprar_tarjeta_credito_amex(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_amex' que el cliente black realizo y especifica la razones por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible comprar con tu tarjeta american express con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible comprar con tu tarjeta american express con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
+                    return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += "Formato Inválido: El monto debe ser un numero."
+            return "Formato Inválido: El monto debe ser un numero."
         
     def alta_tarjeta_debito():
         '''descripcion'''
