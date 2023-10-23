@@ -5,27 +5,32 @@ from cliente.black import Black
 from transaccion import Transaccion
 from salidaHTML import crearHTML
 
-#Nombre del archivo JSON que se desea analizar
-nombreArchivo = 'ejemplo.json'
+# Nombre del archivo JSON que se desea analizar
+NOMBRE_ARCHIVO = 'ejemplo.json'
 
 # Abre el archivo JSON en modo lectura
-with open(nombreArchivo, 'r') as archivo:
+with open(NOMBRE_ARCHIVO, 'r') as archivo:
     datos = json.load(archivo)
 
     if datos["tipo"] == "Classic":
-        cliente = Classic( datos["numero"], datos["nombre"], datos["apellido"], datos["dni"], datos["transacciones"])
+        cliente = Classic(datos["numero"], datos["nombre"],
+                          datos["apellido"], datos["dni"], datos["transacciones"])
     elif datos["tipo"] == "Gold":
-        cliente = Gold( datos["numero"], datos["nombre"], datos["apellido"], datos["dni"], datos["transacciones"])
+        cliente = Gold(datos["numero"], datos["nombre"],
+                       datos["apellido"], datos["dni"], datos["transacciones"])
     else:
-        cliente = Black( datos["numero"], datos["nombre"], datos["apellido"], datos["dni"], datos["transacciones"])
-    
+        cliente = Black(datos["numero"], datos["nombre"],
+                        datos["apellido"], datos["dni"], datos["transacciones"])
+
     transacciones: list[Transaccion] = []
 
     for transaccion in cliente.transacciones:
         if 'cuentaNumero' in transaccion:
-            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
+            nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion[
+                                                         "permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
         else:
-            nueva_transaccion:Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
+            nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"],
+                                                         transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
 
         nombre_metodo = nueva_transaccion.tipo.lower()
 
@@ -38,10 +43,10 @@ with open(nombreArchivo, 'r') as archivo:
             razon = metodo()
 
             print(razon)
-        
+
             nueva_transaccion.razon = razon
-            
+
             transacciones.append(nueva_transaccion)
-    
+
     print(transacciones)
     crearHTML(transacciones)

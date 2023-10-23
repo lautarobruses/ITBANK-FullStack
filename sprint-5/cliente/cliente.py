@@ -36,6 +36,10 @@ class Cliente:
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         pass
 
+    def alta_chequera(self, transaccion) -> str:
+        '''descripcion'''
+        pass
+
     def alta_tarjeta_credito_visa(self, transaccion) -> str:
         '''descripcion'''
         pass
@@ -43,7 +47,7 @@ class Cliente:
     def alta_tarjeta_credito_master(self, transaccion) -> str:
         '''descripcion'''
         pass
-    
+
     def alta_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
         pass

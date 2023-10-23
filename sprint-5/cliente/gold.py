@@ -1,5 +1,5 @@
 from cliente.cliente import Cliente
-import services.funciones as fn
+
 
 class Gold(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
@@ -30,7 +30,7 @@ class Gold(Cliente):
                     return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-    
+
     def retiro_efectivo_por_caja(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
@@ -58,7 +58,6 @@ class Gold(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-  
 
     def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
@@ -73,7 +72,7 @@ class Gold(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-        
+
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
 
@@ -105,9 +104,9 @@ class Gold(Cliente):
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
-            return "Formato Inválido: El monto debe ser un numero."   
+            return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_tarjeta_credito_amex(self, transaccion) -> str:
+    def comprar_tarjeta_credito_amex(self, _transaccion) -> str:
         '''descripcion'''
         return "Cliente Gold: No puedes realizar compras con tarjeta de crédito american express. Tu cuenta es de tipo 'Gold' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
@@ -125,22 +124,22 @@ class Gold(Cliente):
             razon = "Has alcanzado el límite de tarjetas de débito permitidas."
         return razon
 
-    def alta_tarjeta_credito_visa(self, transaccion):
+    def alta_tarjeta_credito_visa(self, transaccion) -> str:
         razon = ""
         if self.limite_tarjeta_credito_visa > 0:
             razon = "Alta de tarjeta de crédito VISA aceptada"
-            #se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
+            # se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
             self.limite_tarjeta_credito_visa -= 1
             self.tarjetas_credito_visa[transaccion.cuentaNumero] = 1
         else:
             razon = "Has alcanzado el límite de tarjetas de crédito VISA permitidas."
         return razon
 
-    def alta_tarjeta_credito_master(self, transaccion):
+    def alta_tarjeta_credito_master(self, transaccion) -> str:
         razon = ""
         if self.limite_tarjeta_credito_mastercard > 0:
             razon = "Alta de tarjeta de crédito Mastercard aceptada"
-            #se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
+            # se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
             self.limite_tarjeta_credito_mastercard -= 1
             self.tarjetas_credito_mastercard[transaccion.cuentaNumero] = 1
         else:
@@ -150,7 +149,7 @@ class Gold(Cliente):
     def alta_tarjeta_credito_amex(self, transaccion):
         return "RAZON"
 
-    def alta_chequera(self, transaccion):
+    def alta_chequera(self, transaccion) -> str:
         razon = ""
         if self.limite_chequeras > 0:
             cuenta_numero = transaccion.cuentaNumero

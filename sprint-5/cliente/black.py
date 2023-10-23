@@ -1,5 +1,5 @@
 from cliente.cliente import Cliente
-import services.funciones as fn
+
 
 class Black(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
@@ -37,7 +37,7 @@ class Black(Cliente):
                     return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-    
+
     def retiro_efectivo_por_caja(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
@@ -65,7 +65,6 @@ class Black(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-        
 
     def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
@@ -80,7 +79,7 @@ class Black(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-       
+
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
@@ -122,7 +121,7 @@ class Black(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-    
+
     def comprar_tarjeta_credito_amex(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
@@ -136,13 +135,14 @@ class Black(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-        
+
     def alta_tarjeta_debito(self, transaccion):
         '''descripcion'''
         razon = ""
         if self.limite_tarjeta_debito > 0:
             if transaccion.cuentaNumero in self.tarjetas_debito:
-                razon = "Alta de la tarjeta ya aceptada anteriormente" #suponiendo que una tarjeta de debito por cuenta
+                # suponiendo que una tarjeta de debito por cuenta
+                razon = "Alta de la tarjeta ya aceptada anteriormente"
             else:
                 self.tarjetas_debito[transaccion.cuentaNumero] = 1
                 self.limite_tarjeta_debito -= 1
@@ -150,8 +150,8 @@ class Black(Cliente):
         else:
             razon = "Has alcanzado el límite de tarjetas de débito permitidas."
         return razon
-    
-    #se contemplan limite de 10 en tarjetas y extenciones de cada tipo
+
+    # se contemplan limite de 10 en tarjetas y extenciones de cada tipo
     def alta_tarjeta_credito_visa(self, transaccion):
         razon = ""
         if self.limite_tarjeta_credito_visa > 0:
@@ -182,7 +182,7 @@ class Black(Cliente):
             razon = "Has alcanzado el límite de tarjetas de crédito American Express permitidas."
         return razon
 
-    def alta_chequera(self, transaccion):
+    def alta_chequera(self, transaccion) -> str:
         razon = ""
         if self.limite_chequeras > 0:
             cuenta_numero = transaccion.cuentaNumero
