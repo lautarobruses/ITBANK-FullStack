@@ -1,16 +1,25 @@
 import services.funciones as fn
+import transaccion as tr
 
 precio_dolar_oficial = fn.get_valor_dolar()
 
 class Cliente:
-    def __init__(self, numero, nombre, apellido, dni, transacciones):
+    def __init__(self, numero, nombre, apellido, dni, transacciones, porcentaje_comision_envio=0.0, porcentaje_comision_recibo=0.0):
         self.numero = numero
         self.nombre = nombre
         self.apellido = apellido
         self.dni = dni
         self.transacciones = transacciones
+        self.porcentaje_comision_envio = porcentaje_comision_envio
+        self.porcentaje_comision_recibo = porcentaje_comision_recibo
         self.tasa_interes_anual = 0.30
         self.anios = 2
+
+    def get_porcentaje_comision_envio(self) -> float:
+        return self.porcentaje_comision_envio
+
+    def get_porcentaje_comision_recibo(self) -> float:
+        return self.porcentaje_comision_recibo
 
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str: 
         pass
@@ -66,10 +75,10 @@ class Cliente:
     def alta_cuenta_inversion(self, transaccion) -> str:
         pass
         
-    def comprar_dolar(self, transaccion) -> str:
+    def comprar_dolar(self, transaccion:tr.Transaccion) -> str:
         '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
         if self.caja_ahorro_dolar:
-            costo_en_pesos = self.calcular_monto_total(precio_dolar_oficial, transaccion.monto)
+            costo_en_pesos = fn.calcular_monto_total(precio_dolar_oficial, transaccion.monto)
             
             if costo_en_pesos > transaccion.saldoDisponibleEnCuenta:
                 razon = 'RECHAZADA, no hay suficientes fondos para la compra' 
@@ -80,14 +89,14 @@ class Cliente:
             razon2 = 'RECHAZADA, No contas con una caja de ahorro en dólares'
             return razon2
 
-    def vender_dolar(self, transaccion) -> str:
+    def vender_dolar(self, transaccion:tr.Transaccion) -> str:
         '''Vende una cantidad de dólares y devuelve el monto en pesos o False si la venta falla.'''
         if self.caja_ahorro_dolar:
             if transaccion.monto > transaccion.saldoDisponibleEnCuenta:
                 razon = 'RECHAZADA, No hay suficientes dólares para la venta'
                 return razon  # No hay suficientes dólares para la venta
             
-            monto_en_pesos = self.calcular_monto_total(precio_dolar_oficial, transaccion.monto)
+            monto_en_pesos = fn.calcular_monto_total(precio_dolar_oficial, transaccion.monto)
             razon1 = f'Aceptada, contas con : {monto_en_pesos} para la venta'
             return razon1 # Devuelve el monto en pesos de la venta
         else:

@@ -3,20 +3,12 @@ import services.funciones as fn
 
 class Classic(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
-        super().__init__(numero, nombre, apellido, dni, transacciones)
+        super().__init__(numero, nombre, apellido, dni, transacciones, 0.01, 0.05)
         self.limite_retiro_efectivo = 10.000
-        self.porcentaje_comision_envio = 1.0
-        self.porcentaje_comision_recibo = 0.5
         self.contador_retiros = 0
         self.tarifa = 100
         self.limite_tarjeta_debito = 1
         self.tarjetas_debito = {}
-
-    def get_porcentaje_comision_envio(self) -> float:
-        return self.porcentaje_comision_envio
-
-    def get_porcentaje_comision_recibo(self) -> float:
-        return self.porcentaje_comision_recibo
 
     def retiro_efectivo_por_cajero_automatico(self, transaccion) -> str: #En esta y la siguiente funcion tomo a permitidoActualParaTransaccion como el limite de retiro diario que le queda a classic, lo mismo para el gold y el black.
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
@@ -105,30 +97,10 @@ class Classic(Cliente):
             razon = "Has alcanzado el límite de tarjetas de débito permitidas."
         return razon
 
-    def alta_caja_ahorros_pesos():
+    def alta_caja_ahorros_pesos(self, transaccion) -> str:
         '''descripcion'''
 
     def alta_cuenta_inversion(self, transaccion) -> str:
         '''descripcion'''
-        return "La cuenta Classic no tiene permitido el acceso a las inversiones"
-
-    def venta_dolar(self, monto) -> bool:
-        return super().venta_dolar(monto)
+        return "La cuenta Classic no tiene permitido el acceso a las inversiones."
     
-    def comprar_dolar(self, monto) -> bool:
-        return super().comprar_dolar(monto)
-    
-    def transferencia_enviada_dolares(self, monto, cuenta_destino, es_transferencia_enviada=True):
-        return super().transferencia_enviada_dolares(monto, cuenta_destino, es_transferencia_enviada)
-    
-    def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
-        return super().transferencia_enviada_pesos(monto, cuenta_destino, es_transferencia_enviada)
-    
-    def transferencia_recibida_dolares(self, monto, es_transferencia_enviada=False):
-        return super().transferencia_recibida_dolares(monto, es_transferencia_enviada)
-    
-    def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
-        return super().transferencia_recibida_pesos(monto, es_transferencia_enviada)
-    
-    def alta_cuenta_inversion(self, transaccion) -> bool:
-        return super().alta_cuenta_inversion(transaccion)

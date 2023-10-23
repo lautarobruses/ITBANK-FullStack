@@ -3,10 +3,8 @@ import services.funciones as fn
 
 class Gold(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
-        super().__init__(numero, nombre, apellido, dni, transacciones)
+        super().__init__(numero, nombre, apellido, dni, transacciones, 0.05, 0.001)
         self.limite_retiro_efectivo = 20.000
-        self.porcentaje_comision_envio = 0.5
-        self.porcentaje_comision_recibo = 0.1
         self.cuenta_inversion = False
         self.limite_tarjeta_debito = 1
         self.tarjetas_debito = {}
@@ -16,12 +14,6 @@ class Gold(Cliente):
         self.tarjetas_credito_mastercard = {}
         self.chequeras = {}
         self.limite_chequeras = 1
-
-    def get_porcentaje_comision_envio(self) -> float:
-        return self.porcentaje_comision_envio
-
-    def get_porcentaje_comision_recibo(self) -> float:
-        return self.porcentaje_comision_recibo
 
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
@@ -81,8 +73,7 @@ class Gold(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-       
-
+        
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
 
@@ -101,7 +92,6 @@ class Gold(Cliente):
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
         except:
             return "Formato Inválido: El monto debe ser un numero."
-        
 
     def comprar_tarjeta_credito_master(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
@@ -119,9 +109,8 @@ class Gold(Cliente):
 
     def comprar_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
-        
         return "Cliente Gold: No puedes realizar compras con tarjeta de crédito american express. Tu cuenta es de tipo 'Gold' y esta función está limitada para cuentas con un nivel de acceso más alto."
-    
+
     def alta_tarjeta_debito(self, transaccion):
         '''descripcion'''
         razon = ""
@@ -157,10 +146,10 @@ class Gold(Cliente):
         else:
             razon = "Has alcanzado el límite de tarjetas de crédito Mastercard permitidas."
         return razon
-    
+
     def alta_tarjeta_credito_amex(self, transaccion):
         return "RAZON"
-    
+
     def alta_chequera(self, transaccion):
         razon = ""
         if self.limite_chequeras > 0:
@@ -174,7 +163,7 @@ class Gold(Cliente):
             razon = "Has alcanzado el límite de chequeras permitidas."
         return razon
 
-    def alta_caja_ahorros_pesos():
+    def alta_caja_ahorros_pesos(self, transaccion) -> str:
         '''descripcion'''
 
     def alta_cuenta_inversion(self, transaccion) -> str:
@@ -182,24 +171,3 @@ class Gold(Cliente):
             return "El cliente ya posee una cuenta inversion."
         else:
             return "La creacion de la cuenta de inversion es correcta."
-
-    def venta_dolar(self, monto) -> bool:
-        return super().venta_dolar(monto)
-    
-    def comprar_dolar(self, monto) -> bool:
-        return super().comprar_dolar(monto)
-    
-    def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
-        return super().transferencia_recibida_pesos(monto, es_transferencia_enviada)
-    
-    def transferencia_recibida_dolares(self, monto, es_transferencia_enviada=False):
-        return super().transferencia_recibida_dolares(monto, es_transferencia_enviada)
-    
-    def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
-        return super().transferencia_enviada_pesos(monto, cuenta_destino, es_transferencia_enviada)
-    
-    def transferencia_enviada_dolares(self, monto, cuenta_destino, es_transferencia_enviada=True):
-        return super().transferencia_enviada_dolares(monto, cuenta_destino, es_transferencia_enviada)
-    
-    def alta_cuenta_inversion(self, transaccion) -> bool:
-        return super().alta_cuenta_inversion(transaccion)

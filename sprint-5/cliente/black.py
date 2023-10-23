@@ -4,8 +4,6 @@ import services.funciones as fn
 class Black(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
-        self.porcentaje_comision_envio = 0.0
-        self.porcentaje_comision_recibo = 0.0
         self.cuenta_inversion = False
         self.limite_tarjeta_debito = 5
         self.tarjetas_debito = {}
@@ -183,46 +181,25 @@ class Black(Cliente):
         else:
             razon = "Has alcanzado el límite de tarjetas de crédito American Express permitidas."
         return razon
-    
+
     def alta_chequera(self, transaccion):
-            razon = ""
-            if self.limite_chequeras > 0:
-                cuenta_numero = transaccion.cuentaNumero
-                if cuenta_numero in self.chequeras:
-                    razon = "Ya tienes una chequera para esta cuenta."
-                self.chequeras[cuenta_numero] = 1
-                self.limite_chequeras -= 1
-                razon = "Alta de chequera aceptada"
-            else:
-                razon = "Has alcanzado el límite de chequeras permitidas."
-            return razon
+        razon = ""
+        if self.limite_chequeras > 0:
+            cuenta_numero = transaccion.cuentaNumero
+            if cuenta_numero in self.chequeras:
+                razon = "Ya tienes una chequera para esta cuenta."
+            self.chequeras[cuenta_numero] = 1
+            self.limite_chequeras -= 1
+            razon = "Alta de chequera aceptada"
+        else:
+            razon = "Has alcanzado el límite de chequeras permitidas."
+        return razon
 
     def alta_caja_ahorros_pesos(self, transaccion) -> str:
         '''descripcion'''
-    
+
     def alta_cuenta_inversion(self, transaccion) -> str:
         if self.cuenta_inversion:
             return "El cliente ya posee una cuenta inversion."
         else:
             return "La creacion de la cuenta de inversion es correcta."
-
-    def venta_dolar(self, monto) -> bool:
-        return super().venta_dolar(monto)
-    
-    def comprar_dolar(self, monto) -> bool:
-        return super().comprar_dolar(monto)
-    
-    def transferencia_enviada_dolares(self, monto, cuenta_destino, es_transferencia_enviada=True):
-        return super().transferencia_enviada_dolares(monto, cuenta_destino, es_transferencia_enviada)
-    
-    def transferencia_enviada_pesos(self, monto, cuenta_destino, es_transferencia_enviada=True):
-        return super().transferencia_enviada_pesos(monto, cuenta_destino, es_transferencia_enviada)
-    
-    def transferencia_recibida_dolares(self, monto, es_transferencia_enviada=False):
-        return super().transferencia_recibida_dolares(monto, es_transferencia_enviada)
-    
-    def transferencia_recibida_pesos(self, monto, es_transferencia_enviada=False):
-        return super().transferencia_recibida_pesos(monto, es_transferencia_enviada)
-    
-    def alta_cuenta_inversion(self, transaccion) -> bool:
-        return super().alta_cuenta_inversion(transaccion)
