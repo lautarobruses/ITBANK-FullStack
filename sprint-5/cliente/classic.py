@@ -12,7 +12,7 @@ class Classic(Cliente):
         self.tarifa = 100
 
     def retiro_efectivo_por_cajero_automatico(self, transaccion): #En esta y la siguiente funcion tomo a permitidoActualParaTransaccion como el limite de retiro diario que le queda a classic, lo mismo para el gold y el black.
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y especifica la razones por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
         
         self.contador_retiros += 1
 
@@ -23,19 +23,19 @@ class Classic(Cliente):
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += f"Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return f"Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.permitidoActualParaTransaccion < montoTotal:
-                    transaccion.razon += f"Supera el Limite Diario: No es posible retirar {montoTotal} ya que superarias tu limite de 10.000$ diario."
+                    return f"Supera el Limite Diario: No es posible retirar {montoTotal} ya que superarias tu limite de 10.000$ diario."
                 elif transaccion.saldoDisponibleEnCuenta < montoTotal:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible retirar {montoTotal}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible retirar {montoTotal}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += f"Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
+                    return f"Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += f"Formato Inválido: El monto debe ser un numero."
+            return f"Formato Inválido: El monto debe ser un numero."
 
     def retiro_efectivo_por_caja(self, transaccion):
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_por_caja' que el cliente classic realizo y especifica la razones por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_por_caja' que el cliente classic realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa.'''
         
         self.contador_retiros += 1
 
@@ -46,44 +46,44 @@ class Classic(Cliente):
 
         try:
             if transaccion.saldoDisponibleEnCuenta <= 0:
-                transaccion.razon += f"Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
+                return f"Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < montoTotal:
-                    transaccion.razon += f"Fondos Insuficientes: No es posible retirar {montoTotal}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
+                    return f"Fondos Insuficientes: No es posible retirar {montoTotal}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
-                    transaccion.razon += f"Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
+                    return f"Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
         except:
-            transaccion.razon += f"Formato Inválido: El monto debe ser un numero."
+            return f"Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_visa( transaccion ):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito visa.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito visa.'''
         
-        transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_en_cuotas_tarjeta_credito_master( transaccion ):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito mastercard.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito mastercard.'''
        
-        transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_en_cuotas_tarjeta_credito_amex( transaccion ):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito american express.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito american express.'''
        
-        transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_tarjeta_credito_visa( transaccion ):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras con tarjeta de credito visa.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras con tarjeta de credito visa.'''
        
-        transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_tarjeta_credito_master( transaccion ):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras con tarjeta de credito mastercard.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras con tarjeta de credito mastercard.'''
        
-        transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_tarjeta_credito_amex( transaccion ):
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y especifica la razon por la cual classic no puede realizar compras con tarjeta de credito american express.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras con tarjeta de credito american express.'''
        
-        transaccion.razon = "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
         
     def alta_tarjeta_debito():
         '''descripcion'''
