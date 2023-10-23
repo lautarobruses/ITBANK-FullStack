@@ -9,6 +9,8 @@ class Classic(Cliente):
         self.porcentaje_comision_recibo = 0.5
         self.contador_retiros = 0
         self.tarifa = 100
+        self.limite_tarjeta_debito = 1
+        self.tarjetas_debito = {}
 
     def get_porcentaje_comision_envio(self) -> float:
         return self.porcentaje_comision_envio
@@ -90,8 +92,18 @@ class Classic(Cliente):
        
         return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
         
-    def alta_tarjeta_debito():
-        '''descripcion'''
+    def alta_tarjeta_debito(self, transaccion):
+        razon = ""
+        if self.limite_tarjeta_debito > 0:
+            if transaccion.cuentaNumero in self.tarjetas_debito:
+                razon = "Alta de la tarjeta ya aceptada anteriormente"
+            else:
+                self.tarjetas_debito[transaccion.cuentaNumero] = 1
+                self.limite_tarjeta_debito -= 1
+                razon = "Alta de la tarjeta aceptada"
+        else:
+            razon = "Has alcanzado el límite de tarjetas de débito permitidas."
+        return razon
 
     def alta_caja_ahorros_pesos():
         '''descripcion'''

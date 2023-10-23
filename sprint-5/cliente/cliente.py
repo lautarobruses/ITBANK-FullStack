@@ -27,13 +27,16 @@ class Cliente:
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         pass
 
-    def comprar_tarjeta_credito_visa(self, transaccion) -> str:
+    def alta_tarjeta_credito_visa(self, transaccion) -> str:
+        '''descripcion'''
         pass
 
-    def comprar_tarjeta_credito_master(self, transaccion) -> str:
+    def alta_tarjeta_credito_master(self, transaccion) -> str:
+        '''descripcion'''
         pass
-
-    def comprar_tarjeta_credito_amex(self, transaccion) -> str:
+    
+    def alta_tarjeta_credito_amex(self, transaccion) -> str:
+        '''descripcion'''
         pass
 
     def alta_tarjeta_debito(self, transaccion) -> str:

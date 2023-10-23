@@ -8,6 +8,14 @@ class Gold(Cliente):
         self.porcentaje_comision_envio = 0.5
         self.porcentaje_comision_recibo = 0.1
         self.cuenta_inversion = False
+        self.limite_tarjeta_debito = 1
+        self.tarjetas_debito = {}
+        self.limite_tarjeta_credito_visa = 5
+        self.limite_tarjeta_credito_mastercard = 5
+        self.tarjetas_credito_visa = {}
+        self.tarjetas_credito_mastercard = {}
+        self.chequeras = {}
+        self.limite_chequeras = 1
 
     def get_porcentaje_comision_envio(self) -> float:
         return self.porcentaje_comision_envio
@@ -114,8 +122,57 @@ class Gold(Cliente):
         
         return "Cliente Gold: No puedes realizar compras con tarjeta de crédito american express. Tu cuenta es de tipo 'Gold' y esta función está limitada para cuentas con un nivel de acceso más alto."
     
-    def alta_tarjeta_debito():
+    def alta_tarjeta_debito(self, transaccion):
         '''descripcion'''
+        razon = ""
+        if self.limite_tarjeta_debito > 0:
+            if transaccion.cuentaNumero in self.tarjetas_debito:
+                razon = "Alta de la tarjeta ya aceptada anteriormente"
+            else:
+                self.tarjetas_debito[transaccion.cuentaNumero] = 1
+                self.limite_tarjeta_debito -= 1
+                razon = "Alta de la tarjeta aceptada"
+        else:
+            razon = "Has alcanzado el límite de tarjetas de débito permitidas."
+        return razon
+
+    def alta_tarjeta_credito_visa(self, transaccion):
+        razon = ""
+        if self.limite_tarjeta_credito_visa > 0:
+            razon = "Alta de tarjeta de crédito VISA aceptada"
+            #se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
+            self.limite_tarjeta_credito_visa -= 1
+            self.tarjetas_credito_visa[transaccion.cuentaNumero] = 1
+        else:
+            razon = "Has alcanzado el límite de tarjetas de crédito VISA permitidas."
+        return razon
+
+    def alta_tarjeta_credito_master(self, transaccion):
+        razon = ""
+        if self.limite_tarjeta_credito_mastercard > 0:
+            razon = "Alta de tarjeta de crédito Mastercard aceptada"
+            #se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
+            self.limite_tarjeta_credito_mastercard -= 1
+            self.tarjetas_credito_mastercard[transaccion.cuentaNumero] = 1
+        else:
+            razon = "Has alcanzado el límite de tarjetas de crédito Mastercard permitidas."
+        return razon
+    
+    def alta_tarjeta_credito_amex(self, transaccion):
+        return "RAZON"
+    
+    def alta_chequera(self, transaccion):
+        razon = ""
+        if self.limite_chequeras > 0:
+            cuenta_numero = transaccion.cuentaNumero
+            if cuenta_numero in self.chequeras:
+                razon = "Ya tienes una chequera para esta cuenta."
+            self.chequeras[cuenta_numero] = 1
+            self.limite_chequeras -= 1
+            razon = "Alta de chequera aceptada"
+        else:
+            razon = "Has alcanzado el límite de chequeras permitidas."
+        return razon
 
     def alta_caja_ahorros_pesos():
         '''descripcion'''
