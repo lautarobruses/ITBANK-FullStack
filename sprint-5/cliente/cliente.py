@@ -91,7 +91,7 @@ class Cliente:
             razon2 = 'RECHAZADA, No contas con una caja de ahorro en dólares'
             return razon2
 
-    def transferencia_enviada_pesos(self, transaccion):
+    def transferencia_enviada_pesos(self, transaccion) -> str:
         '''descripcion'''
         if transaccion.monto > transaccion.saldoDisponibleEnCuenta:
             razon = 'RECHAZADA, el monto proporcionado es mayor que tu saldo disponible '
@@ -121,14 +121,14 @@ class Cliente:
             razon2 = 'Aceptada, contas con saldo disponible y cuenta de ahorro en dólares'
             return razon2
 
-    def transferencia_recibida_pesos(self, transaccion):
+    def transferencia_recibida_pesos(self, transaccion) -> str:
         '''descripcion'''
         monto_con_comision = fn.descontar_comision(transaccion.monto, self.porcentaje_comision_recibo)
         transaccion.saldoDisponibleEnCuenta += monto_con_comision
         razon = 'Aceptada, la transferencia fue exitosa.'
         return razon
 
-    def transferencia_recibida_dolares(self, transaccion):
+    def transferencia_recibida_dolares(self, transaccion) -> str:
         '''descripcion'''
         if not self.caja_ahorro_dolar:
             razon = 'Rechazada, No se permite la recepción de dólares. No contas con caja de ahorro.'
