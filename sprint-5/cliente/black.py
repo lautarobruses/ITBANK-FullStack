@@ -185,19 +185,19 @@ class Black(Cliente):
         return razon
     
     def alta_chequera(self, transaccion):
-            razon = ""
-            if self.limite_chequeras > 0:
-                cuenta_numero = transaccion.cuentaNumero
-                if cuenta_numero in self.chequeras:
-                    razon = "Ya tienes una chequera para esta cuenta."
-                self.chequeras[cuenta_numero] = 1
-                self.limite_chequeras -= 1
-                razon = "Alta de chequera aceptada"
-            else:
-                razon = "Has alcanzado el límite de chequeras permitidas."
-            return razon
+        razon = ""
+        if self.limite_chequeras > 0:
+            cuenta_numero = transaccion.cuentaNumero
+            if cuenta_numero in self.chequeras:
+                razon = "Ya tienes una chequera para esta cuenta."
+            self.chequeras[cuenta_numero] = 1
+            self.limite_chequeras -= 1
+            razon = "Alta de chequera aceptada"
+        else:
+            razon = "Has alcanzado el límite de chequeras permitidas."
+        return razon
 
-    def alta_caja_ahorros_pesos():
+    def alta_caja_ahorros_pesos(self, transaccion):
         '''descripcion'''
     
     def alta_cuenta_inversion(self, transaccion) -> str:
