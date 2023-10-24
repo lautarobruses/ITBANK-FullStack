@@ -34,7 +34,7 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             nueva_transaccion.cuentaNumero = transaccion['cuentaNumero']
         if 'saldoDisponibleEnCuenta' in transaccion:
             nueva_transaccion.saldoDisponibleEnCuenta = transaccion['saldoDisponibleEnCuenta']
-            
+        
         nombre_metodo = nueva_transaccion.tipo.lower()
 
         # Verifica si el método existe en el objeto antes de llamarlo
@@ -43,7 +43,7 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             metodo = getattr(cliente, nombre_metodo)
 
             # Llama al método
-            razon = metodo()
+            razon = metodo(nueva_transaccion)
 
             print(razon)
 
