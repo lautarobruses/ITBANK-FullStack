@@ -42,16 +42,12 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             # Obtén una referencia al método utilizando getattr
             metodo = getattr(cliente, nombre_metodo)
 
-            # Llama al método
             razon = metodo(nueva_transaccion)
-
-            print(razon)
 
             nueva_transaccion.razon = razon
 
             transacciones.append(nueva_transaccion)
 
-    print(transacciones)
     html_output = crearHTML(transacciones)
     
     with open('html_output.html', 'w') as file:
