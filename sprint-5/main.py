@@ -28,6 +28,9 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
         if 'cuentaNumero' in transaccion:
             nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion[
                                                          "permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
+        elif 'saldoDisponibleEnCuenta' in transaccion:
+            nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], 
+                                                         transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
         else:
             nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"],
                                                          transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
@@ -49,4 +52,5 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             transacciones.append(nueva_transaccion)
 
     print(transacciones)
-    crearHTML(transacciones)
+    html_output = crearHTML(transacciones)
+    print(html_output)

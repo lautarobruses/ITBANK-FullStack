@@ -35,5 +35,5 @@ def crearHTML(transacciones: list[Transaccion]):
     # Renderizar la plantilla con los datos
     html_output = template.render(data = transacciones)
 
-    print(html_output)
+    return html_output
 
