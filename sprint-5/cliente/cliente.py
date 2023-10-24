@@ -114,7 +114,7 @@ class Cliente:
             return razon
         
         monto_con_comision = fn.descontar_comision(transaccion.monto, self.porcentaje_comision_envio)
-        if cuenta_destino.transferencia_recibida_pesos(monto_con_comision, self):
+        if transaccion.cuentaNumero.transferencia_recibida_pesos(monto_con_comision, self):
             transaccion.saldoDisponibleEnCuenta -= monto_con_comision
             razon2 = 'Aceptada, el saldo está disponible para ser enviado'
             return razon2
@@ -132,7 +132,7 @@ class Cliente:
         monto_en_pesos = transaccion.monto * precio_dolar_oficial
         monto_con_comision = fn.descontar_comision(monto_en_pesos, self.porcentaje_comision_envio)
 
-        if cuenta_destino.transferencia_recibida_dolares(monto_con_comision, self):
+        if transaccion.cuentaNumero.transferencia_recibida_dolares(monto_con_comision, self):
             transaccion.saldoDisponibleEnCuenta -= monto_con_comision
             razon2 = 'Aceptada, contas con saldo disponible y cuenta de ahorro en dólares'
             return razon2
