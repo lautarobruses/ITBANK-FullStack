@@ -8,6 +8,12 @@ class Classic(Cliente):
         self.tarifa = 100
         self.limite_tarjeta_debito = 1
         self.tarjetas_debito = {}
+        self.limite_cajas_ahorro_pesos = 1
+        self.limite_cajas_ahorro_dolares = 1
+    
+    proximo_numero_cuenta = 100
+    cajas_ahorro_pesos = {}
+    cajas_ahorro_dolares = {}
 
     def retiro_efectivo_por_cajero_automatico(self, transaccion) -> str: #En esta y la siguiente funcion tomo a permitidoActualParaTransaccion como el limite de retiro diario que le queda a classic, lo mismo para el gold y el black.
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
@@ -83,7 +89,9 @@ class Classic(Cliente):
 
     def alta_tarjeta_debito(self, transaccion):
         razon = ""
-        if self.limite_tarjeta_debito > 0:
+        if transaccion.cuentaNumero is None:
+            razon = "No se ha proporcionado el número de cuenta"
+        elif self.limite_tarjeta_debito > 0:
             if transaccion.cuentaNumero in self.tarjetas_debito:
                 razon = "Alta de la tarjeta ya aceptada anteriormente"
             else:
@@ -91,7 +99,7 @@ class Classic(Cliente):
                 self.limite_tarjeta_debito -= 1
                 razon = "Alta de la tarjeta aceptada"
         else:
-            razon = "Has alcanzado el límite de tarjetas de débito permitidas."
+            razon = "Has alcanzado el límite de tarjetas de débito permitidas"
         return razon
 
     def alta_tarjeta_credito_visa(self, transaccion) -> str:
@@ -102,9 +110,35 @@ class Classic(Cliente):
 
     def alta_tarjeta_credito_amex(self, transaccion) -> str:
         return "El cliente no tiene permitido tener una tarjeta de credito."
+    def alta_cuenta_cte_pesos(self) -> str:
+        return "El cliente no tiene permitido tener una cuenta corriente en pesos."
+    
+    def alta_cuenta_cte_dolares(self) -> str:
+        return "El cliente no tiene permitido tener una cuenta corriente en dolares."
+    
+    def alta_caja_ahorro_pesos(self):
+        razon = ""
+        if self.limite_cajas_ahorro_pesos > 0:
+            numero_cuenta = Classic.proximo_numero_cuenta
+            Classic.proximo_numero_cuenta += 1
+            self.limite_cajas_ahorro_pesos -= 1
+            Classic.cajas_ahorro_pesos[self.dni] = numero_cuenta
+            razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
+        else:
+            razon = "Has superado el límite de caja de ahorro en pesos permitidas."
+        return razon
 
-    def alta_caja_ahorros_pesos(self, transaccion) -> str:
-        '''descripcion'''
+    def alta_caja_ahorro_dolares(self):
+        razon = ""
+        if self.limite_cajas_ahorro_dolares > 0:
+            numero_cuenta = Classic.proximo_numero_cuenta
+            Classic.proximo_numero_cuenta += 1
+            self.limite_cajas_ahorro_dolares -= 1
+            Classic.cajas_ahorro_dolares[self.dni] = numero_cuenta
+            razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
+        else:
+            razon = "Has superado el límite de caja de ahorro en dólares permitidas."
+        return razon
 
     def alta_cuenta_inversion(self, transaccion) -> str:
         '''descripcion'''

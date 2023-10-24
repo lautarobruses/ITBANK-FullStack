@@ -14,7 +14,12 @@ class Gold(Cliente):
         self.tarjetas_credito_mastercard = {}
         self.chequeras = {}
         self.limite_chequeras = 1
-
+        
+    proximo_numero_cuenta= 100 
+    cuentas_cte = {}
+    cajas_ahorro = {}
+    limite_cajas_ahorro = 2
+    
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
 
@@ -113,7 +118,9 @@ class Gold(Cliente):
     def alta_tarjeta_debito(self, transaccion):
         '''descripcion'''
         razon = ""
-        if self.limite_tarjeta_debito > 0:
+        if transaccion.cuentaNumero is None:
+            razon = "No se ha proporcionado el número de cuenta"
+        elif self.limite_tarjeta_debito > 0:
             if transaccion.cuentaNumero in self.tarjetas_debito:
                 razon = "Alta de la tarjeta ya aceptada anteriormente"
             else:
@@ -126,7 +133,9 @@ class Gold(Cliente):
 
     def alta_tarjeta_credito_visa(self, transaccion) -> str:
         razon = ""
-        if self.limite_tarjeta_credito_visa > 0:
+        if transaccion.cuentaNumero is None:
+            razon = "No se ha proporcionado el número de cuenta"
+        elif self.limite_tarjeta_credito_visa > 0:
             razon = "Alta de tarjeta de crédito VISA aceptada"
             # se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
             self.limite_tarjeta_credito_visa -= 1
@@ -137,7 +146,9 @@ class Gold(Cliente):
 
     def alta_tarjeta_credito_master(self, transaccion) -> str:
         razon = ""
-        if self.limite_tarjeta_credito_mastercard > 0:
+        if transaccion.cuentaNumero is None:
+            razon = "No se ha proporcionado el número de cuenta"
+        elif self.limite_tarjeta_credito_mastercard > 0:
             razon = "Alta de tarjeta de crédito Mastercard aceptada"
             # se supone que la alta y extension de tarjetas en diferentes cuentas influyen en limite total del ciente (5)
             self.limite_tarjeta_credito_mastercard -= 1
@@ -151,7 +162,9 @@ class Gold(Cliente):
 
     def alta_chequera(self, transaccion) -> str:
         razon = ""
-        if self.limite_chequeras > 0:
+        if transaccion.cuentaNumero is None:
+            razon = "No se ha proporcionado el número de cuenta"
+        elif self.limite_chequeras > 0:
             cuenta_numero = transaccion.cuentaNumero
             if cuenta_numero in self.chequeras:
                 razon = "Ya tienes una chequera para esta cuenta."
@@ -161,9 +174,76 @@ class Gold(Cliente):
         else:
             razon = "Has alcanzado el límite de chequeras permitidas."
         return razon
+    
+    def alta_cuenta_cte_pesos(self):
+        razon = ""
+        dni_cliente = self.dni
 
-    def alta_caja_ahorros_pesos(self, transaccion) -> str:
-        '''descripcion'''
+        if dni_cliente not in Gold.cuentas_cte:
+            numero_cuenta = Gold.proximo_numero_cuenta
+            Gold.proximo_numero_cuenta += 1
+            Gold.cuentas_cte[dni_cliente] = numero_cuenta
+            razon = f"Alta de cuenta corriente en pesos aceptada. Número de cuenta: {numero_cuenta}"
+        else:
+            razon = "Has alcanzado el límite de altas de cuenta corriente permitidas."
+
+        return razon
+
+    def alta_cuenta_cte_dolares(self):
+        razon = ""
+        dni_cliente = self.dni
+
+        if dni_cliente not in Gold.cuentas_cte:
+            numero_cuenta = Gold.proximo_numero_cuenta
+            Gold.proximo_numero_cuenta += 1
+            Gold.cuentas_cte[dni_cliente] = numero_cuenta
+            razon = f"Alta de cuenta corriente en dólares aceptada. Número de cuenta: {numero_cuenta}"
+        else:
+            razon = "Has alcanzado el límite de altas de cuenta corriente permitidas."
+
+        return razon
+
+    def alta_caja_ahorro_pesos(self):
+        razon = ""
+        dni_cliente = self.dni
+
+        if dni_cliente not in Gold.cajas_ahorro:
+            Gold.cajas_ahorro[dni_cliente] = [Gold.proximo_numero_cuenta]
+            numero_cuenta = Gold.proximo_numero_cuenta
+            Gold.proximo_numero_cuenta += 1
+            razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
+        else:
+            cuentas_creadas = Gold.cajas_ahorro[dni_cliente]
+            if len(cuentas_creadas) < Gold.limite_cajas_ahorro:
+                numero_cuenta = Gold.proximo_numero_cuenta
+                Gold.proximo_numero_cuenta += 1
+                cuentas_creadas.append(numero_cuenta)
+                razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
+            else:
+                razon = "Has superado el límite de caja de ahorro en pesos permitidas."
+
+        return razon
+
+    def alta_caja_ahorro_dolares(self):
+        razon = ""
+        dni_cliente = self.dni
+
+        if dni_cliente not in Gold.cajas_ahorro:
+            Gold.cajas_ahorro[dni_cliente] = [Gold.proximo_numero_cuenta]
+            numero_cuenta = Gold.proximo_numero_cuenta
+            Gold.proximo_numero_cuenta += 1
+            razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
+        else:
+            cuentas_creadas = Gold.cajas_ahorro[dni_cliente]
+            if len(cuentas_creadas) < Gold.limite_cajas_ahorro:
+                numero_cuenta = Gold.proximo_numero_cuenta
+                Gold.proximo_numero_cuenta += 1
+                cuentas_creadas.append(numero_cuenta)
+                razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
+            else:
+                razon = "Has superado el límite de caja de ahorro en dólares permitidas."
+
+        return razon
 
     def alta_cuenta_inversion(self, transaccion) -> str:
         if self.cuenta_inversion:
