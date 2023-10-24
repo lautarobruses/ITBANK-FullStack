@@ -34,7 +34,7 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             nueva_transaccion.cuentaNumero = transaccion['cuentaNumero']
         if 'saldoDisponibleEnCuenta' in transaccion:
             nueva_transaccion.saldoDisponibleEnCuenta = transaccion['saldoDisponibleEnCuenta']
-            
+        
         nombre_metodo = nueva_transaccion.tipo.lower()
 
         # Verifica si el método existe en el objeto antes de llamarlo
@@ -42,35 +42,13 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             # Obtén una referencia al método utilizando getattr
             metodo = getattr(cliente, nombre_metodo)
 
-            # Llama al método
-            razon = metodo()
-
-            print(razon)
+            razon = metodo(nueva_transaccion)
 
             nueva_transaccion.razon = razon
 
             transacciones.append(nueva_transaccion)
 
-    print(transacciones)
-    #html_output = crearHTML(transacciones)
-    #borrar lo siguiente y descomentar lo de arriba
-    html_output = crearHTML([{
-            "estado": "ACEPTADA",
-            "tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
-            "cuentaNumero": 190,
-            "permitidoActualParaTransccion": 9000,
-            "monto": 1000,
-            "fecha": "10/10/2022 16: 00: 55",
-            "numero": 1
-        },
-        {
-            "estado": "RECHAZADA",
-            "tipo": "COMPRA_EN_CUOTAS_TARJETA_VISA",
-            "permitidoActualParaTransccion": 9000,
-            "monto": 750000,
-            "fecha": "10/10/2022 16: 14: 35",
-            "numero": 2
-        }])
+    html_output = crearHTML(transacciones)
     
     with open('html_output.html', 'w') as file:
         file.write(html_output)

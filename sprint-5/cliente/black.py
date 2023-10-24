@@ -1,6 +1,5 @@
 from cliente.cliente import Cliente
 
-
 class Black(Cliente):
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones)
@@ -31,9 +30,8 @@ class Black(Cliente):
 
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $100,000 por cajero.'''
-
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.permitidoActualParaTransaccion < transaccion.monto:
@@ -49,7 +47,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -63,7 +61,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -77,7 +75,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -91,7 +89,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -105,7 +103,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -119,7 +117,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -133,7 +131,7 @@ class Black(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_amex' que el cliente black realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:

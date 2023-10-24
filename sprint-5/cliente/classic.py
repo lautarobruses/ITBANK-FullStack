@@ -26,7 +26,7 @@ class Classic(Cliente):
             montoTotal = transaccion.monto
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.permitidoActualParaTransaccion < montoTotal:
@@ -49,7 +49,7 @@ class Classic(Cliente):
             montoTotal = transaccion.monto
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < montoTotal:

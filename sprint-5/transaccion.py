@@ -1,11 +1,11 @@
 class Transaccion:
-    def __init__(self, estado, tipo, permitidoActualParaTransccion, monto, fecha, numero, cuentaNumero=None, saldoDisponibleEnCuenta=None):
+    def __init__(self, estado, tipo, permitidoActualParaTransccion, monto, fecha, numero, cuentaNumero=None, saldoDisponibleEnCuenta=0):
         self.estado = estado
         self.tipo = tipo
         self.cuentaNumero = cuentaNumero
-        self.saldoDisponibleEnCuenta = saldoDisponibleEnCuenta
-        self.permitidoActualParaTransccion = permitidoActualParaTransccion
-        self.monto = monto
+        self.saldoDisponibleEnCuenta = float(saldoDisponibleEnCuenta)
+        self.permitidoActualParaTransccion = float(permitidoActualParaTransccion)
+        self.monto = float(monto)
         self.fecha = fecha
-        self.numero = numero
+        self.numero = float(numero)
         self.razon = ""
