@@ -73,9 +73,9 @@ class descontarComisionTestCase(unittest.TestCase):
         self.montoMalo1 = -10
     
     def test_descontar_comision_correcto(self):
-        resultado1 = self.monto * (1 - self.porcentajeFicticio)
-        resultado2 = self.monto2 * (1 - self.porcentajeFicticio)
-        resultado3 = self.monto3 * (1 - self.porcentajeFicticio)
+        resultado1 = self.monto - (self.monto * self.porcentajeFicticio) 
+        resultado2 = self.monto2 - (self.monto2 * self.porcentajeFicticio) 
+        resultado3 = self.monto3 - (self.monto3 * self.porcentajeFicticio) 
 
         self.assertEqual(resultado1, fn.descontar_comision(
             self.monto, self.porcentajeFicticio), f"La funcion no devuelve el resultado esperado: {resultado1}")
@@ -116,16 +116,50 @@ class calcularMontoPlazoFijoTestCase(unittest.TestCase):
         self.monto2 = 434.789
         self.monto3 = 1111111111111111.0
         self.monto4 = 33.7894444444
-        self.montoMalo1 = -10
-        self.montoMalo2 = "1000"
+        self.montoMalo = -10
 
-        self.tasa_interes_anual_ficticia     
+        self.tasa_interes_anual_ficticia1 = 30
+        self.tasa_interes_anual_ficticia2 = 78.0
+
+        self.anios1 = 2
+        self.anios2 = 1.333
 
     def test_calcular_monto_correcto(self):
-        resultado1 = fn.calcular_monto_plazo_fijo(self.monto1, self.porcentaje_comision_envio1)
+        resultado1 = self.monto1 * (1 + (self.tasa_interes_anual_ficticia1 / 100) * self.anios1)
+        resultado2 = self.monto2 * (1 + (self.tasa_interes_anual_ficticia1 / 100) * self.anios1)
+        resultado3 = self.monto3 * (1 + (self.tasa_interes_anual_ficticia1 / 100) * self.anios1)
+        resultado4 = self.monto4 * (1 + (self.tasa_interes_anual_ficticia1 / 100) * self.anios1)
 
-        self.assertEqual(resultado1, fn.calcular_monto_plazo_fijo(
-            self.monto, self.porcentaje_comision_envio1), f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado1, fn.calcular_monto_plazo_fijo(self.monto1, self.tasa_interes_anual_ficticia1, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado2, fn.calcular_monto_plazo_fijo(self.monto2, self.tasa_interes_anual_ficticia1, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado2}")
+        self.assertEqual(resultado3, fn.calcular_monto_plazo_fijo(self.monto3, self.tasa_interes_anual_ficticia1, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado3}")
+        self.assertEqual(resultado4, fn.calcular_monto_plazo_fijo(self.monto4, self.tasa_interes_anual_ficticia1, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado4}")
 
+    def test_calcular_monto_negativo(self):
+        self.assertRaises(TypeError, fn.calcular_monto_plazo_fijo(self.montoMalo, self.tasa_interes_anual_ficticia1, self.anios1),
+                          "La funcion deberia devolver una excepcion de tipo TypeError")
+
+    def test_calcular_plazo_fijo_tasa_interes(self):
+        resultado1 = self.monto1 * (1 + (self.tasa_interes_anual_ficticia1 / 100) * self.anios1)
+        resultado2 = self.monto4 * (1 + (self.tasa_interes_anual_ficticia2 / 100) * self.anios1)
+
+        self.assertEqual(resultado1, fn.calcular_monto_plazo_fijo(self.monto1, self.tasa_interes_anual_ficticia1, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado2, fn.calcular_monto_plazo_fijo(self.monto4, self.tasa_interes_anual_ficticia2, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado2}")
+
+    def test_calcular_plazo_fijo_anios(self):
+        resultado1 = self.monto2 * (1 + (self.tasa_interes_anual_ficticia1 / 100) * self.anios1)
+        resultado2 = self.monto3 * (1 + (self.tasa_interes_anual_ficticia2 / 100) * self.anios2)
+
+        self.assertEqual(resultado1, fn.calcular_monto_plazo_fijo(self.monto2, self.tasa_interes_anual_ficticia1, self.anios1),
+                          f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado2, fn.calcular_monto_plazo_fijo(self.monto3, self.tasa_interes_anual_ficticia2, self.anios2),
+                          f"La funcion no devuelve el resultado esperado: {resultado2}")
+    
 if __name__ == '__main__':
     unittest.main()
