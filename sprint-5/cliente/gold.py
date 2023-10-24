@@ -14,7 +14,7 @@ class Gold(Cliente):
         self.tarjetas_credito_mastercard = {}
         self.chequeras = {}
         self.limite_chequeras = 1
-        
+        self.caja_ahorro_dolar= False
     proximo_numero_cuenta= 100 
     cuentas_cte = {}
     cajas_ahorro = {}
@@ -232,6 +232,7 @@ class Gold(Cliente):
             Gold.cajas_ahorro[dni_cliente] = [Gold.proximo_numero_cuenta]
             numero_cuenta = Gold.proximo_numero_cuenta
             Gold.proximo_numero_cuenta += 1
+            self.caja_ahorro_dolar = True
             razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
         else:
             cuentas_creadas = Gold.cajas_ahorro[dni_cliente]
@@ -239,6 +240,7 @@ class Gold(Cliente):
                 numero_cuenta = Gold.proximo_numero_cuenta
                 Gold.proximo_numero_cuenta += 1
                 cuentas_creadas.append(numero_cuenta)
+                self.caja_ahorro_dolar = True
                 razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
             else:
                 razon = "Has superado el límite de caja de ahorro en dólares permitidas."

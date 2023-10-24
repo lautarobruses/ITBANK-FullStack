@@ -10,7 +10,7 @@ class Classic(Cliente):
         self.tarjetas_debito = {}
         self.limite_cajas_ahorro_pesos = 1
         self.limite_cajas_ahorro_dolares = 1
-    
+        self.caja_ahorro_dolar = False
     proximo_numero_cuenta = 100
     cajas_ahorro_pesos = {}
     cajas_ahorro_dolares = {}
@@ -135,6 +135,7 @@ class Classic(Cliente):
             Classic.proximo_numero_cuenta += 1
             self.limite_cajas_ahorro_dolares -= 1
             Classic.cajas_ahorro_dolares[self.dni] = numero_cuenta
+            self.caja_ahorro_dolar = True
             razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
         else:
             razon = "Has superado el límite de caja de ahorro en dólares permitidas."

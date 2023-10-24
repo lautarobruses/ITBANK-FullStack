@@ -70,16 +70,12 @@ class Cliente:
 
     def alta_caja_de_ahorro_pesos(self) -> str:
         pass
-#cambiar logica de caja de ahorro en dolares
     def alta_caja_de_ahorro_dolares(self) -> str: 
         pass
     def alta_cuenta_cte_pesos(self) -> str:
         pass
     def alta_cuenta_cte_dolar(self) -> str:
         pass
-    def alta_caja_ahorros_dolares(self, transaccion) -> str:
-        '''descripcion'''
-        self.caja_ahorro_dolar = True # Si es True, permite la compra y venta de dolares
 
     def alta_cuenta_inversion(self, transaccion) -> str:
         pass

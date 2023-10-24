@@ -14,6 +14,7 @@ class Black(Cliente):
         self.tarjetas_credito_amex = {}
         self.chequeras = {}
         self.limite_chequeras = 2
+        self.caja_ahorro_dolar = False
         
     proximo_numero_cuenta = 100 
     limite_cuentas_corrientes = 3
@@ -295,8 +296,10 @@ class Black(Cliente):
             else:
                 Black.cajas_ahorro[dni_cliente].append(numero_cuenta)
             if cuentas_creadas > 0:
+                self.caja_ahorro_dolar = True
                 razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de ${Black.cargo_mensual_cajas_ahorro} a partir de la segunda cuenta."
             else:
+                self.caja_ahorro_dolar = True
                 razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}"
         else:
             razon = "Has superado el límite de caja de ahorro en dólares permitidas."
