@@ -1,4 +1,5 @@
 from jinja2 import Template
+import webbrowser
 from transaccion import Transaccion
 
 # Plantilla de HTML utilizando Jinja2
@@ -35,5 +36,26 @@ def crearHTML(transacciones: list[Transaccion]):
     # Renderizar la plantilla con los datos
     html_output = template.render(data = transacciones)
 
-    print(html_output)
+    with open('archivo_generado.html', 'w') as file:
+        file.write(html_output)
 
+    webbrowser.open('archivo_generado.html')
+
+#borrar lo siguiente xdd
+crearHTML([{
+            "estado": "ACEPTADA",
+            "tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
+            "cuentaNumero": 190,
+            "permitidoActualParaTransccion": 9000,
+            "monto": 1000,
+            "fecha": "10/10/2022 16: 00: 55",
+            "numero": 1
+        },
+        {
+            "estado": "RECHAZADA",
+            "tipo": "COMPRA_EN_CUOTAS_TARJETA_VISA",
+            "permitidoActualParaTransccion": 9000,
+            "monto": 750000,
+            "fecha": "10/10/2022 16: 14: 35",
+            "numero": 2
+        }])
