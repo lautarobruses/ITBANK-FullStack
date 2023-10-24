@@ -1,5 +1,5 @@
 class Transaccion:
-    def __init__(self, estado, tipo, saldoDisponibleEnCuenta, permitidoActualParaTransccion, monto, fecha, numero, cuentaNumero=None):
+    def __init__(self, estado, tipo, permitidoActualParaTransccion, monto, fecha, numero, cuentaNumero=None, saldoDisponibleEnCuenta=None):
         self.estado = estado
         self.tipo = tipo
         self.cuentaNumero = cuentaNumero

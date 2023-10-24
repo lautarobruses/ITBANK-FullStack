@@ -25,13 +25,14 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
     transacciones: list[Transaccion] = []
 
     for transaccion in cliente.transacciones:
+        nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["permitidoActualParaTransccion"], 
+                                                     transaccion["monto"], transaccion["fecha"], transaccion["numero"])
+        
         if 'cuentaNumero' in transaccion:
-            nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"], transaccion[
-                                                         "permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"], transaccion["cuentaNumero"])
-        else:
-            nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["saldoDisponibleEnCuenta"],
-                                                         transaccion["permitidoActualParaTransccion"], transaccion["monto"], transaccion["fecha"], transaccion["numero"])
-
+            nueva_transaccion.cuentaNumero = transaccion['cuentaNumero']
+        if 'saldoDisponibleEnCuenta' in transaccion:
+            nueva_transaccion.saldoDisponibleEnCuenta = transaccion['saldoDisponibleEnCuenta']
+            
         nombre_metodo = nueva_transaccion.tipo.lower()
 
         # Verifica si el método existe en el objeto antes de llamarlo
@@ -49,4 +50,5 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             transacciones.append(nueva_transaccion)
 
     print(transacciones)
-    crearHTML(transacciones)
+    html_output = crearHTML(transacciones)
+    print(html_output)

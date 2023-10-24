@@ -8,7 +8,6 @@ from cliente.black import Black
 
 URL = "https://dolarapi.com/v1/dolares/oficial"
 
-
 class calcularMontoTotalTestCase(unittest.TestCase):
     def setUp(self):
         response = requests.get(URL)
@@ -52,7 +51,6 @@ class calcularMontoTotalTestCase(unittest.TestCase):
         self.assertAlmostEqual(fn.calcular_monto_total(self.precio_dolar, self.monto2), resultado2,
                                f"La funcion no aplica correctamente el impuestos pais ({self.impuesto_pais}) y ganancias: {self.impuesto_ganancias}")
 
-
 class descontarComisionTestCase(unittest.TestCase):
     def setUp(self):
         self.clienteClassic = Classic("", "", "", "", "")
@@ -70,7 +68,21 @@ class descontarComisionTestCase(unittest.TestCase):
         self.porcentaje_comision_recibo3 = self.clienteBlack.get_porcentaje_comision_recibo()
 
         self.monto = 456.789
+        self.monto2 = 9999999999999999.23
+        self.monto3 = 12.5555555555555
         self.montoMalo1 = -10
+    
+    def test_descontar_comision_correcto(self):
+        resultado1 = self.monto * (1 - self.porcentajeFicticio)
+        resultado2 = self.monto2 * (1 - self.porcentajeFicticio)
+        resultado3 = self.monto3 * (1 - self.porcentajeFicticio)
+
+        self.assertEqual(resultado1, fn.descontar_comision(
+            self.monto, self.porcentajeFicticio), f"La funcion no devuelve el resultado esperado: {resultado1}")
+        self.assertEqual(resultado2, fn.descontar_comision(
+            self.monto2, self.porcentajeFicticio), f"La funcion no devuelve el resultado esperado: {resultado2}")
+        self.assertEqual(resultado3, fn.descontar_comision(
+            self.monto3, self.porcentajeFicticio), f"La funcion no devuelve el resultado esperado: {resultado3}")
 
     def test_descontar_comision_envio(self):
         resultado1 = self.monto * (1 - self.porcentaje_comision_envio1)
@@ -99,11 +111,21 @@ class descontarComisionTestCase(unittest.TestCase):
             self.montoMalo1, self.porcentajeFicticio), "La funcion deberia devolver una excepcion de tipo TypeError")
 
 class calcularMontoPlazoFijoTestCase(unittest.TestCase):
-    def test_another_thing(self):
-        # Otra prueba que también utiliza el entorno de prueba configurado en
-        # fn.vender_dolar(self, )
-        return
+    def setUp(self):
+        self.monto1 = 1000
+        self.monto2 = 434.789
+        self.monto3 = 1111111111111111.0
+        self.monto4 = 33.7894444444
+        self.montoMalo1 = -10
+        self.montoMalo2 = "1000"
 
+        self.tasa_interes_anual_ficticia     
+
+    def test_calcular_monto_correcto(self):
+        resultado1 = fn.calcular_monto_plazo_fijo(self.monto1, self.porcentaje_comision_envio1)
+
+        self.assertEqual(resultado1, fn.calcular_monto_plazo_fijo(
+            self.monto, self.porcentaje_comision_envio1), f"La funcion no devuelve el resultado esperado: {resultado1}")
 
 if __name__ == '__main__':
     unittest.main()
