@@ -19,7 +19,7 @@ class Gold(Cliente):
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.permitidoActualParaTransaccion < transaccion.monto:
@@ -35,7 +35,7 @@ class Gold(Cliente):
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -49,7 +49,7 @@ class Gold(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -63,7 +63,7 @@ class Gold(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -82,7 +82,7 @@ class Gold(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
@@ -96,7 +96,7 @@ class Gold(Cliente):
         '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
-            if transaccion.saldoDisponibleEnCuenta <= 0:
+            if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
                 if transaccion.saldoDisponibleEnCuenta < transaccion.monto:
