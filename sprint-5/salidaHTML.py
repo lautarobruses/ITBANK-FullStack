@@ -36,4 +36,3 @@ def crearHTML(transacciones: list[Transaccion]):
     html_output = template.render(data = transacciones)
 
     return html_output
-
