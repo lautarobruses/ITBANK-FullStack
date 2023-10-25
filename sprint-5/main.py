@@ -4,8 +4,8 @@ import webbrowser
 from cliente.classic import Classic
 from cliente.gold import Gold
 from cliente.black import Black
-from transaccion import Transaccion
-from salidaHTML import crearHTML
+from transaccion.transaccion import Transaccion
+from services.salidaHTML import crearHTML
 
 # Nombre del archivo JSON que se desea analizar
 NOMBRE_ARCHIVO = 'ejemplo.json'

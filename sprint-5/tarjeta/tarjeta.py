@@ -7,7 +7,7 @@ class Tarjeta:
 
 class Debito(Tarjeta):
     def __init__(self,):
-        self
+        return
 
 class Credito(Tarjeta):
     def __init__(self, limite_pago, limite_cuotas, cantidad):

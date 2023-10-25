@@ -6,14 +6,14 @@ response = requests.get(URL)
 data = response.json()
 precio_dolar_oficial = data['venta']
 
-impuesto_pais = 0.30
-impuesto_ganancias = 0.35
+IMPUESTO_PAIS = 0.30
+IMPUESTO_GANANCIAS = 0.35
 
 def get_valor_dolar() -> float:
     return precio_dolar_oficial
 
 def get_impuestos() -> float:
-    return impuesto_pais, impuesto_ganancias
+    return IMPUESTO_PAIS, IMPUESTO_GANANCIAS
 
 def calcular_monto_total(precio_dolar:float, monto:float) -> float:
     '''Calcula el monto total que se tiene que gastar sumando el impuesto país y ganancias.'''
@@ -23,7 +23,7 @@ def calcular_monto_total(precio_dolar:float, monto:float) -> float:
     monto_sin_impuestos = monto * precio_dolar
 
     # Monto con impuestos
-    monto_total = monto_sin_impuestos * (1 + impuesto_pais + impuesto_ganancias)
+    monto_total = monto_sin_impuestos * (1 + IMPUESTO_PAIS + IMPUESTO_GANANCIAS)
 
     return monto_total
 

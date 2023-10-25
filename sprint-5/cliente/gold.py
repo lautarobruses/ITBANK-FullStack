@@ -1,7 +1,11 @@
 from cliente.cliente import Cliente
 
-
 class Gold(Cliente):
+    proximo_numero_cuenta= 100
+    cuentas_cte = {}
+    cajas_ahorro = {}
+    limite_cajas_ahorro = 2
+
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones, 0.05, 0.001)
         self.limite_retiro_efectivo = 20.000
@@ -14,12 +18,8 @@ class Gold(Cliente):
         self.tarjetas_credito_mastercard = {}
         self.chequeras = {}
         self.limite_chequeras = 1
-        self.caja_ahorro_dolar= False
-    proximo_numero_cuenta= 100 
-    cuentas_cte = {}
-    cajas_ahorro = {}
-    limite_cajas_ahorro = 2
-    
+        self.caja_ahorro_dolar = False
+
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
 

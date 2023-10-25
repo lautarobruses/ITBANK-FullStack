@@ -1,8 +1,8 @@
 from jinja2 import Template
-from transaccion import Transaccion
+from transaccion.transaccion import Transaccion
 
 # Plantilla de HTML utilizando Jinja2
-template_str = """
+TEMPLATE_STR = """
 <table border="1">
     <tr>
         <th>Numero</th>
@@ -29,10 +29,10 @@ template_str = """
 </table>
 """
 
-template = Template(template_str)
+template = Template(TEMPLATE_STR)
 
 def crearHTML(transacciones: list[Transaccion]):
     # Renderizar la plantilla con los datos
-    html_output = template.render(data = transacciones)
+    html_output = template.render(data=transacciones)
 
     return html_output
