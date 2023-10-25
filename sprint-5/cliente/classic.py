@@ -1,6 +1,21 @@
+"""Este es un módulo que contiene la definición de la clase Classic."""
 from cliente.cliente import Cliente
 
 class Classic(Cliente):
+    """
+    Esta es la clase Classic, que hereda de la clase Cliente.
+    
+    Args:
+        numero (int): El número de cliente.
+        nombre (str): El nombre del cliente.
+        apellido (str): El apellido del cliente.
+        dni (str): El número de identificación del cliente.
+        transacciones (list): Una lista de transacciones del cliente.
+
+    Attributes:
+        limite_retiro_efectivo (float): El límite de retiro en efectivo.
+        contador_retiros (int): El contador de retiros.
+    """
     def __init__(self, numero, nombre, apellido, dni, transacciones):
         super().__init__(numero, nombre, apellido, dni, transacciones, 0.01, 0.05)
         self.limite_retiro_efectivo = 10.000
@@ -35,7 +50,7 @@ class Classic(Cliente):
                     return f"Fondos Insuficientes: No es posible retirar {montoTotal}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def retiro_efectivo_por_caja(self, transaccion) -> str:
@@ -56,12 +71,11 @@ class Classic(Cliente):
                     return f"Fondos Insuficientes: No es posible retirar {montoTotal}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_visa( self, _transaccion ) -> str:
         '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente classic realizo y devuelve en un string la razon por la cual classic no puede realizar compras en cuotas con tarjeta de credito visa.'''
-        
         return "Cliente Classic: Los clientes classic no poseen tarjetas de crédito. Tu cuenta es de tipo 'Classic' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_en_cuotas_tarjeta_credito_master( self, _transaccion ) -> str:
@@ -112,10 +126,10 @@ class Classic(Cliente):
         return "El cliente no tiene permitido tener una tarjeta de credito."
     def alta_cuenta_cte_pesos(self) -> str:
         return "El cliente no tiene permitido tener una cuenta corriente en pesos."
-    
+
     def alta_cuenta_cte_dolares(self) -> str:
         return "El cliente no tiene permitido tener una cuenta corriente en dolares."
-    
+
     def alta_caja_ahorro_pesos(self):
         razon = ""
         if self.limite_cajas_ahorro_pesos > 0:
@@ -144,4 +158,3 @@ class Classic(Cliente):
     def alta_cuenta_inversion(self, transaccion) -> str:
         '''descripcion'''
         return "La cuenta Classic no tiene permitido el acceso a las inversiones."
-    

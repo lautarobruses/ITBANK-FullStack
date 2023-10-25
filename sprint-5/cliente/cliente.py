@@ -1,3 +1,4 @@
+"""En este módulo se definen los atributos y metodos que comparten las subclases"""
 import services.funciones as fn
 from transaccion.transaccion import Transaccion
 
@@ -15,7 +16,7 @@ class Cliente:
         self.porcentaje_comision_recibo = porcentaje_comision_recibo
         self.tasa_interes_anual = 0.30
         self.anios = 2
-
+        self.caja_ahorro_dolar = False
     def get_porcentaje_comision_envio(self) -> float:
         return self.porcentaje_comision_envio
 
@@ -39,35 +40,27 @@ class Cliente:
 
     def alta_chequera(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_tarjeta_credito_visa(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_tarjeta_credito_master(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_tarjeta_debito(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_cuenta_credito_visa(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_cuenta_credito_mastercard(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_cuenta_credito_american(self, transaccion) -> str:
         '''descripcion'''
-        pass
 
     def alta_caja_de_ahorro_pesos(self) -> str:
         pass

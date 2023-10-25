@@ -11,7 +11,7 @@ from services.salidaHTML import crearHTML
 NOMBRE_ARCHIVO = 'ejemplo.json'
 
 # Abre el archivo JSON en modo lectura
-with open(NOMBRE_ARCHIVO, 'r') as archivo:
+with open(NOMBRE_ARCHIVO, 'r',  encoding='utf-8') as archivo:
     datos = json.load(archivo)
 
     if datos["tipo"] == "Classic":
@@ -49,7 +49,7 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
 
     html_output = crearHTML(transacciones)
 
-    with open('html_output.html', 'w') as file:
+    with open('html_output.html', 'w',  encoding='utf-8') as file:
         file.write(html_output)
 
     webbrowser.open('html_output.html')

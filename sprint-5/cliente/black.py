@@ -21,7 +21,7 @@ class Black(Cliente):
         self.cajas_ahorro = {}
         self.limite_cajas_ahorro = 5
         self.cargo_mensual_cajas_ahorro = 100
-
+        self.proximo_numero_cuenta_caja_ahorro = 100
     def get_porcentaje_comision_envio(self) -> float:
         return self.porcentaje_comision_envio
 
@@ -40,7 +40,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def retiro_efectivo_por_caja(self, transaccion) -> str:
@@ -54,7 +54,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto extraido es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
@@ -68,7 +68,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta visa con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
@@ -82,7 +82,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta mastercard con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
@@ -96,7 +96,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible comprar en cuotas con tu tarjeta american express con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_tarjeta_credito_visa(self, transaccion) -> str:
@@ -110,7 +110,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible comprar con tu tarjeta visa con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_tarjeta_credito_master(self, transaccion) -> str:
@@ -124,7 +124,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible comprar con tu tarjeta mastercard con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_tarjeta_credito_amex(self, transaccion) -> str:
@@ -138,7 +138,7 @@ class Black(Cliente):
                     return f"Fondos Insuficientes: No es posible comprar con tu tarjeta american express con el monto de {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
                 else:
                     return "Retiro Exitoso: El monto con el que desea comprar en cuotas es un numero y ademas no supera tu saldo disponible."
-        except:
+        except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
     def alta_tarjeta_debito(self, transaccion):
