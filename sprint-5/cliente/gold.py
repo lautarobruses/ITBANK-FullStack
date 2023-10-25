@@ -27,7 +27,7 @@ class Gold(Cliente):
             if transaccion.monto <= 0:
                 return "Monto Inválido: El monto ingresado es un numero, pero debe ser mayor que cero."
             else:
-                if transaccion.permitidoActualParaTransaccion < transaccion.monto:
+                if transaccion.permitidoActualParaTransccion < transaccion.monto:
                     return f"Supera el Limite Diario: No es posible retirar {transaccion.monto} ya que superarias tu limite de 20.000$ diario."
                 elif transaccion.saldoDisponibleEnCuenta < transaccion.monto:
                     return f"Fondos Insuficientes: No es posible retirar {transaccion.monto}$ ya que excede tu saldo disponible de {transaccion.saldoDisponibleEnCuenta}$."
@@ -37,7 +37,7 @@ class Gold(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
 
     def retiro_efectivo_por_caja(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_por_caja' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -50,8 +50,8 @@ class Gold(Cliente):
         except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+    def compra_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
+        '''Este metodo toma la transaccion de tipo:'compra_en_cuotas_tarjeta_credito_visa' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -78,13 +78,13 @@ class Gold(Cliente):
         except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
+    def compra_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
 
         return "Cliente Gold: No puedes realizar compras en cuotas con tarjeta de crédito american express. Tu cuenta es de tipo 'GOLD' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
-    def comprar_tarjeta_credito_visa(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+    def compra_tarjeta_credito_visa(self, transaccion) -> str:
+        '''Este metodo toma la transaccion de tipo:'compra_tarjeta_credito_visa' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -97,8 +97,8 @@ class Gold(Cliente):
         except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_tarjeta_credito_master(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+    def compra_tarjeta_credito_master(self, transaccion) -> str:
+        '''Este metodo toma la transaccion de tipo:'compra_tarjeta_credito_master' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -111,7 +111,7 @@ class Gold(Cliente):
         except ValueError:
             return "Formato Inválido: El monto debe ser un numero."
 
-    def comprar_tarjeta_credito_amex(self, _transaccion) -> str:
+    def compra_tarjeta_credito_amex(self, _transaccion) -> str:
         '''descripcion'''
         return "Cliente Gold: No puedes realizar compras con tarjeta de crédito american express. Tu cuenta es de tipo 'Gold' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
@@ -203,7 +203,7 @@ class Gold(Cliente):
 
         return razon
 
-    def alta_caja_ahorro_pesos(self):
+    def alta_caja_de_ahorro_pesos(self):
         razon = ""
         dni_cliente = self.dni
 
@@ -224,7 +224,7 @@ class Gold(Cliente):
 
         return razon
 
-    def alta_caja_ahorro_dolares(self):
+    def alta_caja_de_ahorro_dolares(self):
         razon = ""
         dni_cliente = self.dni
 
@@ -247,8 +247,9 @@ class Gold(Cliente):
 
         return razon
 
-    def alta_cuenta_inversion(self, transaccion) -> str:
+    def alta_cuenta_de_inversion(self, transaccion) -> str:
         if self.cuenta_inversion:
             return "El cliente ya posee una cuenta inversion."
         else:
+            self.cuenta_inversion = True
             return "La creacion de la cuenta de inversion es correcta."

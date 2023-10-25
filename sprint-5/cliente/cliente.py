@@ -29,15 +29,20 @@ class Cliente:
     def retiro_efectivo_por_caja(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
+    def compra_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
+    def compra_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
         pass
 
-    def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
+    def compra_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         pass
-
+    def compra_tarjeta_credito_visa( self, _transaccion ) -> str:
+        pass
+    def compra_tarjeta_credito_master( self, _transaccion ) -> str:
+        pass
+    def compra_tarjeta_credito_amex( self, _transaccion ) -> str:
+        pass
     def alta_chequera(self, transaccion) -> str:
         '''descripcion'''
 
@@ -71,13 +76,13 @@ class Cliente:
     def alta_cuenta_cte_pesos(self) -> str:
         pass
 
-    def alta_cuenta_cte_dolar(self) -> str:
+    def alta_cuenta_cte_dolares(self) -> str:
         pass
 
-    def alta_cuenta_inversion(self, transaccion) -> str:
+    def alta_cuenta_de_inversion(self, transaccion) -> str:
         pass
 
-    def comprar_dolar(self, transaccion: Transaccion) -> str:
+    def compra_dolar(self, transaccion: Transaccion) -> str:
         '''Compra una cantidad de dólares y devuelve el monto en pesos o False si la compra falla.'''
         if self.caja_ahorro_dolar:
             costo_en_pesos = fn.calcular_monto_total(
@@ -92,7 +97,7 @@ class Cliente:
             razon2 = 'RECHAZADA, No contas con una caja de ahorro en dólares'
             return razon2
 
-    def vender_dolar(self, transaccion: Transaccion) -> str:
+    def venta_dolar(self, transaccion: Transaccion) -> str:
         '''Vende una cantidad de dólares y devuelve el monto en pesos o False si la venta falla.'''
         if self.caja_ahorro_dolar:
             if transaccion.monto > transaccion.saldoDisponibleEnCuenta:
