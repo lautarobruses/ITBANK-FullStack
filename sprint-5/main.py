@@ -29,14 +29,13 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
     for transaccion in cliente.transacciones:
         nueva_transaccion: Transaccion = Transaccion(transaccion['estado'], transaccion["tipo"], transaccion["permitidoActualParaTransccion"], 
                                                      transaccion["monto"], transaccion["fecha"], transaccion["numero"])
-        
+
         if 'cuentaNumero' in transaccion:
             nueva_transaccion.cuentaNumero = transaccion['cuentaNumero']
         if 'saldoDisponibleEnCuenta' in transaccion:
             nueva_transaccion.saldoDisponibleEnCuenta = transaccion['saldoDisponibleEnCuenta']
-        
-        nombre_metodo = nueva_transaccion.tipo.lower()
 
+        nombre_metodo = nueva_transaccion.tipo.lower()
         # Verifica si el método existe en el objeto antes de llamarlo
         if hasattr(cliente, nombre_metodo):
             # Obtén una referencia al método utilizando getattr
@@ -49,7 +48,7 @@ with open(NOMBRE_ARCHIVO, 'r') as archivo:
             transacciones.append(nueva_transaccion)
 
     html_output = crearHTML(transacciones)
-    
+
     with open('html_output.html', 'w') as file:
         file.write(html_output)
 

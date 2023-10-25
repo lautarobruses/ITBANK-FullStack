@@ -15,14 +15,13 @@ class Black(Cliente):
         self.chequeras = {}
         self.limite_chequeras = 2
         self.caja_ahorro_dolar = False
-        
-        self.proximo_numero_cuenta = 100 
+        self.proximo_numero_cuenta = 100
         self.limite_cuentas_corrientes = 3
-        self.cuentas_corrientes = {}   
-        self.cajas_ahorro = {}  
-        self.limite_cajas_ahorro = 5 
-        self.cargo_mensual_cajas_ahorro = 100 
-     
+        self.cuentas_corrientes = {}
+        self.cajas_ahorro = {}
+        self.limite_cajas_ahorro = 5
+        self.cargo_mensual_cajas_ahorro = 100
+
     def get_porcentaje_comision_envio(self) -> float:
         return self.porcentaje_comision_envio
 
