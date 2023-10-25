@@ -11,9 +11,9 @@ class Classic(Cliente):
         self.limite_cajas_ahorro_pesos = 1
         self.limite_cajas_ahorro_dolares = 1
         self.caja_ahorro_dolar = False
-    proximo_numero_cuenta = 100
-    cajas_ahorro_pesos = {}
-    cajas_ahorro_dolares = {}
+        self.proximo_numero_cuenta = 100
+        self.cajas_ahorro_pesos = {}
+        self.cajas_ahorro_dolares = {}
 
     def retiro_efectivo_por_cajero_automatico(self, transaccion) -> str: #En esta y la siguiente funcion tomo a permitidoActualParaTransaccion como el limite de retiro diario que le queda a classic, lo mismo para el gold y el black.
         '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente classic realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que tiene hasta 5 retiros de dinero en efectivo sin comisiones y luego se aplica una tarifa, y que el límite diario de retiro es de $10,000 por cajero.'''
@@ -119,10 +119,10 @@ class Classic(Cliente):
     def alta_caja_ahorro_pesos(self):
         razon = ""
         if self.limite_cajas_ahorro_pesos > 0:
-            numero_cuenta = Classic.proximo_numero_cuenta
-            Classic.proximo_numero_cuenta += 1
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
             self.limite_cajas_ahorro_pesos -= 1
-            Classic.cajas_ahorro_pesos[self.dni] = numero_cuenta
+            self.cajas_ahorro_pesos[self.dni] = numero_cuenta
             razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
         else:
             razon = "Has superado el límite de caja de ahorro en pesos permitidas."
@@ -131,10 +131,10 @@ class Classic(Cliente):
     def alta_caja_ahorro_dolares(self):
         razon = ""
         if self.limite_cajas_ahorro_dolares > 0:
-            numero_cuenta = Classic.proximo_numero_cuenta
-            Classic.proximo_numero_cuenta += 1
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
             self.limite_cajas_ahorro_dolares -= 1
-            Classic.cajas_ahorro_dolares[self.dni] = numero_cuenta
+            self.cajas_ahorro_dolares[self.dni] = numero_cuenta
             self.caja_ahorro_dolar = True
             razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
         else:

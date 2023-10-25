@@ -15,13 +15,13 @@ class Gold(Cliente):
         self.chequeras = {}
         self.limite_chequeras = 1
         self.caja_ahorro_dolar= False
-    proximo_numero_cuenta= 100 
-    cuentas_cte = {}
-    cajas_ahorro = {}
-    limite_cajas_ahorro = 2
-    
+        self.proximo_numero_cuenta= 100 
+        self.cuentas_cte = {}
+        self.cajas_ahorro = {}
+        self.limite_cajas_ahorro = 2
+        
     def retiro_efectivo_cajero_automatico(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada teniendo en cuenta que el límite diario de retiro es de $20,000 por cajero.'''
 
         try:
             if transaccion.monto <= 0:
@@ -37,7 +37,7 @@ class Gold(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
 
     def retiro_efectivo_por_caja(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'retiro_efectivo_cajero_automatico' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -51,7 +51,7 @@ class Gold(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_visa(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_visa' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -65,7 +65,7 @@ class Gold(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_en_cuotas_tarjeta_credito_master(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_en_cuotas_tarjeta_credito_master' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -81,10 +81,10 @@ class Gold(Cliente):
     def comprar_en_cuotas_tarjeta_credito_amex(self, transaccion) -> str:
         '''descripcion'''
 
-        return "Cliente Gold: No puedes realizar compras en cuotas con tarjeta de crédito american express. Tu cuenta es de tipo 'Gold' y esta función está limitada para cuentas con un nivel de acceso más alto."
+        return "Cliente Gold: No puedes realizar compras en cuotas con tarjeta de crédito american express. Tu cuenta es de tipo 'GOLD' y esta función está limitada para cuentas con un nivel de acceso más alto."
 
     def comprar_tarjeta_credito_visa(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_visa' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -98,7 +98,7 @@ class Gold(Cliente):
             return "Formato Inválido: El monto debe ser un numero."
 
     def comprar_tarjeta_credito_master(self, transaccion) -> str:
-        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
+        '''Este metodo toma la transaccion de tipo:'comprar_tarjeta_credito_master' que el cliente Gold realizo y devuelve en un string la razon por las que fue aceptada o rechazada.'''
 
         try:
             if transaccion.monto <= 0:
@@ -179,10 +179,10 @@ class Gold(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente not in Gold.cuentas_cte:
-            numero_cuenta = Gold.proximo_numero_cuenta
-            Gold.proximo_numero_cuenta += 1
-            Gold.cuentas_cte[dni_cliente] = numero_cuenta
+        if dni_cliente not in self.cuentas_cte:
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
+            self.cuentas_cte[dni_cliente] = numero_cuenta
             razon = f"Alta de cuenta corriente en pesos aceptada. Número de cuenta: {numero_cuenta}"
         else:
             razon = "Has alcanzado el límite de altas de cuenta corriente permitidas."
@@ -193,10 +193,10 @@ class Gold(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente not in Gold.cuentas_cte:
-            numero_cuenta = Gold.proximo_numero_cuenta
-            Gold.proximo_numero_cuenta += 1
-            Gold.cuentas_cte[dni_cliente] = numero_cuenta
+        if dni_cliente not in self.cuentas_cte:
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
+            self.cuentas_cte[dni_cliente] = numero_cuenta
             razon = f"Alta de cuenta corriente en dólares aceptada. Número de cuenta: {numero_cuenta}"
         else:
             razon = "Has alcanzado el límite de altas de cuenta corriente permitidas."
@@ -207,16 +207,16 @@ class Gold(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente not in Gold.cajas_ahorro:
-            Gold.cajas_ahorro[dni_cliente] = [Gold.proximo_numero_cuenta]
-            numero_cuenta = Gold.proximo_numero_cuenta
-            Gold.proximo_numero_cuenta += 1
+        if dni_cliente not in self.cajas_ahorro:
+            self.cajas_ahorro[dni_cliente] = [self.proximo_numero_cuenta]
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
             razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
         else:
-            cuentas_creadas = Gold.cajas_ahorro[dni_cliente]
-            if len(cuentas_creadas) < Gold.limite_cajas_ahorro:
-                numero_cuenta = Gold.proximo_numero_cuenta
-                Gold.proximo_numero_cuenta += 1
+            cuentas_creadas = self.cajas_ahorro[dni_cliente]
+            if len(cuentas_creadas) < self.limite_cajas_ahorro:
+                numero_cuenta = self.proximo_numero_cuenta
+                self.proximo_numero_cuenta += 1
                 cuentas_creadas.append(numero_cuenta)
                 razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
             else:
@@ -228,17 +228,17 @@ class Gold(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente not in Gold.cajas_ahorro:
-            Gold.cajas_ahorro[dni_cliente] = [Gold.proximo_numero_cuenta]
-            numero_cuenta = Gold.proximo_numero_cuenta
-            Gold.proximo_numero_cuenta += 1
+        if dni_cliente not in self.cajas_ahorro:
+            self.cajas_ahorro[dni_cliente] = [self.proximo_numero_cuenta]
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
             self.caja_ahorro_dolar = True
             razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"
         else:
-            cuentas_creadas = Gold.cajas_ahorro[dni_cliente]
-            if len(cuentas_creadas) < Gold.limite_cajas_ahorro:
-                numero_cuenta = Gold.proximo_numero_cuenta
-                Gold.proximo_numero_cuenta += 1
+            cuentas_creadas = self.cajas_ahorro[dni_cliente]
+            if len(cuentas_creadas) < self.limite_cajas_ahorro:
+                numero_cuenta = self.proximo_numero_cuenta
+                self.proximo_numero_cuenta += 1
                 cuentas_creadas.append(numero_cuenta)
                 self.caja_ahorro_dolar = True
                 razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de $100"

@@ -16,12 +16,12 @@ class Black(Cliente):
         self.limite_chequeras = 2
         self.caja_ahorro_dolar = False
         
-    proximo_numero_cuenta = 100 
-    limite_cuentas_corrientes = 3
-    cuentas_corrientes = {}   
-    cajas_ahorro = {}  
-    limite_cajas_ahorro = 5 
-    cargo_mensual_cajas_ahorro = 100 
+        self.proximo_numero_cuenta = 100 
+        self.limite_cuentas_corrientes = 3
+        self.cuentas_corrientes = {}   
+        self.cajas_ahorro = {}  
+        self.limite_cajas_ahorro = 5 
+        self.cargo_mensual_cajas_ahorro = 100 
      
     def get_porcentaje_comision_envio(self) -> float:
         return self.porcentaje_comision_envio
@@ -215,16 +215,16 @@ class Black(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente not in Black.cuentas_corrientes:
-            Black.cuentas_corrientes[dni_cliente] = [Black.proximo_numero_cuenta]
-            numero_cuenta = Black.proximo_numero_cuenta
-            Black.proximo_numero_cuenta += 1
+        if dni_cliente not in self.cuentas_corrientes:
+            self.cuentas_corrientes[dni_cliente] = [self.proximo_numero_cuenta]
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
             razon = f"Alta de cuenta corriente en pesos aceptada. Número de cuenta: {numero_cuenta}"
         else:
-            cuentas_creadas = Black.cuentas_corrientes[dni_cliente]
-            if len(cuentas_creadas) < Black.limite_cuentas_corrientes:
-                numero_cuenta = Black.proximo_numero_cuenta
-                Black.proximo_numero_cuenta += 1
+            cuentas_creadas = self.cuentas_corrientes[dni_cliente]
+            if len(cuentas_creadas) < self.limite_cuentas_corrientes:
+                numero_cuenta = self.proximo_numero_cuenta
+                self.proximo_numero_cuenta += 1
                 cuentas_creadas.append(numero_cuenta)
                 razon = f"Alta de cuenta corriente en pesos aceptada. Número de cuenta: {numero_cuenta}"
             else:
@@ -236,16 +236,16 @@ class Black(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente not in Black.cuentas_corrientes:
-            Black.cuentas_corrientes[dni_cliente] = [Black.proximo_numero_cuenta]
-            numero_cuenta = Black.proximo_numero_cuenta
-            Black.proximo_numero_cuenta += 1
+        if dni_cliente not in self.cuentas_corrientes:
+            self.cuentas_corrientes[dni_cliente] = [self.proximo_numero_cuenta]
+            numero_cuenta = self.proximo_numero_cuenta
+            self.proximo_numero_cuenta += 1
             razon = f"Alta de cuenta corriente en dólares aceptada. Número de cuenta: {numero_cuenta}"
         else:
-            cuentas_creadas = Black.cuentas_corrientes[dni_cliente]
-            if len(cuentas_creadas) < Black.limite_cuentas_corrientes:
-                numero_cuenta = Black.proximo_numero_cuenta
-                Black.proximo_numero_cuenta += 1
+            cuentas_creadas = self.cuentas_corrientes[dni_cliente]
+            if len(cuentas_creadas) < self.limite_cuentas_corrientes:
+                numero_cuenta = self.proximo_numero_cuenta
+                self.proximo_numero_cuenta += 1
                 cuentas_creadas.append(numero_cuenta)
                 razon = f"Alta de cuenta corriente en dólares aceptada. Número de cuenta: {numero_cuenta}"
             else:
@@ -258,20 +258,20 @@ class Black(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente in Black.cajas_ahorro:
-            cuentas_creadas = len(Black.cajas_ahorro[dni_cliente])
+        if dni_cliente in self.cajas_ahorro:
+            cuentas_creadas = len(self.cajas_ahorro[dni_cliente])
         else:
             cuentas_creadas = 0
 
-        if cuentas_creadas < Black.limite_cajas_ahorro:
-            numero_cuenta = Black.proximo_numero_cuenta_caja_ahorro
-            Black.proximo_numero_cuenta_caja_ahorro += 1
-            if dni_cliente not in Black.cajas_ahorro:
-                Black.cajas_ahorro[dni_cliente] = [numero_cuenta]
+        if cuentas_creadas < self.limite_cajas_ahorro:
+            numero_cuenta = self.proximo_numero_cuenta_caja_ahorro
+            self.proximo_numero_cuenta_caja_ahorro += 1
+            if dni_cliente not in self.cajas_ahorro:
+                self.cajas_ahorro[dni_cliente] = [numero_cuenta]
             else:
-                Black.cajas_ahorro[dni_cliente].append(numero_cuenta)
+                self.cajas_ahorro[dni_cliente].append(numero_cuenta)
             if cuentas_creadas > 0:
-                razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de ${Black.cargo_mensual_cajas_ahorro} a partir de la segunda cuenta."
+                razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de ${self.cargo_mensual_cajas_ahorro} a partir de la segunda cuenta."
             else:
                 razon = f"Alta de caja de ahorro en pesos aceptada. Número de cuenta: {numero_cuenta}"
         else:
@@ -283,21 +283,21 @@ class Black(Cliente):
         razon = ""
         dni_cliente = self.dni
 
-        if dni_cliente in Black.cajas_ahorro:
-            cuentas_creadas = len(Black.cajas_ahorro[dni_cliente])
+        if dni_cliente in self.cajas_ahorro:
+            cuentas_creadas = len(self.cajas_ahorro[dni_cliente])
         else:
             cuentas_creadas = 0
 
-        if cuentas_creadas < Black.limite_cajas_ahorro:
-            numero_cuenta = Black.proximo_numero_cuenta_caja_ahorro
-            Black.proximo_numero_cuenta_caja_ahorro += 1
-            if dni_cliente not in Black.cajas_ahorro:
-                Black.cajas_ahorro[dni_cliente] = [numero_cuenta]
+        if cuentas_creadas < self.limite_cajas_ahorro:
+            numero_cuenta = self.proximo_numero_cuenta_caja_ahorro
+            self.proximo_numero_cuenta_caja_ahorro += 1
+            if dni_cliente not in self.cajas_ahorro:
+                self.cajas_ahorro[dni_cliente] = [numero_cuenta]
             else:
-                Black.cajas_ahorro[dni_cliente].append(numero_cuenta)
+                self.cajas_ahorro[dni_cliente].append(numero_cuenta)
             if cuentas_creadas > 0:
                 self.caja_ahorro_dolar = True
-                razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de ${Black.cargo_mensual_cajas_ahorro} a partir de la segunda cuenta."
+                razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}, Se aplicará un cargo mensual de ${self.cargo_mensual_cajas_ahorro} a partir de la segunda cuenta."
             else:
                 self.caja_ahorro_dolar = True
                 razon = f"Alta de caja de ahorro en dólares aceptada. Número de cuenta: {numero_cuenta}"
