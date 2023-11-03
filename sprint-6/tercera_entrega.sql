@@ -1,11 +1,22 @@
-
+--Selecciona los regristros de cuentas con saldos negativos.
 SELECT * FROM Cuenta WHERE account_balance < 0;
 
 --Seleccionar el nombre, apellido y edad de los clientes que tengan en el apellido la letra Z:
 
-SELECT customer_name, customer_surname --falta la edad
-FROM Cliente
+SELECT customer_name, customer_surname, strftime('%Y', 'now') - strftime('%Y', dob) - (strftime('%m-%d', 'now') < strftime('%m-%d', dob)) AS edad 
+FROM cliente
 WHERE customer_surname LIKE '%Z%';
+
+--Seleccionar el nombre, apellido, edad y nombre de sucursal de las personas cuyo nombre sea “Brendan” y el resultado ordenarlo por nombre de sucursal
+
+SELECT cliente.customer_name, cliente.customer_surname, 
+       STRFTIME('%Y', 'now') - STRFTIME('%Y', cliente.dob) - (STRFTIME('%m-%d', 'now') < STRFTIME('%m-%d', cliente.dob)) AS edad, 
+       sucursal.branch_name
+FROM cliente
+JOIN sucursal ON cliente.branch_id = sucursal.branch_id
+WHERE cliente.customer_name = 'Brendan'
+ORDER BY sucursal.branch_name ASC;
+
 
 --Seleccionar de la tabla de préstamos los préstamos con un importe mayor a $80,000 y los préstamos prendarios:
 
