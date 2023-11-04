@@ -1,8 +1,669 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Lautaro/Documents/GitHub/ITBANK-FullStack/sprint-6/ITBANK.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3003"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,11:maintipo_moneda"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="caja_ahorro" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="106"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="marca_tarjeta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="121"/><column index="2" value="159"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tipo_moneda" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="78"/><column index="2" value="116"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="INSERT tipo_monedas">INSERT INTO tipo_moneda(moneda_nombre)
-VALUES 
-	(&quot;Pesos&quot;),
-	(&quot;Dolares&quot;)</sql><sql name="INSERT marca_tarjetas">INSERT INTO marca_tarjeta(marca_tarjeta_nombre)
-VALUES 
-	(&quot;VISA&quot;),
-	(&quot;Mastercard&quot;),
-	(&quot;American Express&quot;)</sql><current_tab id="1"/></tab_sql></sqlb_project>
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Lautaro/Documents/GitHub/ITBANK-FullStack/sprint-6/ITBANK.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3003"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/><expanded_item id="4" parent="1"/></tab_structure><tab_browse><current_table name="4,9:maindireccion"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="caja_ahorro" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="106"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/><column index="2" value="112"/><column index="3" value="133"/><column index="4" value="99"/><column index="5" value="73"/><column index="6" value="72"/><column index="7" value="85"/></column_widths><filter_values><column index="1" value="=244"/></filter_values><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_black" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values><column index="1" value="10"/></filter_values><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_classic" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_gold" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="direccion" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="85"/><column index="2" value="235"/><column index="3" value="88"/><column index="4" value="89"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="empleado" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="89"/><column index="2" value="113"/><column index="3" value="134"/><column index="4" value="141"/><column index="6" value="72"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="marca_tarjeta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="121"/><column index="2" value="159"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sucursal" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="72"/><column index="2" value="110"/><column index="3" value="138"/><column index="4" value="132"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tipo_moneda" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="78"/><column index="2" value="116"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="INSERT tipo_monedas">INSERT INTO tipo_moneda(moneda_nombre)
+VALUES 
+	(&quot;Pesos&quot;),
+	(&quot;Dolares&quot;)</sql><sql name="INSERT marca_tarjetas">INSERT INTO marca_tarjeta(marca_tarjeta_nombre)
+VALUES 
+	(&quot;VISA&quot;),
+	(&quot;Mastercard&quot;),
+	(&quot;American Express&quot;)</sql><sql name="data-direcciones.sql">INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #814-7963 Felis St.&quot;),
+  (&quot;301-7211 Accumsan Street&quot;),
+  (&quot;395-4352 Elit Avenue&quot;),
+  (&quot;153-4847 Ipsum Avenue&quot;),
+  (&quot;544-7694 Cras Rd.&quot;),
+  (&quot;909-2381 Lectus St.&quot;),
+  (&quot;Ap #487-8500 Sagittis Av.&quot;),
+  (&quot;Ap #563-4969 Turpis Rd.&quot;),
+  (&quot;P.O. Box 306, 6816 Massa Ave&quot;),
+  (&quot;Ap #369-8275 Ut, Av.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 710, 2015 Nullam Rd.&quot;),
+  (&quot;973-7954 Augue Avenue&quot;),
+  (&quot;836-1023 Ac, Ave&quot;),
+  (&quot;740-2077 Mi Road&quot;),
+  (&quot;Ap #988-4932 Gravida. Ave&quot;),
+  (&quot;Ap #188-5551 Gravida St.&quot;),
+  (&quot;Ap #577-5296 Porttitor Street&quot;),
+  (&quot;Ap #610-3835 Libero Ave&quot;),
+  (&quot;677-2478 Amet Rd.&quot;),
+  (&quot;P.O. Box 206, 1944 Euismod Rd.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;4054 Aliquet, Avenue&quot;),
+  (&quot;P.O. Box 924, 245 Cras Avenue&quot;),
+  (&quot;193-6572 Mollis Rd.&quot;),
+  (&quot;Ap #867-6453 Etiam Rd.&quot;),
+  (&quot;9111 Ante. Avenue&quot;),
+  (&quot;Ap #858-3204 Et Ave&quot;),
+  (&quot;746 Cras Rd.&quot;),
+  (&quot;988-8456 Dictum St.&quot;),
+  (&quot;298-4007 Augue Av.&quot;),
+  (&quot;Ap #689-2846 Leo. Av.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;2440 Massa St.&quot;),
+  (&quot;6041 Enim, Av.&quot;),
+  (&quot;719-2994 Libero Av.&quot;),
+  (&quot;8592 Cursus Av.&quot;),
+  (&quot;4890 Et Avenue&quot;),
+  (&quot;615-997 Leo St.&quot;),
+  (&quot;886-4680 Sodales Ave&quot;),
+  (&quot;Ap #504-2014 Et St.&quot;),
+  (&quot;P.O. Box 935, 8922 Curae Rd.&quot;),
+  (&quot;3862 Nullam St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;550-3107 Lorem, Rd.&quot;),
+  (&quot;279-7063 Velit. Road&quot;),
+  (&quot;371-1916 Dictum. Rd.&quot;),
+  (&quot;9108 Vel, Avenue&quot;),
+  (&quot;Ap #412-9135 Mauris St.&quot;),
+  (&quot;Ap #242-3167 Erat Road&quot;),
+  (&quot;Ap #456-4257 Sed Rd.&quot;),
+  (&quot;454-2867 Tellus Rd.&quot;),
+  (&quot;P.O. Box 161, 2880 Etiam Street&quot;),
+  (&quot;683-5286 Nulla Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #103-9094 Id, Street&quot;),
+  (&quot;7067 Nullam Rd.&quot;),
+  (&quot;1735 Nulla St.&quot;),
+  (&quot;P.O. Box 491, 9827 Parturient Av.&quot;),
+  (&quot;2126 Risus. Road&quot;),
+  (&quot;947-8154 Convallis Ave&quot;),
+  (&quot;Ap #576-1010 Eu Rd.&quot;),
+  (&quot;442-1157 Nunc Street&quot;),
+  (&quot;Ap #490-2089 Ligula. Ave&quot;),
+  (&quot;4074 Ipsum. Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #485-3360 Phasellus St.&quot;),
+  (&quot;3789 Quisque St.&quot;),
+  (&quot;211-3080 Sem Ave&quot;),
+  (&quot;Ap #388-5676 Lectus St.&quot;),
+  (&quot;656-4415 Eget, St.&quot;),
+  (&quot;Ap #508-2834 Metus. St.&quot;),
+  (&quot;3176 Mauris Avenue&quot;),
+  (&quot;971-5510 At Street&quot;),
+  (&quot;608-7763 Tincidunt, St.&quot;),
+  (&quot;291-2576 Massa. St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;371-6552 Est, St.&quot;),
+  (&quot;P.O. Box 823, 4666 Euismod St.&quot;),
+  (&quot;Ap #963-4528 Id, Av.&quot;),
+  (&quot;Ap #682-3464 Cras St.&quot;),
+  (&quot;P.O. Box 802, 5310 Interdum. Avenue&quot;),
+  (&quot;Ap #155-3042 Turpis St.&quot;),
+  (&quot;3339 Lectus Street&quot;),
+  (&quot;872-211 Quisque St.&quot;),
+  (&quot;Ap #863-5948 Curabitur Rd.&quot;),
+  (&quot;P.O. Box 514, 6272 Magna. St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;2284 Elit St.&quot;),
+  (&quot;490-1856 Nonummy Avenue&quot;),
+  (&quot;3422 Cubilia Road&quot;),
+  (&quot;Ap #206-3090 Semper Rd.&quot;),
+  (&quot;7512 Proin Ave&quot;),
+  (&quot;9875 Mauris Ave&quot;),
+  (&quot;P.O. Box 190, 5153 Nec St.&quot;),
+  (&quot;Ap #580-9249 Vitae Av.&quot;),
+  (&quot;113-9016 Sollicitudin Rd.&quot;),
+  (&quot;8253 Porttitor Avenue&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 475, 6592 Rutrum St.&quot;),
+  (&quot;P.O. Box 531, 4851 Tristique Road&quot;),
+  (&quot;258-9480 Mauris Ave&quot;),
+  (&quot;457-9012 Rutrum Street&quot;),
+  (&quot;993-5313 Non, Av.&quot;),
+  (&quot;407 Aenean St.&quot;),
+  (&quot;P.O. Box 230, 4257 Cum St.&quot;),
+  (&quot;762-9207 Non, Street&quot;),
+  (&quot;P.O. Box 710, 3864 Neque St.&quot;),
+  (&quot;Ap #559-8202 Amet, Road&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 145, 3173 Integer Av.&quot;),
+  (&quot;P.O. Box 659, 9147 Vitae Ave&quot;),
+  (&quot;6314 In Ave&quot;),
+  (&quot;Ap #141-2559 Adipiscing Avenue&quot;),
+  (&quot;490 Rutrum, Ave&quot;),
+  (&quot;856-3111 Porttitor St.&quot;),
+  (&quot;P.O. Box 210, 7227 Pede, Avenue&quot;),
+  (&quot;Ap #958-5474 Ligula. Ave&quot;),
+  (&quot;P.O. Box 631, 4668 Nec, Road&quot;),
+  (&quot;288-1137 Ullamcorper, St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;2807 Lacus Ave&quot;),
+  (&quot;8537 Mauris Rd.&quot;),
+  (&quot;3743 Aliquet St.&quot;),
+  (&quot;898-5770 Orci. Av.&quot;),
+  (&quot;939-5876 Integer Ave&quot;),
+  (&quot;Ap #473-9055 Curae Av.&quot;),
+  (&quot;486-5063 Dis Av.&quot;),
+  (&quot;359-3803 Libero St.&quot;),
+  (&quot;384-3382 Risus. Avenue&quot;),
+  (&quot;2577 Proin Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #584-9148 Enim. St.&quot;),
+  (&quot;Ap #922-2177 Integer Av.&quot;),
+  (&quot;Ap #631-1464 Tincidunt Rd.&quot;),
+  (&quot;152-2706 Sit Avenue&quot;),
+  (&quot;Ap #193-7470 Non Rd.&quot;),
+  (&quot;382-6026 Dignissim Avenue&quot;),
+  (&quot;243-7050 Eleifend Rd.&quot;),
+  (&quot;Ap #259-970 Egestas. St.&quot;),
+  (&quot;2999 Risus. Rd.&quot;),
+  (&quot;396-4240 Tincidunt Av.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #667-5407 Lacus. Av.&quot;),
+  (&quot;9371 Ac St.&quot;),
+  (&quot;Ap #621-9771 Arcu. Rd.&quot;),
+  (&quot;2796 Turpis Rd.&quot;),
+  (&quot;512-2741 Velit Road&quot;),
+  (&quot;Ap #341-9277 Eu Rd.&quot;),
+  (&quot;P.O. Box 612, 6161 Eu Road&quot;),
+  (&quot;P.O. Box 395, 5849 Consequat Av.&quot;),
+  (&quot;799-8821 Blandit. Rd.&quot;),
+  (&quot;4715 Feugiat. Road&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;119-8522 Vitae Rd.&quot;),
+  (&quot;Ap #790-2649 Adipiscing Rd.&quot;),
+  (&quot;Ap #665-1580 Quam. Rd.&quot;),
+  (&quot;277-5163 At, St.&quot;),
+  (&quot;815-6322 Massa Road&quot;),
+  (&quot;Ap #310-7625 Libero St.&quot;),
+  (&quot;791-6397 Lectus Rd.&quot;),
+  (&quot;710-7268 Maecenas Street&quot;),
+  (&quot;5746 Convallis Avenue&quot;),
+  (&quot;P.O. Box 971, 6614 Cras Rd.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #177-4605 Neque Rd.&quot;),
+  (&quot;P.O. Box 118, 2266 Facilisis Rd.&quot;),
+  (&quot;929-3597 Sodales Road&quot;),
+  (&quot;3003 Tincidunt, Avenue&quot;),
+  (&quot;Ap #758-9617 Vestibulum Avenue&quot;),
+  (&quot;P.O. Box 938, 5849 Molestie Avenue&quot;),
+  (&quot;8988 In, Rd.&quot;),
+  (&quot;901-8316 Magnis Av.&quot;),
+  (&quot;555-8666 Elit Ave&quot;),
+  (&quot;773-2325 Feugiat. Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 249, 8403 Etiam Street&quot;),
+  (&quot;Ap #791-5909 A Road&quot;),
+  (&quot;265-2729 Posuere Avenue&quot;),
+  (&quot;113-803 Augue Road&quot;),
+  (&quot;P.O. Box 672, 6798 Semper Ave&quot;),
+  (&quot;P.O. Box 364, 7528 Natoque St.&quot;),
+  (&quot;Ap #238-5291 Vitae, Rd.&quot;),
+  (&quot;273-2404 Non, Street&quot;),
+  (&quot;5492 Non, Road&quot;),
+  (&quot;424-1143 Ullamcorper, St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;866-6325 Egestas St.&quot;),
+  (&quot;924-3457 Placerat, Rd.&quot;),
+  (&quot;P.O. Box 173, 7107 Pharetra Rd.&quot;),
+  (&quot;828-9598 Eu Rd.&quot;),
+  (&quot;P.O. Box 800, 6839 Diam Road&quot;),
+  (&quot;744-8298 Est, Rd.&quot;),
+  (&quot;P.O. Box 900, 8085 Consequat Street&quot;),
+  (&quot;889-442 Pellentesque Av.&quot;),
+  (&quot;818-9815 Curabitur Ave&quot;),
+  (&quot;Ap #976-5948 Aliquam Rd.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #757-2721 Lorem Avenue&quot;),
+  (&quot;566 Proin Ave&quot;),
+  (&quot;5897 Orci, Rd.&quot;),
+  (&quot;Ap #787-2038 Donec Road&quot;),
+  (&quot;P.O. Box 424, 6510 Fermentum Avenue&quot;),
+  (&quot;Ap #780-2747 Et, St.&quot;),
+  (&quot;P.O. Box 466, 915 A, Avenue&quot;),
+  (&quot;619-9250 Nisi Av.&quot;),
+  (&quot;9447 Gravida. St.&quot;),
+  (&quot;655-2010 Metus Av.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 493, 9262 Natoque St.&quot;),
+  (&quot;Ap #769-871 Vehicula Road&quot;),
+  (&quot;Ap #228-524 Fermentum Av.&quot;),
+  (&quot;Ap #413-6270 Risus. Rd.&quot;),
+  (&quot;Ap #651-3131 Non, Rd.&quot;),
+  (&quot;969-8042 Penatibus Av.&quot;),
+  (&quot;4265 Ante Street&quot;),
+  (&quot;9062 Proin Rd.&quot;),
+  (&quot;P.O. Box 565, 1710 Nunc Ave&quot;),
+  (&quot;Ap #423-9275 Malesuada Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #415-5204 Pellentesque Rd.&quot;),
+  (&quot;853-3436 Mollis St.&quot;),
+  (&quot;Ap #548-6087 Enim Avenue&quot;),
+  (&quot;830-2227 Sollicitudin St.&quot;),
+  (&quot;333-8233 Parturient Rd.&quot;),
+  (&quot;1199 Justo Ave&quot;),
+  (&quot;P.O. Box 188, 8936 Dolor. Rd.&quot;),
+  (&quot;Ap #782-1887 Lobortis Av.&quot;),
+  (&quot;Ap #412-876 Donec Av.&quot;),
+  (&quot;Ap #458-1652 Sit St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;493-2122 Faucibus Rd.&quot;),
+  (&quot;Ap #109-3831 Sed Ave&quot;),
+  (&quot;369-2333 Sem Rd.&quot;),
+  (&quot;P.O. Box 124, 4642 Lobortis Ave&quot;),
+  (&quot;Ap #764-2475 Morbi Rd.&quot;),
+  (&quot;987-6219 Condimentum Rd.&quot;),
+  (&quot;Ap #854-9804 Sed Street&quot;),
+  (&quot;P.O. Box 555, 8587 Tempus St.&quot;),
+  (&quot;Ap #549-5094 Nibh. Ave&quot;),
+  (&quot;P.O. Box 769, 6703 Placerat Avenue&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #113-9568 Dui St.&quot;),
+  (&quot;Ap #555-8518 Sagittis. Ave&quot;),
+  (&quot;5349 Nec Av.&quot;),
+  (&quot;Ap #582-5174 Tempor Road&quot;),
+  (&quot;981-4888 Ac Rd.&quot;),
+  (&quot;141-7829 Tortor, St.&quot;),
+  (&quot;Ap #616-5505 Sollicitudin Ave&quot;),
+  (&quot;4528 Consectetuer Road&quot;),
+  (&quot;703-9476 Taciti Street&quot;),
+  (&quot;619-4299 In, Av.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;1878 A Street&quot;),
+  (&quot;Ap #991-6236 Vestibulum St.&quot;),
+  (&quot;175-1073 Nascetur Street&quot;),
+  (&quot;Ap #952-1635 Ac Street&quot;),
+  (&quot;676-1630 Vivamus St.&quot;),
+  (&quot;Ap #448-2018 Lacus. Avenue&quot;),
+  (&quot;451-7697 Amet, Road&quot;),
+  (&quot;Ap #102-4906 Elementum Street&quot;),
+  (&quot;616-5949 Pulvinar Av.&quot;),
+  (&quot;663-4869 Sit Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #774-5890 Id St.&quot;),
+  (&quot;P.O. Box 426, 3856 Amet St.&quot;),
+  (&quot;8562 Ullamcorper Road&quot;),
+  (&quot;Ap #580-4059 Praesent Street&quot;),
+  (&quot;800-1704 Varius Street&quot;),
+  (&quot;Ap #244-6155 Orci Ave&quot;),
+  (&quot;257-6920 Venenatis Rd.&quot;),
+  (&quot;P.O. Box 137, 5093 Cursus. Rd.&quot;),
+  (&quot;4493 Vestibulum Rd.&quot;),
+  (&quot;657-7169 Eleifend. St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 957, 8238 Mi. Av.&quot;),
+  (&quot;1202 Purus, Road&quot;),
+  (&quot;Ap #135-476 Purus, Avenue&quot;),
+  (&quot;6361 Cum Av.&quot;),
+  (&quot;Ap #693-7975 Enim. Street&quot;),
+  (&quot;P.O. Box 685, 2303 Sed Ave&quot;),
+  (&quot;1403 Ultrices. Road&quot;),
+  (&quot;4402 Odio St.&quot;),
+  (&quot;155-7675 Magna St.&quot;),
+  (&quot;P.O. Box 161, 9182 Ac, Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;450-3619 Eget St.&quot;),
+  (&quot;P.O. Box 124, 7947 Tortor. Av.&quot;),
+  (&quot;Ap #602-8299 Risus. Rd.&quot;),
+  (&quot;159-4017 Gravida St.&quot;),
+  (&quot;Ap #497-1104 Molestie St.&quot;),
+  (&quot;Ap #805-6183 Dui Rd.&quot;),
+  (&quot;285-6066 Pellentesque Rd.&quot;),
+  (&quot;Ap #618-2499 Nonummy St.&quot;),
+  (&quot;P.O. Box 471, 4745 Imperdiet, Rd.&quot;),
+  (&quot;420-8716 Dolor, Rd.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 409, 7338 Erat. Rd.&quot;),
+  (&quot;Ap #290-1399 Ut Rd.&quot;),
+  (&quot;P.O. Box 580, 2698 Mi St.&quot;),
+  (&quot;2212 Ac, Rd.&quot;),
+  (&quot;182-8744 Lobortis. St.&quot;),
+  (&quot;9253 Semper St.&quot;),
+  (&quot;2599 Justo Avenue&quot;),
+  (&quot;Ap #871-6714 Lectus Road&quot;),
+  (&quot;P.O. Box 293, 8082 Enim, Rd.&quot;),
+  (&quot;871-5592 Velit Road&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 903, 5183 Euismod St.&quot;),
+  (&quot;331-1547 Vulputate Rd.&quot;),
+  (&quot;Ap #273-3346 Congue. Avenue&quot;),
+  (&quot;Ap #807-5908 Fermentum Ave&quot;),
+  (&quot;P.O. Box 971, 9088 Nec, Street&quot;),
+  (&quot;Ap #957-2815 Ut, Avenue&quot;),
+  (&quot;Ap #973-5476 Nulla St.&quot;),
+  (&quot;Ap #910-2965 Lectus. Avenue&quot;),
+  (&quot;Ap #726-8302 Mus. Street&quot;),
+  (&quot;694-8057 Mattis St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;1116 Morbi Av.&quot;),
+  (&quot;703-4851 Vitae Ave&quot;),
+  (&quot;Ap #634-5431 Id St.&quot;),
+  (&quot;6433 A, Rd.&quot;),
+  (&quot;P.O. Box 791, 9025 Maecenas Street&quot;),
+  (&quot;4144 Tellus. Rd.&quot;),
+  (&quot;Ap #668-1216 Lorem, St.&quot;),
+  (&quot;583-2316 Quam, Road&quot;),
+  (&quot;252-1934 Enim, Rd.&quot;),
+  (&quot;572-7832 Sem St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;576-3447 Amet Avenue&quot;),
+  (&quot;Ap #431-6154 Faucibus St.&quot;),
+  (&quot;Ap #969-277 Ligula. Street&quot;),
+  (&quot;Ap #681-7177 Donec Avenue&quot;),
+  (&quot;3668 A St.&quot;),
+  (&quot;P.O. Box 919, 6238 Lectus Road&quot;),
+  (&quot;557-7381 Dignissim Av.&quot;),
+  (&quot;Ap #541-6136 Eu, Ave&quot;),
+  (&quot;Ap #363-1427 Diam Road&quot;),
+  (&quot;Ap #229-4214 Magna, Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;336-8673 Lorem Avenue&quot;),
+  (&quot;Ap #454-9633 Consequat Av.&quot;),
+  (&quot;P.O. Box 300, 8382 Etiam St.&quot;),
+  (&quot;778-8674 Nisi Ave&quot;),
+  (&quot;214-3488 Tellus Road&quot;),
+  (&quot;Ap #636-3975 Quisque St.&quot;),
+  (&quot;Ap #506-4406 Elementum Rd.&quot;),
+  (&quot;5372 Nunc Road&quot;),
+  (&quot;945-940 Cras Av.&quot;),
+  (&quot;Ap #847-7472 Proin Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;240-1329 Massa Rd.&quot;),
+  (&quot;Ap #863-3776 Sociis Ave&quot;),
+  (&quot;Ap #858-4398 Egestas Rd.&quot;),
+  (&quot;P.O. Box 272, 9813 Ornare, St.&quot;),
+  (&quot;Ap #459-2450 Quisque Avenue&quot;),
+  (&quot;522-5744 Accumsan Ave&quot;),
+  (&quot;Ap #207-9013 Dui, St.&quot;),
+  (&quot;5876 Felis St.&quot;),
+  (&quot;794-4092 Magna. Rd.&quot;),
+  (&quot;581-4013 Lacinia St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #876-735 Vulputate St.&quot;),
+  (&quot;177-818 Tincidunt Rd.&quot;),
+  (&quot;8307 Amet Ave&quot;),
+  (&quot;824-283 Luctus, Street&quot;),
+  (&quot;716 Orci, St.&quot;),
+  (&quot;325-2111 Placerat, Rd.&quot;),
+  (&quot;Ap #411-7640 Interdum St.&quot;),
+  (&quot;P.O. Box 741, 1771 Sit Av.&quot;),
+  (&quot;138-2982 Nisi Ave&quot;),
+  (&quot;226-1688 Venenatis Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 991, 1389 Semper, Rd.&quot;),
+  (&quot;P.O. Box 986, 9290 Arcu Ave&quot;),
+  (&quot;Ap #575-3187 Ante Av.&quot;),
+  (&quot;P.O. Box 954, 3636 Sed Rd.&quot;),
+  (&quot;326-8993 Nec, Rd.&quot;),
+  (&quot;P.O. Box 131, 7734 Id Road&quot;),
+  (&quot;Ap #303-378 Montes, Rd.&quot;),
+  (&quot;787-2636 Nulla Road&quot;),
+  (&quot;P.O. Box 490, 3157 Pharetra Av.&quot;),
+  (&quot;4970 Nulla. St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;540-7316 Sollicitudin St.&quot;),
+  (&quot;758-881 Semper Road&quot;),
+  (&quot;3665 Proin Street&quot;),
+  (&quot;P.O. Box 402, 5403 Molestie Rd.&quot;),
+  (&quot;P.O. Box 310, 5383 Hendrerit. St.&quot;),
+  (&quot;P.O. Box 895, 2422 Malesuada Avenue&quot;),
+  (&quot;166 Mauris Rd.&quot;),
+  (&quot;Ap #639-6177 Ipsum St.&quot;),
+  (&quot;627-5631 Mauris. Rd.&quot;),
+  (&quot;544-1079 Tristique Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;8123 Molestie Rd.&quot;),
+  (&quot;Ap #117-841 Semper Rd.&quot;),
+  (&quot;Ap #124-6356 Nulla St.&quot;),
+  (&quot;P.O. Box 260, 3414 Sapien. Rd.&quot;),
+  (&quot;Ap #653-4518 Et St.&quot;),
+  (&quot;P.O. Box 939, 8205 Molestie Rd.&quot;),
+  (&quot;976-6919 Quis, Ave&quot;),
+  (&quot;Ap #654-7410 Enim Avenue&quot;),
+  (&quot;Ap #548-1778 Lectus Road&quot;),
+  (&quot;499-2652 Aliquam Rd.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #183-8437 Dignissim Street&quot;),
+  (&quot;175-1217 Cursus Road&quot;),
+  (&quot;197-8204 Diam Rd.&quot;),
+  (&quot;P.O. Box 343, 6446 Ridiculus Rd.&quot;),
+  (&quot;8365 Ipsum Street&quot;),
+  (&quot;131-4798 Nisi Rd.&quot;),
+  (&quot;P.O. Box 214, 4319 Sed Ave&quot;),
+  (&quot;680-5386 Ligula. Av.&quot;),
+  (&quot;163-9361 Suspendisse St.&quot;),
+  (&quot;1131 In Street&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #335-6146 Proin Rd.&quot;),
+  (&quot;P.O. Box 194, 2993 Blandit St.&quot;),
+  (&quot;515-7999 Nisl. St.&quot;),
+  (&quot;P.O. Box 730, 6287 Sit St.&quot;),
+  (&quot;Ap #176-5784 Sodales Rd.&quot;),
+  (&quot;P.O. Box 776, 4075 Aenean Avenue&quot;),
+  (&quot;695-4282 Consequat Avenue&quot;),
+  (&quot;318-1768 Mauris Av.&quot;),
+  (&quot;P.O. Box 521, 5336 Quam St.&quot;),
+  (&quot;964-9033 Tristique Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;181-7238 Tellus Road&quot;),
+  (&quot;566-2875 Nibh. St.&quot;),
+  (&quot;506-6318 Ultrices Ave&quot;),
+  (&quot;Ap #896-8827 Cursus Av.&quot;),
+  (&quot;Ap #122-7107 Malesuada St.&quot;),
+  (&quot;737-5575 Tincidunt St.&quot;),
+  (&quot;780-3587 Sed Avenue&quot;),
+  (&quot;547-7996 Dis Road&quot;),
+  (&quot;486-5112 Dolor. Road&quot;),
+  (&quot;893-6361 Nunc Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;P.O. Box 882, 4886 Ac Rd.&quot;),
+  (&quot;P.O. Box 587, 3997 Nec, Rd.&quot;),
+  (&quot;5942 Pellentesque Avenue&quot;),
+  (&quot;151-2195 Vivamus Av.&quot;),
+  (&quot;9850 Aliquet Av.&quot;),
+  (&quot;2529 Felis Rd.&quot;),
+  (&quot;834-2985 Felis Street&quot;),
+  (&quot;P.O. Box 600, 4531 Molestie Ave&quot;),
+  (&quot;682-1066 Lectus Avenue&quot;),
+  (&quot;553-778 Elit. Avenue&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;2828 Integer Rd.&quot;),
+  (&quot;P.O. Box 814, 8484 Et Street&quot;),
+  (&quot;9690 Vitae Street&quot;),
+  (&quot;P.O. Box 111, 1420 Pellentesque. Street&quot;),
+  (&quot;635-8130 Neque Street&quot;),
+  (&quot;P.O. Box 792, 315 Nisi. Rd.&quot;),
+  (&quot;Ap #239-8450 Ligula. Road&quot;),
+  (&quot;Ap #763-7280 Pede. Rd.&quot;),
+  (&quot;416-2442 Vestibulum Ave&quot;),
+  (&quot;P.O. Box 503, 8986 Nec St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;913-5432 Laoreet Street&quot;),
+  (&quot;P.O. Box 496, 4658 Ornare St.&quot;),
+  (&quot;9722 Iaculis Street&quot;),
+  (&quot;P.O. Box 170, 8604 Malesuada Avenue&quot;),
+  (&quot;Ap #458-2211 Netus Avenue&quot;),
+  (&quot;564-7451 Luctus St.&quot;),
+  (&quot;7053 Enim, Ave&quot;),
+  (&quot;Ap #288-8971 Integer St.&quot;),
+  (&quot;P.O. Box 195, 7858 Nulla. Road&quot;),
+  (&quot;P.O. Box 129, 3109 Et, St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;7521 A Street&quot;),
+  (&quot;P.O. Box 941, 3797 Duis St.&quot;),
+  (&quot;444-7447 Interdum. Avenue&quot;),
+  (&quot;Ap #222-1873 Rutrum St.&quot;),
+  (&quot;206-5620 Ante St.&quot;),
+  (&quot;841-1779 Primis Avenue&quot;),
+  (&quot;P.O. Box 797, 6172 Elit, Av.&quot;),
+  (&quot;Ap #339-3157 Ultricies Street&quot;),
+  (&quot;Ap #703-2745 Leo. St.&quot;),
+  (&quot;P.O. Box 527, 1142 Et, Road&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;9005 Nec, Ave&quot;),
+  (&quot;Ap #363-6462 Penatibus Street&quot;),
+  (&quot;403-3969 Nec Av.&quot;),
+  (&quot;456 Velit Rd.&quot;),
+  (&quot;Ap #468-3456 Tempor Av.&quot;),
+  (&quot;P.O. Box 225, 2569 Mi Ave&quot;),
+  (&quot;960-529 Interdum Rd.&quot;),
+  (&quot;491-9711 Adipiscing St.&quot;),
+  (&quot;443-5072 Nulla Rd.&quot;),
+  (&quot;4302 Neque Road&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #303-3311 Velit. Street&quot;),
+  (&quot;Ap #834-4796 Sapien, Road&quot;),
+  (&quot;Ap #370-1636 Et, St.&quot;),
+  (&quot;P.O. Box 401, 2854 Fringilla Street&quot;),
+  (&quot;888-4960 Fringilla Ave&quot;),
+  (&quot;Ap #744-9139 Sed, Road&quot;),
+  (&quot;Ap #693-8468 In St.&quot;),
+  (&quot;232-6307 Ultricies Avenue&quot;),
+  (&quot;Ap #708-1742 Congue Ave&quot;),
+  (&quot;Ap #872-907 In Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;1974 Pellentesque St.&quot;),
+  (&quot;P.O. Box 250, 3210 Fusce Rd.&quot;),
+  (&quot;665-4427 Sit St.&quot;),
+  (&quot;856-9030 At Street&quot;),
+  (&quot;Ap #798-6208 Aliquam Avenue&quot;),
+  (&quot;651-671 Consectetuer St.&quot;),
+  (&quot;Ap #764-2491 Aenean Av.&quot;),
+  (&quot;308-9876 Eros Avenue&quot;),
+  (&quot;Ap #816-5827 Dui St.&quot;),
+  (&quot;393-2466 Varius Avenue&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;Ap #577-3103 Eu Road&quot;),
+  (&quot;817-7141 Pharetra St.&quot;),
+  (&quot;161-9171 Sit Rd.&quot;),
+  (&quot;P.O. Box 226, 1881 Lacus. Av.&quot;),
+  (&quot;P.O. Box 827, 3152 Fermentum St.&quot;),
+  (&quot;641-5887 Sed Street&quot;),
+  (&quot;Ap #540-8771 Ac Ave&quot;),
+  (&quot;Ap #227-4475 Quis St.&quot;),
+  (&quot;Ap #479-4618 Pretium Rd.&quot;),
+  (&quot;P.O. Box 709, 1653 Praesent Ave&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;7293 Sed St.&quot;),
+  (&quot;4866 Ut Road&quot;),
+  (&quot;435-3844 Cubilia Road&quot;),
+  (&quot;Ap #168-1449 Euismod Rd.&quot;),
+  (&quot;P.O. Box 343, 594 Tincidunt Rd.&quot;),
+  (&quot;Ap #304-8217 Id, Rd.&quot;),
+  (&quot;Ap #138-2216 Augue St.&quot;),
+  (&quot;Ap #490-5768 Montes, Street&quot;),
+  (&quot;Ap #711-7733 Non, St.&quot;),
+  (&quot;9329 Molestie St.&quot;);
+INSERT INTO `Direccion` (`direccion_completa`)
+VALUES
+  (&quot;713-3105 Vitae Road&quot;),
+  (&quot;2685 Cras Rd.&quot;),
+  (&quot;Ap #263-8392 Sodales. Rd.&quot;),
+  (&quot;2626 Vel Ave&quot;),
+  (&quot;8947 Et Road&quot;),
+  (&quot;P.O. Box 485, 7797 Duis Rd.&quot;),
+  (&quot;P.O. Box 813, 2174 Eget, Rd.&quot;),
+  (&quot;154-7044 Ipsum St.&quot;),
+  (&quot;930-7070 Torquent Street&quot;),
+  (&quot;6464 Est Rd.&quot;);
+</sql><sql name="Distribucion Clientes">DROP TABLE IF EXISTS PKUnicas;
+
+CREATE TEMPORARY TABLE PKUnicas AS
+	SELECT ROW_NUMBER() OVER () AS customer_id
+	FROM cliente
+	LIMIT 500;
+
+-- Asigno aleatoriamente las customer_id entre los tipos de clientes
+INSERT INTO cliente_classic (customer_id)
+SELECT customer_id
+FROM PKUnicas
+ORDER BY RANDOM()
+LIMIT 300;
+
+INSERT INTO cliente_gold (customer_id)
+SELECT customer_id
+FROM PKUnicas
+ORDER BY RANDOM()
+LIMIT 150;
+
+INSERT INTO cliente_black (customer_id)
+SELECT customer_id
+FROM PKUnicas
+ORDER BY RANDOM()
+LIMIT 50;</sql><sql name="Distribucion Direcciones">-- Asumo que empleado, cliente y sucursal no pueden tener la mismas direccion
+-- Asigno aleatoriamente las direcciones entre clientes y empleados
+
+-- Selecciono direcciones aleatoriamente que no se encuentren en sucursal
+-- Selecciono direcciones aleatoriamente que no se encuentren en sucursal ni en cliente
+WITH DireccionesAleatorias AS (
+    SELECT direccion_id, cliente.customer_id
+    FROM direccion, cliente
+    WHERE direccion_id NOT IN (SELECT branch_address_id 
+	                           FROM sucursal)
+    ORDER BY RANDOM()
+    LIMIT 500
+),
+DireccionesAleatorias2 AS (
+    SELECT direccion_id, empleado.employee_id
+    FROM direccion, empleado
+    WHERE direccion_id NOT IN (SELECT direccion_id 
+	                           FROM DireccionesAleatorias
+							   UNION
+							   SELECT branch_address_id 
+	                           FROM sucursal)
+    ORDER BY RANDOM()
+)
+
+-- Actualizo la tabla direccion con las nuevas asignaciones
+UPDATE direccion
+SET customer_id = (
+    SELECT customer_id
+    FROM DireccionesAleatorias
+    WHERE direccion.direccion_id = DireccionesAleatorias.direccion_id
+),
+employee_id = (
+    SELECT employee_id
+    FROM DireccionesAleatorias2
+    WHERE direccion.direccion_id = DireccionesAleatorias2.direccion_id
+);</sql><sql name="SQL 8">SELECT count(*)
+FROM sucursal
+WHERE branch_address_id &lt;= 500</sql><current_tab id="4"/></tab_sql></sqlb_project>
