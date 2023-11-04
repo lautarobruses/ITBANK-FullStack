@@ -17,22 +17,32 @@ JOIN sucursal ON cliente.branch_id = sucursal.branch_id
 WHERE cliente.customer_name = 'Brendan'
 ORDER BY sucursal.branch_name ASC;
 
+--Seleccionar de la tabla de préstamos, los préstamos con un importe mayor a $80.000 y los préstamos prendarios utilizando la unión de tablas/consultas (recordar que en las bases de datos la moneda se guarda como integer, en este caso con 2 centavos)
 
---Seleccionar de la tabla de préstamos los préstamos con un importe mayor a $80,000 y los préstamos prendarios:
+SELECT loan_type, loan_date, loan_total
+FROM prestamo
+WHERE loan_total > 8000000
 
-SELECT * FROM Prestamo WHERE loan_total > 80000 OR tipo =; --Falta tipo prendario
+UNION
 
---Seleccionar los préstamos cuyo importe sea mayor que el importe medio de todos los préstamos:
+-- Seleccionar préstamos prendarios
+SELECT loan_type, loan_date, loan_total
+FROM prestamo
+WHERE loan_type = 'PRENDARIO';
+
+--Seleccionar los préstamos cuyo importe sea mayor que el importe medio de todos los préstamos
 
 SELECT * FROM Prestamo WHERE loan_total > (SELECT AVG(loan_total) FROM Prestamo);
 
 --Contar la cantidad de clientes menores a 50 años:
 
-SELECT COUNT(*) FROM Cliente WHERE --Falta la edad < 50;
+SELECT COUNT(*)
+FROM cliente
+WHERE strftime('%Y', 'now') - strftime('%Y', dob) < 50;
 
 --Seleccionar las primeras 5 cuentas con saldo mayor a $8,000:
 
-SELECT * FROM Cuenta WHERE account_balance > 8000 LIMIT 5;
+SELECT * FROM cuenta WHERE balance > 800000 LIMIT 5;
 
 --Seleccionar los préstamos que tengan fecha en abril, junio y agosto, ordenándolos por importe:
 

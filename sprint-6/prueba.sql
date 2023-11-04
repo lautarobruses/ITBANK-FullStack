@@ -1,5 +1,3 @@
---Seleccionar de la tabla de préstamos, los préstamos con un importe mayor a $80.000 y los préstamos prendarios utilizando la unión de tablas/consultas (recordar que en las bases de datos la moneda se guarda como integer, en este caso con 2 centavos)
+--Seleccionar las primeras 5 cuentas con saldo mayor a $8,000:
 
-SELECT * FROM prestamo 
-WHERE loan_total > 8000000 and loan_type = 'PRENDARIO';
-
+SELECT * FROM cuenta WHERE balance > 800000 LIMIT 5;
