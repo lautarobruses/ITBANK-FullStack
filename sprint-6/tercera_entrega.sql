@@ -1,5 +1,5 @@
 --Selecciona los regristros de cuentas con saldos negativos.
-SELECT * FROM Cuenta WHERE account_balance < 0;
+SELECT * FROM cuenta WHERE balance < 0;
 
 --Seleccionar el nombre, apellido y edad de los clientes que tengan en el apellido la letra Z:
 
@@ -44,6 +44,12 @@ WHERE strftime('%Y', 'now') - strftime('%Y', dob) < 50;
 
 SELECT * FROM cuenta WHERE balance > 800000 LIMIT 5;
 
---Seleccionar los préstamos que tengan fecha en abril, junio y agosto, ordenándolos por importe:
+--Seleccionar los préstamos que tengan fecha en abril, junio y agosto, ordenándolos por importe
 
 SELECT * FROM Prestamo WHERE strftime('%m', loan_date) IN ('04', '06', '08') ORDER BY loan_total;
+
+--Obtener el importe total de los prestamos agrupados por tipo de préstamos. Por cada tipo de préstamo de la tabla préstamo, calcular la suma de sus importes. Renombrar la columna como loan_total_accu
+
+SELECT loan_type, SUM(loan_total) AS loan_total_accu
+FROM prestamo
+GROUP BY loan_type;
