@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Lautaro/Documents/GitHub/ITBANK-FullStack/sprint-6/ITBANK.db" readonly="0" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2881"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:mainempleado"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="caja_ahorro" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="106"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/><column index="2" value="112"/><column index="3" value="133"/><column index="4" value="99"/><column index="5" value="73"/><column index="6" value="72"/><column index="7" value="85"/></column_widths><filter_values><column index="1" value="=244"/></filter_values><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_black" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_classic" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_gold" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cuenta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="61"/><column index="3" value="233"/><column index="4" value="88"/><column index="5" value="111"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cuenta_corriente" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="42"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="direccion" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="85"/><column index="2" value="235"/><column index="3" value="88"/><column index="4" value="89"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="empleado" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="7" mode="0"/></sort><column_widths><column index="1" value="89"/><column index="2" value="113"/><column index="3" value="134"/><column index="4" value="141"/><column index="6" value="72"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="errores" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="61"/><column index="2" value="107"/><column index="3" value="80"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="marca_tarjeta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="121"/><column index="2" value="159"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sucursal" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="72"/><column index="2" value="110"/><column index="3" value="138"/><column index="4" value="132"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tarjeta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="111"/><column index="2" value="88"/><column index="3" value="194"/><column index="4" value="172"/><column index="5" value="191"/><column index="6" value="88"/><column index="7" value="121"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tarjeta_credito" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="111"/><column index="2" value="150"/><column index="3" value="130"/><column index="4" value="118"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tipo_moneda" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="78"/><column index="2" value="116"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="data-tarjeta-credito.sql">INSERT INTO `tarjeta_credito` (`cantidad_extensiones`,`limite_en_un_pago`,`limite_en_cuotas`)
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Lautaro/Documents/GitHub/ITBANK-FullStack/sprint-6/ITBANK.db" readonly="0" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2881"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,7:maintarjeta"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="caja_ahorro" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="106"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/><column index="2" value="112"/><column index="3" value="133"/><column index="4" value="99"/><column index="5" value="73"/><column index="6" value="72"/><column index="7" value="85"/></column_widths><filter_values><column index="1" value="=403"/></filter_values><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_black" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_classic" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cliente_gold" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cuenta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="61"/><column index="3" value="233"/><column index="4" value="88"/><column index="5" value="111"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="cuenta_corriente" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="79"/><column index="2" value="42"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="direccion" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="85"/><column index="2" value="235"/><column index="3" value="88"/><column index="4" value="89"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="empleado" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="7" mode="0"/></sort><column_widths><column index="1" value="89"/><column index="2" value="113"/><column index="3" value="134"/><column index="4" value="141"/><column index="6" value="72"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="errores" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="61"/><column index="2" value="107"/><column index="3" value="80"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="marca_tarjeta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="121"/><column index="2" value="159"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sucursal" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="72"/><column index="2" value="110"/><column index="3" value="138"/><column index="4" value="132"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tarjeta" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="111"/><column index="2" value="88"/><column index="3" value="194"/><column index="4" value="172"/><column index="5" value="191"/><column index="6" value="88"/><column index="7" value="121"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tarjeta_credito" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="111"/><column index="2" value="150"/><column index="3" value="130"/><column index="4" value="118"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="tipo_moneda" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="78"/><column index="2" value="116"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="data-tarjeta-credito.sql">INSERT INTO `tarjeta_credito` (`cantidad_extensiones`,`limite_en_un_pago`,`limite_en_cuotas`)
 VALUES
   (1,150000,100000),
   (2,150000,100000),
@@ -577,7 +577,9 @@ SET customer_id = (
 		SELECT employee_id
 		FROM DireccionesAleatorias2
 		WHERE direccion.direccion_id = DireccionesAleatorias2.direccion_id
-	);</sql><sql name="condicion_tarjeta_cliente_classic">DROP TRIGGER IF EXISTS verifica_tarjeta_debito_cliente_classic;
+	);</sql><sql name="condicion_tarjeta_cliente_classic">--ESTE ARCHIVO AL FINAL, NO SE UTILIZA
+
+DROP TRIGGER IF EXISTS verifica_tarjeta_debito_cliente_classic;
 DROP TRIGGER IF EXISTS verifica_tarjeta_credito_cliente_classic;
 
 -- Crear un trigger que verifica la condición antes de asignar una tarjeta de crédito
@@ -606,32 +608,106 @@ BEGIN
 	INSERT INTO errores (error_message, error_date) VALUES ('Los clientes classic no tienen acceso a tarjetas de crédito.', datetime(now));
 	SELECT RAISE(ABORT, 'Los clientes classic no tienen acceso a tarjetas de crédito.');
 END;
+
+--ESTE ARCHIVO AL FINAL, NO SE UTILIZA
+</sql><sql name="distribucion_direcciones.sql">-- Asumo que empleado, cliente y sucursal no pueden tener la mismas direccion
+-- Asigno aleatoriamente las direcciones entre clientes y empleados
 
-</sql><sql name="distribucion_tarjetas_credito">DROP TABLE IF EXISTS PKUnicas;
+-- Selecciono direcciones aleatoriamente que no se encuentren en sucursal
+WITH DireccionesAleatorias AS (
+    SELECT direccion_id, cliente.customer_id
+    FROM direccion, cliente
+    WHERE direccion_id NOT IN (SELECT branch_address_id 
+	                           FROM sucursal)
+    ORDER BY RANDOM()
+    LIMIT 500
+),
+-- Selecciono direcciones aleatoriamente que no se encuentren en sucursal ni en cliente
+DireccionesAleatorias2 AS (
+    SELECT direccion_id, empleado.employee_id
+    FROM direccion, empleado
+    WHERE direccion_id NOT IN (SELECT direccion_id 
+	                           FROM DireccionesAleatorias
+							   UNION
+							   SELECT branch_address_id 
+	                           FROM sucursal)
+    ORDER BY RANDOM()
+)
 
-CREATE TEMPORARY TABLE PKUnicas AS
-	SELECT ROW_NUMBER() OVER () AS tarjeta_numero
-	FROM tarjeta
-	LIMIT 500;
-	
--- Asigno aleatoriamente los tarjeta_numero dentro de tarjeta_credito
-INSERT INTO tarjeta_credito (customer_id)
-SELECT customer_id
-FROM PKUnicas
-ORDER BY RANDOM()
-LIMIT 300;
+-- Actualizo la tabla direccion con las nuevas asignaciones
+UPDATE direccion
+SET customer_id = (
+    SELECT customer_id
+    FROM DireccionesAleatorias
+    WHERE direccion.direccion_id = DireccionesAleatorias.direccion_id
+	),
+	employee_id = (
+		SELECT employee_id
+		FROM DireccionesAleatorias2
+		WHERE direccion.direccion_id = DireccionesAleatorias2.direccion_id
+	);</sql><sql name="distribucion_marcas_tarjetas.sql">WITH marcasAleatorias AS (
+    SELECT marca_tarjeta.marca_tarjeta_id, tarjeta.tarjeta_numero
+    FROM marca_tarjeta, tarjeta
+    ORDER BY RANDOM()
+)
 
-DROP TABLE IF EXISTS PKUnicas;</sql><sql name="verificacion_total_tipo_clientes">SELECT COUNT(*) AS total_registros
-FROM (
-    SELECT * FROM cliente_classic
-    UNION ALL
-    SELECT * FROM cliente_gold
-    UNION ALL
-    SELECT * FROM cliente_black
-) AS tablas_combinadas;</sql><sql name="UPDATE employee_hire_date.sql">-- Actualizo la columna employee_hire_date con el formato YYYY-MM-DD
-UPDATE empleado
-SET employee_hire_date = SUBSTR(employee_hire_date, 7, 4) || '-' || SUBSTR(employee_hire_date, 4, 2) || '-' || SUBSTR(employee_hire_date, 1, 2)
-WHERE LENGTH(employee_hire_date) = 10
-  AND SUBSTR(employee_hire_date, 3, 1) = '/'
-  AND SUBSTR(employee_hire_date, 6, 1) = '/';
-</sql><current_tab id="3"/></tab_sql></sqlb_project>
+-- Actualizo la tabla tarjeta con las marcas aleatoriamente
+UPDATE tarjeta
+SET marca_tarjeta_id = (
+    SELECT marca_tarjeta_id
+    FROM marcasAleatorias
+	WHERE tarjeta.tarjeta_numero = marcasAleatorias.tarjeta_numero
+);
+</sql><sql name="distribucion_tarjetas_de_credito.sql">-- Asigno aleatoriamente las tarjeta_credito entre cliente_gold y cliente_black
+
+-- Selecciono tarjeta_credito aleatoriamente respetando las condiciones del SPRINT 5
+WITH clientesAleatorios AS (
+    SELECT tarjeta_credito.tarjeta_numero, cliente.customer_id
+    FROM tarjeta, tarjeta_credito, cliente, marca_tarjeta
+    WHERE cliente.customer_id NOT IN (SELECT customer_id 
+	                                  FROM cliente_classic)
+		  AND (cliente.customer_id IN (SELECT customer_id 
+	                                   FROM cliente_gold) AND cantidad_extensiones &lt;= 5 
+													      AND (marca_tarjeta_nombre LIKE '%VISA%' OR marca_tarjeta_nombre LIKE '%Mastercard%')
+														  AND tarjeta.marca_tarjeta_id = marca_tarjeta.marca_tarjeta_id
+		       OR cliente.customer_id IN (SELECT customer_id 
+	                                      FROM cliente_black) AND cantidad_extensiones &lt;= 10)
+	     AND tarjeta.tarjeta_numero = tarjeta_credito.tarjeta_numero
+    ORDER BY RANDOM()
+)
+
+-- Actualizo la tabla tarjeta con las marcas aleatoriamente
+UPDATE tarjeta
+SET customer_id = (
+    SELECT customer_id
+    FROM clientesAleatorios
+	WHERE tarjeta.tarjeta_numero = clientesAleatorios.tarjeta_numero
+);</sql><sql name="verificacion_distribucion_tarjetas.sql">--Verifico las tarjetas que no cumplen las condiciones de cliente_black y cliente_gold
+SELECT SUM(total_count) as suma_total FROM (
+    SELECT count(*) as total_count
+    FROM tarjeta, tarjeta_credito
+    WHERE customer_id IN (SELECT customer_id FROM cliente_gold)
+        AND tarjeta.tarjeta_numero = tarjeta_credito.tarjeta_numero
+        AND (tarjeta_credito.cantidad_extensiones &gt; 5 OR tarjeta.marca_tarjeta_id = 3)
+    UNION ALL
+    SELECT count(*) as total_count
+    FROM tarjeta, tarjeta_credito
+    WHERE customer_id IN (SELECT customer_id FROM cliente_black)
+        AND tarjeta.tarjeta_numero = tarjeta_credito.tarjeta_numero
+        AND (tarjeta_credito.cantidad_extensiones &gt; 10)
+) as subconsulta;
+</sql><sql name="verificacion_distribucion_tarjetas.sql">--Verifico las tarjetas que no cumplen las condiciones de cliente_black y cliente_gold
+SELECT SUM(total_count) as suma_total FROM (
+    SELECT count(*) as total_count
+    FROM tarjeta, tarjeta_credito
+    WHERE customer_id IN (SELECT customer_id FROM cliente_gold)
+        AND tarjeta.tarjeta_numero = tarjeta_credito.tarjeta_numero
+        AND (tarjeta_credito.cantidad_extensiones &gt; 5 OR tarjeta.marca_tarjeta_id = 3)
+    UNION ALL
+    SELECT count(*) as total_count
+    FROM tarjeta, tarjeta_credito
+    WHERE customer_id IN (SELECT customer_id FROM cliente_black)
+        AND tarjeta.tarjeta_numero = tarjeta_credito.tarjeta_numero
+        AND (tarjeta_credito.cantidad_extensiones &gt; 10)
+) as subconsulta;
+</sql><current_tab id="8"/></tab_sql></sqlb_project>
