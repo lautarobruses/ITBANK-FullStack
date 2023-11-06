@@ -16,11 +16,15 @@ ENUNCIADO 2:
 Obtener la cantidad de empleados por cliente por sucursal en un número
 real
 */
-SELECT branch_name, CAST(COUNT(e.employee_id) AS REAL) / COUNT(c.customer_id) AS proporcion_empleados_clientes
-FROM sucursal s
+SELECT
+  s.branch_name,
+  CAST(COUNT(DISTINCT e.employee_id) AS REAL) / COUNT(DISTINCT c.customer_id) AS proporcion_empleados_clientes
+FROM
+  sucursal s
 LEFT JOIN cliente c ON s.branch_id = c.branch_id
 LEFT JOIN empleado e ON s.branch_id = e.branch_id
 GROUP BY s.branch_name;
+
 
 -- se obtiene el nombre de la sucursal, se cuenta la cantidad de empleados y se divide por la cantidad de clientes por sucursal
 /*ENUNCIADO 3:
