@@ -16,11 +16,13 @@ ENUNCIADO 2:
 Obtener la cantidad de empleados por cliente por sucursal en un número
 real
 */
-SELECT branch_name, COUNT(e.employee_id) / COUNT(c.customer_id) AS proporcion_empleados_clientes
-FROM cliente c
-INNER JOIN empleado e ON c.branch_id = e.branch_id
-INNER JOIN sucursal s ON c.branch_id = s.branch_id
+SELECT branch_name, CAST(COUNT(e.employee_id) AS REAL) / COUNT(c.customer_id) AS proporcion_empleados_clientes
+FROM sucursal s
+LEFT JOIN cliente c ON s.branch_id = c.branch_id
+LEFT JOIN empleado e ON s.branch_id = e.branch_id
 GROUP BY s.branch_name;
+
+-- se obtiene el nombre de la sucursal, se cuenta la cantidad de empleados y se divide por la cantidad de clientes por sucursal
 /*ENUNCIADO 3:
 Obtener la cantidad de empleados por cliente por sucursal en un número
 real
@@ -50,8 +52,9 @@ created_at
 o Crear un trigger que después de actualizar en la tabla cuentas los
 campos balance, IBAN o tipo de cuenta registre en la tabla auditoria
 o Restar $100 a las cuentas 10,11,12,13,14*/
+DROP TABLE IF EXISTS auditoria_cuenta;
 CREATE TABLE auditoria_cuenta (
-  id INT AUTOINCREMENT PRIMARY KEY,
+  id INT AUTO INCREMENT PRIMARY KEY,
   old_id INT,
   new_id INT,
   old_balance DECIMAL(10,2),
@@ -64,22 +67,34 @@ CREATE TABLE auditoria_cuenta (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TRIGGER IF NOT EXISTS trigger_auditoria
-AFTER UPDATE OF balance, iban, type ON cuenta  --falta crear campo tipo de cuenta
+----------------------------------------------------------------------------------------------------------------------------------------------
+SELECT account_id,
+       CASE
+           WHEN account_id IN (SELECT account_id FROM caja_ahorro) THEN 'caja_ahorro'
+           WHEN account_id IN (SELECT account_id FROM cuenta_corriente) THEN 'cuenta_corriente'
+           ELSE 'desconocido'
+       END as tipo_cuenta
+FROM cuenta;
+
+CREATE TRIGGER IF NOT EXISTS trigger_auditoria_caja_ahorro
+AFTER UPDATE OF balance, iban ON caja_ahorro
 BEGIN 
   INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action)
-  VALUES (old.account_id, new.account_id, old.balance, new.balance, old.iban, new.iban, old.type, new.type, 'update');
+  VALUES (old.account_id, new.account_id, old.balance, new.balance, old.iban, new.iban, 'caja_ahorro', 'caja_ahorro', 'update');
 END;
-UPDATE cuenta
-SET balance = balance - 10000
-WHERE account_id IN (10,11,12,13,14);
 
-SELECT * FROM auditoria_cuenta;
+CREATE TRIGGER IF NOT EXISTS trigger_auditoria_cuenta_corriente
+AFTER UPDATE OF balance, iban ON cuenta_corriente
+BEGIN 
+  INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action)
+  VALUES (old.account_id, new.account_id, old.balance, new.balance, old.iban, new.iban, 'cuenta_corriente', 'cuenta_corriente', 'update');
+END;
+
 
 /*ENUNCIADO 6:
 Mediante índices mejorar la performance la búsqueda de clientes por DNI
 */
-CREATE UNIQUE INDEX idx_customer_DNI ON cliente(customer_DNI);
+--CREATE UNIQUE INDEX idx_customer_DNI ON cliente(customer_DNI);
 
 /*ENUNCIADO 7:
  Crear la tabla “movimientos” con los campos de identificación del
@@ -89,7 +104,7 @@ desde la cuenta 200 a la cuenta 400
 o Registrar el movimiento en la tabla movimientos
 o En caso de no poder realizar la operación de forma completa, realizar
 un ROLLBACK*/
-
+DROP TABLE IF EXISTS movimientos;
 CREATE TABLE movimientos(
   id_movimiento INTEGER PRIMARY KEY AUTOINCREMENT,
   numero_cuenta INTEGER REFERENCES cuenta ON UPDATE CASCADE ON DELETE SET NULL,
