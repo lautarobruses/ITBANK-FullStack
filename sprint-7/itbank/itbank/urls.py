@@ -23,5 +23,12 @@ from base import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('coming-soon/', views.comingSoon, name='coming-soon'),
+    path('cuenta/', views.home, name='cuenta'),
+    path('cuenta/login', views.home, name='login'),
+    path('cuenta/register', views.home, name='register'),
+    path('pagos/', views.home, name='pagos'),
+    path('prestamos/', views.home, name='prestamos'),
+    path('transferencias/', views.home, name='transferencias'),
 ]
 

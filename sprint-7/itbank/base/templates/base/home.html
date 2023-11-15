@@ -1,22 +1,26 @@
-{% extends 'base/layout.html' %}
+{% extends 'base/base.html' %}
+
+{% block style %}home.css{% endblock %}
+
+{% block title %}Inicio{% endblock %}
 
 {% block content %}
     <div>
         <h1>HOLA USUARIO</h1>
         <!-- SummaryAccount.html -->
-        <div id="{{ styles.accountsContainer }}">
-            <h1 id="{{ styles.title }}">Tus cuentas:</h1>
-            <ul id="{{ styles.list }}">
+        <div id="accountsContainer">
+            <h1 id="title">Tus cuentas:</h1>
+            <ul id="list">
                 {% for account in accountFake %}
-                    <li class="{{ styles.elements }}">
+                    <li class="elements">
                         <span>{{ account.title }}</span>
                         <span>{{ account.coin|default:'$' }}{{ account.balance }}</span>
                     </li>
                 {% endfor %}
                 {% for card in cardFake %}
-                    <li class="{{ styles.elements }}">
+                    <li class="elements">
                         <span style="justify-content: center; display: flex; gap: 5px;">
-                            <img width="25" src="{{ card.img.src }}" alt="{{ card.img.alt }}" loading="lazy">
+                            <img width="25" src="{{ card.img.src }}" alt="{{ card.img.alt }}">
                             {{ card.title }}
                         </span>
                         <span>{{ card.coin|default:'$' }}{{ card.balance }}</span>

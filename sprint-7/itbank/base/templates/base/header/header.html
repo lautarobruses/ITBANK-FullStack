@@ -1,10 +1,9 @@
-<header class="{{ styles.header }}">
+{% load static %}
+
+<header class="header">
     <img 
-        src="{% static 'img/nexusbanklogo3.webp' %}"
+        src="{% static 'base/img/nexusbanklogo3.webp' %}"
         alt="Logo Nexus Bank"
-        width="220"
-        height="72"
-        quality="100"
     />
     {% include 'base/header/buttonMenu.html' %}
 </header>

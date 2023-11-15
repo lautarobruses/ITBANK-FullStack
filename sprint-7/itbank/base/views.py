@@ -6,3 +6,6 @@ def home(request):
     cardFake = []  # Reemplaza esto con tus datos reales
 
     return render(request, 'base/home.html', {'accountFake': accountFake, 'cardFake': cardFake})
+
+def comingSoon(request):
+    return render(request, 'base/comingSoon.html')

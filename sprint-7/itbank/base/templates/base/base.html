@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'base/img/favicon.ico' %}">
+    <!-- ESTILO GENERAL PAGINA -->
+    <link rel="stylesheet" href="{% static 'base/css/globals.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base/css/header/header.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/header/buttonMenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base/css/navbar/navbar.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base/css/footer/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/media.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/terms.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/contactForm.css' %}">
+    <!-- ESTILO PARTICULAR DE CADA PAGINA -->
+    <link rel="stylesheet" href="{% static 'base/css/' %}{% block style %}nombre_del_archivo.css{% endblock %}">
+    <!-- <script src="{% static 'tu_app/js/tu_script.js' %}"></script> Javascript -->
+    <title>Nexus Bank - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- BACKGROUND -->
+    <div class="background">
+        <img src="{% static 'base/img/background.webp' %}" alt="Fondo principal del sitio">
+    </div>
+
+    <!-- HEADER -->
+    {% include 'base/header/header.html' %}
+
+    <!-- NAVBAR -->
+    {% include 'base/navbar/navbar.html' %}
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    
+    <!-- FOOTER -->
+    {% include 'base/footer/footer.html' %}
+    
+</body>
+</html>
