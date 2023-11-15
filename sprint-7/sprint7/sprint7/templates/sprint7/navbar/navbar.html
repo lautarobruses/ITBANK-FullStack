@@ -1,0 +1,28 @@
+<nav class="{{ styles.navbar }} {{ isOpen ? styles.show : '' }}" onclick="handleToggle()">
+    <div class="{{ styles.navlinks }}">
+        <a href="/">
+            <HomeIcon />
+            Inicio
+        </a>
+        <a href="{% url 'cuenta' %}">
+            <AccountIcon />
+            Cuenta
+        </a>
+        <a href="{% url 'transferencias' %}">
+            <TranfersIcon />
+            Transferencias
+        </a>
+        <a href="{% url 'pagos' %}">
+            <PaymentsIcon />
+            Pagos
+        </a>
+        <a href="{% url 'prestamos' %}">
+            <LoansIcon />
+            Prestamos
+        </a>
+        <a href="{% url '' %}" onclick="handleLogout()">
+            <LogoutIcon />
+            Cerrar Sesión
+        </a>
+    </div>
+</nav>

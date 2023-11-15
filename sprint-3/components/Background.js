@@ -3,8 +3,6 @@ import styles from '@/styles/Background.module.css'
 import Image from 'next/image'
 
 const Background = () => {
-
-    
     return (
         <div className={styles.background}>
             <Image
