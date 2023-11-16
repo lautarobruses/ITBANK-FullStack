@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{% static 'base/css/footer/contactForm.css' %}">
     <!-- ESTILO PARTICULAR DE CADA PAGINA -->
     <link rel="stylesheet" href="{% static 'base/css/' %}{% block style %}nombre_del_archivo.css{% endblock %}">
-    <!-- <script src="{% static 'tu_app/js/tu_script.js' %}"></script> Javascript -->
+
     <title>Nexus Bank - {% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -43,6 +43,8 @@
     
     <!-- FOOTER -->
     {% include 'base/footer/footer.html' %}
-    
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'base/js/script.js' %}"></script> 
 </body>
 </html>

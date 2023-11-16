@@ -3,7 +3,7 @@
 }
 
 @media screen and (max-width: 640px) {
-    .buttonMenu {
+    .contenedor .button-menu{
         background: none;
         visibility: visible;
         z-index: 200;
@@ -17,8 +17,8 @@
         justify-content: center;
         cursor: pointer;
     }
-
-    .buttonMenu span {
+    
+    .button-menu span{
         width: 37px;
         height: 4px;
         margin-bottom: 6px;
@@ -28,18 +28,19 @@
         transform-origin: 4px 0px;
         transition: all .2s linear;
     }
-
-    .close span {
-        background: var(--white);
+    
+    .button-menu.close span {
         opacity: 1;
         transform: rotate(45deg) translate(0px, 0px);
+        background: var(--white);
+        z-index: 101;
     }
-      
-    .close span:nth-child(2){
+    
+    .button-menu.close span:nth-child(2){
         transform: rotate(-45deg) translate(-8px, 5px);
     }
-      
-    .close span:nth-child(3){
+    
+    .button-menu.close span:nth-child(3){
         display: none;
     }
 }
