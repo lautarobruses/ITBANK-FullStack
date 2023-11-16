@@ -5,11 +5,12 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-    <div>
-        <h1>HOLA USUARIO</h1>
-        <!-- SummaryAccount.html -->
+    <div class="container">
         <div id="accountsContainer">
-            <h1 id="title">Tus cuentas:</h1>
+            <h1 id="tituloPrincipal">Bienvenido [Nombre de usuario]!</h1>
+        </div>
+        <div id="accountsContainer">
+            <h2 id="tituloSecundario">Tus cuentas:</h2>
             <ul id="list">
                 {% for account in accountFake %}
                     <li class="elements">
