@@ -44,7 +44,7 @@ main {
     justify-content: flex-start;
 }
 
-.background {
+.background img {
     position: fixed;
     top: 0px;
     width: 100%;
