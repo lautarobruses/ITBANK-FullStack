@@ -16,8 +16,8 @@ body {
 }
 
 .header img {
-    height: 240px;
-    width: auto;
+    width: 240px;
+    height: auto;
 }
 
 @media screen and (max-width: 640px) {

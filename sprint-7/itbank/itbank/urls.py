@@ -18,15 +18,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from base import views
+from base.views import home, comingSoon
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('coming-soon/', views.comingSoon, name='coming-soon'),
+    path('', home, name='home'),
+    path('coming-soon/', comingSoon, name='coming-soon'),
     path('cuenta/', include('cuenta.urls'), name='cuenta'),
-    path('pagos/', views.home, name='pagos'),
-    path('prestamos/', views.home, name='prestamos'),
-    path('transferencias/', views.home, name='transferencias'),
+    path('pagos/', home, name='pagos'),
+    path('prestamos/', home, name='prestamos'),
+    path('transferencias/', home, name='transferencias'),
 ]
 
