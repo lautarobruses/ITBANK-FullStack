@@ -20,13 +20,14 @@ from django.urls import path, include
 
 from base.views import home, comingSoon
 from transferencias.views import transferencias
+from pagos.views import pagos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('coming-soon/', comingSoon, name='coming-soon'),
     path('cuenta/', include('cuenta.urls'), name='cuenta'),
-    path('pagos/', home, name='pagos'),
+    path('pagos/', pagos, name='pagos'),
     path('prestamos/', home, name='prestamos'),
     path('transferencias/', transferencias, name='transferencias'),
 ]

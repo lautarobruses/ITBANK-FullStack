@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% block title %}
+    Pagos {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pagos/css/pagos.css' %}">
+
+<div class='container'>
+    <h1>PAGOS DE SERVICIOS</h1>
+    <h3>PRÓXIMOS VENCIMIENTOS</h3>
+    {% if servicios %}
+        <div class='contenedor'>
+            <h3>Servicios A Pagar: </h3>
+            <table class='servicios-table'>
+                <thead>
+                    <tr>
+                        <th>Tipo de Servicio</th>
+                        <th>Monto a Pagar</th>
+                        <th>Fecha de Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for servicio in servicios %}
+                        <tr>
+                            <td>{{ servicio.tipo }}</td>
+                            <td>${{ servicio.monto }}</td>
+                            <td>{{ servicio.fecha_pago }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="" class='link'>AÑADIR SERVICIOS</a>
+        </div>
+    {% else %}
+        <div class='contenedor'>
+            <svg class='cuaderno' stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG para cuando no hay servicios -->
+            </svg>
+            <p><strong>¡Genial!</strong></p>
+            <p>NO TENÉS SERVICIOS POR VENCER</p>
+            <a href="" class='link'>AÑADIR SERVICIOS</a>
+        </div>
+    {% endif %}
+
+    <!-- Modal (puedes usar el paquete django-bootstrap-modal-forms) -->
+    {# {% include 'tu_app/modal.html' %} #} 
+</div>
+
+    {{ block.super }}
+{% endblock %}
