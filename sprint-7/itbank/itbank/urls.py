@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from base.views import home, comingSoon
+from transferencias.views import transferencias
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +28,6 @@ urlpatterns = [
     path('cuenta/', include('cuenta.urls'), name='cuenta'),
     path('pagos/', home, name='pagos'),
     path('prestamos/', home, name='prestamos'),
-    path('transferencias/', home, name='transferencias'),
+    path('transferencias/', transferencias, name='transferencias'),
 ]
 
