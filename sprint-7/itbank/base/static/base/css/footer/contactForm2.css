@@ -2,7 +2,8 @@
     width: 500px;
 }
 
-.form {
+.form,
+.form p {
     display: flex;
     gap: 12px;
     flex-direction: column;
