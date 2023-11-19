@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Prestamos {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Hola desde la página de prestamos</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button type="submit">Calcular</button>
+    </form>
+    
+    {% if pago_mensual %}
+        <p>El pago mensual es: {{ pago_mensual }}</p>
+    {% endif %}
+    
+    {{ block.super }}
+{% endblock %}
