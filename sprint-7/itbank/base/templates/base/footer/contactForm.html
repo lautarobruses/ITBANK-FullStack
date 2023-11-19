@@ -1,21 +1,10 @@
-// forms.py
-from django import forms
-
-class ContactForm(forms.Form):
-    nombre = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    mensaje = forms.CharField(widget=forms.Textarea)
-
-// views.py
-from django.views.generic.edit import FormView
-from .forms import ContactForm
-
-class ContactoView(FormView):
-    template_name = 'tu_template.html'
-    form_class = ContactForm
-    success_url = '/gracias-por-contactarnos/'  # Ajusta la URL según tus necesidades
-
-    def form_valid(self, form):
-        # Procesa el formulario aquí (envía un correo electrónico, almacena en la base de datos, etc.)
-        # Puedes acceder a los datos del formulario usando form.cleaned_data
-        return super().form_valid(form)
+<div class="formContainer">
+    <!-- {% if 'ok' in request.GET %}
+        <p>Mensaje enviado!</p>
+    {% endif %} -->
+    <form class="form" method="POST" action="contact/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submitButton">Enviar</button>
+    </form>
+</div>
