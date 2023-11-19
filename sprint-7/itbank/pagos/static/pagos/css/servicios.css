@@ -1,0 +1,17 @@
+.container {
+    max-width: 1200px;
+    padding: 36px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5); 
+    background-size: cover; 
+    background-position: center center; 
+    padding: 24px; 
+}

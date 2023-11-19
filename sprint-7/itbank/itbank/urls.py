@@ -20,7 +20,7 @@ from django.urls import path, include
 
 from base.views import home, comingSoon
 from transferencias.views import transferencias
-from pagos.views import pagos
+from pagos.views import pagos, servicios
 from prestamos.views import calculadora_prestamos
 
 urlpatterns = [
@@ -30,6 +30,7 @@ urlpatterns = [
     path('coming-soon/', comingSoon, name='coming-soon'),
     path('cuenta/', include('cuenta.urls'), name='cuenta'),
     path('pagos/', pagos, name='pagos'),
+    path('pagos/servicios/', servicios, name='servicios'),
     path('prestamos/', calculadora_prestamos, name='prestamos'),
     path('transferencias/', transferencias, name='transferencias'),
 ]

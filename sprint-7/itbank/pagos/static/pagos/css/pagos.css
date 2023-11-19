@@ -13,8 +13,11 @@
     gap: 16px;
     align-items: center;
     text-align: center;
+    z-index: 0;
 }
-
+p{
+    z-index: 0;
+}
 .cuaderno{
     width: 50px; 
     height: auto; 

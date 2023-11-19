@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Servicios {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pagos/css/servicios.css' %}">
+
+<div class="container">
+    <h1>Añade tus servicios</h1>
+</div>
+
+    {{ block.super }}
+{% endblock %}
