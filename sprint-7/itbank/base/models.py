@@ -7,7 +7,6 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class AuditoriaCuenta(models.Model):
     id = models.TextField(primary_key=True, blank=True)  # This field type is a guess.
     old_id = models.IntegerField(blank=True, null=True )
@@ -24,6 +23,7 @@ class AuditoriaCuenta(models.Model):
     class Meta:
         managed = False
         db_table = 'auditoria_cuenta'
+        ordering = ['-created_at']
 
 
 class CajaAhorro(models.Model):
@@ -49,7 +49,7 @@ class Cliente(models.Model):
 
 
 class ClienteBlack(models.Model):
-    customer = models.OneToOneField(Cliente, models.DO_NOTHING, primary_key=True)
+    customer = models.OneToOneField(Cliente, on_delete=models.CASCADE, primary_key=True)
 
     class Meta:
         managed = False
@@ -57,7 +57,7 @@ class ClienteBlack(models.Model):
 
 
 class ClienteClassic(models.Model):
-    customer = models.OneToOneField(Cliente, models.DO_NOTHING, primary_key=True)
+    customer = models.OneToOneField(Cliente, on_delete=models.CASCADE, primary_key=True)
 
     class Meta:
         managed = False
@@ -65,7 +65,7 @@ class ClienteClassic(models.Model):
 
 
 class ClienteGold(models.Model):
-    customer = models.OneToOneField(Cliente, models.DO_NOTHING, primary_key=True)
+    customer = models.OneToOneField(Cliente, on_delete=models.CASCADE, primary_key=True)
 
     class Meta:
         managed = False
@@ -76,7 +76,7 @@ class Cuenta(models.Model):
     account_id = models.AutoField(primary_key=True)
     balance = models.IntegerField()
     iban = models.TextField()
-    customer = models.ForeignKey(Cliente, models.DO_NOTHING)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     tipo_moneda = models.ForeignKey('TipoMoneda', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
@@ -85,7 +85,7 @@ class Cuenta(models.Model):
 
 
 class CuentaCorriente(models.Model):
-    account = models.OneToOneField(Cuenta, models.DO_NOTHING, primary_key=True)
+    account = models.OneToOneField(Cuenta, on_delete=models.CASCADE, primary_key=True)
     limite = models.FloatField()
 
     class Meta:
@@ -96,8 +96,8 @@ class CuentaCorriente(models.Model):
 class Direccion(models.Model):
     direccion_id = models.AutoField(primary_key=True)
     direccion_completa = models.TextField()
-    customer = models.ForeignKey(Cliente, models.DO_NOTHING, blank=True, null=True)
-    employee = models.ForeignKey('Empleado', models.DO_NOTHING, blank=True, null=True)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=True, null=True)
+    employee = models.ForeignKey('Empleado' , on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -141,7 +141,7 @@ class Movimientos(models.Model):
     numero_cuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='numero_cuenta', to_field=None, blank=True, null=True)
     monto = models.DecimalField(max_digits=10, decimal_places=5, blank=True, null=True)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
     tipo_operacion = models.CharField(blank=True, null=True, max_length=50)
-    hora = models.TextField(blank=True, null=True)  # This field type is a guess.
+    hora = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -153,7 +153,7 @@ class Prestamo(models.Model):
     loan_type = models.TextField()
     loan_date = models.TextField()
     loan_total = models.IntegerField()
-    customer = models.ForeignKey(Cliente, models.DO_NOTHING)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
     class Meta:
         managed = False
@@ -177,7 +177,7 @@ class Tarjeta(models.Model):
     tarjeta_fecha_otorgamiento = models.TextField()
     tarjeta_fecha_expiracion = models.TextField()
     tarjeta_nombre_propietario = models.TextField()
-    customer = models.ForeignKey(Cliente, models.DO_NOTHING, blank=True, null=True)
+    customer = models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=True, null=True)
     marca_tarjeta = models.ForeignKey(MarcaTarjeta, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
@@ -186,7 +186,7 @@ class Tarjeta(models.Model):
 
 
 class TarjetaCredito(models.Model):
-    tarjeta_numero = models.OneToOneField(Tarjeta, models.DO_NOTHING, db_column='tarjeta_numero', primary_key=True)
+    tarjeta_numero = models.OneToOneField(Tarjeta, on_delete=models.CASCADE, db_column='tarjeta_numero', primary_key=True)
     cantidad_extensiones = models.IntegerField()
     limite_en_un_pago = models.FloatField()
     limite_en_cuotas = models.FloatField()
@@ -197,7 +197,7 @@ class TarjetaCredito(models.Model):
 
 
 class TarjetaDebito(models.Model):
-    tarjeta_numero = models.OneToOneField(Tarjeta, models.DO_NOTHING, db_column='tarjeta_numero', primary_key=True)
+    tarjeta_numero = models.OneToOneField(Tarjeta, on_delete=models.CASCADE, db_column='tarjeta_numero', primary_key=True)
     account = models.ForeignKey(Cuenta, models.DO_NOTHING)
 
     class Meta:
