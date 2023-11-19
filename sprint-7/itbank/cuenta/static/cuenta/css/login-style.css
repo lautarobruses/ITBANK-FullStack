@@ -34,18 +34,24 @@ html {
     z-index: -1;
 }
 
-.background-container {
+.login-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
 }
 
 header {
     background-color: var(--white);
     border-radius: 64px 64px 0 0;
-    width: 1000px;
+    width: 800px;
     height: 100px;
 
     display: flex;
@@ -54,31 +60,27 @@ header {
 }
 
 header img {
-    height: 68px;
+    height: 64px;
     width: auto;
 }
 
-section {
+.form-container {
     background-color: var(--dark-sky-blue);
     opacity: 0.8;
     border-radius: 0 0 64px 64px;
-    width: 1000px;
-    height: 500px;
-    z-index: 0;
     margin-bottom: 32px;
+}
+
+#login-form {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    gap: 32px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.form-container {
-    margin: 32px 172px;
-}
-
-.form-container h1 {
-    font-size: 32px;
-    text-transform: uppercase;
 }
 
 .form-container label {
@@ -89,23 +91,22 @@ section {
     background-color: rgba(0, 0, 0, 0.25);
     border: 2px solid var(--white);
     border-radius: 16px;
-    width: 656px;
+    width: 600px;
     height: 64px;
     color: white;
     font-size: medium;
     padding: 16px;
     padding-right: 48px;
-    margin-top: 16px;
-    margin-bottom: 32px;
+}
+
+.text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .password-input-container {
     position: relative;
-    margin-bottom: 32px;
-}
-
-.password-input-container input {
-    margin-bottom: 16px;
 }
 
 .password-input-container a {
@@ -116,9 +117,9 @@ section {
 
 .button-eye {
     position: absolute;
-    top: 42%;
-    right: 16px;
-    transform: translateY(-50%);
+    top: 0;
+    right: 18px;
+    transform: translateY(80%);
     border: none;
     background: none;
     cursor: pointer;
@@ -165,29 +166,23 @@ section {
     text-decoration: none;
 }
 
-/* Estilos para dispositivos medianos */
 @media screen and (max-width: 1023px) {
-
     header {
         border-radius: 32px 32px 0 0;
         width: 600px;
         height: 100px;
     }
-
+    
     header img {
         height: 64px;
         width: auto;
     }
-
-    section {
+    .form-container {
         border-radius: 0 0 32px 32px;
-        width: 600px;
     }
-    
-    .form-container input {
-        border-radius: 16px;
-        width: 500px;
-        height: 60px;
+
+    #login-form  {
+        width: 600px;
     }
 
     .interactive-button {
@@ -195,11 +190,23 @@ section {
         padding: 16px 96px;
         border-radius: 16px;
     }
+
+    .form-container input {
+        border-radius: 16px;
+        width: 500px;
+        height: 60px;
+    }
+
+    .text-box label {
+        font-size: 20px;
+    }
+
+    .button-eye {
+        transform: translateY(71%);
+    }
 }
 
-/* Estilos para dispositivos pequeños (móviles) */
 @media screen and (max-width: 640px) {
-
     header {
         border-radius: 32px 32px 0 0;
         width: 360px;
@@ -211,32 +218,28 @@ section {
         width: auto;
     }
 
-    section {
+    .form-container {
         border-radius: 0 0 32px 32px;
-        width: 360px;
-        height: 500px;
+    }
 
-        margin-bottom: 32px;
-    }
-    
-    .form-container h1 {
-        font-size: 24px;
-        text-transform: uppercase;
-    }
-    
-    .form-container label {
-        font-size: 20px;
-    }
-    
-    .form-container input {
-        border-radius: 8px;
-        width: 300px;
-        height: 48px;
+    #login-form {
+        width: 360px;
+        height: 400px;
     }
 
     .interactive-button {
         font-size: 20px;
         padding: 12px 48px;
         border-radius: 16px;
+    }
+
+    .form-container input {
+        border-radius: 8px;
+        width: 300px;
+        height: 48px;
+    }
+
+    .button-eye {
+        transform: translateY(48%);
     }
 }

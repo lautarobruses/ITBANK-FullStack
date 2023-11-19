@@ -7,7 +7,6 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class AuditoriaCuenta(models.Model):
     id = models.TextField(primary_key=True, blank=True)  # This field type is a guess.
     old_id = models.IntegerField(blank=True, null=True )
@@ -40,6 +39,7 @@ class Cliente(models.Model):
     customer_name = models.TextField()
     customer_surname = models.TextField()
     customer_dni = models.TextField(db_column='customer_DNI', unique=True)  # Field name made lowercase.
+    telefono = models.TextField(max_length=15)
     dob = models.TextField(blank=True, null=True)
     branch = models.ForeignKey('Sucursal', models.DO_NOTHING)
 

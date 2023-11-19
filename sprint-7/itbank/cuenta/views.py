@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from .forms import LoginForm, RegisterForm
 
 # Create your views here.
 
-def cuenta(request):
+def login(request):
+    return render(request, 'cuenta/login.html', {'form': LoginForm})
 
-    return render(request, 'cuenta/login.html')
+def register(request):
+    return render(request, 'cuenta/register.html', {'form': RegisterForm})
