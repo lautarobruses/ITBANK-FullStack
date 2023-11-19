@@ -69,4 +69,8 @@ main {
         min-height: 90vh;
         padding: 24px;
     }
+
+    .background img {
+        width:  auto;
+    }
 }

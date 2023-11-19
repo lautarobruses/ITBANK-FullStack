@@ -25,7 +25,8 @@ from prestamos.views import calculadora_prestamos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    # path('', home, name='home'),
+    path('', include('base.urls'), name='home'),
     path('coming-soon/', comingSoon, name='coming-soon'),
     path('cuenta/', include('cuenta.urls'), name='cuenta'),
     path('pagos/', pagos, name='pagos'),
