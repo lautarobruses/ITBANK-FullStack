@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'cuenta',
+    'transferencias',
+    'pagos',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +125,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, ''),
     os.path.join(BASE_DIR, 'base/static'),
-    os.path.join(BASE_DIR, 'cuenta/static')
+    os.path.join(BASE_DIR, 'cuenta/static'),
+    os.path.join(BASE_DIR, 'pagos/static'),
 ]
 
 MEDIA_URL = 'media/'
