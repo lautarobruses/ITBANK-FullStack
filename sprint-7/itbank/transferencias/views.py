@@ -9,10 +9,12 @@ def transferencias(request):
 
     # Obtener el cliente asociado al usuario actual
     cliente = Cliente.objects.get(user_id=request.user.id)
-
-
+    saldo = Cuenta.objects.get(account_id=request.user.id)
+    balance = saldo.balance
+  
     context = {
         'nombreUser': cliente.customer_name,
+        'saldo': f'{balance}',
     }
 
     return render(request, 'transferencias/transferencias.html', context)
