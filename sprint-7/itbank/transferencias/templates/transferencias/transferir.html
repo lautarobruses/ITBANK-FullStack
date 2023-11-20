@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Transferencias {{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'transferencias/css/transferencias.css' %}">
+
+    <h1>Acá realizas tus transferencias</h1>
+    <form method='post' action="{% url 'transferir' %}">
+        {% csrf_token %}
+        <label for="cuenta_origen">Cuenta Origen: </label>
+        <select name="cuenta_origen" required>
+            {% for cuenta in cuentas %}
+                <option value="{{ cuenta.id }}">{{ cuenta }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="cuenta_destino">Cuenta Destino:</label>
+        <select name="cuenta_destino" required>
+            {% for cuenta in cuentas %}
+                <option value="{{ cuenta.id }}">{{ cuenta }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="monto">Monto:</label>
+        <input type="number" name="monto" step="0.01" required>
+
+        <button type="submit">Realizar Transferencia</button>
+    </form>
+
+    {{ block.super }}
+{% endblock %}

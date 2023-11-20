@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'base/img/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/css/logout-style.css' %}">
+    <title>Inicia sesión - NexusBank</title>
+</head>
+
+<body>
+    <div class="background">
+        <img src="{% static 'base/img/background.webp' %}" alt="Fondo principal del sitio">
+    </div>
+
+    <div class="login-container">
+        <header>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'cuenta/img/nexusbanklogo3-removebg.png' %}" alt="logo">
+            </a>
+        </header>
+        <div class="form-container">
+            <div id="text-container">
+                <h1>Sesión terminada</h1>
+                <p>¡Gracias por usar NexusBank!</p>
+
+                <div id="interactive-buttom-container">
+                    <button id="login" class="interactive-button" type="submit" value="Iniciar sesión">Iniciar sesión nuevamente</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
