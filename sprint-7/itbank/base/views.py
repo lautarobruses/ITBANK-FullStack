@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from .forms import ContactForm
-from .models import Cliente
+from .models import Cliente, Cuenta, CajaAhorro, CuentaCorriente
 
 @login_required
 def home(request):
