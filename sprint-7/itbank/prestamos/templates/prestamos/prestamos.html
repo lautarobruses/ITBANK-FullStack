@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Prestamos {{ block.super }}
+{% endblock %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos.css' %}">
+{% block content %}
+
+    <div class="formContainer">
+        <h1 class="formText">Calculá tu Préstamo</h1>
+        <form method="post">
+            {{ formulario.as_p }}
+            <button type="submit">Calcular</button>
+        </form>
+        <p id="pago_mensual"></p>
+        <h2>Solicitud de préstamo</h2>
+        <form method="post">
+            {{ solicitud_form.as_p }}
+            <button type="submit">Solicitar préstamo</button>
+        </form>
+    </div>
+    
+    {{ block.super }}
+{% endblock %}
