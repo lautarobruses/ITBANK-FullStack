@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import CuentaBancaria, Transferencias
-from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -13,16 +13,17 @@ def transferencias(request):
 
 # @login_required
 def accion_transferir(request):
-    if request.method == 'POST':
-        cuenta_origen_id = request.POST.get('cuenta_origen')
-        cuenta_destino_id = request.POST.get('cuenta_destino')
-        monto = request.POST.get('monto')
+    # if request.method == 'POST':
+    # cuenta_origen_id = request.POST.get('cuenta_origen')
+    # cuenta_destino_id = request.POST.get('cuenta_destino')
+    # monto = request.POST.get('monto')
 
-        cuenta_origen = CuentaBancaria.objects.get(id=cuenta_origen_id)
-        cuenta_destino = CuentaBancaria.objects.get(id=cuenta_destino_id)
+    # cuenta_origen = CuentaBancaria.objects.get(id=cuenta_origen_id)
+    # cuenta_destino = CuentaBancaria.objects.get(id=cuenta_destino_id)
 
-        return redirect('transferencias')
+        # return redirect('transferencias/transferencias.html')
     
-    cuentas = CuentaBancaria.objects.filter(usuario=request.user)
+    # cuentas = CuentaBancaria.objects.filter(usuario=request.user)
 
-    return render(request, 'transferencias/transferir.html', {'cuentas' : cuentas})
+    return render(request, 'transferencias/transferir.html')
+

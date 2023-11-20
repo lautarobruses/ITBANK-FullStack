@@ -8,7 +8,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'transferencias/css/transferencias.css' %}">
 <div class="container">
-    <h1>Hola desde la página de transferencias</h1>
+    <h1>Bienvenido {{ user.username }}, a tu sección de transferencias</h1>
     <h3>Historial</h3>
     <div class="contenedor">
         {% if transferencias %}
@@ -22,7 +22,7 @@
             <p>¿Quieres realizar alguna?</p>
         {% endif %}  
 
-        <a href="{% url 'transferir' %}">Realizar Nueva Transferencia</a>
+        <a href="{% url 'accion_transferir' %}"><button>Realizar Nueva Transferencia</button></a>
     </div>
 </div>
 
