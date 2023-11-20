@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from .forms import ContactForm
 
-# @login_required
+@login_required
 def home(request):
     accountFake = []  # Reemplaza esto con tus datos reales
     cardFake = []  # Reemplaza esto con tus datos reales
@@ -15,7 +15,7 @@ def home(request):
 def comingSoon(request):
     return render(request, 'base/comingSoon.html')
 
-# @login_required
+@login_required
 def sendMessage(request):
     form = ContactForm()
 

@@ -1,6 +1,6 @@
 {% load static %}
 
-<form id="login-form" action='post'>
+<form id="login-form" method="POST" action="">
     {% csrf_token %}
     
     {% if form.non_field_error %}
