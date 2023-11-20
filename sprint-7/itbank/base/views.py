@@ -6,9 +6,14 @@ from .forms import ContactForm
 
 @login_required
 def home(request):
+    # Acceder al ID del usuario autenticado
+    user_id = request.user
+
     accountFake = []  # Reemplaza esto con tus datos reales
     cardFake = []  # Reemplaza esto con tus datos reales
     form = ContactForm()
+
+    print(f'ID del usuario autenticado: {user_id}')
 
     return render(request, 'base/home.html', {'form': form, 'accountFake': accountFake, 'cardFake': cardFake})
 
