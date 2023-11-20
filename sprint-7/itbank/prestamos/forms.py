@@ -17,3 +17,13 @@ class FormularioCalculadoraPrestamos(forms.Form):
         if meses == 0:
             raise ValidationError('El mes no puede ser cero.')
         return meses
+
+class SolicitudPrestamoForm(forms.Form):
+    TIPOS_PRESTAMO = [
+        ('hipotecario', 'Hipotecario'),
+        ('prendario', 'Prendario'),
+        ('personal', 'Personal'),
+    ]
+    tipo_prestamo = forms.ChoiceField(choices=TIPOS_PRESTAMO, label='Tipo de préstamo')
+    monto_solicitado = forms.DecimalField(max_digits=9, decimal_places=2, label='Monto solicitado')
+    fecha_prestamo = forms.DateField(label='Fecha del préstamo')
