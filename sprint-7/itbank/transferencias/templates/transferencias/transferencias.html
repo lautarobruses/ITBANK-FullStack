@@ -8,8 +8,9 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'transferencias/css/transferencias.css' %}">
 <div class="container">
-    <h1>Bienvenido {{ user.username }}, a tu sección de transferencias</h1>
+    <h1>Bienvenido {{ nombreUser }}, a tu sección de transferencias</h1>
     <h3>Historial</h3>
+    <h3>Saldo: {{ saldo }}</h3>
     <div class="contenedor">
         {% if transferencias %}
             <ul>
