@@ -3,19 +3,24 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from .forms import ContactForm
+from .models import Cliente, Cuenta, CajaAhorro, CuentaCorriente
 
 @login_required
 def home(request):
-    # Acceder al ID del usuario autenticado
-    user_id = request.user
-
+    cliente = Cliente.objects.get(user_id=request.user.id)
+    
     accountFake = []  # Reemplaza esto con tus datos reales
     cardFake = []  # Reemplaza esto con tus datos reales
     form = ContactForm()
 
-    print(f'ID del usuario autenticado: {user_id}')
+    context = {
+        'form': form,
+        'nombreCompleto': f'{cliente.customer_name} {cliente.customer_surname}',
+        'accountFake': accountFake,
+        'cardFake': cardFake
+    }
 
-    return render(request, 'base/home.html', {'form': form, 'accountFake': accountFake, 'cardFake': cardFake})
+    return render(request, 'base/home.html', context)
 
 def comingSoon(request):
     return render(request, 'base/comingSoon.html')

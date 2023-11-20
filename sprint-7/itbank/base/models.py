@@ -25,6 +25,21 @@ class AuditoriaCuenta(models.Model):
         managed = False
         db_table = 'auditoria_cuenta'
 
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.BooleanField()
+    username = models.CharField(unique=True, max_length=150)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField()
+    date_joined = models.DateTimeField()
+    first_name = models.CharField(max_length=150)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
 
 class CajaAhorro(models.Model):
     account = models.OneToOneField('Cuenta', models.DO_NOTHING, primary_key=True)
@@ -43,6 +58,7 @@ class Cliente(models.Model):
     telefono = models.TextField(max_length=15)
     dob = models.TextField(blank=True, null=True)
     branch = models.ForeignKey('Sucursal', models.DO_NOTHING)
+    user = models.ForeignKey(AuthUser, models.CASCADE, blank=True, null=True)
 
     class Meta:
         managed = False
