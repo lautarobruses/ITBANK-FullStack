@@ -33,3 +33,23 @@ h3 {
     margin-bottom: 12px; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #3498db; /* Color del borde */
+    color: #3498db; /* Color del texto */
+    background-color: #ffffff; /* Color de fondo */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave al pasar el ratón */
+}
+
+  /* Estilos adicionales cuando el ratón está sobre el botón */
+button:hover {
+    background-color: #3498db; /* Nuevo color de fondo al pasar el ratón */
+    color: #ffffff; /* Nuevo color de texto al pasar el ratón */
+}

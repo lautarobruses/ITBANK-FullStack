@@ -1,9 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-
-from . import views
+from .views import transferencias, accion_transferir
 
 urlpatterns = [
-    path('', views.transferencias, name='transferencias'),
-    path('transferir/', views.accion_transferir, name='AccionTransferir'),
+    path('', transferencias, name='transferencias'),
+    path('transferir/', accion_transferir, name='accion_transferir'),
 ]

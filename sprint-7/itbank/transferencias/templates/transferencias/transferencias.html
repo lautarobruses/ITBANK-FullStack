@@ -5,8 +5,26 @@
 {% endblock %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'transferencias/css/transferencias.css' %}">
+<div class="container">
+    <h1>Bienvenido {{ user.username }}, a tu sección de transferencias</h1>
+    <h3>Historial</h3>
+    <div class="contenedor">
+        {% if transferencias %}
+            <ul>
+                {% for transferencia in transferencias%}
+                    <li>{{ transferencias }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay transferencias  realizadas aún</p>
+            <p>¿Quieres realizar alguna?</p>
+        {% endif %}  
 
-    <h1>Hola desde la página de transferencias</h1>
+        <a href="{% url 'accion_transferir' %}"><button>Realizar Nueva Transferencia</button></a>
+    </div>
+</div>
 
     {{ block.super }}
 {% endblock %}
