@@ -128,6 +128,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'base/static'),
     os.path.join(BASE_DIR, 'cuenta/static'),
     os.path.join(BASE_DIR, 'pagos/static'),
+    os.path.join(BASE_DIR, 'transferencias/static'),
 ]
 
 MEDIA_URL = 'media/'
