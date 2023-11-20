@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'itbank.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['cuenta/templates'],
+        'DIRS': ['cuenta/templates', 'registration/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,6 +129,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'base/static'),
     os.path.join(BASE_DIR, 'cuenta/static'),
     os.path.join(BASE_DIR, 'pagos/static'),
+    os.path.join(BASE_DIR, 'registration/static'),
 ]
 
 MEDIA_URL = 'media/'

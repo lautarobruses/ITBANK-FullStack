@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'base/img/favicon.ico' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'cuenta/css/login-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/css/logout-style.css' %}">
     <title>Inicia sesión - NexusBank</title>
 </head>
 
@@ -22,23 +22,17 @@
             </a>
         </header>
         <div class="form-container">
+            <div id="text-container">
+                <h1>Sesión terminada</h1>
+                <p>¡Gracias por usar NexusBank!</p>
 
-            {% include 'cuenta/forms/login-form.html' %}
+                <div id="interactive-buttom-container">
+                    <button id="login" class="interactive-button" type="submit" value="Iniciar sesión">Iniciar sesión nuevamente</button>
+                </div>
+            </div>
 
-        </div>
-
-        <div class="register-container">
-            <p style="display: inline;">¿No tienes una cuenta? </p><a href="{% url 'register' %}">Registrate!</a>
-        </div>
-
-        <div class="legal-information-container">
-            <a href="{% url 'coming-soon' %}">Terminos</a>
-            <span>|</span>
-            <a href="{% url 'coming-soon' %}">Privacidad</a>
         </div>
     </div>
-
-    <script src="{% static 'cuenta/js/loginuwu.js' %}"></script>
 
 </body>
 </html>

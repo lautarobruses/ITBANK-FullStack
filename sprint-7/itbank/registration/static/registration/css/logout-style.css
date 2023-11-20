@@ -1,0 +1,175 @@
+
+:root { /*Variables*/
+    --gris: #EAEBED;
+    --sky-blue: #5B8291;
+    --dark-sky-blue: #2E424D;
+    --dark: #252525;
+    --light-sky-blue: #98DAD9;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    color: var(--white);
+}
+
+.background img {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.login-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    background-color: var(--white);
+    border-radius: 64px 64px 0 0;
+    width: 565px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header img {
+    height: 64px;
+    width: auto;
+}
+
+.form-container {
+    background-color: var(--dark-sky-blue);
+    opacity: 0.8;
+    border-radius: 0 0 64px 64px;
+    width: 565px;
+    height: 370px;
+    margin-bottom: 32px;
+}
+
+#text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-top: 76px;
+}
+
+#text-container h1{
+    font-size: 40px;
+}
+
+#text-container p{
+    font-size: 24px;
+}
+
+#interactive-buttom-container {
+    display: flex;
+    justify-content: center;
+}
+
+.interactive-button {
+    background: var(--white);
+    color: var(--dark);
+    font-size: 24px;
+    padding: 16px 77px;
+    border-radius: 32px;
+    margin-top: 36px;
+}
+
+@media screen and (max-width: 1023px) {
+    header {
+        border-radius: 32px 32px 0 0;
+        width: 600px;
+        height: 100px;
+    }
+    
+    header img {
+        height: 64px;
+        width: auto;
+    }
+    .form-container {
+        border-radius: 0 0 32px 32px;
+    }
+
+    #login-form  {
+        width: 600px;
+    }
+
+    .interactive-button {
+        font-size: 24px;
+        padding: 16px 96px;
+        border-radius: 16px;
+    }
+
+    .form-container input {
+        border-radius: 16px;
+        width: 500px;
+        height: 60px;
+    }
+
+    .text-box label {
+        font-size: 20px;
+    }
+
+    .button-eye {
+        transform: translateY(71%);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    header {
+        border-radius: 32px 32px 0 0;
+        width: 360px;
+        height: 80px;
+    }
+
+    header img {
+        height: 48px;
+        width: auto;
+    }
+
+    .form-container {
+        border-radius: 0 0 32px 32px;
+    }
+
+    #login-form {
+        width: 360px;
+        height: 400px;
+    }
+
+    .interactive-button {
+        font-size: 20px;
+        padding: 12px 48px;
+        border-radius: 16px;
+    }
+
+    .form-container input {
+        border-radius: 8px;
+        width: 300px;
+        height: 48px;
+    }
+
+    .button-eye {
+        transform: translateY(48%);
+    }
+}

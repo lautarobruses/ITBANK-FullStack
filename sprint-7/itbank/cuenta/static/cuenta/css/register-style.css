@@ -362,6 +362,15 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
+.error {
+    position: absolute;
+    color: red;
+    margin-top: 99px;
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
 /* Estilos para dispositivos pequeños (móviles) */
 @media screen and (max-width: 640px) {
     header {

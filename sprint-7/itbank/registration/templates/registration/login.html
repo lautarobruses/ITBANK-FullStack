@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'base/img/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/css/login-style.css' %}">
+    <title>Inicia sesión - NexusBank</title>
+</head>
+
+<body>
+    <div class="background">
+        <img src="{% static 'base/img/background.webp' %}" alt="Fondo principal del sitio">
+    </div>
+
+    <div class="login-container">
+        <header>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'cuenta/img/nexusbanklogo3-removebg.png' %}" alt="logo">
+            </a>
+        </header>
+        <div class="form-container">
+
+            {% include 'registration/forms/login-form.html' %}
+
+        </div>
+
+        <div class="register-container">
+            <p style="display: inline;">¿No tienes una cuenta? </p><a href="{% url 'register' %}">Registrate!</a>
+        </div>
+
+        <div class="legal-information-container">
+            <a href="{% url 'coming-soon' %}">Terminos</a>
+            <span>|</span>
+            <a href="{% url 'coming-soon' %}">Privacidad</a>
+        </div>
+    </div>
+
+    <script src="{% static 'cuenta/js/login.js' %}"></script>
+
+</body>
+</html>

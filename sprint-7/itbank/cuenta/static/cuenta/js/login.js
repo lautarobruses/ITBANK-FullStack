@@ -3,6 +3,7 @@ const toggleButton = document.getElementById("toggle-password");
 const showIcon = document.querySelector(".show-icon");
 const hideIcon = document.querySelector(".hide-icon");
 
+
 toggleButton.addEventListener('click', () => {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";

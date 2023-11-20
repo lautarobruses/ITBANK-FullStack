@@ -1,15 +1,19 @@
 {% load static %}
 
-<form id="login-form" >
+<form id="login-form" action='post'>
     {% csrf_token %}
     
+    {% if form.non_field_error %}
+        <p>Error!</p>
+    {% endif %}
+
     <div class="text-box">
-        <label for="{{ form.username.id_for_label }}" class="label-input">{{ form.username.label }}</label>
+        <label for="{{ form.username.id_for_label }}" class="label-input">Correo electronico o usuario:</label>
         {{ form.username }}
     </div>
 
     <div class="text-box">
-        <label for="{{ form.password.id_for_label }}" class="label-input">{{ form.password.label }}</label>
+        <label for="{{ form.password.id_for_label }}" class="label-input">Contraseña:</label>
 
         <div class="password-input-container">
             {{ form.password }}
@@ -26,6 +30,6 @@
     </div>
 
     <div id="interactive-buttom-container">
-        <button id="login" class="interactive-button" onclick="checkUser()" type="submit" value="Iniciar sesión">Iniciar sesión</button>
+        <button id="login" class="interactive-button" type="submit" value="Iniciar sesión">Iniciar sesión</button>
     </div>
 </form>
