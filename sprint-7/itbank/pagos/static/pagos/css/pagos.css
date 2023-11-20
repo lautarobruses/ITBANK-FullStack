@@ -13,10 +13,10 @@
     gap: 16px;
     align-items: center;
     text-align: center;
-    z-index: 0;
+    z-index: 1;
 }
 p{
-    z-index: 0;
+    z-index: 1;
 }
 .cuaderno{
     width: 50px; 
@@ -156,116 +156,9 @@ h3 {
     background-color: #0056b3;
 }
 
-/*Modal*/
-.modal {
-    position: fixed;
-    width: 75%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 24px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    text-align: center;
-}
-  
-.modal h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-size: 28px; 
-    color: #333; 
-    font-weight: bold; 
-    margin-bottom: 10px; 
-    text-transform: uppercase; 
-}
-  
-.modal form {
-    padding: 12px;
-    display: flex;
-    gap: 8px;
-    flex-direction: column;
-    align-items: center;
-}
-  
-.modal label {
-    font-size: 16px;
-    margin-top: 10px;
-}
-  
-.modal input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px;
-}
-  
-.modal button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-}
-  
-.modal button:hover {
-    background-color: #e0e0e0;
-}
-  
-.modal .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-    background-color: #fff;
-}
-  
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9998;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 @media screen and (max-width: 1023px) {
     .card {
         width: 350px;
-    }
-
-    .modal {
-        width: 75%; 
-    }
-
-    .modal h2 {
-        font-size: 16px; 
-        margin-bottom: 20px;
-        font-size: 28px; 
-        color: #333; 
-        font-weight: bold; 
-        text-transform: uppercase; 
-    }
-
-    .modal label {
-        font-size: 14px; 
-    }
-
-    .modal input {
-        font-size: 12px; 
     }
 }
 
@@ -285,10 +178,5 @@ h3 {
 
     .monto {
         font-size: 28px;
-    }
-
-    .modal .add-servicios {
-        font-size: 16px;
-        text-align: left;
     }
 }

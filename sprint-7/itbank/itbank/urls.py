@@ -29,8 +29,7 @@ urlpatterns = [
     path('', include('base.urls'), name='home'),
     path('coming-soon/', comingSoon, name='coming-soon'),
     path('cuenta/', include('cuenta.urls'), name='cuenta'),
-    path('pagos/', pagos, name='pagos'),
-    path('pagos/servicios/', servicios, name='servicios'),
+    path('pagos/', include('pagos.urls'), name='pagos'),
     path('prestamos/', calculadora_prestamos, name='prestamos'),
-    path('transferencias/', transferencias, name='transferencias'),
+    path('transferencias/', include('transferencias.urls'), name='transferencias'),
 ]
