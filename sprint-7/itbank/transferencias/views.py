@@ -1,17 +1,39 @@
 from django.shortcuts import render, redirect
-from .models import CuentaBancaria, Transferencias
+from base.models import Cliente, Cuenta
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from babel.numbers import format_currency
 
+# Create your views here. 
 
-# Create your views here.
-
-# @login_required
+@login_required
 def transferencias(request):
+
+
+    # Obtener el cliente asociado al usuario actual
+    cliente = Cliente.objects.get(user_id=request.user.id)
+    saldo = Cuenta.objects.get(account_id=request.user.id)
+    balance = saldo.balance
+    codigo_moneda = '$'
+
+    saldo_formateado = format_currency(balance / 100, codigo_moneda, locale='es_AR')
+    if balance > 0:
+        mensaje = f'Saldo: {saldo_formateado}'
+    else:
+        messages.error(request, 'Saldo insuficiente para realizar transferencias. ')
+        mensaje = f'Saldo: {saldo_formateado} hay que ponerse las pilas con las cuentas'
     
-    transferencia = Transferencias.objects.filter(origen__usuario=request.user)
+    context = {
+        'nombreUser': cliente.customer_name,
+        'saldo': f'{mensaje}',
+        'balance': balance,
+    }
 
-    return render(request, 'transferencias/transferencias.html', {'transferencias' : transferencia})
+    return render(request, 'transferencias/transferencias.html', context)
 
-# @login_required
+    
+
+@login_required
 def accion_transferir(request):
     # if request.method == 'POST':
     # cuenta_origen_id = request.POST.get('cuenta_origen')
@@ -24,6 +46,11 @@ def accion_transferir(request):
         # return redirect('transferencias/transferencias.html')
     
     # cuentas = CuentaBancaria.objects.filter(usuario=request.user)
+    cliente = Cliente.objects.get(user_id=request.user.id)
+    context = {
+        'nombreUser': f'{cliente.customer_name}',
+    }
 
-    return render(request, 'transferencias/transferir.html')
+
+    return render(request, 'transferencias/transferir.html', context)
 

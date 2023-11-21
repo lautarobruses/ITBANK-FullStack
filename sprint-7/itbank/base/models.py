@@ -42,7 +42,7 @@ class AuthUser(models.Model):
         db_table = 'auth_user'
 
 class CajaAhorro(models.Model):
-    account = models.OneToOneField('Cuenta', models.DO_NOTHING, primary_key=True)
+    account = models.OneToOneField('Cuenta', models.CASCADE, primary_key=True)
     cargo_mensual = models.FloatField()
 
     class Meta:
@@ -102,7 +102,7 @@ class Cuenta(models.Model):
 
 
 class CuentaCorriente(models.Model):
-    account = models.OneToOneField(Cuenta, models.DO_NOTHING, primary_key=True)
+    account = models.OneToOneField(Cuenta, models.CASCADE, primary_key=True)
     limite = models.FloatField()
 
     class Meta:
