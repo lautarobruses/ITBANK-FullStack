@@ -14,12 +14,12 @@
 <div class="container">
     <h1>Bienvenido {{ nombreUser }}, a tu sección de transferencias</h1>
     <h3>Historial</h3>
-    <h3>Saldo: {{ saldo }}</h3>
+    <h3>{{ saldo }}</h3>
     <div class="contenedor">
         {% if transferencias %}
             <ul>
                 {% for transferencia in transferencias%}
-                    <li>{{ transferencias }}</li>
+                    <li>{{ transferencia }}</li>
                 {% endfor %}
             </ul>
         {% else %}
@@ -27,8 +27,14 @@
             <p>¿Quieres realizar alguna?</p>
         {% endif %}  
 
-        <a href="{% url 'accion_transferir' %}"><button>Realizar Nueva Transferencia</button></a>
+        {% if balance  > 0 %}
+            <a href="{% url 'accion_transferir' %}"><button>Realizar Nueva Transferencia</button></a>
+        {% else %}
+            <h3 class = 'error'>NO PODES REALIZAR TRANSFERENCIAS</h3>
+            <h3 class = 'error'>TU SALDO ES NEGATIVO</h3>
+        {% endif %}
     </div>
+
 </div>
 
     {{ block.super }}
