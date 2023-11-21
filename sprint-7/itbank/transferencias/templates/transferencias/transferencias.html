@@ -4,9 +4,13 @@
     Transferencias {{ block.super }}
 {% endblock %}
 
-{% block content %}
 {% load static %}
+
+{% block style %}
 <link rel="stylesheet" type="text/css" href="{% static 'transferencias/css/transferencias.css' %}">
+{% endblock %}
+
+{% block content %}
 <div class="container">
     <h1>Bienvenido {{ nombreUser }}, a tu sección de transferencias</h1>
     <h3>Historial</h3>
