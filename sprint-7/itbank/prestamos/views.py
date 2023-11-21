@@ -4,12 +4,8 @@ from base.models import Cliente, ClienteClassic, ClienteGold, ClienteBlack, Pres
 from base.forms import ContactForm
 
 from .forms import FormularioCalculadoraPrestamos, SolicitudPrestamoForm
-<<<<<<< HEAD
 
 @login_required
-=======
-#@login_required
->>>>>>> e46ce97a5fc439b8064be73118ba296314937e17
 def calculadora_prestamos(request):
     form = ContactForm()
 
@@ -26,11 +22,8 @@ def calculadora_prestamos(request):
     else:
         formulario = FormularioCalculadoraPrestamos()
     formulario = FormularioCalculadoraPrestamos() # Siempre devuelve un nuevo formulario para solicitudes GET
-<<<<<<< HEAD
+    
     return render(request, 'prestamos\prestamos.html', {'form': form, 'formulario': formulario, 'pago_mensual': pago_mensual})
-=======
-    return render(request, 'prestamos/prestamos.html', {'formulario': formulario, 'pago_mensual': pago_mensual})
->>>>>>> e46ce97a5fc439b8064be73118ba296314937e17
 
 @login_required
 def solicitar_prestamo(request):

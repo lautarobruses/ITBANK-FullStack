@@ -6,16 +6,9 @@ from django.contrib import messages
 from babel.numbers import format_currency
 
 
-# Create your views here. 
-
 @login_required
 def transferencias(request):
-<<<<<<< HEAD
     form = ContactForm()
-=======
-
-
->>>>>>> e46ce97a5fc439b8064be73118ba296314937e17
     # Obtener el cliente asociado al usuario actual
     cliente = Cliente.objects.get(user_id=request.user.id)
     saldo = Cuenta.objects.get(account_id=request.user.id)

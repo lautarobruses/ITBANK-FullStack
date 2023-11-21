@@ -3,7 +3,12 @@ from base.forms import ContactForm
 
 def pagos(request):
     form = ContactForm()
-    return render(request, 'pagos/pagos.html', form)
+
+    context = {
+        "form": form
+    }
+
+    return render(request, 'pagos/pagos.html', context)
 
 def servicios(request):
     
