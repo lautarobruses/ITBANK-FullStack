@@ -7,12 +7,11 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos2.css' %}">
 {% endblock %}
 
 {% block content %}
-
-    <div class="formContainer">
+    <div class="formContainer2">
         <h1 class="formText">Calculá tu Préstamo</h1>
         <form method="post">
             {{ formulario.as_p }}
@@ -25,6 +24,5 @@
             <button type="submit">Solicitar préstamo</button>
         </form>
     </div>
-    
     {{ block.super }}
 {% endblock %}

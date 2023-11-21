@@ -1,4 +1,4 @@
-.formContainer {
+.formContainer2 {
     background-color: #f0f0f0;
     width: 600px;
     height: auto;
@@ -13,16 +13,16 @@
     margin-bottom: 20px;
 }
 
-.formContainer form {
+.formContainer2 form {
     display: flex;
     flex-direction: column;
 }
 
-.formContainer label {
+.formContainer2 label {
     margin-bottom: 5px;
 }
 
-.formContainer input {
+.formContainer2 input {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -30,23 +30,23 @@
     font-size: 16px;
 }
 
-.formContainer h2 {
+.formContainer2 h2 {
     margin-top: 20px;
     font-size: 24px;
 }
 
-.formContainer p {
+.formContainer2 p {
     font-size: 16px;
 }
 
 @media screen and (max-width: 1023px) {
-    .formContainer {
+    .formContainer2 {
         width: auto;
     }
 }
 
 @media screen and (max-width: 640px) {
-    .formContainer {
+    .formContainer2 {
         width: auto;
     }
 }
