@@ -22,7 +22,7 @@ def calculadora_prestamos(request):
     else:
         formulario = FormularioCalculadoraPrestamos()
     formulario = FormularioCalculadoraPrestamos() # Siempre devuelve un nuevo formulario para solicitudes GET
-    
+
     return render(request, 'prestamos\prestamos.html', {'form': form, 'formulario': formulario, 'pago_mensual': pago_mensual})
 
 @login_required
@@ -36,13 +36,13 @@ def solicitar_prestamo(request):
     elif ClienteBlack.objects.filter(customer_id=cliente.id).exists():
         max_loan_amount = 500000
     else:
-        max_loan_amount = 0  # o cualquier valor predeterminado
+        max_loan_amount = 0
 
     if request.method == 'POST':
         form = SolicitudPrestamoForm(request.POST)
         if form.is_valid():
             loan = Prestamo()
-            loan.customer_id = user
+            loan.customer_id = cliente.customer_id
             loan.loan_type = form.cleaned_data['tipo_prestamo']
             loan.loan_date = form.cleaned_data['fecha_prestamo']
             loan.loan_total = min(form.cleaned_data['monto_solicitado'], max_loan_amount)
