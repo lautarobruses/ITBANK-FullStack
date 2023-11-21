@@ -4,18 +4,20 @@
     Prestamos {{ block.super }}
 {% endblock %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos.css' %}"> 
 {% block content %}
 
     <div class="formContainer">
         <h1 class="formText">Calculá tu Préstamo</h1>
         <form method="post">
+            {% csrf_token %}
             {{ formulario.as_p }}
             <button type="submit">Calcular</button>
         </form>
         <p id="pago_mensual"></p>
         <h2>Solicitud de préstamo</h2>
         <form method="post">
+            {% csrf_token %}
             {{ solicitud_form.as_p }}
             <button type="submit">Solicitar préstamo</button>
         </form>

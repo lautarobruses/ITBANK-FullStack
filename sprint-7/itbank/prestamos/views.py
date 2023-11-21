@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from base.models import ClienteClassic, ClienteGold, ClienteBlack, Prestamo
 from .forms import FormularioCalculadoraPrestamos, SolicitudPrestamoForm
-# @login_required
+#@login_required
 def calculadora_prestamos(request):
     pago_mensual = None
 
@@ -14,11 +14,10 @@ def calculadora_prestamos(request):
             meses = formulario.cleaned_data['meses']
             # Fórmula para calcular el pago mensual de un préstamo
             pago_mensual = "{:.2f}".format(monto * tasa_interes * (1 + tasa_interes) ** meses / ((1 + tasa_interes) ** meses - 1))
-            return redirect('prestamos')
     else:
         formulario = FormularioCalculadoraPrestamos()
     formulario = FormularioCalculadoraPrestamos() # Siempre devuelve un nuevo formulario para solicitudes GET
-    return render(request, 'prestamos\prestamos.html', {'formulario': formulario, 'pago_mensual': pago_mensual})
+    return render(request, 'prestamos/prestamos.html', {'formulario': formulario, 'pago_mensual': pago_mensual})
 
 
 # def solicitar_prestamo(request):
