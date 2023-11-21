@@ -1,10 +1,14 @@
 from django.shortcuts import render
-
-# Create your views here.
+from base.forms import ContactForm
 
 def pagos(request):
+    form = ContactForm()
 
-    return render(request, 'pagos/pagos.html')
+    context = {
+        "form": form
+    }
+
+    return render(request, 'pagos/pagos.html', context)
 
 def servicios(request):
     

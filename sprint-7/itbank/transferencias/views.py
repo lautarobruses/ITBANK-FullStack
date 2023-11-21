@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
 from base.models import Cliente, Cuenta
+from base.forms import ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from babel.numbers import format_currency
 
-# Create your views here. 
 
 @login_required
 def transferencias(request):
-
-
+    form = ContactForm()
     # Obtener el cliente asociado al usuario actual
     cliente = Cliente.objects.get(user_id=request.user.id)
     saldo = Cuenta.objects.get(account_id=request.user.id)
@@ -24,6 +23,7 @@ def transferencias(request):
         mensaje = f'Saldo: {saldo_formateado} hay que ponerse las pilas con las cuentas'
     
     context = {
+        'form': form,
         'nombreUser': cliente.customer_name,
         'saldo': f'{mensaje}',
         'balance': balance,
