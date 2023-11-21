@@ -1,20 +1,32 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from base.models import Cliente, Cuenta
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from babel.numbers import format_currency
 
 # Create your views here. 
 
 @login_required
 def transferencias(request):
 
+
     # Obtener el cliente asociado al usuario actual
     cliente = Cliente.objects.get(user_id=request.user.id)
     saldo = Cuenta.objects.get(account_id=request.user.id)
     balance = saldo.balance
-  
+    codigo_moneda = '$'
+
+    saldo_formateado = format_currency(balance / 100, codigo_moneda, locale='es_AR')
+    if balance > 0:
+        mensaje = f'Saldo: {saldo_formateado}'
+    else:
+        messages.error(request, 'Saldo insuficiente para realizar transferencias. ')
+        mensaje = f'Saldo: {saldo_formateado} hay que ponerse las pilas con las cuentas'
+    
     context = {
         'nombreUser': cliente.customer_name,
-        'saldo': f'{balance}',
+        'saldo': f'{mensaje}',
+        'balance': balance,
     }
 
     return render(request, 'transferencias/transferencias.html', context)
