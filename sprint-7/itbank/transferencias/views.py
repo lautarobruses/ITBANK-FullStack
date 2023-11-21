@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from base.models import Cliente, Cuenta
+from .models import Transferencia
 from base.forms import ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -57,29 +58,41 @@ def transferencias(request):
 
 def accion_transferir(request):
     if request.method == 'POST':
-        cuenta_origen_id = request.POST.get('cuenta_origen')
-        cuenta_destino_id = request.POST.get('cuenta_destino')
+        dni_destinatario = request.POST.get('dni')
+        customer_name_destinatario = request.POST.get('customer_name')
         monto = float(request.POST.get('monto'))
 
         try:
             with transaction.atomic():
+                destinatario = Cuenta.objects.select_for_update().get(dni=dni_destinatario, customer_name=customer_name_destinatario)
+                cuenta_origen_id = request.POST.get('cuenta_origen_id')
                 cuenta_origen = Cuenta.objects.select_for_update().get(id=cuenta_origen_id)
-                cuenta_destino = Cuenta.objects.select_for_update().get(id=cuenta_destino_id)
 
                 if cuenta_origen.balance >= monto:
+                    # Realizar la transferencia
                     cuenta_origen.balance -= monto
-                    cuenta_destino.balance += monto
+                    destinatario.balance += monto
 
                     cuenta_origen.save()
-                    cuenta_destino.save()
+                    destinatario.save()
+
+                    # Guardar la información de la transferencia en la base de datos
+                    Transferencia.objects.create(
+                        dni_destinatario=dni_destinatario,
+                        customer_name_destinatario=customer_name_destinatario,
+                        monto=monto
+                    )
 
                     messages.success(request, 'Transferencia realizada con éxito')
+                    return render(request, 'transferencias/success.html')  # Redirigir a la página de éxito
                 else:
                     messages.error(request, 'No tienes fondos suficientes para realizar la transferencia')
+                    return render(request, 'transferencias/error.html')  # Redirigir a la página de error
         except Cuenta.DoesNotExist:
-            messages.error(request, 'Las cuentas seleccionadas no existen.')
+            messages.error(request, 'El destinatario no existe.')
+            return render(request, 'transferencias/error.html')  # Redirigir a la página de error
 
-    cliente = get_object_or_404(Cliente, user=request.user.id)  # Usar request.user.id en lugar de request.user
+    cliente = get_object_or_404(Cliente, user=request.user.id)
     cuentas = Cuenta.objects.filter(customer=cliente)
     context = {
         'nombreUser': f'{cliente.customer_name}',

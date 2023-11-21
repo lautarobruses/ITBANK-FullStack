@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Error en la Transferencia {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h2>¡Error! Los datos no coinciden.</h2>
+    <!-- Puedes agregar más contenido aquí si es necesario -->
+    {{ block.super }}
+{% endblock %}
