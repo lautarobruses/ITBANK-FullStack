@@ -7,25 +7,19 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'transferencias/css/transferencias.css' %}">
-    <div class="conatiner">
+    <div class="container">
         <h1>Acá realizas tus transferencias</h1>
-        <h3>¿A quien deseas transferirle hoy {{ nombreUser }} ?</h3>
+        <h3>¿A quién deseas transferirle hoy {{ nombreUser }}?</h3>
         <div class="contenedor">
             <form method='post' action="{% url 'transferencias' %}">
                 {% csrf_token %}
-                <label for="cuenta_origen">Cuenta Origen: </label>
-                <select name="cuenta_origen" required>
-                    {% for cuenta in cuentas %}
-                        <option value="{{ cuenta.id }}">{{ cuenta }}</option>
-                    {% endfor %}
-                </select>
 
-                <label for="cuenta_destino">Cuenta Destino:</label>
-                <select name="cuenta_destino" required>
-                    {% for cuenta in cuentas %}
-                        <option value="{{ cuenta.id }}">{{ cuenta }}</option>
-                    {% endfor %}
-                </select>
+                <!-- Agrega campos DNI y customer_name -->
+                <label for="dni">DNI del destinatario:</label>
+                <input type="text" name="dni" required>
+
+                <label for="customer_name">Nombre del destinatario:</label>
+                <input type="text" name="customer_name" required>
 
                 <label for="monto">Monto:</label>
                 <input type="number" name="monto" step="0.01" required>
