@@ -3,8 +3,13 @@
 {% block title %}
     Prestamos {{ block.super }}
 {% endblock %}
+
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos.css' %}">
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'prestamos/css/prestamos.css' %}">
+{% endblock %}
+
 {% block content %}
 
     <div class="formContainer">

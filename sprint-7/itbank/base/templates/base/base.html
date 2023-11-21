@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="{% static 'base/css/footer/terms.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/footer/contactForm2.css' %}">
     <!-- ESTILO PARTICULAR DE CADA PAGINA -->
-    <link rel="stylesheet" href="{% static 'base/css/' %}{% block style %}nombre_del_archivo.css{% endblock %}">
+    {% block style %}
 
+    {% endblock %}
     <title>Nexus Bank - {% block title %}{% endblock %}</title>
 </head>
 <body>

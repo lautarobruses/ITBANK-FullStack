@@ -3,10 +3,13 @@
     Pagos {{ block.super }}
 {% endblock %}
 
-{% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'pagos/css/pagos.css' %}"> 
 
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pagos/css/pagos.css' %}"> 
+{% endblock %}
+
+{% block content %}
 <div class='container'>
     <h1>PAGOS DE SERVICIOS</h1>
     <h3>PRÓXIMOS VENCIMIENTOS</h3>
