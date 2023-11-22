@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from base.models import Cliente, Cuenta
-from .models import Transferencia
 from base.forms import ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from babel.numbers import format_currency
-from django.db import transaction
+from .forms import TransferForm
+from .models import CustomUser
 
 @login_required
 def transferencias(request):
@@ -58,45 +58,25 @@ def transferencias(request):
 
 def accion_transferir(request):
     if request.method == 'POST':
-        dni_destinatario = request.POST.get('dni')
-        customer_name_destinatario = request.POST.get('customer_name')
-        monto = float(request.POST.get('monto'))
+        form = TransferForm(request.POST)
+        if form.is_valid():
+            beneficiario_username = form.cleaned_data['beneficiario']
+            monto = form.cleaned_data['monto']
 
-        try:
-            with transaction.atomic():
-                destinatario = Cuenta.objects.select_for_update().get(dni=dni_destinatario, customer_name=customer_name_destinatario)
-                cuenta_origen_id = request.POST.get('cuenta_origen_id')
-                cuenta_origen = Cuenta.objects.select_for_update().get(id=cuenta_origen_id)
+            beneficiario = get_object_or_404(CustomUser, username=beneficiario_username)
+            remitente = request.user
 
-                if cuenta_origen.balance >= monto:
-                    # Realizar la transferencia
-                    cuenta_origen.balance -= monto
-                    destinatario.balance += monto
+            # Realiza la transferencia
+            remitente.cuenta.balance -= monto
+            beneficiario.cuenta.balance += monto
 
-                    cuenta_origen.save()
-                    destinatario.save()
+            remitente.cuenta.save()
+            beneficiario.cuenta.save()
 
-                    # Guardar la información de la transferencia en la base de datos
-                    Transferencia.objects.create(
-                        dni_destinatario=dni_destinatario,
-                        customer_name_destinatario=customer_name_destinatario,
-                        monto=monto
-                    )
+            return render(request, 'transferencia_exitosa.html', {'monto': monto, 'beneficiario': beneficiario_username})
 
-                    messages.success(request, 'Transferencia realizada con éxito')
-                    return render(request, 'transferencias/success.html')  # Redirigir a la página de éxito
-                else:
-                    messages.error(request, 'No tienes fondos suficientes para realizar la transferencia')
-                    return render(request, 'transferencias/error.html')  # Redirigir a la página de error
-        except Cuenta.DoesNotExist:
-            messages.error(request, 'El destinatario no existe.')
-            return render(request, 'transferencias/error.html')  # Redirigir a la página de error
+    else:
+        form = TransferForm()
 
-    cliente = get_object_or_404(Cliente, user=request.user.id)
-    cuentas = Cuenta.objects.filter(customer=cliente)
-    context = {
-        'nombreUser': f'{cliente.customer_name}',
-        'cuentas': cuentas,
-    }
 
-    return render(request, 'transferencias/transferir.html', context)
+    return render(request, 'transferencias/transferir.html', {'form': form})

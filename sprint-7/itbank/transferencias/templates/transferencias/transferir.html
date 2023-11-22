@@ -14,12 +14,8 @@
             <form method='post' action="{% url 'transferencias' %}">
                 {% csrf_token %}
 
-                <!-- Agrega campos DNI y customer_name -->
-                <label for="dni">DNI del destinatario:</label>
-                <input type="text" name="dni" required>
-
-                <label for="customer_name">Nombre del destinatario:</label>
-                <input type="text" name="customer_name" required>
+                <label for="beneficiario">Usuario destinatario:</label>
+                <input type="text" name="beneficiario" required>
 
                 <label for="monto">Monto:</label>
                 <input type="number" name="monto" step="0.01" required>
