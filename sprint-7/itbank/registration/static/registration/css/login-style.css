@@ -166,6 +166,14 @@ header img {
     text-decoration: none;
 }
 
+h1{
+    font-size: 40px;
+}
+
+p{
+    font-size: 24px;
+}
+
 @media screen and (max-width: 1023px) {
     header {
         border-radius: 32px 32px 0 0;
