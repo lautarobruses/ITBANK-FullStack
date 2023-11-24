@@ -14,13 +14,19 @@
     <div class="formContainer2">
         <h1 class="formText">Calculá tu Préstamo</h1>
         <form method="post">
+            {% csrf_token %}
             {{ formulario.as_p }}
             <button type="submit">Calcular</button>
         </form>
+        {% if pago_mensual %}
+            <p id="pago_mensual">Pago mensual: {{ pago_mensual }}</p>
+        {% endif %}
         <p id="pago_mensual"></p>
         <h2>Solicitud de préstamo</h2>
-        <form method="post">
-            {{ solicitud_form.as_p }}
+        <form method="post" action="{% url 'solicitar_prestamo' %}">>
+            {% csrf_token %}
+            {{ form2.as_p }}
+            <p>El monto máximo que puedes solicitar es: {{ max_loan_amount }}</p>
             <button type="submit">Solicitar préstamo</button>
         </form>
     </div>
