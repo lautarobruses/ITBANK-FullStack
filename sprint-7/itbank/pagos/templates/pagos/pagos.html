@@ -16,25 +16,21 @@
     {% if servicios %}
         <div class='contenedor'>
             <h3>Servicios A Pagar: </h3>
-            <table class='servicios-table'>
-                <thead>
-                    <tr>
-                        <th>Tipo de Servicio</th>
-                        <th>Monto a Pagar</th>
-                        <th>Fecha de Pago</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for servicio in servicios %}
-                        <tr>
-                            <td>{{ servicio.tipo }}</td>
-                            <td>${{ servicio.monto }}</td>
-                            <td>{{ servicio.fecha_pago }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
+            <table>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Monto</th>
+                    <th>Fecha de vencimiento</th>
+                </tr>
+                {% for servicio in servicios %}
+                <tr>
+                    <td>{{ servicio.servicio }}</td>
+                    <td>{{ servicio.monto }}</td>
+                    <td>{{ servicio.fecha_vencimiento }}</td>
+                </tr>
+                {% endfor %}
             </table>
-            <a href="" class='link'>AÑADIR SERVICIOS</a>
+            <a href="{% url 'servicios' %}" class='link'>AÑADIR SERVICIOS</a>
         </div>
     {% else %}
         <div class='contenedor'>
