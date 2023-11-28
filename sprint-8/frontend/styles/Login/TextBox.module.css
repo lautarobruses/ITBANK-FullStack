@@ -1,0 +1,77 @@
+.passwordContainer {
+    display: inline-block;
+    position: relative;
+}
+    
+.buttonEye {
+    position: absolute;
+    top: 54%;
+    right: 18px;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 24px;
+    color: var(--white);
+}
+
+.hideIcon {
+    display: none;
+}
+
+.input {
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 2px solid var(--white);
+    border-radius: 16px;
+    width: 600px;
+    height: 64px;
+    color: white;
+    font-size: medium;
+    padding: 16px;
+    padding-right: 48px;
+}
+
+.input[type=number]::-webkit-inner-spin-button, 
+.input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.textBox {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.textBox label{
+    font-size: 24px;
+}
+
+.error {
+    position: absolute;
+    color: red;
+    margin-top: 2px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1023px) {
+    .input {
+        border-radius: 16px;
+        width: 500px;
+        height: 60px;
+    }
+
+    .textBox label {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .input {
+        border-radius: 8px;
+        width: 300px;
+        height: 48px;
+    }
+
+}

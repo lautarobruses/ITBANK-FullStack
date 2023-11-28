@@ -1,0 +1,113 @@
+.checkBoxContainer {
+    position: relative;
+}
+
+.label {
+    font-size: 18px;
+    padding-left: 36px;
+}
+
+.checkBox {
+    position: absolute;
+    left: 0px;
+    width: 19px;
+    height: 19px;
+    z-index: -1;
+    opacity: 0;
+}
+
+.controlIndicator {
+    position: absolute;
+    top: 0px;
+    height: 20px;
+    width: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--white);
+    border-radius: 3px;
+}
+
+.controlIndicator:hover {
+    background: var(--white);
+    opacity: 3;
+}
+
+input:checked ~ .controlIndicator {
+    background-color: var(--white);
+}
+
+.input:disabled ~ .controlIndicator {
+    background: #e6e6e6;
+    opacity: 5;
+    pointer-events: none;
+}
+
+.controlIndicator:after {
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+input:checked ~ .controlIndicator {
+    background: var(--white);
+}
+
+input:checked ~ .controlIndicator:after {
+    display: block;
+}
+
+.controlIndicator:after {
+    left: 6px;
+    top: 1.9px;
+    width: 4px;
+    height: 9px;
+    border: solid var(--dark);
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+}
+
+.controlIndicator::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    margin-left: -8.5px;
+    margin-top: -8.5px;
+    background: white;
+    border-radius: 36px;
+    opacity: 0.5;
+    z-index: 99999;
+    transform: scale(0);
+}
+
+input + .controlIndicator::before {
+    animation: s-ripple 250ms ease-out;
+}
+
+input:checked + .controlIndicator::before {
+    animation-name: s-ripple-dup;
+}
+
+@media screen and (max-width: 640px) {
+    .label {
+        font-size: 16px;
+        padding-left: 28px;
+    }
+}
+
+
+@keyframes s-ripple-dup {
+   0% {
+       transform: scale(0);
+    }
+   30% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}

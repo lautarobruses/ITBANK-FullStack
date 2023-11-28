@@ -1,0 +1,22 @@
+import styles from '@/styles/Footer/Footer.module.css'
+
+import Media from './Media'
+import Contact from './Contact'
+import Terms from './Terms'
+import ContactForm from './ContactForm'
+
+const Footer = () => {
+    return (
+        <footer className={`${styles.footer}`}>
+            <div className={`${styles.leftContainer}`}>
+            <h1>Contactanos!</h1>
+                <Media />
+                <Contact />
+                <Terms />
+            </div>
+            <ContactForm />
+        </footer>
+    )
+}
+
+export default Footer

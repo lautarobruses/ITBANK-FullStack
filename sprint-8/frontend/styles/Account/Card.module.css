@@ -1,0 +1,91 @@
+.h2 {
+    font-size: 14px;
+    padding: 8px;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+#card {
+    width: 340px;
+    min-height: 190px;
+    border-radius: 15px;
+    border: 1px;
+    padding: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#headerCard {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    height: 40px;
+    border-bottom: 1px solid;
+}
+
+#cardTitle {
+    font-size: 18px;
+}
+
+#cardSubtitle {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+#cardNum {
+    font-weight: normal;
+    font-size: 16px;
+    padding-top: 1px;
+}
+
+#saldo {
+    margin-top:10px;
+    font-size: 26px;
+}
+
+#button {
+    width: 160px;
+    height: 30px;
+    margin-top: 0px;
+
+    font-size: 9px;
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+
+#motionContainer {
+    display: flex;
+    flex-direction: column;
+    
+    margin-top: 4px;
+    padding-top: 5px;
+    gap: 5px;
+
+    border-top: 1px solid;
+}
+
+.motion{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1023px) {
+
+}
+
+@media screen and (max-width: 640px) {
+   
+}

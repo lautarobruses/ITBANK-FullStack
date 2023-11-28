@@ -1,0 +1,60 @@
+/* @import 'react-toastify/dist/ReactToastify.css'; */
+
+:root { /*Variables*/
+    --grey: #EAEBED;
+    --grey-font: #727070;
+    --sky-blue: #5B8291;
+    --dark-sky-blue: #2E424D;
+    --dark: #252525;
+    --light-sky-blue: #98DAD9;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*De esta manera incluyo el padding y el border en la altura-ancho total*/
+}
+
+html {
+    font-family: 'Lato', sans-serif;
+    min-width: 375px;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+main {
+    margin-top: 100px;
+    margin-left: 384px;
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1023px) {
+    main {
+        margin-left: 284px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    main {
+        margin-top: 80px;
+        margin-left: 0px;
+        min-height: 90vh;
+    }
+}

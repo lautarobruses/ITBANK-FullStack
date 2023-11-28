@@ -1,0 +1,70 @@
+.registerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 64px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerContainer a,
+.registerContainer p,
+.registerContainer span,
+.registerContainer label {
+    color: var(--white);
+}
+
+.registerContainer a {
+    text-decoration: underline;
+}
+
+.header {
+    background-color: var(--white);
+    border-radius: 64px 64px 0 0;
+    width: 1000px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .nexusLogo {
+    height: 60px;
+    width: auto;
+}
+
+@media screen and (max-width: 1023px) {
+    .registerContainer {
+        position: relative;
+    }
+
+    .header {
+        border-radius: 32px 32px 0 0;
+        width: 600px;
+        height: 100px;
+    }
+    
+    .header .nexusLogo {
+        height: 64px;
+        width: auto;
+    }   
+}
+
+@media screen and (max-width: 640px) {
+    .header {
+        border-radius: 32px 32px 0 0;
+        width: 360px;
+        height: 80px;
+    }
+
+    .header .nexusLogo {
+        height: 48px;
+        width: auto;
+    }
+}

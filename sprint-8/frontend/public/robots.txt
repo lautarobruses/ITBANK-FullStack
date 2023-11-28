@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /uploads/
+
+User-agent: Googlebot
+Disallow: /private/
+
+User-agent: Bingbot
+Disallow: /private/
+
+User-agent: DuckDuckGo
+Disallow: /private/
+
+Sitemap: https://www.Nexus-Bank.com/sitemap.xml
