@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'base/img/favicon.ico' %}">
+    <!-- ESTILO GENERAL PAGINA -->
+    <link rel="stylesheet" href="{% static 'base/css/global.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base/css/header/header2.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/header/buttonMenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base/css/navbar/navbar.css' %}">
+
+    <link rel="stylesheet" href="{% static 'base/css/footer/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/media.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/terms.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/footer/contactForm2.css' %}">
+    <!-- ESTILO PARTICULAR DE CADA PAGINA -->
+    {% block style %}
+
+    {% endblock %}
+    <title>Nexus Bank - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <!-- BACKGROUND -->
+    <div class="background">
+        <img src="{% static 'base/img/background.webp' %}" alt="Fondo principal del sitio">
+    </div>
+
+    <!-- HEADER -->
+    {% include 'base/header/header.html' %}
+
+    <!-- NAVBAR -->
+    {% include 'base/navbar/navbar.html' %}
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    
+    <!-- FOOTER -->
+    {% include 'base/footer/footer.html' %}
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'base/js/script.js' %}"></script> 
+</body>
+</html>

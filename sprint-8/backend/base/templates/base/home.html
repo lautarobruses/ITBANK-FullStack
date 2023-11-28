@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div id="accountsContainer">
+            <h1 id="tituloPrincipal">Bienvenido {{ nombreCompleto }}!</h1>
+        </div>
+        <div id="accountsContainer">
+            <h2 id="tituloSecundario">Tus cuentas:</h2>
+            <ul id="list">
+                {% for cuenta in cuentas %}
+                    <li class="elements">
+                        <span>{{ cuenta.title }}</span>
+                        {% if cuenta.tipo_moneda == 0 %}
+                            <span>ARS${{ cuenta.balance }}</span>
+                        {% else %}
+                            <span>USD${{ cuenta.balance }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="accountsContainer">
+            <h2 id="tituloSecundario">Tus tarjetas:</h2>
+            <ul id="list">
+                {% for tarjeta in tarjetas %}
+                <li class="elements">
+                    <span style="justify-content: center; display: flex; gap: 5px;">
+                        {% if tarjeta.marca_tarjeta == 1 %}
+                            <img width="25" src="{% static 'base/img/visa.webp' %}" alt="logo visa">
+                        {% elif tarjeta.marca_tarjeta == 2 %}
+                            <img width="25" src="{% static 'base/img/mastercard.webp' %}" alt="logo visa">
+                        {% else %}
+                            <img width="25" src="{% static 'base/img/american_express.webp' %}" alt="logo visa">
+                        {% endif %}
+                    </span>
+                    <span>Tarjeta numero: </span>{{ tarjeta.tarjeta_numero }}</span>
+                </li>
+            </ul>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
