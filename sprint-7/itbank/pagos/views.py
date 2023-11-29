@@ -24,6 +24,7 @@ def servicios(request):
         form = ServicioForm(request.POST)
         if form.is_valid():
             request.session['servicios'] = form.cleaned_data
+            print('Datos del formulario: ', form.cleaned_data)
             return redirect('pagos')
     else:
         form = ServicioForm()

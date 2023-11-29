@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Servicio(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    servicio = models.CharField(max_length=200)
+    id = models.AutoField(primary_key=True)
+    usuario_origen = models.CharField(max_length=200)
+    usuario_destino = models.CharField(max_length=200)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
-    fecha_vencimiento = models.DateField()
-
+    fecha = models.DateTimeField(auto_now_add=True)
