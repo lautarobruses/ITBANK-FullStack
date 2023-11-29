@@ -9,7 +9,8 @@ class ServicioSerializer0(serializers.Serializer):
     fecha = serializers.DateTimeField(read_only = True)
 
 class ServicioSerializer(serializers.ModelSerializer):
-    model = Servicio
+    class Meta:
+        model = Servicio
 
-    fields = '__all__'
-    read_only_fields = ('id', 'fecha')
+        fields = '__all__'
+        read_only_fields = ('id', 'fecha')
