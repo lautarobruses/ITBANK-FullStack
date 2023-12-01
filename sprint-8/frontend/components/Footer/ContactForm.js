@@ -13,7 +13,8 @@ const ContactForm = () => {
 
         const newMensage = {nombre, apellido, email, mensaje}
         
-        console.log(newMensage)
+        // console.log(newMensage)
+        
 
         //Se envia la informacion al BACKEND
 
@@ -21,6 +22,7 @@ const ContactForm = () => {
         setApellido('')
         setEmail('')
         setMensaje('')
+        window.alert("Mensaje enviado correctamente!");
     }
 
     return (
