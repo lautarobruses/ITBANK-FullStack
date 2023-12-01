@@ -5,24 +5,45 @@ import React, { useContext } from 'react'
 import { FormContext } from '@/contexts/TransferContext'
 
 import { ToastContainer, toast } from 'react-toastify'
-import { generarId, formatearFecha } from '@/helpers'
 
-function TransferForm() {
+const generarId = () => {
+    const random=Math.random().toString(36).substring(2);
+    const fecha=Date.now().toString(36);
+
+    return random+fecha;
+}
+
+const formatearFecha = (fecha) => {
+    const fechaNueva=new Date(fecha);
+    const opciones={
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+        second: '2-digit',
+        minute: '2-digit',
+        hour: '2-digit'
+    }
+
+    return fechaNueva.toLocaleDateString('es-CO', opciones);
+}
+
+const TransferForm = () => {
     const [formulario, setFormulario] = useContext(FormContext)
 
-    function exito(){
+    const exito = () => {
         toast.success('¡Transferencia Realizada con éxito!', {
             position: toast.POSITION.TOP_RIGHT
         })
     }
 
-    function error(){
+    const error = () => {
         toast.error("Ojo, campos vacíos o monto igual a $0", {
             position: toast.POSITION.TOP_RIGHT
         })
     }
 
-    function handleSubmit(e){
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         if([addressee, amount, motivo].includes("")){
@@ -35,20 +56,19 @@ function TransferForm() {
             return
         }
 
-        const objetoTransferencia={
+        const objetoTransferencia = {
             addressee,
             amount,
             fecha: formatearFecha(Date.now())
         }
 
-        objetoTransferencia.id=generarId()
+        objetoTransferencia.id = generarId()
         setTransferencias([...transferencias, objetoTransferencia].reverse())
         exito()
         setAdressee("")
         setMotivo("")
         setAmount("")
     }
-
 
     return(
         <div>

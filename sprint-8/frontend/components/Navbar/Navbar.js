@@ -4,7 +4,7 @@ import { useContext } from 'react'
 
 import { useDispatch } from 'react-redux'
 
-import styles from '@/styles/Navbar/NavBar.module.css'
+import styles from '@/styles/NavBar/NavBar.module.css'
 
 import HomeIcon from "@/public/svg/home.svg"
 import AccountIcon from "@/public/svg/account.svg"
