@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import EncTabla from '../../components/Transferencia/EncTabla'
-import Tabla from '../../components/Transferencia/Tabla'
+
+import EncTabla from '@/components/Transferencia/EncTabla'
+import Tabla from '@/components/Transferencia/Tabla'
 import Layout from '@/components/layout'
 
 import { FormContext } from '@/contexts/TransferContext'

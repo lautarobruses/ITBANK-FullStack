@@ -7,9 +7,9 @@ import Head from 'next/head'
 import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
 
-import mastercard from '@/public/Images/mastercard.webp'
-import visa from '@/public/Images/visa.webp'
-import Arrows from '@/public/Svg/circularArrows.svg'
+import mastercard from '@/public/images/mastercard.webp'
+import visa from '@/public/images/visa.webp'
+import Arrows from '@/public/svg/circularArrows.svg'
 
 const accountFake = [ //number es el identificador de cada cuenta y tarjeta
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },

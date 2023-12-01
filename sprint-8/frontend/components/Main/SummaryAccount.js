@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 import styles from '@/styles/Main/SummaryAccount.module.css'
 
-import mastercard from '@/public/Images/mastercard.webp'
-import visa from '@/public/Images/visa.webp'
+import mastercard from '@/public/images/mastercard.webp'
+import visa from '@/public/images/visa.webp'
 
 const accountFake = [ //Esto en un futuro va a estar en una base de datos
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },
