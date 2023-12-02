@@ -1,4 +1,4 @@
-import styles from'@/styles/Transferencia/Form.module.css'
+import styles from'@/styles/Transferencia/TransferForm.module.css'
 
 import { useState } from 'react';
 
