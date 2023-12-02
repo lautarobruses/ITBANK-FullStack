@@ -33,18 +33,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base',
     'cuenta',
     'transferencias',
     'pagos',
     'prestamos',
+    'tarjetas',
+    'usuario',
+    'sucursal',
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['cuenta/templates', 'registration/templates'],
+        'DIRS': ['cuenta/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,15 +128,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, ''),
-    os.path.join(BASE_DIR, 'base/static'),
-    os.path.join(BASE_DIR, 'cuenta/static'),
-    os.path.join(BASE_DIR, 'pagos/static'),
-    os.path.join(BASE_DIR, 'registration/static'),
-    os.path.join(BASE_DIR, 'transferencias/static'),
-    os.path.join(BASE_DIR, 'prestamos/static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, ''),
+#     os.path.join(BASE_DIR, 'cuenta/static'),
+#     os.path.join(BASE_DIR, 'pagos/static'),
+#     os.path.join(BASE_DIR, 'transferencias/static'),
+#     os.path.join(BASE_DIR, 'prestamos/static'),
+# ]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

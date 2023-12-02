@@ -6,7 +6,7 @@ class Servicio(models.Model):
     id = models.AutoField(primary_key=True)
     servicio = models.CharField(max_length=200)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
-    fecha_vencimiento = models.DateField()
+    fecha_vencimiento = models.DateField(default=None)
 
     class Meta:
         ordering = ['fecha_vencimiento']
