@@ -21,6 +21,6 @@ const remove = (id) => {
     return axios.delete(`${baseUrl}/${id}`)
 }
 
-const cuentasService = { getAll, create, update, remove }
+const cuentaService = { getAll, create, update, remove }
 
-export default cuentasService
+export default cuentaService

@@ -1,9 +1,14 @@
 import Head from 'next/head'
 
+import { useSelector } from 'react-redux'
+
 import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
 
-export default function Home() {
+const Home = () => {
+    const cuentas = useSelector((state) => state.cuentas)
+    const userInfo = useSelector((state) => state.user)
+
     return (
         <>
             <Head>
@@ -33,8 +38,10 @@ export default function Home() {
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
             <Layout>
-                <SummaryAccount/>
+                <SummaryAccount nombreCompleto={"lautaro"} cuentas={cuentas} tarjetas={null}/>
             </Layout>
         </>
     )
 }
+
+export default Home

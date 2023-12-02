@@ -36,6 +36,7 @@ export default function Document() {
         fetch('https://api.exchangerate.host/latest')
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 setRates({
                     base: data.base, rates: {
                         USD: data.rates.USD,
