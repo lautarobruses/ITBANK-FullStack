@@ -20,7 +20,6 @@ const Login = () => {
 
     useEffect(() => {
         if (loggedUser) {
-            console.log(loggedUser)
             router.replace('/');
         }
     }, [loggedUser, router]);

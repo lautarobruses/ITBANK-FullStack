@@ -1,22 +1,9 @@
-import { useEffect } from 'react'
-
 import Head from 'next/head'
-
-import { useDispatch } from 'react-redux'
-
-import { initializeLoged } from '@/store/reducers/loginReducer'
 
 import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
 
-
 export default function Home() {
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(initializeLoged())
-    }, [dispatch])
-
     return (
         <>
             <Head>
