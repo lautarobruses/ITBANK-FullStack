@@ -13,9 +13,6 @@ const ContactForm = () => {
 
         const newMensage = {nombre, apellido, email, mensaje}
         
-        // console.log(newMensage)
-        
-
         //Se envia la informacion al BACKEND
 
         setNombre('')

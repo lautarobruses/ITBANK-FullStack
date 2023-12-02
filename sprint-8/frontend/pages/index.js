@@ -46,10 +46,7 @@ export default function Home() {
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
             <Layout>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
-                    <h1>HOLA USUARIO</h1>
-                    <SummaryAccount/>
-                </div>
+                <SummaryAccount/>
             </Layout>
         </>
     )

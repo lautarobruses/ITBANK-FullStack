@@ -1,11 +1,13 @@
 import styles from '@/styles/Footer/Contact.module.css'
 
+import Link from 'next/link'
+
 const Contact = () => {
     return (
         <div className={`${styles.contact}`}>
             <p>Atención al Cliente:</p>
-            <a>+54 9 11 1234-5678</a>
-            <a href="mailto:soporte@nexusbank.com">soporte@nexusbank.com</a>
+            <Link href="/404">+54 9 11 1234-5678</Link>
+            <Link href="/404">soporte@nexusbank.com</Link>
         </div>
     )
 }

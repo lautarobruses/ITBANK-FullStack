@@ -14,8 +14,6 @@ const RegisterForm = () => {
     const handleRegister  = (event) => {
         event.preventDefault()
 
-        console.log(event)
-
         const username = event.target[0].value
         const password = event.target[1].value
         const dni = event.target[3].value

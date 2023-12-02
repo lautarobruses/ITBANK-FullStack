@@ -21,32 +21,72 @@ const cardFake = [
     { number: '30583485762134', title: 'Terminada en 2134', tipe: 'card', closing: '00/00/00', expiration: '00/00/00', img: image_1, color: '#a3a4a8', balance: 2890 },
 ]
 
-export default function SummaryAccount() {
-
+const SummaryAccount = ({ nombreCompleto, cuenta, tarjetas }) => {
     return (
-        <div id={`${styles.accountsContainer}`}>
-            <h1 id={`${styles.title}`}>Tus cuentas:</h1>
-            <ul id={`${styles.list}`}>
-                {accountFake.map((account) => (<li key={account.number} className={`${styles.elements}`}>
-                    <span>{account.title}</span>
-                    <span>{account.coin ? Object.values(account.coin) : '$'}{account.balance}</span>
-                </li>
+        <div className={styles.container}>
+            <div className={styles.accountsContainer}>
+                <h1 className={styles.tituloPrincipal}>Bienvenido {nombreCompleto}!</h1>
+            </div>
+
+            <div className={styles.accountsContainer}>
+                <h2 className={styles.tituloSecundario}>Tus cuentas:</h2>
+                <ul className={styles.list}>
+                {accountFake.map((cuenta) => (
+                    <li key={cuenta.id} className={styles.elements}>
+                        <span>{cuenta.title}</span>
+                        <span>{cuenta.tipo_moneda === 0 ? `ARS$${cuenta.balance}` : `USD$${cuenta.balance}`}</span>
+                    </li>
                 ))}
-                {cardFake.map((card) => (<li key={card.number} className={`${styles.elements}`}>
-                                            <span style={{justifyContent: 'center', display: 'flex', gap: '5px'}}>
-                                                <Image
-                                                    width={25}
-                                                    src={card.img.src}
-                                                    alt={card.img.alt}
-                                                    quality={60}
-                                                    loading="lazy"
-                                                />
-                                                {card.title}
-                                            </span>
-                                            <span>{card.coin ? Object.values(card.coin) : '$'}{card.balance}</span>
-                                        </li>
-                ))}
-            </ul>
+                </ul>
+            </div>
+
+            <div className={styles.accountsContainer}>
+                <h2 className={styles.tituloSecundario}>Tus tarjetas:</h2>
+                <ul className={styles.list}>
+                    {cardFake.map((tarjeta) => (
+                        <li key={tarjeta.id} className={styles.elements}>
+                            <span style={{ justifyContent: 'center', display: 'flex', gap: '5px' }}>
+                                {tarjeta.marca_tarjeta === 1 && <Image width="25" src="/base/img/visa.webp" alt="logo visa" />}
+                                {tarjeta.marca_tarjeta === 2 && <Image width="25" src="/base/img/mastercard.webp" alt="logo mastercard" />}
+                                {/* {tarjeta.marca_tarjeta !== 1 && tarjeta.marca_tarjeta !== 2 && <Image width="25" src="/base/img/american_express.webp" alt="logo american express" />} */}
+                            </span>
+                            <span>Tarjeta numero: {tarjeta.tarjeta_numero}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
-    )
-}
+    );
+};
+
+// export default function SummaryAccount() {
+    
+//     return (
+//         <div id={`${styles.accountsContainer}`}>
+//             <h1 id={`${styles.title}`}>Tus cuentas:</h1>
+//             <ul id={`${styles.list}`}>
+//                 {accountFake.map((account) => (<li key={account.number} className={`${styles.elements}`}>
+//                     <span>{account.title}</span>
+//                     <span>{account.coin ? Object.values(account.coin) : '$'}{account.balance}</span>
+//                 </li>
+//                 ))}
+//                 {cardFake.map((card) => (<li key={card.number} className={`${styles.elements}`}>
+//                                             <span style={{justifyContent: 'center', display: 'flex', gap: '5px'}}>
+//                                                 <Image
+//                                                     width={25}
+//                                                     src={card.img.src}
+//                                                     alt={card.img.alt}
+//                                                     quality={60}
+//                                                     loading="lazy"
+//                                                 />
+//                                                 {card.title}
+//                                             </span>
+//                                             <span>{card.coin ? Object.values(card.coin) : '$'}{card.balance}</span>
+//                                         </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     )
+// }
+
+export default SummaryAccount;

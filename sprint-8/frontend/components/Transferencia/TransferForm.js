@@ -29,7 +29,7 @@ const formatearFecha = (fecha) => {
 }
 
 const TransferForm = () => {
-    const [formulario, setFormulario] = useContext(FormContext)
+    const { formulario, actualizarEstado } = useContext(FormContext);
 
     const exito = () => {
         toast.success('¡Transferencia Realizada con éxito!', {
@@ -63,7 +63,7 @@ const TransferForm = () => {
         }
 
         objetoTransferencia.id = generarId()
-        setTransferencias([...transferencias, objetoTransferencia].reverse())
+        actualizarEstado([...formulario, objetoTransferencia].reverse())
         exito()
         setAdressee("")
         setMotivo("")

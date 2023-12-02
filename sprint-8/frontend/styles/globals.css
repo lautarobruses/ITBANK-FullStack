@@ -39,6 +39,7 @@ main {
     margin-top: 100px;
     margin-left: 384px;
     min-height: 90vh;
+    padding: 48px;
 
     display: flex;
     align-items: center;
@@ -48,6 +49,7 @@ main {
 @media screen and (max-width: 1023px) {
     main {
         margin-left: 284px;
+        padding: 32px;
     }
 }
 
@@ -56,5 +58,6 @@ main {
         margin-top: 80px;
         margin-left: 0px;
         min-height: 90vh;
+        padding: 16px;
     }
 }

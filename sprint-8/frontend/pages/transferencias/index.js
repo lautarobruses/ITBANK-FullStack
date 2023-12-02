@@ -1,8 +1,11 @@
 import React from 'react'
-import TransferForm from '@/components/Transferencia/TransferForm'
+
 import Head from 'next/head'
-import Layout from '@/components/layout'
 import Link from 'next/link'
+
+import TransferForm from '@/components/Transferencia/TransferForm'
+import Layout from '@/components/layout'
+
 
 const Transferencia = ({transferencias, setTransferencias}) => {
 

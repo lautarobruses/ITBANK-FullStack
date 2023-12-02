@@ -95,9 +95,9 @@ export default function Document() {
     return (
         <>
             <Head>
-                <title>Nexus Bank - Login</title>
+                <title>Nexus Bank - Cuenta</title>
                 <meta name="description" content="Accede y administra tus cuentas y tarjetas bancarias en un solo lugar. Controla tus finanzas de manera sencilla y segura." />
-                <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
+                <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" />

@@ -9,6 +9,7 @@ const Background = () => {
                 src="/images/background.webp"
                 alt="Fondo principal del sitio"
                 layout="fill"
+                objectFit="cover"
                 quality={80}
             />
         </div>
