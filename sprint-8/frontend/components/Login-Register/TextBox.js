@@ -51,7 +51,7 @@ const InputBlock = () => {
     }
 }
 
-const TextBox = ({ type = 'text', id = 'default', error='' ,children }) => {
+const TextBox = ({ type = 'text', id = 'default', error='', children }) => {
     return (
         <IdContext.Provider value={id}>
             <TypeContext.Provider value={type}>

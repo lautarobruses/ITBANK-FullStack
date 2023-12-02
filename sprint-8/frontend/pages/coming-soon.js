@@ -1,3 +1,4 @@
+import Background from '@/components/Background'
 import styles from '@/styles/ComingSoon.module.css'
 
 import Head from 'next/head'
@@ -29,6 +30,7 @@ const ComingSoon = () => {
                 {/* Etiqueta meta para la traduccion de google*/}
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
+            <Background/>
             <div className={`${styles.container}`}>
             <h1>¡Página en construcción!</h1>
             <Image

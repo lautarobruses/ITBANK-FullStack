@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import userService from '../../services/user'
+import loginService from '../../services/login'
+
 const loginSlice = createSlice({
     name: 'login',
     initialState: null,
@@ -12,7 +15,7 @@ const loginSlice = createSlice({
 
 export const initializeLoged = () => {
     return async dispatch => {
-        const usersFromStorage = window.localStorage.getItem('loggedUser')
+        const usersFromStorage = await userService.getUser()
         if (usersFromStorage) {
             dispatch(setUser(usersFromStorage))
         }
@@ -21,18 +24,16 @@ export const initializeLoged = () => {
 
 export const loginUser = (username, password ) => {
     return async dispatch => {
-        const loggedUser = {
-            username: username,
-            password: password
-        }
-        dispatch(setUser(loggedUser))
+        const logedUser = await loginService.login({ username, password })
+        dispatch(setUser(logedUser))
+        userService.setUser(logedUser)
     }
 }
 
 export const logoutUser = () => {
     return async dispatch => {
         dispatch(setUser(null))
-        window.localStorage.clear()
+        userService.clearUser()
     }
 }
 

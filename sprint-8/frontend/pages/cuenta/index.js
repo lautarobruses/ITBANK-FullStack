@@ -7,9 +7,9 @@ import Head from 'next/head'
 import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
 
-import mastercard from '@/public/Images/mastercard.webp'
-import visa from '@/public/Images/visa.webp'
-import Arrows from '@/public/Svg/circularArrows.svg'
+import mastercard from '@/public/images/mastercard.webp'
+import visa from '@/public/images/visa.webp'
+import Arrows from '@/public/svg/circularArrows.svg'
 
 const accountFake = [ //number es el identificador de cada cuenta y tarjeta
     { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },
@@ -36,6 +36,7 @@ export default function Document() {
         fetch('https://api.exchangerate.host/latest')
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 setRates({
                     base: data.base, rates: {
                         USD: data.rates.USD,
@@ -95,9 +96,9 @@ export default function Document() {
     return (
         <>
             <Head>
-                <title>Nexus Bank - Login</title>
+                <title>Nexus Bank - Cuenta</title>
                 <meta name="description" content="Accede y administra tus cuentas y tarjetas bancarias en un solo lugar. Controla tus finanzas de manera sencilla y segura." />
-                <link rel="icon" href="favicon.ico" type="image/x-icon"></link>
+                <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
                 {/* Etiqueta meta para especificar el juego de caracteres */}
                 <meta charSet="UTF-8" />

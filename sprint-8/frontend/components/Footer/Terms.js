@@ -1,4 +1,7 @@
+import Link from 'next/link'
+
 import styles from '@/styles/Footer/Terms.module.css'
+
 
 const Terms = () => {
     return (
@@ -6,11 +9,11 @@ const Terms = () => {
             <p>© 2023 NexusBank. Todos los derechos reservados.</p>
             <p>
                 Consulta nuestros
-                <a href="enlace"> términos y condiciones</a>
+                <Link href='/coming-soon'> términos y condiciones</Link>
             </p>
             <p>
                 Consulta nuestra
-                <a href="enlace"> política de privacidad</a>
+                <Link href='/coming-soon'> política de privacidad</Link>
             </p>
         </div>
     )

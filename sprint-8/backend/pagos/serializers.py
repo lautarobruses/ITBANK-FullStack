@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Servicio
 
+# Probablemente no se use
 class ServicioSerializer0(serializers.Serializer):
     id = serializers.IntegerField(read_only = True)
     servicio = serializers.CharField(max_length=200)

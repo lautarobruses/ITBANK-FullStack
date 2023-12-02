@@ -1,4 +1,4 @@
-import styles from '@/styles/Transferencia/TransferForm.module.css'
+import styles from'@/styles/Transferencia/Form.module.css'
 
 import { useState } from 'react';
 
@@ -37,4 +37,5 @@ const TransferForm = ({ onSubmit }) => {
   );
 };
 
-export default TransferForm;
+export default TransferForm
+

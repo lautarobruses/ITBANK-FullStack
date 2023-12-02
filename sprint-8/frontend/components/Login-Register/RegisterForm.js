@@ -6,6 +6,8 @@ import Link from 'next/link'
 import TextBox from '@/components/Login-Register/TextBox'
 import Checkbox from '@/components/Login-Register/Checkbox'
 
+import registerService from '@/services/register'
+
 import ArrowIcon from '@/public/svg/arrow.svg'
 
 const RegisterForm = () => {
@@ -13,8 +15,6 @@ const RegisterForm = () => {
 
     const handleRegister  = (event) => {
         event.preventDefault()
-
-        console.log(event)
 
         const username = event.target[0].value
         const password = event.target[1].value
@@ -25,11 +25,13 @@ const RegisterForm = () => {
 
         const userRegister = { username, password, dni, email, confirmPassword, phone }
 
-        window.localStorage.setItem( //Aca en un futuro se debera guardar en la base de datos
-            'registedUser', JSON.stringify(userRegister)
-        )
-
-        router.replace('/account/login');
+        registerService.register(userRegister)
+            .then(() => {
+                router.replace('/cuenta/login');
+            })
+            .catch(() => {
+                window.alert("Ha ocurrido un error en la creación de su cuenta. Vuelva a intentarlo nuevamente.");
+            });
     }
 
     return (

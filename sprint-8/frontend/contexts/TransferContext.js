@@ -4,16 +4,16 @@ import { createContext } from 'react'
 export const FormContext = createContext()
 
 const FormProvider = ({ children }) => {
-    const [formulario, setFormulario] = useState({
-        addressee:'',
-        motivo: '',
-        amount: 0,
-    })
+    const [formulario, setFormulario] = useState([])
+
+    const actualizarEstado = (newForm) => {
+        setFormulario(newForm)
+    }
 
     console.log('Formulario en Formprovider: ', formulario)
 
     return (
-        <FormContext.Provider value={{formulario, setFormulario}}>
+        <FormContext.Provider value={{formulario, actualizarEstado}}>
             {children}
         </FormContext.Provider>
     )
