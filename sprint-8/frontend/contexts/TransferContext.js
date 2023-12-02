@@ -10,6 +10,8 @@ const FormProvider = ({ children }) => {
         amount: 0,
     })
 
+    console.log('Formulario en Formprovider: ', formulario)
+
     return (
         <FormContext.Provider value={{formulario, setFormulario}}>
             {children}

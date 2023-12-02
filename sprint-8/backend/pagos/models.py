@@ -14,5 +14,5 @@ class Servicio(models.Model):
 
     def __str__(self):
 
-        return f'Servicio: {self.servicio}, Monto: {self.monto}, Vencimiento: {self.fecha_vencimiento}'
+        return f'{self.id} Servicio: {self.servicio}, Monto: ${self.monto}, Vencimiento: {self.fecha_vencimiento}'
 
