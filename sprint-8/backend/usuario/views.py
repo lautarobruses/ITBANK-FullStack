@@ -21,7 +21,7 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response({'error': 'el usuario ya existe'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class UserDetails(APIView):
     def post(self, request, *args, **kwargs):

@@ -32,3 +32,14 @@
     border-radius: 5px;
     margin-top: 10px;
 }
+
+.titulo2 {
+    font-size: 24px; 
+    font-weight: normal; 
+    color: black; 
+    text-align: initial; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-bottom: 12px; 
+    text-shadow: 1px 1px 2px rgb(255, 255, 255, .5); 
+}
