@@ -1,17 +1,16 @@
 from django.shortcuts import render
-
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from .models import Cliente
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import UserSerializer, ClienteSerializer, UserLoginSerializer
+from .models import Cliente
 
-
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
 # Create your views here.
 
 class UserList(APIView):
@@ -24,7 +23,6 @@ class UserList(APIView):
         else:
             return Response({'error': 'el usuario ya existe'}, status=status.HTTP_400_BAD_REQUEST)
     
-#Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica) FALTA AUTENTIFICACION
 class UserDetails(APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserLoginSerializer(data=request.data)
@@ -42,8 +40,12 @@ class UserDetails(APIView):
         else:
             # Datos de inicio de sesión no válidos
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        
+#Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
 class UserDetailsSelf(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request, **kwards):
         user = User.objects.filter(id=self.request.user.id).first()
         serializer = UserSerializer(user)
