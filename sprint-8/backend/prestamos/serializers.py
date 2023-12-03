@@ -10,5 +10,5 @@ class PrestamoSerializer(serializers.ModelSerializer):
             'loan_date',
             'loan_total',
             'customer',
-            'branch_id'
+            'branch'
         ]

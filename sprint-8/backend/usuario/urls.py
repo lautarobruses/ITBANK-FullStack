@@ -1,5 +1,5 @@
 from django.urls import path, include
-from usuario import views
+from . import views
 
 urlpatterns = [
     path('register/', views.UserList.as_view()), #registra al usuario con el metodo POST

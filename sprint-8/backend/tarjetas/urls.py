@@ -1,5 +1,5 @@
 from django.urls import path, include
-from tarjetas import views
+from . import views
 
 urlpatterns = [
     path('self/', views.TarjetasDetailsSelf.as_view()), #Devuelve las tarjetas del usuario logeado con el metodo GET
