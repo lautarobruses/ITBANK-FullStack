@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Tarjeta
 
-class TarjetaCreditoSerializer(serializers.ModelSerializer):
+class TarjetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tarjeta
         fields = [
@@ -10,6 +10,6 @@ class TarjetaCreditoSerializer(serializers.ModelSerializer):
             'tarjeta_fecha_otorgamiento',
             'tarjeta_fecha_expiracion',
             'tarjeta_nombre_propietario',
-            'customer',
+            'customer',                         #es el user_id
             'marca_tarjeta'
         ]
