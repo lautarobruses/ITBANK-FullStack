@@ -27,10 +27,10 @@ class UserList(APIView):
         if self.request.data.get('name_surname').count(' ') == 1:
             if(self.request.data.get('password') == self.request.data.get('confirm_password')):
                 first_name, last_name = self.request.data.get('name_surname').split(" ")
-                username = first_name.lower() + '.' + last_name.lower()
+                # username = first_name.lower() + '.' + last_name.lower()
 
                 user_data = {
-                    "username": username,
+                    "username": self.request.data.get('mail'),
                     "email": self.request.data.get('mail'),
                     "password": self.request.data.get('password'),
                 }
