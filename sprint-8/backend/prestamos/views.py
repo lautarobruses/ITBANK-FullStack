@@ -3,7 +3,10 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.authentication import BasicAuthentication
+from rest_framework import permissions
 
+from .permissions import IsEmploye
 from .models import Prestamo
 from cuenta.models import Cuenta
 from usuario.models import Cliente
@@ -11,6 +14,9 @@ from .serializers import PrestamoSerializer
 # Create your views here.
 
 class PrestamosList(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [permissions.IsAuthenticated, IsEmploye]
+
     def get(self, request, pk, **kwards):
         prestamo = Prestamo.objects.filter(branch_id=pk)
         serializer = PrestamoSerializer(prestamo, many=True)
@@ -21,10 +27,10 @@ class PrestamosList(APIView):
             return Response({'error': ''}, status=status.HTTP_400_BAD_REQUEST)
     
     def post(self, request, pk, **kwards):
-        user = User.objects.filter(id=pk).first()
+        user = User.objects.get(id=pk)
 
         if user is not None:
-            cliente_user = Cliente.objects.filter(user=pk).first()
+            cliente_user = Cliente.objects.get(user=pk)
             if cliente_user is not None and cliente_user != []:
                 cuenta_user = Cuenta.objects.filter(customer=cliente_user.customer_id).first()
                 if cuenta_user is not None:

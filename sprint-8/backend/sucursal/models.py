@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -19,6 +20,7 @@ class Empleado(models.Model):
     employee_hire_date = models.TextField()
     employee_dni = models.TextField(db_column='employee_DNI')  # Field name made lowercase.
     branch_id = models.IntegerField()
+    user = models.ForeignKey(User, models.CASCADE, blank=True, null=True)
 
     class Meta:
         managed = False
