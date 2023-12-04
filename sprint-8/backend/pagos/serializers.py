@@ -1,16 +1,7 @@
 from rest_framework import serializers
-from .models import Servicio
+from .models import PagoServicio
 
-# Probablemente no se use
-class ServicioSerializer0(serializers.Serializer):
-    id = serializers.IntegerField(read_only = True)
-    servicio = serializers.CharField(max_length=200)
-    monto = serializers.DecimalField(max_digits=10, decimal_places=2)
-    fecha_vencimiento = serializers.DateTimeField()
-
-class ServicioSerializer(serializers.ModelSerializer):
+class PagoServicioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Servicio
-
+        model = PagoServicio
         fields = '__all__'
-        read_only_fields = ('id',)
