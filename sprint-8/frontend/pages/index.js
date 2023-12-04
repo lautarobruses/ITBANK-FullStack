@@ -1,14 +1,28 @@
 import Head from 'next/head'
 
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
+
+import { initializeUserData } from '@/store/reducers/userReducer'
 
 import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
 
 const Home = () => {
+    const dispatch = useDispatch()
     const cuentas = useSelector((state) => state.cuentas)
     const userInfo = useSelector((state) => state.user)
 
+    useEffect(() => {
+        dispatch(initializeUserData())
+            .catch((error) => {
+                console.log(error);
+            });  
+    }, [dispatch])
+
+    console.log(userInfo);
+    
     return (
         <>
             <Head>

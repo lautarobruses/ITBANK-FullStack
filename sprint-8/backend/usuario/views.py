@@ -145,8 +145,8 @@ class UserDetails(APIView):
         
 #Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
 class UserDetailsSelf(APIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
     
     def get(self, request, **kwards):
         user = User.objects.filter(id=self.request.user.id).first()

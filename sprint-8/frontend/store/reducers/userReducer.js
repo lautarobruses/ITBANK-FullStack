@@ -6,21 +6,21 @@ const userSlice = createSlice({
     name: 'user',
     initialState: null,
     reducers: {
-        setInfo(state, action) {
+        setUserInfo(state, action) {
             const user = action.payload
             return user
         },
     },
 })
 
-export const initializeUser = () => {
+export const initializeUserData = () => {
     return async dispatch => {
         const userInfo = await userService.getInfo()
         if (userInfo) {
-            dispatch(setInfo(userInfo))
+            dispatch(setUserInfo(userInfo))
         }
     }
 }
 
-export const { setInfo } = userSlice.actions
+export const { setUserInfo } = userSlice.actions
 export default userSlice.reducer

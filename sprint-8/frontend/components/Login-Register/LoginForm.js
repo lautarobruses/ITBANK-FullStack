@@ -29,10 +29,13 @@ const LoginForm =() => {
         // =====
 
         dispatch(loginUser(username, password))
-        .catch(() => {
-            window.alert("Email o contraseña incorrecto!");
-        })
-        router.replace('/');
+            .then(() => {
+                router.replace('/');
+            })
+            .catch(() => {
+                window.alert("Email o contraseña incorrecto!");
+            })
+        
     }
 
     return (
