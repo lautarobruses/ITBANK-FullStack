@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { initializeUserData } from '@/store/reducers/userReducer'
+import { initializeCuentas } from '@/store/reducers/cuentasReducer'
+import { initializeTarjetas } from '@/store/reducers/tarjetasReducer'
 
 import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
@@ -12,16 +14,29 @@ import Layout from '@/components/layout'
 const Home = () => {
     const dispatch = useDispatch()
     const cuentas = useSelector((state) => state.cuentas)
+    const tarjetas = useSelector((state) => state.tarjetas)
     const userInfo = useSelector((state) => state.user)
 
+    //info
     useEffect(() => {
         dispatch(initializeUserData())
-            .catch((error) => {
-                console.log(error);
-            });  
     }, [dispatch])
 
-    console.log(userInfo);
+    //Cuentas
+    useEffect(() => {
+        if (userInfo) {
+            dispatch(initializeCuentas(userInfo.customer_id))
+        }
+    }, [dispatch, userInfo])
+
+    //tarjetas
+    useEffect(() => {
+        if (userInfo) {
+            dispatch(initializeTarjetas(userInfo.customer_id))
+        }
+    }, [dispatch, userInfo])
+
+    const nombreCompleto = `${userInfo?.customer_name} ${userInfo?.customer_surname}`
     
     return (
         <>
@@ -52,7 +67,7 @@ const Home = () => {
                 <meta name="google" content="notranslate" key="notranslate" />
             </Head>
             <Layout>
-                <SummaryAccount nombreCompleto={"lautaro"} cuentas={cuentas} tarjetas={null}/>
+                <SummaryAccount nombreCompleto={nombreCompleto} cuentas={cuentas} tarjetas={tarjetas}/>
             </Layout>
         </>
     )

@@ -21,11 +21,11 @@ const LoginForm =() => {
         const password = event.target[1].value
 
         // ====== ELIMINAR:
-        // const user = { username, password }
+        const user = { username, password }
 
-        // window.localStorage.setItem(
-        //     'loggedUser', JSON.stringify(user)
-        // )
+        window.localStorage.setItem(
+            'loggedUser', JSON.stringify(user)
+        )
         // =====
 
         dispatch(loginUser(username, password))

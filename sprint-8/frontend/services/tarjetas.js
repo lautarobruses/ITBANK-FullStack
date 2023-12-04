@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const baseUrl = '/api/tarjetas'
+const baseUrl = 'http://localhost:8000/cuenta/api'
 
-const getAll = async () => {
-    const response = await axios.get(baseUrl)
-    return response.data
+const getAll = async (id) => {
+    const response = await axios.get(`${baseUrl}/tarjetas/${id}`);
+    return [response.data]
 }
 
 const create = async (newTarjeta) => {

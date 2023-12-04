@@ -146,13 +146,14 @@ class UserDetails(APIView):
 #Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
 class ClienteDetailsSelf(APIView):
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     
     def get(self, request, **kwards):
+        print(self.request.user)
         user = User.objects.filter(id=self.request.user.id).first()
 
         if user is not None:
-            cliente = Cliente.objects.filter(customer_id=user.id).first()
+            cliente = Cliente.objects.filter(user_id=user.id).first()
             serializer = ClienteSerializer(cliente)
 
             if cliente is not None:
@@ -164,7 +165,7 @@ class ClienteDetailsSelf(APIView):
 
 #Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
 class UserDetailsSelf(APIView):
-    # authentication_classes = [BasicAuthentication]
+    authentication_classes = [BasicAuthentication]
     # permission_classes = [IsAuthenticated]
     
     def get(self, request, **kwards):

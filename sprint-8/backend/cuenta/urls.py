@@ -14,7 +14,6 @@ router.register(r'tarjetas-debito', TarjetaDebitoViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    # otras rutas de tu aplicación
 ]
 #en el frontend se debe persistir el tarjeta_numero cuando se hace get cuenta/api/tarjetas/(customer_id), luego se realiza otra petición get cuenta/api/tarjetas-credito/(tarjeta_numero)
 #lo mismo para cuentas, se debe guardar el account id y luego hacer get en cajas-ahorro y cuentas-corriente

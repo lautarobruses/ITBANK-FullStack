@@ -22,7 +22,7 @@ const ComingSoon = () => {
                 <meta name="author" content="Grupo 3" />
                 
                 {/* Etiqueta meta para el idioma de la página */}
-                <meta http-equiv="Content-Language" content="es" />
+                <meta httpEquiv="Content-Language" content="es" />
                 
                 {/* Etiqueta meta para el robot de rastreo (crawlers) */}
                 <meta name="robots" content="noindex, nofollow" /> {/*index | follow | noindex | nofollow*/}

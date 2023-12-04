@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import axios from 'axios'
+
 import userService from '../../services/user'
 import loginService from '../../services/login'
 
@@ -27,6 +29,10 @@ export const loginUser = (username, password ) => {
         const logedUser = await loginService.login({ username, password })
         dispatch(setUser(logedUser))
         userService.setUser(logedUser)
+        axios.defaults.auth = {
+            username,
+            password
+        };
     }
 }
 

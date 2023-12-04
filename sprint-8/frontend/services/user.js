@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-import { useSelector } from 'react-redux'
-
 const STORAGE_KEY = 'loggedUser'
 
-const baseUrl = 'http://localhost:8000/usuario/self/'
+const baseUrl = 'http://localhost:8000/usuario/self/cliente/'
 
 const setUser = (user) => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
@@ -17,23 +15,16 @@ const getUser = () => {
 
 const clearUser = () => {
     window.localStorage.clear()
+    axios.defaults.auth = null;
 }
 
 const getInfo = async () => {
-    const { username, password } = window.localStorage.getItem(STORAGE_KEY)
-
-    return await axios.get(baseUrl, {
-        auth: {
-            username: username,
-            password: password
-        }
-    })
-        .then(response => {
-            console.log(response.data);
-        })
+    const response = await axios.get(baseUrl)
         .catch(error => {
-            return error.data.error.message
+            return error.response.data.error
         });
+
+    return response.data
 }
 
 const userServices = {

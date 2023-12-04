@@ -1,10 +1,40 @@
 import axios from 'axios'
 
-const baseUrl = '/api/cuentas'
+const baseUrl = 'http://localhost:8000/cuenta/api'
 
-const getAll = async () => {
-    const response = await axios.get(baseUrl)
-    return response.data
+const getAll = async (id) => {
+    const response = await axios.get(`${baseUrl}/cuentas/${id}`);
+    
+    const cuentas = [response.data];
+
+    const cuentasClasificadas = await Promise.all(cuentas.map(cuenta => clasificaCuentas(cuenta)))
+
+    return cuentasClasificadas;
+}
+
+const clasificaCuentas = async (cuenta) => {
+    try {
+        const responseCC = await axios.get(`${baseUrl}/cuentas-corriente/${cuenta.account_id}`);
+        
+        let titleC;
+        
+        if (responseCC.data) {
+            titleC = "Cuenta corriente"; 
+        } else {
+            // const responseCA = await axios.get(`${baseUrl}/cajas-ahorro/${cuenta.account_id}`);
+            titleC = "Caja de ahorro"; 
+        }
+        
+        const newCuenta = {
+            ...cuenta,
+            title: titleC
+        };
+
+        return newCuenta;
+    } catch (error) {
+        console.error("Error al clasificar cuenta:", error);
+        throw error; // Puedes manejar el error según tus necesidades
+    }
 }
 
 const create = async (newAccount) => {
