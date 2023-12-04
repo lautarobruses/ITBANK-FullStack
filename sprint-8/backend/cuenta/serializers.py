@@ -1,23 +1,40 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import Cuenta, CuentaCorriente
-
+from tarjetas.models import Tarjeta, TarjetaCredito, TarjetaDebito
+from .models import Cliente, Cuenta, CajaAhorro, CuentaCorriente
+class ClienteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+        
 class CuentaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cuenta
-        fields = [
-            'account_id',
-            'balance',
-            'iban',
-            'customer',
-            'tipo_moneda',
-        ]
+        fields = '__all__'
+
+class CajaAhorroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CajaAhorro
+        fields = '__all__'
 
 class CuentaCorrienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = CuentaCorriente
-        fields = [
-            'account',
-            'limite',
-        ]
+        fields = '__all__'
+        
+class TarjetaCreditoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TarjetaCredito
+        fields = '__all__'
 
+class TarjetaDebitoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TarjetaDebito
+        fields = '__all__'
+
+class TarjetaSerializer(serializers.ModelSerializer):
+    tarjetacredito = TarjetaCreditoSerializer(source='tarjetacredito_set', many=True, read_only=True)
+    tarjetadebito = TarjetaDebitoSerializer(source='tarjetadebito_set', many=True, read_only=True)
+
+    class Meta:
+        model = Tarjeta
+        fields = '__all__'
