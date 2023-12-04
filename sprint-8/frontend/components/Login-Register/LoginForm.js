@@ -20,7 +20,7 @@ const LoginForm =() => {
         const username = event.target[0].value
         const password = event.target[1].value
 
-        // ELIMINAR:
+        // ====== ELIMINAR:
         const user = { username, password }
 
         window.localStorage.setItem(
@@ -30,7 +30,7 @@ const LoginForm =() => {
 
         dispatch(loginUser(username, password))
         .catch(() => {
-            // window.alert("Email o contraseña incorrecto!");
+            window.alert("Email o contraseña incorrecto!");
         })
         router.replace('/');
     }

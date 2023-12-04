@@ -23,15 +23,22 @@ const RegisterForm = () => {
         const confirmPassword = event.target[5].value
         const phone = event.target[7].value
 
-        const userRegister = { username, password, dni, email, confirmPassword, phone }
+        if  (password === confirmPassword) {
+            const userRegister = { username, password, dni, email, phone }
 
-        registerService.register(userRegister)
-            .then(() => {
-                router.replace('/cuenta/login');
-            })
-            .catch(() => {
-                window.alert("Ha ocurrido un error en la creación de su cuenta. Vuelva a intentarlo nuevamente.");
-            });
+            registerService.register(userRegister)
+                .then((response) => {
+                    console.log(response);
+                    router.replace('/cuenta/login');
+                })
+                .catch((error) => {
+                    console.error("Error en la creación de la cuenta:", error);
+                    window.alert("Ha ocurrido un error en la creación de su cuenta. Vuelva a intentarlo nuevamente.");
+                });
+        } else {
+            window.alert("Las contraseñas ingresadas no coinciden");
+        }
+        
     }
 
     return (

@@ -1,6 +1,6 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-const baseUrl = '/api/register'
+const baseUrl = 'http://localhost:8000/usuario/register/'
 
 const register = async (info) => {
     const response = await axios.post(baseUrl, info)

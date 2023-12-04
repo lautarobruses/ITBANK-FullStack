@@ -8,11 +8,11 @@ const TransferForm = ({ onSubmit }) => {
   const [motivo, setMotivo] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ destino, monto, motivo });
-    setDestino('');
-    setMonto('');
-    setMotivo('');
+        e.preventDefault();
+        onSubmit({ destino, monto, motivo });
+        setDestino('');
+        setMonto('');
+        setMotivo('');
   };
 
   return (
