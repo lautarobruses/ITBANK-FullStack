@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tarjeta
+from .models import Tarjeta, TarjetaDebito
 
 class TarjetaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,4 +12,12 @@ class TarjetaSerializer(serializers.ModelSerializer):
             'tarjeta_nombre_propietario',
             'customer',                         #es el user_id
             'marca_tarjeta'
+        ]
+
+class TarjetaDebitoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TarjetaDebito
+        fields = [
+            'tarjeta_numero',
+            'account'
         ]

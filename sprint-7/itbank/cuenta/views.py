@@ -45,8 +45,8 @@ def register(request):
                             customer_surname = last_name,
                             customer_dni = dni,
                             telefono = phone,
-                            branch_id = branch_id,
-                            user_id = user.id,
+                            branch = branch_id,
+                            user = user.id,
                         )
 
                         cliente.save()

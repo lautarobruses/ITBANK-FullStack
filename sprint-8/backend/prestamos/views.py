@@ -24,25 +24,24 @@ class PrestamosList(APIView):
         user = User.objects.filter(id=pk).first()
 
         if user is not None:
-            cliente_user = Cliente.objects.filter(customer_id=pk).first()
-            print(cliente_user)
+            cliente_user = Cliente.objects.filter(user=pk).first()
             if cliente_user is not None and cliente_user != []:
                 cuenta_user = Cuenta.objects.filter(customer=cliente_user.customer_id).first()
                 if cuenta_user is not None:
-                    if cuenta_user.balance <= self.request.loan_total:
-                        prestamo = Prestamo(
-                            loan_type = self.request.loan_type,
-                            loan_total = self.request.loan_total,
-                            customer = id
-                        )
+                    if cuenta_user.balance >= self.request.data.get('loan_total'):
+                        prestamo_data = {
+                            "loan_type": self.request.data.get('loan_type'),
+                            "loan_total": self.request.data.get('loan_total'),
+                            "customer": cliente_user.customer_id
+                        }
 
-                        serializer = PrestamoSerializer(prestamo)
-
+                        serializer = PrestamoSerializer(data=prestamo_data)
+                        
                         if serializer.is_valid():
                             serializer.save()
                             return Response(serializer.data, status=status.HTTP_201_CREATED)
                         else:
-                            return Response({'error': 'el usuario ya existe.'}, status=status.HTTP_400_BAD_REQUEST)
+                            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
                     else:
                         return Response({'error': 'saldo insuficiente.'}, status=status.HTTP_400_BAD_REQUEST)
                 else:
