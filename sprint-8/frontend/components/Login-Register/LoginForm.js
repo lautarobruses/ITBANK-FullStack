@@ -21,11 +21,11 @@ const LoginForm =() => {
         const password = event.target[1].value
 
         // ====== ELIMINAR:
-        const user = { username, password }
+        // const user = { username, password }
 
-        window.localStorage.setItem(
-            'loggedUser', JSON.stringify(user)
-        )
+        // window.localStorage.setItem(
+        //     'loggedUser', JSON.stringify(user)
+        // )
         // =====
 
         dispatch(loginUser(username, password))
@@ -38,7 +38,7 @@ const LoginForm =() => {
     return (
         <div className={`${styles.formContainer}`}>
             <form className={`${styles.form}`} onSubmit={handleLogin}>
-                <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
+                <TextBox type='text' id='user'>Correo electronico:</TextBox>
                 <div id='passwordContainer'>
                     <TextBox type='password' id='password'>Contraseña:</TextBox>
                     <br/>
