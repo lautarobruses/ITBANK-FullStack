@@ -7,7 +7,6 @@ import NavbarContextProvider from '@/contexts/NavbarContext'
 
 import TransferContextProvider from '@/contexts/TransferContext'
 
-
 export default function App({ Component, pageProps }) {
 
     return (

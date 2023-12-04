@@ -10,8 +10,6 @@ const FormProvider = ({ children }) => {
         setFormulario(newForm)
     }
 
-    console.log('Formulario en Formprovider: ', formulario)
-
     return (
         <FormContext.Provider value={{formulario, actualizarEstado}}>
             {children}
