@@ -13,6 +13,5 @@ class Servicio(models.Model):
         verbose_name_plural = 'Servicios'
 
     def __str__(self):
-
         return f'{self.id} Servicio: {self.servicio}, Monto: ${self.monto}, Vencimiento: {self.fecha_vencimiento}'
 
