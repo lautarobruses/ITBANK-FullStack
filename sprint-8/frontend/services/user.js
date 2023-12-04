@@ -6,8 +6,6 @@ const STORAGE_KEY = 'loggedUser'
 
 const baseUrl = 'http://localhost:8000/usuario/self/'
 
-const userInfo = useSelector((state) => state.user)
-
 const setUser = (user) => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
 }
@@ -22,9 +20,8 @@ const clearUser = () => {
 }
 
 const getInfo = async () => {
-    const { username, password } = getUser()
-    console.log(username);
-    console.log(password);
+    const { username, password } = window.localStorage.getItem(STORAGE_KEY)
+
     return await axios.get(baseUrl, {
         auth: {
             username: username,
@@ -35,8 +32,7 @@ const getInfo = async () => {
             console.log(response.data);
         })
         .catch(error => {
-            // Maneja el error
-            console.error(error);
+            return error.data.error.message
         });
 }
 
