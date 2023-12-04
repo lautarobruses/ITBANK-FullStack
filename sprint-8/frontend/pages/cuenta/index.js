@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from 'react'
 
+import { useDispatch, useSelector } from 'react-redux'
+
 import styles from '@/styles/Account/Index.module.css'
+
+import { initializeCuentas } from '@/store/reducers/cuentasReducer'
+import { initializeTarjetas } from '@/store/reducers/tarjetasReducer'
 
 import Head from 'next/head'
 
 import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
 
-import mastercard from '@/public/images/mastercard.webp'
-import visa from '@/public/images/visa.webp'
 import Arrows from '@/public/svg/circularArrows.svg'
 
-const accountFake = [ //number es el identificador de cada cuenta y tarjeta
-    { number: '23762668920802', title: 'Cuenta corriente', balance: 1600 },
-    { number: '23762668214893', title: 'Caja de ahorro', coin: { USD: 'US$' }, balance: 12300 }
-]
+const Cuenta = () => {
+    const dispatch = useDispatch()
+    const cuentas = useSelector((state) => state.cuentas)
+    const tarjetas = useSelector((state) => state.tarjetas)
+    const userInfo = useSelector((state) => state.user)
 
-const image_1 = { src: mastercard, alt: 'logo de mastercard' }
-const image_2 = { src: visa, alt: 'logo de visa' }
-
-const cardFake = [
-    { number: '49725637101234', title: 'Terminada en 1234', coin: { EUR: '€' }, tipe: 'card', closing: '00/00/00', expiration: '00/00/00', img: image_1, balance: 1500 },
-    { number: '94852039834321', title: 'Terminada en 4321', tipe: 'card', closing: '00/00/00', expiration: '00/00/00', img: image_2, color: '#dc2328', balance: 0 },
-    { number: '30583485762134', title: 'Terminada en 2134', tipe: 'card', closing: '00/00/00', expiration: '00/00/00', img: image_1, color: '#a3a4a8', balance: 2890 },
-]
-
-export default function Document() {
     const [rates, setRates] = useState(null)
     const [input, setInput] = useState('')
     const [result, setResult] = useState('')
@@ -55,6 +49,20 @@ export default function Document() {
             setResult((input / rates.rates[coinInput] * rates.rates[coinResult]).toFixed(2))
         }
     }, [input, coinInput, coinResult, rates])
+
+    //Cuentas
+    useEffect(() => {
+        if (userInfo) {
+            dispatch(initializeCuentas(userInfo.customer_id))
+        }
+    }, [dispatch, userInfo])
+
+    //tarjetas
+    useEffect(() => {
+        if (userInfo) {
+            dispatch(initializeTarjetas(userInfo.customer_id))
+        }
+    }, [dispatch, userInfo])
 
     const selectAccount = async (event) => {
         event.preventDefault()
@@ -127,12 +135,12 @@ export default function Document() {
 
                     <h2 className={`${styles.subtitle}`}>Cuentas</h2>
                     <section className={`${styles.section}`}>
-                        {accountFake.map((account) => (<Card title={account.title} number={account.number} coin={account.coin} balance={account.balance} key={account.number} />))}
+                        {cuentas.map((account) => (<Card key={account.account_id} title={account.title} number={account.account_id} coin={account.tipo_moneda} balance={account.balance} />))}
                     </section>
 
                     <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
                     <section className={`${styles.section}`}>
-                        {cardFake.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance} key={card.number}></Card>))}
+                        {tarjetas.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance} key={card.number}></Card>))}
                     </section>
 
                     <div id={`${styles.converter}`}>
@@ -142,8 +150,8 @@ export default function Document() {
                             <label id={`${styles.labelSelect}`}>Selecciona tu cuenta:</label>
                             <select id={`${styles.selectboxAccount}`} className={`${styles.selectbox}`} name='your-account' onChange={(event) => { selectAccount(event) }}>
                                 <option value="" style={{ display: 'none' }}>Selecciona una cuenta</option>
-                                {accountFake.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true} key={account.number}>{account.title}</option>))}
-                                {cardFake.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true} key={card.number}>{card.title}</option>))}
+                                {cuentas.map((account) => (<option value={account.number} disabled={account.balance > 0 ? false : true} key={account.number}>{account.title}</option>))}
+                                {tarjetas.map((card) => (<option value={card.number} disabled={card.balance > 0 ? false : true} key={card.number}>{card.title}</option>))}
                                 <option value="otro">Otro...</option>
                             </select>
 
@@ -178,3 +186,5 @@ export default function Document() {
         </>
     )
 }
+
+export default Cuenta

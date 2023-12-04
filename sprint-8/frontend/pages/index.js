@@ -2,6 +2,8 @@ import Head from 'next/head'
 
 import { useEffect } from 'react'
 
+import { useRouter } from 'next/router'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 import { initializeUserData } from '@/store/reducers/userReducer'
@@ -12,6 +14,7 @@ import SummaryAccount from '@/components/Main/SummaryAccount'
 import Layout from '@/components/layout'
 
 const Home = () => {
+    const router = useRouter();
     const dispatch = useDispatch()
     const cuentas = useSelector((state) => state.cuentas)
     const tarjetas = useSelector((state) => state.tarjetas)
@@ -20,21 +23,30 @@ const Home = () => {
     //info
     useEffect(() => {
         dispatch(initializeUserData())
-    }, [dispatch])
+            .catch(error => {
+                
+            })
+    }, [dispatch, router])
 
     //Cuentas
     useEffect(() => {
         if (userInfo) {
             dispatch(initializeCuentas(userInfo.customer_id))
+                .catch(error => {
+
+                })
         }
-    }, [dispatch, userInfo])
+    }, [dispatch, userInfo, router])
 
     //tarjetas
     useEffect(() => {
         if (userInfo) {
             dispatch(initializeTarjetas(userInfo.customer_id))
+                .catch(error => {
+
+                })
         }
-    }, [dispatch, userInfo])
+    }, [dispatch, userInfo, router])
 
     const nombreCompleto = `${userInfo?.customer_name} ${userInfo?.customer_surname}`
     

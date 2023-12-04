@@ -29,9 +29,9 @@ const SummaryAccount = ({ nombreCompleto, cuentas, tarjetas }) => {
                     {tarjetas.map((tarjeta) => (
                         <li key={tarjeta.tarjeta_numero} className={styles.elements}>
                             <span style={{ justifyContent: 'center', display: 'flex', gap: '5px' }}>
-                                {tarjeta.marca_tarjeta === 1 && <Image width="25" height="25" src="/base/img/visa.webp" alt="logo visa" />}
-                                {tarjeta.marca_tarjeta === 2 && <Image width="25" height="25" src="/base/img/mastercard.webp" alt="logo mastercard" />}
-                                {tarjeta.marca_tarjeta !== 1 && tarjeta.marca_tarjeta !== 2 && <Image width="25" height="25" src="/base/img/american_express.webp" alt="logo american express" />}
+                                {tarjeta.marca_tarjeta === 1 && <Image width="25" height="25" src="/images/visa.webp" alt="logo visa" />}
+                                {tarjeta.marca_tarjeta === 2 && <Image width="25" height="25" src="/images/mastercard.webp" alt="logo mastercard" />}
+                                {tarjeta.marca_tarjeta !== 1 && tarjeta.marca_tarjeta !== 2 && <Image width="25" height="25" src="/images/american_express.webp" alt="logo american express" />}
                             </span>
                             <span>Tarjeta numero: {tarjeta.tarjeta_numero}</span>
                             <span>Vencimiento: {tarjeta.tarjeta_fecha_expiracion}</span>

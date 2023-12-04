@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import PaymentFormModal from '@/components/Pagos/PaymentFormModal';
 import PaymentTable from '@/components/Pagos/PaymentTable';
 import Layout from '@/components/layout';
@@ -25,7 +26,7 @@ const Pagos = () => {
 
   return (
     <Layout>
-        <div>
+        <div className={styles.container} >
         <h1 className={styles.h1Pagos}>Página de Pagos</h1>
 
         {services.length === 0 ? (

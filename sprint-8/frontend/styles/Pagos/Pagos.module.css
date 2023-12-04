@@ -1,113 +1,120 @@
 /* styles/Payments.module.css */
 
 .container {
-max-width: 800px;
-margin: 0 auto;
-padding: 20px;
+    background-color: var(--white);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 32;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16;
 }
 
 .h1Pagos {
-color: #333;
+    color: #333;
 }
 
 .buttonPagos {
-padding: 10px;
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-margin-bottom: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .buttonPagos:hover {
-background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .pPagos {
-color: #888;
-font-style: italic;
+    color: #888;
+    font-style: italic;
 }
 
 /* Estilos para la tabla */
 .tablePagos {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 .cell {
-border: 1px solid #ddd;
-padding: 12px;
-text-align: left;
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
 }
 
 .headerCell {
-background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 /* Estilos para el modal */
-
 .modalContent {
-background-color: #fff;
-padding: 20px;
-border-radius: 8px;
-max-width: 400px;
-margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .reactModalOverlay {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: rgba(0, 0, 0, 0.5);
-display: flex;
-justify-content: center;
-align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .close {
-position: absolute;
-top: 10px;
-right: 10px;
-font-size: 20px;
-cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .h2Modal {
-color: #333;
-margin-bottom: 20px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .formulario {
-margin-top: 20px;
+    margin-top: 20px;
 }
 
 .labelForm {
-display: block;
-margin-bottom: 8px;
-color: #333;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
 }
 
 .inputForm {
-width: 100%;
-padding: 10px;
-margin-bottom: 12px;
-border: 1px solid #ddd;
-border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .buttonForm {
-padding: 10px 16px;
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .buttonForm:hover {
-background-color: #0056b3;
+    background-color: #0056b3;
 }
