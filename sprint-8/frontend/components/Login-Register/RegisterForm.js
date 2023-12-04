@@ -16,22 +16,22 @@ const RegisterForm = () => {
     const handleRegister  = (event) => {
         event.preventDefault()
 
-        const username = event.target[0].value
+        const name_surname = event.target[0].value
         const password = event.target[1].value
         const dni = event.target[3].value
-        const email = event.target[4].value
-        const confirmPassword = event.target[5].value
+        const mail = event.target[4].value
+        const confirm_password = event.target[5].value
         const phone = event.target[7].value
 
-        const userRegister = { username, password, dni, email, confirmPassword, phone }
-
-        registerService.register(userRegister)
-            .then(() => {
-                router.replace('/cuenta/login');
-            })
-            .catch(() => {
-                window.alert("Ha ocurrido un error en la creación de su cuenta. Vuelva a intentarlo nuevamente.");
-            });
+        const userRegister = { name_surname, password, dni, mail, confirm_password, phone }
+            registerService.register(userRegister)
+                .then((response) => {
+                    console.log(response);
+                    router.replace('/cuenta/login');
+                })
+                .catch((error) => {
+                    window.alert(`${error.response.data.error} Vuelva a intentarlo nuevamente.`);
+                });  
     }
 
     return (

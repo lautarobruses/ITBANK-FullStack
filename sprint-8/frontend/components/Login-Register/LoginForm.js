@@ -20,17 +20,17 @@ const LoginForm =() => {
         const username = event.target[0].value
         const password = event.target[1].value
 
-        // ELIMINAR:
-        const user = { username, password }
+        // ====== ELIMINAR:
+        // const user = { username, password }
 
-        window.localStorage.setItem(
-            'loggedUser', JSON.stringify(user)
-        )
+        // window.localStorage.setItem(
+        //     'loggedUser', JSON.stringify(user)
+        // )
         // =====
 
         dispatch(loginUser(username, password))
         .catch(() => {
-            // window.alert("Email o contraseña incorrecto!");
+            window.alert("Email o contraseña incorrecto!");
         })
         router.replace('/');
     }
@@ -38,7 +38,7 @@ const LoginForm =() => {
     return (
         <div className={`${styles.formContainer}`}>
             <form className={`${styles.form}`} onSubmit={handleLogin}>
-                <TextBox type='text' id='user'>Correo electronico o usuario:</TextBox>
+                <TextBox type='text' id='user'>Correo electronico:</TextBox>
                 <div id='passwordContainer'>
                     <TextBox type='password' id='password'>Contraseña:</TextBox>
                     <br/>

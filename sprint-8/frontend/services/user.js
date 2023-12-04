@@ -1,8 +1,8 @@
-// import axios from 'axios'
+import axios from 'axios'
 
 const STORAGE_KEY = 'loggedUser'
 
-const baseUrl = '/api/user/info'
+const baseUrl = 'http://localhost:8000/self/'
 
 const setUser = (user) => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(user))

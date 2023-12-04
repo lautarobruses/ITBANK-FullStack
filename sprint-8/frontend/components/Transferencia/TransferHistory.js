@@ -7,7 +7,7 @@ const TransferHistory = ({ transfers }) => {
   
     return (
       <div className={styles.historyContainer}>
-        <h2>Historial de Transferencias</h2>
+        <h2 className={styles.titulo2}>Historial de Transferencias</h2>
         <table className={styles.tableContainer}>
           <thead>
             <tr>
