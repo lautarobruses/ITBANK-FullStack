@@ -142,7 +142,26 @@ class UserDetails(APIView):
         else:
             # Datos de inicio de sesión no válidos
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
+#Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
+class ClienteDetailsSelf(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, **kwards):
+        user = User.objects.filter(id=self.request.user.id).first()
+
+        if user is not None:
+            cliente = Cliente.objects.filter(customer_id=user.id).first()
+            serializer = ClienteSerializer(cliente)
+
+            if cliente is not None:
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'el usuario no esta asociado a ningun cliente'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'error': 'el usuario no existe'}, status=status.HTTP_400_BAD_REQUEST)
+
 #Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
 class UserDetailsSelf(APIView):
     # authentication_classes = [BasicAuthentication]
