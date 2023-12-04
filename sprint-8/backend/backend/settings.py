@@ -150,3 +150,10 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.BasicAuthentication',
+#     ],
+# }

@@ -149,10 +149,10 @@ class ClienteDetailsSelf(APIView):
     permission_classes = [IsAuthenticated]
     
     def get(self, request, **kwards):
-        user = User.objects.filter(id=self.request.user.id).first()
+        user = User.objects.get(id=self.request.user.id)
 
         if user is not None:
-            cliente = Cliente.objects.filter(customer_id=user.id).first()
+            cliente = Cliente.objects.get(user_id=user.id)
             serializer = ClienteSerializer(cliente)
 
             if cliente is not None:
@@ -168,7 +168,7 @@ class UserDetailsSelf(APIView):
     # permission_classes = [IsAuthenticated]
     
     def get(self, request, **kwards):
-        user = User.objects.filter(id=self.request.user.id).first()
+        user = User.objects.get(id=self.request.user.id)
         serializer = UserSerializer(user)
 
         if user is not None:

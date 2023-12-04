@@ -5,13 +5,14 @@ from rest_framework import status
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 
+from prestamos.permissions import IsEmploye
 from .models import Tarjeta
 from .serializers import TarjetaSerializer
 # Create your views here.
 
 class TarjetasDetailsSelf(APIView):
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsEmploye]
     
     def get(self, request, **kwards):
         tarjetas = Tarjeta.objects.filter(customer=self.request.user.id)
@@ -23,6 +24,9 @@ class TarjetasDetailsSelf(APIView):
             return Response({'error': ''}, status=status.HTTP_400_BAD_REQUEST)
 
 class TarjetasDetails(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, pk, **kwards):
         tarjetas = Tarjeta.objects.filter(customer=pk)
         serializer = TarjetaSerializer(tarjetas, many=True)
