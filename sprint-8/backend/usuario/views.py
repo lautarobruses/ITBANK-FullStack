@@ -14,13 +14,32 @@ from prestamos.models import Prestamo
 from cuenta.serializers import CuentaSerializer, CuentaCorrienteSerializer
 from tarjetas.serializers import TarjetaSerializer, TarjetaDebitoSerializer
 
-from .serializers import UserSerializer, ClienteSerializer, UserLoginSerializer
-from .models import Cliente
+from .serializers import UserSerializer, ClienteSerializer, UserLoginSerializer, ModificarDireccionSerializer
+from .models import Cliente, Direccion
 
 import random
 from faker import Faker #pip install faker
 from datetime import datetime
 # Create your views here.
+
+class ModificarDireccion(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, customer_id, **kwargs):
+        try:
+            direccion = Direccion.objects.get(customer_id=customer_id)
+
+            # Usamos el serializador para validar y actualizar la direccion_completa
+            serializer = ModificarDireccionSerializer(instance=direccion, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except Direccion.DoesNotExist:
+            return Response({'error': 'La dirección para el cliente no existe.'}, status=status.HTTP_404_NOT_FOUND)
 
 class UserList(APIView):
     def post(self, request, **kwards):
@@ -165,8 +184,7 @@ class ClienteDetailsSelf(APIView):
 #Api para que un usuario obtenga sus propios datos (primera api de la segunda problematica)
 class UserDetailsSelf(APIView):
     authentication_classes = [BasicAuthentication]
-    # permission_classes = [IsAuthenticated]
-    
+    # permission_classes = [IsAuthenticated]   
     def get(self, request, **kwards):
         user = User.objects.get(id=self.request.user.id)
         serializer = UserSerializer(user)

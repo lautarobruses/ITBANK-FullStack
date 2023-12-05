@@ -1,9 +1,4 @@
 from django.contrib import admin
-from .models import Servicio
+from .models import PagoServicio
 
-# Register your models here.
-
-class ServicioAdmin(admin.ModelAdmin):
-    readonly_field = ('id',)
-
-admin.site.register(Servicio, ServicioAdmin)
+admin.site.register(PagoServicio)
