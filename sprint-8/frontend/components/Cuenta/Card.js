@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const Card = ({ tipe='account',
                 title='Cuenta',
-                coin={ARG: '$'},
+                coin=1,
                 balance='0',
                 closing='',
                 expiration='',
@@ -33,7 +33,7 @@ const Card = ({ tipe='account',
                             loading="lazy"
                         />
                     )}
-                    <h3 id={`${styles.cardTitle}`}>{title}</h3>
+                    <h3 id={`${styles.cardTitle}`}>{tipe === 'card'? "Terminada en " + title: title}</h3>
                 </div>
 
                 <h4 id={`${styles.cardSubtitle}`} style={{color: tipe==='card'? '#f0f0f0' : 'var(--grey-font)'}}>
@@ -44,7 +44,10 @@ const Card = ({ tipe='account',
                     )}
                 </h4>
                 <h3 id={`${styles.saldo}`}>
-                    {Object.values(coin)} {saldo}
+                    {tipe!=='card' ? 
+                        coin == 0? "$" : "U$S"
+                    : "" }
+                    {saldo}
                 </h3>
                 {/* <button id={`${styles.button}`} style={{color: tipe==='card'? 'var(--white)' : 'var(--dark)'}} onClick={handleClick}>Ver movimientos</button> */}
             </div>

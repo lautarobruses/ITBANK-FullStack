@@ -8,7 +8,7 @@ router.register(r'clientes', ClienteViewSet)
 router.register(r'cuentas', CuentaViewSet)
 router.register(r'cajas-ahorro', CajaAhorroViewSet)
 router.register(r'cuentas-corriente', CuentaCorrienteViewSet)
-router.register(r'tarjetas', TarjetaViewSet)
+# router.register(r'tarjetas', TarjetaViewSet)
 router.register(r'tarjetas-credito', TarjetaCreditoViewSet)
 router.register(r'tarjetas-debito', TarjetaDebitoViewSet)
 
