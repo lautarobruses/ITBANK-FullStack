@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Cliente
+from .models import Cliente, Direccion
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,3 +35,9 @@ class ClienteSerializer(serializers.ModelSerializer):
             'branch',
             'user'
         ]
+        
+
+class ModificarDireccionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Direccion
+        fields = ['direccion_completa']

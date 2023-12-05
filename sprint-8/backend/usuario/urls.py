@@ -7,5 +7,6 @@ urlpatterns = [
     path('self/', views.UserDetailsSelf.as_view()),  #devuelve los datos del usuario logeado con el metodo GET
     path('self/cliente/', views.ClienteDetailsSelf.as_view()),  #devuelve los datos del cliente logeado con el metodo GET
     path('obtener_saldo/', views.ObtenerSaldo.as_view(), name='obtener_saldo'),
-    path('obtener_monto_prestamos/', views.ObtenerMontoPrestamos.as_view(), name='obtener_monto_prestamos'), 
+    path('obtener_monto_prestamos/', views.ObtenerMontoPrestamos.as_view(), name='obtener_monto_prestamos'),
+    path('modificar_direccion/<int:customer_id>/', views.ModificarDireccion.as_view(), name='modificar_direccion'),
 ]
