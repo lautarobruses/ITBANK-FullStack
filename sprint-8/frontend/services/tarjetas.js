@@ -3,7 +3,7 @@ import axios from 'axios'
 const baseUrl = 'http://localhost:8000/cuenta/api'
 
 const getAll = async (id) => {
-    const response = await axios.get(`${baseUrl}/tarjetas/${id}`);
+    const response = await axios.get(`http://localhost:8000/tarjetas/${id}`);
     return [response.data]
 }
 

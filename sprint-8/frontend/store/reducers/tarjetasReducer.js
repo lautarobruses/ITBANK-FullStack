@@ -18,8 +18,8 @@ const tarjetaSlice = createSlice({
 
 export const initializeTarjetas = (id) => {
     return async dispatch => {
-        const cuentas = await tarjetaService.getAll(id)
-        dispatch(setTarjetas(cuentas))
+        const tarjetas = await tarjetaService.getAll(id)
+        dispatch(setTarjetas(tarjetas[0]))
     }
 }
 

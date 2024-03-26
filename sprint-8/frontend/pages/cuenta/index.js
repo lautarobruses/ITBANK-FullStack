@@ -13,11 +13,19 @@ import Layout from '@/components/layout'
 import Card from '@/components/Cuenta/Card'
 
 import Arrows from '@/public/svg/circularArrows.svg'
+import mastercard from '@/public/Images/mastercard.webp'
+import visa from '@/public/Images/visa.webp'
+import american from '@/public/Images/american_express.webp'
+
+const image_1 = { src: visa, alt: 'logo de visa' }
+const image_2 = { src: mastercard, alt: 'logo de mastercard' }
+const image_3 = { src: american, alt: 'logo de american' }
 
 const Cuenta = () => {
     const dispatch = useDispatch()
     const cuentas = useSelector((state) => state.cuentas)
     const tarjetas = useSelector((state) => state.tarjetas)
+  
     const userInfo = useSelector((state) => state.user)
 
     const [rates, setRates] = useState(null)
@@ -80,9 +88,9 @@ const Cuenta = () => {
 
             setInput(account.balance.toFixed(2))
 
-            if (account.coin === undefined) {
+            if (account.tipo_moneda === 0) {
                 setCoinInput('ARG')
-            } else if (Object.keys(account.coin) == 'USD') {
+            } else if (account.tipo_moneda === 1) {
                 setCoinInput('USD')
             } else {
                 setCoinInput('EUR')
@@ -140,7 +148,7 @@ const Cuenta = () => {
 
                     <h2 className={`${styles.subtitle}`}>Tarjetas</h2>
                     <section className={`${styles.section}`}>
-                        {tarjetas.map((card) => (<Card tipe={card.tipe} title={card.title} closing={card.closing} expiration={card.expiration} img={card.img} color={card.color} coin={card.coin} balance={card.balance} key={card.number}></Card>))}
+                        {tarjetas.map((card) => (<Card tipe="card" title={card.tarjeta_numero} closing={card.tarjeta_fecha_otorgamiento} expiration={card.tarjeta_fecha_expiracion} img={card.marca_tarjeta === 1? image_1 : card.marca_tarjeta=== 2? image_2 : image_3} color={card.color} balance={card.tarjeta_nombre_propietario} ></Card>))}
                     </section>
 
                     <div id={`${styles.converter}`}>

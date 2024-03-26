@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import PagoServicio
+from .serializers import PagoServicioSerializer
 
-# Create your views here.
+class PagoServicioListCreateView(generics.ListCreateAPIView):
+    queryset = PagoServicio.objects.all()
+    serializer_class = PagoServicioSerializer

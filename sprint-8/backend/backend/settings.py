@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'usuario',
     'sucursal',
     'corsheaders',
+    'rest_framework',
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
